@@ -23,18 +23,64 @@ async function ensureDir(dir) {
   await fs.mkdir(dir, { recursive: true });
 }
 
-async function exists(path) {
+async function fileExists(p) {
   try {
-    await fs.access(path);
+    await fs.access(p);
     return true;
   } catch {
     return false;
   }
 }
 
+async function buildPagesJsonFromDerivatives() {
+  console.log("Building pages.json from existing WebP derivatives...");
+  const desktopDir = path.join(OUTPUT, "desktop");
+  let webpFiles = [];
+  try {
+    webpFiles = (await fs.readdir(desktopDir)).filter(f => f.endsWith(".webp")).sort();
+  } catch {
+    console.error("No source scans AND no existing WebP derivatives found. Cannot build.");
+    process.exit(1);
+  }
+
+  const pages = [];
+  for (const webpFile of webpFiles) {
+    const match = webpFile.match(/^page-(\d{3})\.webp$/i);
+    if (!match) continue;
+    const num = Number(match[1]);
+    const id = `page-${String(num).padStart(3, "0")}`;
+    const masterExists = await fileExists(path.join(OUTPUT, "masters", `${id}.png`));
+
+    pages.push({
+      id,
+      pageNumber: num,
+      width: 0,
+      height: 0,
+      masterSrc: masterExists ? `/book-pages/masters/${id}.png` : "",
+      thumbnailSrc: `/book-pages/thumbnails/${id}.webp`,
+      sources: {
+        mobile: `/book-pages/mobile/${id}.webp`,
+        tablet: `/book-pages/tablet/${id}.webp`,
+        desktop: `/book-pages/desktop/${id}.webp`
+      }
+    });
+  }
+
+  pages.sort((a, b) => a.pageNumber - b.pageNumber);
+
+  await ensureDir(DATA);
+  await fs.writeFile(
+    path.join(DATA, "pages.json"),
+    JSON.stringify({ version: "21.0.0", totalPages: pages.length, generatedAt: new Date().toISOString(), pages }, null, 2)
+  );
+  await fs.writeFile(path.join(DATA, "hotspots.json"), JSON.stringify({ version: "21.0.0", hotspots: [] }, null, 2));
+  await fs.writeFile(path.join(DATA, "transcripts.json"), JSON.stringify({ version: "21.0.0", transcripts: [] }, null, 2));
+
+  console.log(`\nBuild complete: ${pages.length} pages (from existing derivatives).`);
+}
+
 async function main() {
   await ensureDir(OUTPUT);
-  await ensureDir(DATA);
   await ensureDir(path.join(OUTPUT, "masters"));
 
   let files = [];
@@ -43,68 +89,13 @@ async function main() {
       .filter((name) => /\.(png|jpe?g|tiff?)$/i.test(name))
       .sort();
   } catch {
-    console.log("No archive-source/original-scans/ found — skipping asset generation (using pre-built derivatives).");
+    // Source scans not available — build from existing derivatives
+    await buildPagesJsonFromDerivatives();
+    return;
   }
 
-  // If no source files, build pages.json from existing desktop webp files
   if (!files.length) {
-    console.log("Building pages.json from existing WebP derivatives...");
-    const desktopDir = path.join(OUTPUT, "desktop");
-    let webpFiles = [];
-    try {
-      webpFiles = (await fs.readdir(desktopDir)).filter(f => f.endsWith(".webp")).sort();
-    } catch {
-      console.error("No source scans AND no existing WebP derivatives found. Cannot build.");
-      process.exit(1);
-    }
-
-    for (const webpFile of webpFiles) {
-      const match = webpFile.match(/^page-(\d{3})\.webp$/i);
-      if (!match) continue;
-      const num = Number(match[1]);
-      const id = `page-${String(num).padStart(3, "0")}`;
-
-      // Check if master exists
-      const masterExists = await exists(path.join(OUTPUT, "masters", `${id}.png`));
-
-      pages.push({
-        id,
-        pageNumber: num,
-        width: 0,
-        height: 0,
-        masterSrc: masterExists ? `/book-pages/masters/${id}.png` : ``,
-        thumbnailSrc: `/book-pages/thumbnails/${id}.webp`,
-        sources: {
-          mobile: `/book-pages/mobile/${id}.webp`,
-          tablet: `/book-pages/tablet/${id}.webp`,
-          desktop: `/book-pages/desktop/${id}.webp`
-        }
-      });
-    }
-
-    pages.sort((a, b) => a.pageNumber - b.pageNumber);
-
-    await fs.writeFile(
-      path.join(DATA, "pages.json"),
-      JSON.stringify({
-        version: "21.0.0",
-        totalPages: pages.length,
-        generatedAt: new Date().toISOString(),
-        pages
-      }, null, 2)
-    );
-
-    await fs.writeFile(
-      path.join(DATA, "hotspots.json"),
-      JSON.stringify({ version: "21.0.0", hotspots: [] }, null, 2)
-    );
-
-    await fs.writeFile(
-      path.join(DATA, "transcripts.json"),
-      JSON.stringify({ version: "21.0.0", transcripts: [] }, null, 2)
-    );
-
-    console.log(`\nBuild complete: ${pages.length} pages (from existing derivatives).`);
+    await buildPagesJsonFromDerivatives();
     return;
   }
 
@@ -124,12 +115,11 @@ async function main() {
     const thumbPath = path.join(OUTPUT, "thumbnails", `${id}.webp`);
 
     const allExist = await Promise.all([
-      exists(masterPath), exists(desktopPath), exists(tabletPath),
-      exists(mobilePath), exists(thumbPath)
+      fileExists(masterPath), fileExists(desktopPath), fileExists(tabletPath),
+      fileExists(mobilePath), fileExists(thumbPath)
     ]).then(results => results.every(r => r));
 
     if (allExist) {
-      // Read metadata from existing master to build pages.json
       const metadata = await sharp(masterPath).metadata();
       const number = Number(id.split("-")[1]);
       pages.push({
@@ -151,43 +141,24 @@ async function main() {
 
     console.log(`Processing ${id}...`);
 
-    const image = sharp(sourcePath, {
-      failOn: "error",
-      limitInputPixels: false
-    });
-
+    const image = sharp(sourcePath, { failOn: "error", limitInputPixels: false });
     const metadata = await image.metadata();
     if (!metadata.width || !metadata.height) {
       throw new Error(`Unreadable page: ${filename}`);
     }
 
-    // Copy lossless master
-    await image.clone().png({
-      compressionLevel: 9,
-      adaptiveFiltering: true
-    }).toFile(masterPath);
+    await image.clone().png({ compressionLevel: 9, adaptiveFiltering: true }).toFile(masterPath);
 
-    // Generate responsive WebP derivatives
     for (const [folder, width, quality] of sizes) {
       const outDir = path.join(OUTPUT, folder);
       await ensureDir(outDir);
       await image.clone()
-        .resize({
-          width: Math.min(width, metadata.width),
-          withoutEnlargement: true,
-          fit: "inside",
-          kernel: sharp.kernel.lanczos3
-        })
-        .webp({
-          quality,
-          effort: 4,  // Lower effort for speed
-          smartSubsample: true
-        })
+        .resize({ width: Math.min(width, metadata.width), withoutEnlargement: true, fit: "inside", kernel: sharp.kernel.lanczos3 })
+        .webp({ quality, effort: 4, smartSubsample: true })
         .toFile(path.join(outDir, `${id}.webp`));
     }
 
     const number = Number(id.split("-")[1]);
-
     pages.push({
       id,
       pageNumber: number,
@@ -201,41 +172,22 @@ async function main() {
         desktop: `/book-pages/desktop/${id}.webp`
       }
     });
-
     processed++;
   }
 
   pages.sort((a, b) => a.pageNumber - b.pageNumber);
 
+  await ensureDir(DATA);
   await fs.writeFile(
     path.join(DATA, "pages.json"),
-    JSON.stringify({
-      version: "21.0.0",
-      totalPages: pages.length,
-      generatedAt: new Date().toISOString(),
-      pages
-    }, null, 2)
+    JSON.stringify({ version: "21.0.0", totalPages: pages.length, generatedAt: new Date().toISOString(), pages }, null, 2)
   );
-
-  // Also create empty hotspots and transcripts stubs
-  await fs.writeFile(
-    path.join(DATA, "hotspots.json"),
-    JSON.stringify({ version: "21.0.0", hotspots: [] }, null, 2)
-  );
-
-  await fs.writeFile(
-    path.join(DATA, "transcripts.json"),
-    JSON.stringify({ version: "21.0.0", transcripts: [] }, null, 2)
-  );
+  await fs.writeFile(path.join(DATA, "hotspots.json"), JSON.stringify({ version: "21.0.0", hotspots: [] }, null, 2));
+  await fs.writeFile(path.join(DATA, "transcripts.json"), JSON.stringify({ version: "21.0.0", transcripts: [] }, null, 2));
 
   console.log(`\nBuild complete: ${pages.length} pages total.`);
   console.log(`  Newly processed: ${processed}`);
   console.log(`  Skipped (already existed): ${skipped}`);
-  console.log(`  Masters: ${pages.length} PNG files`);
-  console.log(`  Desktop: ${pages.length} WebP files (2400px)`);
-  console.log(`  Tablet:  ${pages.length} WebP files (1800px)`);
-  console.log(`  Mobile:  ${pages.length} WebP files (1200px)`);
-  console.log(`  Thumbs:  ${pages.length} WebP files (320px)`);
 }
 
 main().catch((err) => {
