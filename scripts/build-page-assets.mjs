@@ -37,11 +37,76 @@ async function main() {
   await ensureDir(DATA);
   await ensureDir(path.join(OUTPUT, "masters"));
 
-  const files = (await fs.readdir(SOURCE))
-    .filter((name) => /\.(png|jpe?g|tiff?)$/i.test(name))
-    .sort();
+  let files = [];
+  try {
+    files = (await fs.readdir(SOURCE))
+      .filter((name) => /\.(png|jpe?g|tiff?)$/i.test(name))
+      .sort();
+  } catch {
+    console.log("No archive-source/original-scans/ found — skipping asset generation (using pre-built derivatives).");
+  }
 
-  if (!files.length) throw new Error("No master page files found in archive-source/original-scans/");
+  // If no source files, build pages.json from existing desktop webp files
+  if (!files.length) {
+    console.log("Building pages.json from existing WebP derivatives...");
+    const desktopDir = path.join(OUTPUT, "desktop");
+    let webpFiles = [];
+    try {
+      webpFiles = (await fs.readdir(desktopDir)).filter(f => f.endsWith(".webp")).sort();
+    } catch {
+      console.error("No source scans AND no existing WebP derivatives found. Cannot build.");
+      process.exit(1);
+    }
+
+    for (const webpFile of webpFiles) {
+      const match = webpFile.match(/^page-(\d{3})\.webp$/i);
+      if (!match) continue;
+      const num = Number(match[1]);
+      const id = `page-${String(num).padStart(3, "0")}`;
+
+      // Check if master exists
+      const masterExists = await exists(path.join(OUTPUT, "masters", `${id}.png`));
+
+      pages.push({
+        id,
+        pageNumber: num,
+        width: 0,
+        height: 0,
+        masterSrc: masterExists ? `/book-pages/masters/${id}.png` : ``,
+        thumbnailSrc: `/book-pages/thumbnails/${id}.webp`,
+        sources: {
+          mobile: `/book-pages/mobile/${id}.webp`,
+          tablet: `/book-pages/tablet/${id}.webp`,
+          desktop: `/book-pages/desktop/${id}.webp`
+        }
+      });
+    }
+
+    pages.sort((a, b) => a.pageNumber - b.pageNumber);
+
+    await fs.writeFile(
+      path.join(DATA, "pages.json"),
+      JSON.stringify({
+        version: "21.0.0",
+        totalPages: pages.length,
+        generatedAt: new Date().toISOString(),
+        pages
+      }, null, 2)
+    );
+
+    await fs.writeFile(
+      path.join(DATA, "hotspots.json"),
+      JSON.stringify({ version: "21.0.0", hotspots: [] }, null, 2)
+    );
+
+    await fs.writeFile(
+      path.join(DATA, "transcripts.json"),
+      JSON.stringify({ version: "21.0.0", transcripts: [] }, null, 2)
+    );
+
+    console.log(`\nBuild complete: ${pages.length} pages (from existing derivatives).`);
+    return;
+  }
 
   const pages = [];
   let skipped = 0;

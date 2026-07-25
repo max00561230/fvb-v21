@@ -7,7 +7,7 @@
     "dev": "vite",
     "build:assets": "node scripts/build-page-assets.mjs",
     "validate:pages": "node scripts/validate-pages.mjs",
-    "prebuild": "npm run build:assets && npm run validate:pages",
+    "prebuild": "npm run build:assets --if-present && npm run validate:pages --if-present",
     "build": "vite build",
     "preview": "vite preview"
   },

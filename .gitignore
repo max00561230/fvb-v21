@@ -9,3 +9,4 @@ public/book-pages/masters/
 *.log
 .vite/
 .DS_Store
+.vercel
