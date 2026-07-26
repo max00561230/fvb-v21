@@ -24,6 +24,9 @@ interface HistoryState {
   fabricState: string;
 }
 
+const PROOF_PAGE_NUMBER = 17;
+const proofPageLabel = `Page ${PROOF_PAGE_NUMBER}`;
+
 export function PhotoRestoration() {
   const [manifest, setManifest] = useState<PagesManifest | null>(null);
   const [selectedPage, setSelectedPage] = useState<BookPage | null>(null);
@@ -42,6 +45,7 @@ export function PhotoRestoration() {
   const [savedPlacements, setSavedPlacements] = useState<PlacementData[]>([]);
   const [status, setStatus] = useState<"editing" | "preview" | "approved">("editing");
   const [loading, setLoading] = useState(true);
+  const [notice, setNotice] = useState<string | null>(null);
 
   // Load manifest
   useEffect(() => {
@@ -49,6 +53,7 @@ export function PhotoRestoration() {
       .then((r) => r.json())
       .then((data: PagesManifest) => {
         setManifest(data);
+        setSelectedPage(data.pages.find((page) => page.pageNumber === PROOF_PAGE_NUMBER) ?? data.pages[0] ?? null);
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -153,6 +158,7 @@ export function PhotoRestoration() {
       canvas.renderAll();
 
       setFabricCanvas(canvas);
+      canvas.on("object:modified", saveHistory);
 
       // Save initial history
       setUndoStack([{ fabricState: JSON.stringify(canvas.toJSON()) }]);
@@ -173,6 +179,7 @@ export function PhotoRestoration() {
     setPersonName("");
     setSubmittedBy("");
     setSourceDescription("");
+    setNotice(null);
   };
 
   const handleDrawOpening = async () => {
@@ -187,12 +194,13 @@ export function PhotoRestoration() {
       top: 100,
       width: 300,
       height: 400,
-      fill: "rgba(0, 0, 0, 0.5)",
+      fill: "rgba(0, 0, 0, 0.18)",
       stroke: "#CAA24B",
       strokeWidth: 3,
       cornerColor: "#CAA24B",
       cornerSize: 10,
       transparentCorners: false,
+      objectCaching: false,
     });
 
     fabricRef.current.add(rect);
@@ -223,13 +231,21 @@ export function PhotoRestoration() {
       const photoObj = new fabric.Image(img, {
         left: 150,
         top: 150,
-        scaleX: 0.3,
-        scaleY: 0.3,
+        scaleX: openingRect ? (openingRect.getScaledWidth?.() ?? openingRect.width ?? 300) / img.naturalWidth : 0.3,
+        scaleY: openingRect ? (openingRect.getScaledWidth?.() ?? openingRect.width ?? 300) / img.naturalWidth : 0.3,
         cornerColor: "#CAA24B",
         cornerSize: 12,
         transparentCorners: false,
         borderColor: "#CAA24B",
+        lockUniScaling: false,
       });
+
+      if (openingRect) {
+        photoObj.set({
+          left: openingRect.left ?? 150,
+          top: openingRect.top ?? 150,
+        });
+      }
 
       fabricRef.current.add(photoObj);
       setPhotoObject(photoObj);
@@ -250,42 +266,141 @@ export function PhotoRestoration() {
     });
   };
 
-  const handleSave = () => {
-    if (!selectedPage || !fabricRef.current) return;
+  const buildPlacement = (exportStatus: "draft" | "approved"): PlacementData | null => {
+    if (!selectedPage) return null;
 
-    const placement: PlacementData = {
+    const openingLeft = openingRect?.left ?? 0;
+    const openingTop = openingRect?.top ?? 0;
+    const openingWidth = openingRect?.getScaledWidth?.() ?? (openingRect?.width ?? 0) * (openingRect?.scaleX ?? 1);
+    const openingHeight = openingRect?.getScaledHeight?.() ?? (openingRect?.height ?? 0) * (openingRect?.scaleY ?? 1);
+    const photoWidth = photoObject?.getScaledWidth?.() ?? (photoObject?.width ?? 0) * (photoObject?.scaleX ?? 1);
+    const photoHeight = photoObject?.getScaledHeight?.() ?? (photoObject?.height ?? 0) * (photoObject?.scaleY ?? 1);
+
+    return {
       pageId: selectedPage.id,
-      sourcePage: `${selectedPage.id}.png`,
-      restoredPhoto: uploadedPhoto ? `${selectedPage.id}-person-01.jpg` : "",
+      sourcePage: selectedPage.masterSrc,
+      restoredPhoto: uploadedPhoto ? `${selectedPage.id}-proof-photo` : "",
       personName: personName || "Unknown",
-      opening: openingRect
-        ? {
-            x: Math.round(openingRect.left || 0),
-            y: Math.round(openingRect.top || 0),
-            width: Math.round(openingRect.width || 0),
-            height: Math.round(openingRect.height || 0),
-          }
-        : { x: 0, y: 0, width: 0, height: 0 },
+      opening: {
+        x: Math.round(openingLeft),
+        y: Math.round(openingTop),
+        width: Math.round(openingWidth),
+        height: Math.round(openingHeight),
+      },
       placement: photoObject
         ? {
-            offsetX: Math.round((photoObject.left || 0) - (openingRect?.left || 0)),
-            offsetY: Math.round((photoObject.top || 0) - (openingRect?.top || 0)),
-            scale: Math.round(((photoObject.scaleX || 1) + Number.EPSILON) * 100) / 100,
+            offsetX: Math.round((photoObject.left || 0) - openingLeft),
+            offsetY: Math.round((photoObject.top || 0) - openingTop),
+            scale: Math.round(((photoObject.scaleX || 1) + Number.EPSILON) * 1000) / 1000,
             rotation: Math.round((photoObject.angle || 0) * 10) / 10,
           }
         : { offsetX: 0, offsetY: 0, scale: 1, rotation: 0 },
       sourceInformation: {
         submittedBy,
-        sourceDescription,
+        sourceDescription: [
+          sourceDescription,
+          photoObject ? `Rendered size: ${Math.round(photoWidth)}x${Math.round(photoHeight)} canvas px` : "",
+          photoObject?.clipPath ? "Crop: clipped to opening rectangle" : "Crop: not applied",
+        ]
+          .filter(Boolean)
+          .join(" | "),
         dateRestored: new Date().toISOString().split("T")[0],
       },
-      status: "draft",
+      status: exportStatus,
     };
+  };
+
+  const handleSave = () => {
+    if (!selectedPage || !fabricRef.current) return;
+
+    const placement = buildPlacement("draft");
+    if (!placement) return;
 
     const updated = [...savedPlacements.filter((p) => p.pageId !== placement.pageId), placement];
     setSavedPlacements(updated);
     localStorage.setItem("fvb-restoration-placements", JSON.stringify(updated));
-    alert("Progress saved to local storage!");
+    setNotice("Draft placement saved in this browser only.");
+  };
+
+  const fitPhotoToOpening = () => {
+    if (!photoObject || !openingRect || !fabricRef.current) return;
+    saveHistory();
+    const openingWidth = openingRect.getScaledWidth?.() ?? openingRect.width ?? 1;
+    const openingHeight = openingRect.getScaledHeight?.() ?? openingRect.height ?? 1;
+    const scale = Math.max(openingWidth / (photoObject.width || 1), openingHeight / (photoObject.height || 1));
+
+    photoObject.set({
+      left: openingRect.left,
+      top: openingRect.top,
+      scaleX: scale,
+      scaleY: scale,
+      angle: 0,
+    });
+    fabricRef.current.setActiveObject(photoObject);
+    fabricRef.current.renderAll();
+  };
+
+  const cropPhotoToOpening = async () => {
+    if (!photoObject || !openingRect || !fabricRef.current) return;
+    saveHistory();
+    const fabric = await loadFabric();
+    const clipRect = new fabric.Rect({
+      left: openingRect.left,
+      top: openingRect.top,
+      width: openingRect.getScaledWidth?.() ?? openingRect.width ?? 0,
+      height: openingRect.getScaledHeight?.() ?? openingRect.height ?? 0,
+      absolutePositioned: true,
+    });
+
+    photoObject.set({ clipPath: clipRect });
+    fabricRef.current.setActiveObject(photoObject);
+    fabricRef.current.renderAll();
+    setNotice("Crop applied as a non-destructive canvas clip for this proof.");
+  };
+
+  const adjustPhotoScale = (value: number) => {
+    if (!photoObject || !fabricRef.current) return;
+    photoObject.set({ scaleX: value, scaleY: value });
+    fabricRef.current.renderAll();
+  };
+
+  const adjustPhotoRotation = (value: number) => {
+    if (!photoObject || !fabricRef.current) return;
+    photoObject.set({ angle: value });
+    fabricRef.current.renderAll();
+  };
+
+  const zoomCanvas = (factor: number) => {
+    if (!fabricRef.current) return;
+    const currentZoom = fabricRef.current.getZoom();
+    const nextZoom = Math.max(0.25, Math.min(3, currentZoom * factor));
+    fabricRef.current.zoomToPoint({ x: 0, y: 0 }, nextZoom);
+  };
+
+  const downloadBlob = (blob: Blob, filename: string) => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const downloadText = (text: string, filename: string, type = "application/json") => {
+    downloadBlob(new Blob([text], { type }), filename);
+  };
+
+  const handleExportJson = () => {
+    const placement = buildPlacement(status === "approved" ? "approved" : "draft");
+    if (!placement || !selectedPage) return;
+    downloadText(JSON.stringify(placement, null, 2), `${selectedPage.id}-placement.json`);
+  };
+
+  const handleExportPng = () => {
+    if (!fabricRef.current || !selectedPage) return;
+    fabricRef.current.getElement().toBlob((blob: Blob | null) => {
+      if (blob) downloadBlob(blob, `${selectedPage.id}-restoration-proof.png`);
+    }, "image/png");
   };
 
   const handleApprove = () => {
@@ -344,34 +459,8 @@ export function PhotoRestoration() {
     zip.file(`${selectedPage.id}-restored.png`, pngData, { base64: true });
 
     // Export placement JSON
-    const placement: PlacementData = {
-      pageId: selectedPage.id,
-      sourcePage: `${selectedPage.id}.png`,
-      restoredPhoto: `${selectedPage.id}-person-01.jpg`,
-      personName: personName || "Unknown",
-      opening: openingRect
-        ? {
-            x: Math.round(openingRect.left || 0),
-            y: Math.round(openingRect.top || 0),
-            width: Math.round(openingRect.width || 0),
-            height: Math.round(openingRect.height || 0),
-          }
-        : { x: 0, y: 0, width: 0, height: 0 },
-      placement: photoObject
-        ? {
-            offsetX: Math.round((photoObject.left || 0) - (openingRect?.left || 0)),
-            offsetY: Math.round((photoObject.top || 0) - (openingRect?.top || 0)),
-            scale: Math.round(((photoObject.scaleX || 1) + Number.EPSILON) * 100) / 100,
-            rotation: Math.round((photoObject.angle || 0) * 10) / 10,
-          }
-        : { offsetX: 0, offsetY: 0, scale: 1, rotation: 0 },
-      sourceInformation: {
-        submittedBy,
-        sourceDescription,
-        dateRestored: new Date().toISOString().split("T")[0],
-      },
-      status: "approved",
-    };
+    const placement = buildPlacement("approved");
+    if (!placement) return;
 
     zip.file(`${selectedPage.id}-placement.json`, JSON.stringify(placement, null, 2));
 
@@ -398,18 +487,14 @@ export function PhotoRestoration() {
       exportedAt: new Date().toISOString(),
       exportedBy: "FVB v21.1 Photo Restoration Tool",
       originalImage: selectedPage.masterSrc,
-      restorationVersion: "1.0",
+      restorationVersion: "1.1-proof",
+      proofScope: "local-private one-page proof; no archival source images modified",
     };
     zip.file(`${selectedPage.id}-metadata.json`, JSON.stringify(metadata, null, 2));
 
     // Generate and download
     const blob = await zip.generateAsync({ type: "blob" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${selectedPage.id}-restoration.zip`;
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadBlob(blob, `${selectedPage.id}-restoration.zip`);
   };
 
   if (loading) {
@@ -428,49 +513,35 @@ export function PhotoRestoration() {
     <div className="restoration-page">
       <Navigation />
       <div className="restoration-content">
-        <h1 className="restoration-title">Photo Restoration Tool</h1>
+        <h1 className="restoration-title">Photo Restoration Proof</h1>
         <p className="restoration-subtitle">
-          Select a book page, define the opening where a photo is missing, then upload and position a recovered photo.
-          Original scans are never modified.
+          Local-private Phase 1B proof fixed to {proofPageLabel}. Define an opening, upload one restored photo,
+          position it on the locked page background, then export placement JSON and a PNG proof. Original scans are never modified.
         </p>
 
         {!selectedPage ? (
           <div className="restoration-page-selector">
-            <h2>Select a Page to Restore</h2>
-            <div className="restoration-page-grid">
-              {manifest?.pages.map((page) => (
-                <button
-                  key={page.id}
-                  className="restoration-page-tile"
-                  onClick={() => handlePageSelect(page)}
-                >
-                  <img
-                    src={page.thumbnailSrc}
-                    alt={`Page ${page.pageNumber}`}
-                    className="restoration-page-thumb"
-                  />
-                  <span className="restoration-page-label">Page {page.pageNumber}</span>
-                </button>
-              ))}
-            </div>
+            <h2>Proof page unavailable</h2>
+            <p className="restoration-help">Could not load {proofPageLabel} from the generated page manifest.</p>
           </div>
         ) : (
           <div className="restoration-workspace">
             <div className="restoration-sidebar">
               <div className="restoration-sidebar-section">
-                <h3>Selected Page</h3>
-                <p>Page {selectedPage.pageNumber}</p>
+                <h3>Proof Page</h3>
+                <p>{proofPageLabel}</p>
+                <p className="restoration-help">Fixed page background: {selectedPage.masterSrc}</p>
                 <button
                   className="restoration-btn restoration-btn-secondary"
                   onClick={() => {
-                    setSelectedPage(null);
+                    handlePageSelect(manifest?.pages.find((page) => page.pageNumber === PROOF_PAGE_NUMBER) ?? selectedPage);
                     if (fabricRef.current) {
                       fabricRef.current.dispose();
                       fabricRef.current = null;
                     }
                   }}
                 >
-                  Change Page
+                  Reset Proof Page
                 </button>
               </div>
 
@@ -526,7 +597,8 @@ export function PhotoRestoration() {
               </div>
 
               <div className="restoration-sidebar-section">
-                <h3>Controls</h3>
+                <h3>Placement Controls</h3>
+                <p className="restoration-help">Drag the photo directly on the page. Use the corner controls to resize and rotate.</p>
                 <div className="restoration-btn-group">
                   <button
                     className="restoration-btn"
@@ -549,7 +621,57 @@ export function PhotoRestoration() {
                   >
                     {showOriginal ? "Show Restored" : "Compare Original"}
                   </button>
+                  <button
+                    className="restoration-btn"
+                    onClick={fitPhotoToOpening}
+                    disabled={!photoObject || !openingRect || status === "approved"}
+                  >
+                    Fit to Opening
+                  </button>
+                  <button
+                    className="restoration-btn"
+                    onClick={cropPhotoToOpening}
+                    disabled={!photoObject || !openingRect || status === "approved"}
+                  >
+                    Crop to Opening
+                  </button>
+                  <button
+                    className="restoration-btn"
+                    onClick={() => zoomCanvas(1.2)}
+                  >
+                    Zoom In
+                  </button>
+                  <button
+                    className="restoration-btn"
+                    onClick={() => zoomCanvas(0.8)}
+                  >
+                    Zoom Out
+                  </button>
                 </div>
+                <label className="restoration-control-label">
+                  Photo scale
+                  <input
+                    type="range"
+                    min="0.05"
+                    max="2"
+                    step="0.01"
+                    value={photoObject?.scaleX ?? 0.3}
+                    onChange={(e) => adjustPhotoScale(Number(e.target.value))}
+                    disabled={!photoObject || status === "approved"}
+                  />
+                </label>
+                <label className="restoration-control-label">
+                  Rotation
+                  <input
+                    type="range"
+                    min="-45"
+                    max="45"
+                    step="0.5"
+                    value={photoObject?.angle ?? 0}
+                    onChange={(e) => adjustPhotoRotation(Number(e.target.value))}
+                    disabled={!photoObject || status === "approved"}
+                  />
+                </label>
               </div>
 
               <div className="restoration-sidebar-section">
@@ -578,6 +700,20 @@ export function PhotoRestoration() {
                   </button>
                   <button
                     className="restoration-btn restoration-btn-export"
+                    onClick={handleExportJson}
+                    disabled={!photoObject}
+                  >
+                    Export JSON
+                  </button>
+                  <button
+                    className="restoration-btn restoration-btn-export"
+                    onClick={handleExportPng}
+                    disabled={!photoObject}
+                  >
+                    Export PNG
+                  </button>
+                  <button
+                    className="restoration-btn restoration-btn-export"
                     onClick={handleExport}
                     disabled={status !== "approved"}
                   >
@@ -596,6 +732,12 @@ export function PhotoRestoration() {
               {status === "approved" && (
                 <div className="restoration-sidebar-section restoration-status-approved">
                   <p>✓ Restoration approved and locked. Export to save the ZIP file.</p>
+                </div>
+              )}
+
+              {notice && (
+                <div className="restoration-sidebar-section restoration-status-note">
+                  <p>{notice}</p>
                 </div>
               )}
             </div>

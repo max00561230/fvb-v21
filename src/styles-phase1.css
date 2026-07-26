@@ -709,6 +709,19 @@
   border-color: var(--color-accent);
 }
 
+.restoration-control-label {
+  display: grid;
+  gap: 6px;
+  color: #bbb;
+  font-size: 0.78rem;
+  margin-top: 10px;
+}
+
+.restoration-control-label input[type="range"] {
+  width: 100%;
+  accent-color: var(--color-accent);
+}
+
 .restoration-textarea {
   min-height: 60px;
   resize: vertical;
@@ -749,6 +762,16 @@
 
 .restoration-status-approved p {
   color: #8a8;
+  font-size: 0.85rem;
+}
+
+.restoration-status-note {
+  background: #2a2632;
+  border: 1px solid #5a4f73;
+}
+
+.restoration-status-note p {
+  color: #d8cfff;
   font-size: 0.85rem;
 }
 
