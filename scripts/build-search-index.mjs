@@ -4,7 +4,7 @@
  * Outputs: src/data/search/search-index.json
  * 
  * This pre-computes the searchable text corpus so the client doesn't need
- * to load all 91 OCR JSON files individually.
+ * to load all OCR JSON files individually.
  */
 
 import fs from "node:fs/promises";
@@ -13,10 +13,17 @@ import path from "node:path";
 const OCR_DIR = path.resolve("src/data/search/ocr/pages");
 const OLD_OCR_DIR = path.resolve("public/data/ocr");
 const PEOPLE_PATH = path.resolve("public/data/people.json");
+const PAGES_MANIFEST_PATH = path.resolve("public/data/pages.json");
 const OUTPUT_DIR = path.resolve("src/data/search");
 const OUTPUT_PATH = path.join(OUTPUT_DIR, "search-index.json");
+const PUBLIC_OUTPUT_PATH = path.resolve("public/data/search-index.json");
 
-async function loadOcrPages() {
+async function loadActivePagesManifest() {
+  const manifest = JSON.parse(await fs.readFile(PAGES_MANIFEST_PATH, "utf-8"));
+  return manifest.pages || [];
+}
+
+async function loadOcrPages(activePages) {
   const pages = [];
   
   // Try new OCR output first, fall back to old OCR
@@ -24,15 +31,14 @@ async function loadOcrPages() {
   
   if (newDirExists) {
     console.log("Loading from new TSV OCR output...");
-    for (let i = 1; i <= 91; i++) {
-      const padded = String(i).padStart(3, "0");
-      const fpath = path.join(OCR_DIR, `page-${padded}.json`);
+    for (const activePage of activePages) {
+      const fpath = path.join(OCR_DIR, `${activePage.id}.json`);
       try {
         const data = JSON.parse(await fs.readFile(fpath, "utf-8"));
         pages.push({
-          pageNumber: data.pageNumber,
-          originalPageNumber: data.originalPageNumber,
-          pageId: data.pageId,
+          pageNumber: activePage.pageNumber,
+          originalPageNumber: activePage.originalPageNumber,
+          pageId: activePage.id,
           text: data.cleanText || data.rawText || "",
           wordCount: data.wordCount || 0,
           averageConfidence: data.averageConfidence || 0,
@@ -46,15 +52,14 @@ async function loadOcrPages() {
   // Fall back to old OCR if new isn't ready yet
   if (pages.length === 0) {
     console.log("New OCR not ready, loading from existing OCR JSON...");
-    for (let i = 1; i <= 91; i++) {
-      const padded = String(i).padStart(3, "0");
-      const fpath = path.join(OLD_OCR_DIR, `page-${padded}.json`);
+    for (const activePage of activePages) {
+      const fpath = path.join(OLD_OCR_DIR, `${activePage.id}.json`);
       try {
         const data = JSON.parse(await fs.readFile(fpath, "utf-8"));
         pages.push({
-          pageNumber: data.pageNumber || i,
-          originalPageNumber: data.originalPageNumber || i,
-          pageId: `page-${padded}`,
+          pageNumber: activePage.pageNumber,
+          originalPageNumber: activePage.originalPageNumber,
+          pageId: activePage.id,
           text: data.cleanedText || data.rawText || "",
           wordCount: data.wordCount || 0,
           averageConfidence: data.confidence || 0,
@@ -80,7 +85,8 @@ async function loadPeople() {
 async function main() {
   console.log("Building search index...");
   
-  const [ocrPages, people] = await Promise.all([loadOcrPages(), loadPeople()]);
+  const activePages = await loadActivePagesManifest();
+  const [ocrPages, people] = await Promise.all([loadOcrPages(activePages), loadPeople()]);
   
   // Build page entries
   const pageEntries = ocrPages.map(p => ({
@@ -134,11 +140,13 @@ async function main() {
   
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
   await fs.writeFile(OUTPUT_PATH, JSON.stringify(index, null, 2));
+  await fs.writeFile(PUBLIC_OUTPUT_PATH, JSON.stringify(index, null, 2));
   
   console.log(`Search index built:`);
   console.log(`  Pages: ${pageEntries.length}`);
   console.log(`  People: ${peopleEntries.length}`);
   console.log(`  Output: ${OUTPUT_PATH}`);
+  console.log(`  Public output: ${PUBLIC_OUTPUT_PATH}`);
   console.log(`  Size: ${(JSON.stringify(index).length / 1024).toFixed(1)} KB`);
 }
 

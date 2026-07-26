@@ -1,7 +1,13 @@
 import sharp from "sharp";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { originalPageNumberForPageId, pageNumberForPageId } from "./page-metadata.mjs";
+import {
+  ACTIVE_PAGE_IDS,
+  INACTIVE_PAGES,
+  isActivePageId,
+  originalPageNumberForPageId,
+  pageNumberForPageId
+} from "./page-metadata.mjs";
 
 const SOURCE = path.resolve("archive-source/original-scans");
 const OUTPUT = path.resolve("public/book-pages");
@@ -45,17 +51,18 @@ async function buildPagesJsonFromDerivatives() {
   }
 
   const pages = [];
-  for (const webpFile of webpFiles) {
-    const match = webpFile.match(/^page-(\d{3})\.webp$/i);
-    if (!match) continue;
-    const num = Number(match[1]);
-    const id = `page-${String(num).padStart(3, "0")}`;
-    const masterExists = await fileExists(path.join(OUTPUT, "masters", `${id}.png`));
+  const available = new Set(webpFiles.map((webpFile) => webpFile.replace(/\.webp$/i, "")));
 
+  for (const id of ACTIVE_PAGE_IDS) {
+    if (!available.has(id)) {
+      throw new Error(`Missing active page derivative: ${id}`);
+    }
+
+    const masterExists = await fileExists(path.join(OUTPUT, "masters", `${id}.png`));
     pages.push({
       id,
-      pageNumber: pageNumberForPageId(id) ?? num,
-      originalPageNumber: originalPageNumberForPageId(id) ?? num,
+      pageNumber: pageNumberForPageId(id),
+      originalPageNumber: originalPageNumberForPageId(id),
       width: 0,
       height: 0,
       masterSrc: masterExists ? `/book-pages/masters/${id}.png` : "",
@@ -68,12 +75,39 @@ async function buildPagesJsonFromDerivatives() {
     });
   }
 
+  const inactivePages = await Promise.all(
+    INACTIVE_PAGES.filter((page) => available.has(page.id)).map(async (page) => {
+      const masterPath = path.join(OUTPUT, "masters", `${page.id}.png`);
+      const masterExists = await fileExists(masterPath);
+      const metadata = masterExists ? await sharp(masterPath).metadata() : {};
+      return {
+        ...page,
+        originalPageNumber: originalPageNumberForPageId(page.id),
+        width: metadata.width || 0,
+        height: metadata.height || 0,
+        masterSrc: masterExists ? `/book-pages/masters/${page.id}.png` : "",
+        thumbnailSrc: `/book-pages/thumbnails/${page.id}.webp`,
+        sources: {
+          mobile: `/book-pages/mobile/${page.id}.webp`,
+          tablet: `/book-pages/tablet/${page.id}.webp`,
+          desktop: `/book-pages/desktop/${page.id}.webp`
+        }
+      };
+    })
+  );
+
   pages.sort((a, b) => a.pageNumber - b.pageNumber);
 
   await ensureDir(DATA);
   await fs.writeFile(
     path.join(DATA, "pages.json"),
-    JSON.stringify({ version: "21.0.0", totalPages: pages.length, generatedAt: new Date().toISOString(), pages }, null, 2)
+    JSON.stringify({
+      version: "21.1.0",
+      totalPages: pages.length,
+      generatedAt: new Date().toISOString(),
+      pages,
+      inactivePages
+    }, null, 2)
   );
   await fs.writeFile(path.join(DATA, "hotspots.json"), JSON.stringify({ version: "21.0.0", hotspots: [] }, null, 2));
   await fs.writeFile(path.join(DATA, "transcripts.json"), JSON.stringify({ version: "21.0.0", transcripts: [] }, null, 2));
@@ -123,21 +157,22 @@ async function main() {
 
     if (allExist) {
       const metadata = await sharp(masterPath).metadata();
-      const number = pageNumberForPageId(id) ?? Number(id.split("-")[1]);
-      pages.push({
-        id,
-        pageNumber: number,
-        originalPageNumber: originalPageNumberForPageId(id) ?? Number(id.split("-")[1]),
-        width: metadata.width,
-        height: metadata.height,
-        masterSrc: `/book-pages/masters/${id}.png`,
-        thumbnailSrc: `/book-pages/thumbnails/${id}.webp`,
-        sources: {
-          mobile: `/book-pages/mobile/${id}.webp`,
-          tablet: `/book-pages/tablet/${id}.webp`,
-          desktop: `/book-pages/desktop/${id}.webp`
-        }
-      });
+      if (isActivePageId(id)) {
+        pages.push({
+          id,
+          pageNumber: pageNumberForPageId(id),
+          originalPageNumber: originalPageNumberForPageId(id),
+          width: metadata.width,
+          height: metadata.height,
+          masterSrc: `/book-pages/masters/${id}.png`,
+          thumbnailSrc: `/book-pages/thumbnails/${id}.webp`,
+          sources: {
+            mobile: `/book-pages/mobile/${id}.webp`,
+            tablet: `/book-pages/tablet/${id}.webp`,
+            desktop: `/book-pages/desktop/${id}.webp`
+          }
+        });
+      }
       skipped++;
       continue;
     }
@@ -161,30 +196,53 @@ async function main() {
         .toFile(path.join(outDir, `${id}.webp`));
     }
 
-    const number = pageNumberForPageId(id) ?? Number(id.split("-")[1]);
-    pages.push({
-      id,
-      pageNumber: number,
-      originalPageNumber: originalPageNumberForPageId(id) ?? Number(id.split("-")[1]),
-      width: metadata.width,
-      height: metadata.height,
-      masterSrc: `/book-pages/masters/${id}.png`,
-      thumbnailSrc: `/book-pages/thumbnails/${id}.webp`,
-      sources: {
-        mobile: `/book-pages/mobile/${id}.webp`,
-        tablet: `/book-pages/tablet/${id}.webp`,
-        desktop: `/book-pages/desktop/${id}.webp`
-      }
-    });
+    if (isActivePageId(id)) {
+      pages.push({
+        id,
+        pageNumber: pageNumberForPageId(id),
+        originalPageNumber: originalPageNumberForPageId(id),
+        width: metadata.width,
+        height: metadata.height,
+        masterSrc: `/book-pages/masters/${id}.png`,
+        thumbnailSrc: `/book-pages/thumbnails/${id}.webp`,
+        sources: {
+          mobile: `/book-pages/mobile/${id}.webp`,
+          tablet: `/book-pages/tablet/${id}.webp`,
+          desktop: `/book-pages/desktop/${id}.webp`
+        }
+      });
+    }
     processed++;
   }
 
   pages.sort((a, b) => a.pageNumber - b.pageNumber);
+  const inactivePages = await Promise.all(INACTIVE_PAGES.map(async (page) => {
+    const metadata = await sharp(path.join(OUTPUT, "masters", `${page.id}.png`)).metadata();
+    return {
+      ...page,
+      originalPageNumber: originalPageNumberForPageId(page.id),
+      width: metadata.width,
+      height: metadata.height,
+      masterSrc: `/book-pages/masters/${page.id}.png`,
+      thumbnailSrc: `/book-pages/thumbnails/${page.id}.webp`,
+      sources: {
+        mobile: `/book-pages/mobile/${page.id}.webp`,
+        tablet: `/book-pages/tablet/${page.id}.webp`,
+        desktop: `/book-pages/desktop/${page.id}.webp`
+      }
+    };
+  }));
 
   await ensureDir(DATA);
   await fs.writeFile(
     path.join(DATA, "pages.json"),
-    JSON.stringify({ version: "21.0.0", totalPages: pages.length, generatedAt: new Date().toISOString(), pages }, null, 2)
+    JSON.stringify({
+      version: "21.1.0",
+      totalPages: pages.length,
+      generatedAt: new Date().toISOString(),
+      pages,
+      inactivePages
+    }, null, 2)
   );
   await fs.writeFile(path.join(DATA, "hotspots.json"), JSON.stringify({ version: "21.0.0", hotspots: [] }, null, 2));
   await fs.writeFile(path.join(DATA, "transcripts.json"), JSON.stringify({ version: "21.0.0", transcripts: [] }, null, 2));

@@ -13,11 +13,17 @@ export interface BookPage {
   };
 }
 
+export interface InactiveBookPage extends Omit<BookPage, "pageNumber"> {
+  duplicateOf: string;
+  inactiveReason: string;
+}
+
 export interface PagesManifest {
   version: string;
   totalPages: number;
   generatedAt: string;
   pages: BookPage[];
+  inactivePages?: InactiveBookPage[];
 }
 
 export interface PageHotspot {

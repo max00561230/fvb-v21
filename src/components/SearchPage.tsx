@@ -135,7 +135,7 @@ export function SearchPage() {
           <div className="search-help">
             <h3>What you can search:</h3>
             <ul>
-              <li><strong>Book Pages</strong> — Full-text OCR search across all 91 pages</li>
+              <li><strong>Book Pages</strong> — Full-text OCR search across all {index.totalPages} pages</li>
               <li><strong>People</strong> — Names, nicknames, and family members</li>
               <li><strong>Places</strong> — Locations mentioned in the book</li>
               <li><strong>Churches, Schools, Military, Businesses, Cemeteries</strong> — Categorized references</li>
