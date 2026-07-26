@@ -5,6 +5,7 @@ import { ZoomPageViewer } from "./ZoomPageViewer";
 import { HotspotLayer } from "./HotspotLayer";
 import { SearchPanel } from "./SearchPanel";
 import { ThumbnailStrip } from "./ThumbnailStrip";
+import { Navigation } from "./Navigation";
 import { useBookPage } from "../hooks/useBookPage";
 import { useBookmarks } from "../hooks/useBookmarks";
 
@@ -161,6 +162,8 @@ export function BookViewer({
         >
           📑
         </button>
+        <div className="toolbar-divider" />
+        <Navigation variant="overlay" />
       </header>
 
       {/* Search panel */}

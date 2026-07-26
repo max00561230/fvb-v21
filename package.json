@@ -1,13 +1,15 @@
 {
   "name": "fvb-v21",
   "private": true,
-  "version": "21.0.0",
+  "version": "21.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build:assets": "node scripts/build-page-assets.mjs",
     "validate:pages": "node scripts/validate-pages.mjs",
-    "prebuild": "npm run build:assets --if-present && npm run validate:pages --if-present",
+    "generate:ocr": "node scripts/generate-ocr.mjs",
+    "build:search-index": "node scripts/build-search-index.mjs",
+    "prebuild": "npm run build:assets --if-present && npm run validate:pages --if-present && npm run build:search-index --if-present",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -15,10 +17,15 @@
     "fuse.js": "^7.0.0",
     "openseadragon": "^5.0.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.18.1"
   },
   "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^4.3.0",
+    "fabric": "^7.4.0",
+    "jszip": "^3.10.1",
     "sharp": "^0.34.0",
     "typescript": "^5.7.0",
     "vite": "^6.0.0",

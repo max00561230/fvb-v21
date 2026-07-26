@@ -3,8 +3,8 @@ dist/
 archive-source/original-scans/
 archive-source/approved-restorations/
 public/book-pages/masters/
-*.env
 *.env.local
+.env
 .DS_Store
 *.log
 .vite/

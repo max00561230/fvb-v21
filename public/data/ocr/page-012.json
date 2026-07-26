@@ -1,0 +1,124 @@
+{
+  "pageId": "page-012",
+  "pageNumber": 12,
+  "sourceImage": "page-12.png",
+  "rawText": "—\n\n_\n-—\n\nQUILTS HANDMADE BY PEARL C, FRANCTS\n\nrT).\n4a",
+  "cleanedText": "—\n\n_\n-—\n\nQUILTS HANDMADE BY PEARL C, FRANCTS\n\nrT).\n4a",
+  "confidence": 58.5,
+  "wordCount": 11,
+  "words": [
+    {
+      "text": "40.902809",
+      "conf": 9,
+      "bbox": {
+        "left": 1,
+        "top": 6161,
+        "width": 9093,
+        "height": 55
+      }
+    },
+    {
+      "text": "32.356419",
+      "conf": 10,
+      "bbox": {
+        "left": 1,
+        "top": 6014,
+        "width": 9070,
+        "height": 7
+      }
+    },
+    {
+      "text": "45.799007",
+      "conf": 15,
+      "bbox": {
+        "left": 1,
+        "top": 6061,
+        "width": 9090,
+        "height": 53
+      }
+    },
+    {
+      "text": "95.855659",
+      "conf": 96,
+      "bbox": {
+        "left": 1,
+        "top": 518,
+        "width": 8512,
+        "height": 409
+      }
+    },
+    {
+      "text": "96.081345",
+      "conf": 89,
+      "bbox": {
+        "left": 2,
+        "top": 1002,
+        "width": 8523,
+        "height": 552
+      }
+    },
+    {
+      "text": "96.987206",
+      "conf": 78,
+      "bbox": {
+        "left": 3,
+        "top": 1626,
+        "width": 8538,
+        "height": 138
+      }
+    },
+    {
+      "text": "91.204285",
+      "conf": 85,
+      "bbox": {
+        "left": 4,
+        "top": 1835,
+        "width": 8539,
+        "height": 345
+      }
+    },
+    {
+      "text": "73.565025",
+      "conf": 89,
+      "bbox": {
+        "left": 5,
+        "top": 2251,
+        "width": 8546,
+        "height": 116
+      }
+    },
+    {
+      "text": "51.792828",
+      "conf": 121,
+      "bbox": {
+        "left": 6,
+        "top": 2456,
+        "width": 8550,
+        "height": 478
+      }
+    },
+    {
+      "text": "36.022217",
+      "conf": 40,
+      "bbox": {
+        "left": 1,
+        "top": 7034,
+        "width": 4256,
+        "height": 24
+      }
+    },
+    {
+      "text": "68.702919",
+      "conf": 11,
+      "bbox": {
+        "left": 1,
+        "top": 7069,
+        "width": 4256,
+        "height": 17
+      }
+    }
+  ],
+  "machineGenerated": true,
+  "generatedAt": "2026-07-26T01:22:17.706Z",
+  "tesseractVersion": "5.5.2"
+}

@@ -1,0 +1,152 @@
+{
+  "version": "21.1.0",
+  "reviewEntries": [
+    {
+      "id": "review-hatty-clanton",
+      "fullName": "Hatty Clanton",
+      "reason": "Mentioned as sister of Pearl Martha Ann Clanton Francis but no full name or details provided in book",
+      "pageReferences": [8],
+      "suggestedFields": ["fullName", "birthDate", "deathDate"]
+    },
+    {
+      "id": "review-mary-clanton",
+      "fullName": "Mary Clanton",
+      "reason": "Mentioned as sister of Pearl Martha Ann Clanton Francis but no full name or details provided in book",
+      "pageReferences": [8],
+      "suggestedFields": ["fullName", "birthDate", "deathDate"]
+    },
+    {
+      "id": "review-josie-clanton",
+      "fullName": "Josie Clanton",
+      "reason": "Mentioned as sister of Pearl Martha Ann Clanton Francis but no full name or details provided in book",
+      "pageReferences": [8],
+      "suggestedFields": ["fullName", "birthDate", "deathDate"]
+    },
+    {
+      "id": "review-sally-ann-clanton",
+      "fullName": "Sally Ann Clanton",
+      "reason": "Mentioned as sister of Pearl Martha Ann Clanton Francis, noted as prosperous landowner, but no birth/death dates",
+      "pageReferences": [8],
+      "suggestedFields": ["fullName", "birthDate", "deathDate"]
+    },
+    {
+      "id": "review-jimmy-clanton",
+      "fullName": "Jimmy Clanton",
+      "reason": "Mentioned as brother of Pearl Martha Ann Clanton Francis, noted as prosperous landowner, but no full name (likely James) or dates",
+      "pageReferences": [8],
+      "suggestedFields": ["fullName", "birthDate", "deathDate"]
+    },
+    {
+      "id": "review-eleanor-patricia-francis",
+      "fullName": "Eleanor Patricia Francis",
+      "reason": "Mentioned as offspring of Maurice Emanuel Francis but no biographical page found yet",
+      "pageReferences": [22],
+      "suggestedFields": ["birthDate", "pageReferences"]
+    },
+    {
+      "id": "review-mildred-elaine-francis",
+      "fullName": "Mildred Elaine Francis",
+      "reason": "Mentioned as offspring of Maurice Emanuel Francis but no biographical page found yet",
+      "pageReferences": [24],
+      "suggestedFields": ["birthDate", "pageReferences"]
+    },
+    {
+      "id": "review-joan-alease-francis",
+      "fullName": "Joan Alease Francis",
+      "reason": "Mentioned as offspring of Maurice Emanuel Francis but no biographical page found yet",
+      "pageReferences": [24],
+      "suggestedFields": ["birthDate", "pageReferences"]
+    },
+    {
+      "id": "review-yvonne-francis",
+      "fullName": "Yvonne Francis",
+      "reason": "Mentioned as child of Copey Roy Francis Sr. and Victoria Simmons Francis but no biographical page found yet",
+      "pageReferences": [14],
+      "suggestedFields": ["birthDate", "pageReferences"]
+    },
+    {
+      "id": "review-copey-francis-jr",
+      "fullName": "Copey Francis Jr.",
+      "reason": "Mentioned as child of Copey Roy Francis Sr. and Victoria Simmons Francis but no biographical page found yet",
+      "pageReferences": [14],
+      "suggestedFields": ["birthDate", "pageReferences"]
+    },
+    {
+      "id": "review-robyn-eilene-francis-thomas",
+      "fullName": "Robyn Eilene Francis-Thomas",
+      "reason": "Mentioned as offspring of Colandus Francis but no biographical page found yet",
+      "pageReferences": [17],
+      "suggestedFields": ["birthDate", "pageReferences"]
+    },
+    {
+      "id": "review-kevin-francis",
+      "fullName": "Kevin Francis",
+      "reason": "Mentioned as offspring of Colandus Francis but no biographical page found yet",
+      "pageReferences": [17],
+      "suggestedFields": ["birthDate", "pageReferences"]
+    },
+    {
+      "id": "review-vera-g-francis",
+      "fullName": "Vera G. Francis",
+      "reason": "Mentioned as mother of Renee Denise Francis and wife of Willis Wilbert Francis Sr. but no biographical page found yet",
+      "pageReferences": [35],
+      "suggestedFields": ["birthDate", "pageReferences"]
+    },
+    {
+      "id": "review-vera-lene-francis",
+      "fullName": "Vera Lene Francis",
+      "reason": "Mentioned in photo caption on page 35 but no biographical page found yet",
+      "pageReferences": [35],
+      "suggestedFields": ["birthDate", "pageReferences"]
+    },
+    {
+      "id": "review-robert-a-francis",
+      "fullName": "Robert A. Francis",
+      "reason": "Mentioned as son of Calvin Francis and Emma L. McWilliams Francis but no biographical page found yet",
+      "pageReferences": [85],
+      "suggestedFields": ["birthDate", "pageReferences"]
+    },
+    {
+      "id": "review-celena-d-francis",
+      "fullName": "Celena D. Francis",
+      "reason": "Mentioned as daughter of Calvin Francis and Emma L. McWilliams Francis but no biographical page found yet",
+      "pageReferences": [85],
+      "suggestedFields": ["birthDate", "pageReferences"]
+    },
+    {
+      "id": "review-earlie-mcwilliams",
+      "fullName": "Earlie McWilliams",
+      "reason": "Mentioned as parent of Emma L. McWilliams Francis but no further details in book",
+      "pageReferences": [85],
+      "suggestedFields": ["fullName", "birthDate"]
+    },
+    {
+      "id": "review-jessie-mcwilliams",
+      "fullName": "Jessie McWilliams",
+      "reason": "Mentioned as parent of Emma L. McWilliams Francis but no further details in book",
+      "pageReferences": [85],
+      "suggestedFields": ["fullName", "birthDate"]
+    },
+    {
+      "id": "review-jh-staton",
+      "fullName": "J. H. Staton",
+      "reason": "Mentioned as Rev. of Halifax Baptist Church on page 13 but no biographical page",
+      "pageReferences": [13],
+      "suggestedFields": ["fullName"]
+    },
+    {
+      "id": "review-fl-bullock",
+      "fullName": "F. L. Bullock",
+      "reason": "Mentioned as pastor on page 13 but no biographical page",
+      "pageReferences": [13],
+      "suggestedFields": ["fullName"]
+    },
+    {
+      "id": "review-third-child-james-pearl",
+      "fullName": "Unknown Francis (third child)",
+      "reason": "Page 30 references 'Third child born to the late James H. and Pearl C. Francis, born June 14, 1912' but name is unclear from OCR — likely needs manual review",
+      "pageReferences": [30],
+      "suggestedFields": ["fullName", "birthDate"]
+    }
+  ]
+}
