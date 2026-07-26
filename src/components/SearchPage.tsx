@@ -1,62 +1,53 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Fuse from "fuse.js";
 import { Navigation } from "./Navigation";
-import type { Person, OcrPageData, SearchResult } from "../types";
+import type { Person, SearchResult } from "../types";
+import searchIndexData from "../data/search/search-index.json";
+
+interface SearchIndexPage {
+  pageNumber: number;
+  pageId: string;
+  text: string;
+  combinedText: string;
+  wordCount: number;
+  avgConfidence: number;
+}
+
+interface SearchIndex {
+  version: string;
+  totalPages: number;
+  totalPeople: number;
+  pages: SearchIndexPage[];
+  people: Person[];
+}
+
+const index = searchIndexData as unknown as SearchIndex;
 
 export function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("q") || "");
-  const [people, setPeople] = useState<Person[]>([]);
-  const [ocrData, setOcrData] = useState<OcrPageData[]>([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Load people data
-    fetch("/data/people.json")
-      .then((r) => r.ok ? r.json() : { people: [] })
-      .then((data) => setPeople(data.people || []))
-      .catch(() => setPeople([]));
-
-    // Load all available OCR page files directly
-    const promises = [];
-    for (let i = 1; i <= 91; i++) {
-      const padded = String(i).padStart(3, "0");
-      promises.push(
-        fetch(`/data/ocr/page-${padded}.json`)
-          .then((r) => r.ok ? r.json() : null)
-          .then((d) => d)
-          .catch(() => null)
-      );
-    }
-    Promise.all(promises)
-      .then((results) => {
-        setOcrData(results.filter(Boolean));
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
-
-  // Build Fuse.js indices
+  // Build Fuse.js indices from pre-built search index
   const ocrFuse = useMemo(() => {
-    if (ocrData.length === 0) return null;
-    return new Fuse(ocrData, {
-      keys: ["cleanedText"],
+    if (index.pages.length === 0) return null;
+    return new Fuse(index.pages, {
+      keys: ["combinedText"],
       includeScore: true,
       includeMatches: true,
       threshold: 0.4,
       minMatchCharLength: 2,
     });
-  }, [ocrData]);
+  }, []);
 
   const peopleFuse = useMemo(() => {
-    if (people.length === 0) return null;
-    return new Fuse(people, {
+    if (index.people.length === 0) return null;
+    return new Fuse(index.people, {
       keys: ["fullName", "firstName", "lastName", "nicknames", "places", "churches", "schools", "militaryService", "businesses", "cemeteries", "occupations"],
       includeScore: true,
       threshold: 0.3,
     });
-  }, [people]);
+  }, []);
 
   const results = useMemo(() => {
     if (!query.trim() || (!ocrFuse && !peopleFuse)) return { pages: [], people: [], places: [], other: [] };
@@ -71,7 +62,7 @@ export function SearchPage() {
       const ocrHits = ocrFuse.search(query).slice(0, 20);
       for (const hit of ocrHits) {
         const item = hit.item;
-        const matchText = hit.matches?.[0]?.value || item.cleanedText;
+        const matchText = hit.matches?.[0]?.value || item.text || item.combinedText;
         const snippet = extractSnippet(matchText, query, 150);
         pages.push({
           type: "page",
@@ -88,7 +79,7 @@ export function SearchPage() {
     if (peopleFuse) {
       const peopleHits = peopleFuse.search(query).slice(0, 15);
       for (const hit of peopleHits) {
-        const person = hit.item;
+        const person = hit.item as Person;
         const result: SearchResult = {
           type: "person",
           title: person.fullName,
@@ -121,7 +112,7 @@ export function SearchPage() {
       <div className="search-page-content">
         <h1 className="search-page-title">Search the Heritage Book</h1>
         <p className="search-page-subtitle">
-          Search through {ocrData.length} pages of text and {people.length} people records.
+          Search through {index.totalPages} pages of text and {index.totalPeople} people records.
         </p>
 
         <div className="search-page-input-wrapper">
@@ -136,13 +127,11 @@ export function SearchPage() {
           />
         </div>
 
-        {loading && <p className="search-loading">Loading search index...</p>}
-
-        {!loading && query.trim() && totalResults === 0 && (
+        {query.trim() && totalResults === 0 && (
           <p className="search-empty">No results found for "{query}"</p>
         )}
 
-        {!loading && !query.trim() && (
+        {!query.trim() && (
           <div className="search-help">
             <h3>What you can search:</h3>
             <ul>
@@ -247,9 +236,9 @@ function formatPersonSnippet(person: Person): string {
   const parts: string[] = [];
   if (person.birthDate) parts.push(`Born: ${person.birthDate}`);
   if (person.deathDate) parts.push(`Died: ${person.deathDate}`);
-  if (person.occupations.length) parts.push(`Occupation: ${person.occupations.join(", ")}`);
-  if (person.places.length) parts.push(`Places: ${person.places.join(", ")}`);
-  if (person.pageReferences.length) parts.push(`Pages: ${person.pageReferences.join(", ")}`);
+  if (person.occupations?.length) parts.push(`Occupation: ${person.occupations.join(", ")}`);
+  if (person.places?.length) parts.push(`Places: ${person.places.join(", ")}`);
+  if (person.pageReferences?.length) parts.push(`Pages: ${person.pageReferences.join(", ")}`);
   return parts.join(" • ") || "No additional details";
 }
 

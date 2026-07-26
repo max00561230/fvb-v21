@@ -1,0 +1,85 @@
+{
+  "pageId": "page-012",
+  "pageNumber": 12,
+  "sourceImage": "page-012.png",
+  "rawText": "FRANCIS QUILTS HANDMADE BY PEARL C,",
+  "cleanText": "FRANCIS QUILTS HANDMADE BY PEARL C,",
+  "averageConfidence": 91.7,
+  "wordCount": 6,
+  "lowConfidenceWords": 0,
+  "reviewStatus": "machine-generated",
+  "words": [
+    {
+      "text": "FRANCIS",
+      "confidence": 79.711029,
+      "x": 1225,
+      "y": 4275,
+      "width": 239,
+      "height": 46,
+      "block": 2,
+      "paragraph": 1,
+      "line": 1,
+      "word": 1
+    },
+    {
+      "text": "QUILTS",
+      "confidence": 96.329163,
+      "x": 256,
+      "y": 4253,
+      "width": 204,
+      "height": 48,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1,
+      "word": 1
+    },
+    {
+      "text": "HANDMADE",
+      "confidence": 96.416603,
+      "x": 498,
+      "y": 4258,
+      "width": 276,
+      "height": 46,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1,
+      "word": 2
+    },
+    {
+      "text": "BY",
+      "confidence": 96.438736,
+      "x": 810,
+      "y": 4266,
+      "width": 69,
+      "height": 40,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1,
+      "word": 3
+    },
+    {
+      "text": "PEARL",
+      "confidence": 93.286224,
+      "x": 914,
+      "y": 4267,
+      "width": 173,
+      "height": 43,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1,
+      "word": 4
+    },
+    {
+      "text": "C,",
+      "confidence": 87.845879,
+      "x": 1122,
+      "y": 4271,
+      "width": 59,
+      "height": 44,
+      "block": 6,
+      "paragraph": 1,
+      "line": 1,
+      "word": 5
+    }
+  ]
+}

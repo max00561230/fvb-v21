@@ -11,13 +11,22 @@
       "birthDate": "1886-03-20",
       "deathDate": "1973-04-16",
       "occupations": [],
-      "places": ["Enfield, North Carolina"],
+      "places": [
+        "Enfield, North Carolina"
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [6, 7, 8, 9, 10, 11],
+      "pageReferences": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -32,13 +41,23 @@
       "birthDate": "1890-05-08",
       "deathDate": "1978-12-25",
       "occupations": [],
-      "places": ["Enfield, North Carolina"],
+      "places": [
+        "Enfield, North Carolina"
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [6, 7, 8, 9, 10, 11, 13],
+      "pageReferences": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -59,7 +78,9 @@
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [8],
+      "pageReferences": [
+        8
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -80,7 +101,9 @@
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [8],
+      "pageReferences": [
+        8
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -101,7 +124,9 @@
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [8],
+      "pageReferences": [
+        8
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -122,7 +147,9 @@
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [8],
+      "pageReferences": [
+        8
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -143,7 +170,9 @@
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [8],
+      "pageReferences": [
+        8
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -158,13 +187,31 @@
       "birthDate": "1910-06-26",
       "deathDate": "",
       "occupations": [],
-      "places": ["Enfield, North Carolina", "Newport News, Virginia"],
+      "places": [
+        "Enfield, North Carolina",
+        "Newport News, Virginia"
+      ],
       "churches": [],
-      "schools": ["McDaniel Elementary School", "Weldon High School", "Henderson Institute", "Eastman High School"],
+      "schools": [
+        "McDaniel Elementary School",
+        "Weldon High School",
+        "Henderson Institute",
+        "Eastman High School"
+      ],
       "militaryService": [],
-      "businesses": ["Newport News Shipbuilding and Drydock Company"],
+      "businesses": [
+        "Newport News Shipbuilding and Drydock Company"
+      ],
       "cemeteries": [],
-      "pageReferences": [14, 15, 16, 17, 18, 19, 20],
+      "pageReferences": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -179,13 +226,19 @@
       "birthDate": "",
       "deathDate": "",
       "occupations": [],
-      "places": ["Newport News, Virginia"],
+      "places": [
+        "Newport News, Virginia"
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [14, 15, 17],
+      "pageReferences": [
+        14,
+        15,
+        17
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -199,14 +252,20 @@
       "nicknames": [],
       "birthDate": "1933-08-16",
       "deathDate": "",
-      "occupations": ["Teacher, Adult Education"],
-      "places": ["Newport News, Virginia"],
+      "occupations": [
+        "Teacher, Adult Education"
+      ],
+      "places": [
+        "Newport News, Virginia"
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [15],
+      "pageReferences": [
+        15
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -220,14 +279,21 @@
       "nicknames": [],
       "birthDate": "1934-08-12",
       "deathDate": "",
-      "occupations": ["Electronic Technician", "Postal Service"],
-      "places": ["Enfield, North Carolina"],
+      "occupations": [
+        "Electronic Technician",
+        "Postal Service"
+      ],
+      "places": [
+        "Enfield, North Carolina"
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [17],
+      "pageReferences": [
+        17
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -242,13 +308,32 @@
       "birthDate": "1911-07-06",
       "deathDate": "1986-03-15",
       "occupations": [],
-      "places": ["Enfield, North Carolina", "Washington, D.C."],
-      "churches": ["Daniel Chapel Baptist Church"],
-      "schools": ["Daniel Chapel Elementary School", "Henderson Institute", "Eastman High School"],
+      "places": [
+        "Enfield, North Carolina",
+        "Washington, D.C."
+      ],
+      "churches": [
+        "Daniel Chapel Baptist Church"
+      ],
+      "schools": [
+        "Daniel Chapel Elementary School",
+        "Henderson Institute",
+        "Eastman High School"
+      ],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [21, 22, 23, 24, 25, 26, 27, 28, 29],
+      "pageReferences": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -262,14 +347,22 @@
       "nicknames": [],
       "birthDate": "1904-05-02",
       "deathDate": "",
-      "occupations": ["Retired Accounting Technician"],
-      "places": ["Brinkleyville, N.C.", "Washington, D.C."],
+      "occupations": [
+        "Retired Accounting Technician"
+      ],
+      "places": [
+        "Brinkleyville, N.C.",
+        "Washington, D.C."
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [22, 24],
+      "pageReferences": [
+        22,
+        24
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -283,14 +376,20 @@
       "nicknames": [],
       "birthDate": "1945-12-17",
       "deathDate": "",
-      "occupations": ["Electronic Technician"],
-      "places": ["Washington, D.C."],
+      "occupations": [
+        "Electronic Technician"
+      ],
+      "places": [
+        "Washington, D.C."
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [29],
+      "pageReferences": [
+        29
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -305,13 +404,17 @@
       "birthDate": "",
       "deathDate": "",
       "occupations": [],
-      "places": ["Brinkleyville, N.C."],
+      "places": [
+        "Brinkleyville, N.C."
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [24],
+      "pageReferences": [
+        24
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -326,13 +429,17 @@
       "birthDate": "",
       "deathDate": "",
       "occupations": [],
-      "places": ["Brinkleyville, N.C."],
+      "places": [
+        "Brinkleyville, N.C."
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [24],
+      "pageReferences": [
+        24
+      ],
       "storyIds": [],
       "mediaIds": "",
       "familyTreeId": ""
@@ -353,7 +460,10 @@
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [30, 35],
+      "pageReferences": [
+        30,
+        35
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -367,14 +477,20 @@
       "nicknames": [],
       "birthDate": "1965-12-30",
       "deathDate": "",
-      "occupations": ["Secretary, U.S. Department of State"],
-      "places": ["Washington, D.C."],
+      "occupations": [
+        "Secretary, U.S. Department of State"
+      ],
+      "places": [
+        "Washington, D.C."
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [35],
+      "pageReferences": [
+        35
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -385,17 +501,24 @@
       "firstName": "Eddie",
       "middleName": "Rufus",
       "lastName": "Francis",
-      "nicknames": ["Bud"],
+      "nicknames": [
+        "Bud"
+      ],
       "birthDate": "",
       "deathDate": "",
       "occupations": [],
-      "places": ["Enfield, North Carolina"],
+      "places": [
+        "Enfield, North Carolina"
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [40, 45],
+      "pageReferences": [
+        40,
+        45
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -409,14 +532,21 @@
       "nicknames": [],
       "birthDate": "1933-05-07",
       "deathDate": "1975-06-01",
-      "occupations": ["Caterer", "Decorator"],
-      "places": ["Enfield, North Carolina"],
+      "occupations": [
+        "Caterer",
+        "Decorator"
+      ],
+      "places": [
+        "Enfield, North Carolina"
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [40],
+      "pageReferences": [
+        40
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -427,7 +557,9 @@
       "firstName": "Eulilla",
       "middleName": "",
       "lastName": "Francis",
-      "nicknames": ["Leah"],
+      "nicknames": [
+        "Leah"
+      ],
       "birthDate": "",
       "deathDate": "",
       "occupations": [],
@@ -437,7 +569,9 @@
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [40],
+      "pageReferences": [
+        40
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -452,13 +586,17 @@
       "birthDate": "",
       "deathDate": "",
       "occupations": [],
-      "places": ["Southport, NC"],
+      "places": [
+        "Southport, NC"
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [65],
+      "pageReferences": [
+        65
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -479,7 +617,9 @@
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [65],
+      "pageReferences": [
+        65
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -500,7 +640,9 @@
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [70],
+      "pageReferences": [
+        70
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -515,13 +657,24 @@
       "birthDate": "",
       "deathDate": "",
       "occupations": [],
-      "places": ["New York City", "South Ozone Park, New York"],
-      "churches": ["Zion Temple Baptist Church"],
+      "places": [
+        "New York City",
+        "South Ozone Park, New York"
+      ],
+      "churches": [
+        "Zion Temple Baptist Church"
+      ],
       "schools": [],
-      "militaryService": ["Philippine Islands"],
-      "businesses": ["New York City Transit System"],
+      "militaryService": [
+        "Philippine Islands"
+      ],
+      "businesses": [
+        "New York City Transit System"
+      ],
       "cemeteries": [],
-      "pageReferences": [85],
+      "pageReferences": [
+        85
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
@@ -536,16 +689,2048 @@
       "birthDate": "",
       "deathDate": "",
       "occupations": [],
-      "places": ["New York City"],
+      "places": [
+        "New York City"
+      ],
       "churches": [],
       "schools": [],
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "pageReferences": [85],
+      "pageReferences": [
+        85
+      ],
       "storyIds": [],
       "mediaIds": [],
       "familyTreeId": ""
+    },
+    {
+      "id": "eula-mae-francis-copeland",
+      "fullName": "Eula Mae Francis Copeland",
+      "firstName": "Eula Mae",
+      "lastName": "Copeland",
+      "nicknames": [],
+      "birthDate": "1914",
+      "deathDate": "1950",
+      "pageReferences": [
+        4,
+        13,
+        37
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "In Memoriam \u2014 daughter of James and Pearl Francis"
+    },
+    {
+      "id": "edward-mack-francis-sr",
+      "fullName": "Edward Mack Francis Sr.",
+      "firstName": "Edward Mack",
+      "lastName": "Francis",
+      "nicknames": [
+        "Mack"
+      ],
+      "birthDate": "1922",
+      "deathDate": "1991",
+      "pageReferences": [
+        4,
+        13,
+        70,
+        71,
+        72
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "In Memoriam"
+    },
+    {
+      "id": "ertie-lee-francis-davis",
+      "fullName": "Ertie Lee Francis Davis",
+      "firstName": "Ertie Lee",
+      "lastName": "Davis",
+      "nicknames": [
+        "Extie Lee"
+      ],
+      "birthDate": "1917",
+      "deathDate": "1991",
+      "pageReferences": [
+        4,
+        13
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "In Memoriam"
+    },
+    {
+      "id": "louis-claude-francis",
+      "fullName": "Louis Claude Francis",
+      "firstName": "Louis Claude",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "1969",
+      "pageReferences": [
+        4,
+        13,
+        89,
+        90
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "In Memoriam"
+    },
+    {
+      "id": "james-h-francis-memoriam",
+      "fullName": "James H. Francis",
+      "firstName": "James H.",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "1886",
+      "deathDate": "1973",
+      "pageReferences": [
+        4,
+        88
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "In Memoriam \u2014 same as James Henry Francis"
+    },
+    {
+      "id": "pearl-c-francis-memoriam",
+      "fullName": "Pearl C. Francis",
+      "firstName": "Pearl C.",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "1890",
+      "deathDate": "1978",
+      "pageReferences": [
+        4,
+        88
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "In Memoriam \u2014 same as Pearl Martha Ann Clanton Francis"
+    },
+    {
+      "id": "maurice-e-francis-memoriam",
+      "fullName": "Maurice E. Francis",
+      "firstName": "Maurice E.",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "1911",
+      "deathDate": "1969",
+      "pageReferences": [
+        4
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "In Memoriam \u2014 same as Maurice Emanuel Francis"
+    },
+    {
+      "id": "james-gradie-francis",
+      "fullName": "James Grady Francis",
+      "firstName": "James Grady",
+      "lastName": "Francis",
+      "nicknames": [
+        "James Gradie"
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        13,
+        31,
+        32
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Child of James H. and Pearl C. Francis"
+    },
+    {
+      "id": "mattie-rean-francis-carlyle",
+      "fullName": "Mattie Rean Francis Carlyle",
+      "firstName": "Mattie Rean",
+      "lastName": "Carlyle",
+      "nicknames": [
+        "Mattie Francis Carlyle"
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        3,
+        13,
+        74,
+        76,
+        81
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Child of James H. and Pearl C. Francis"
+    },
+    {
+      "id": "lillie-bell-francis",
+      "fullName": "Lillie Bell Francis",
+      "firstName": "Lillie Bell",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        13
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Child of James H. and Pearl C. Francis"
+    },
+    {
+      "id": "robert-calvin-francis",
+      "fullName": "Robert Calvin Francis",
+      "firstName": "Robert Calvin",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        13,
+        87
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Child of James H. and Pearl C. Francis"
+    },
+    {
+      "id": "jesse-abel-francis",
+      "fullName": "Jesse Abel Francis",
+      "firstName": "Jesse Abel",
+      "lastName": "Francis",
+      "nicknames": [
+        "Jesse A. Francis"
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        13,
+        61,
+        68
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Child of James H. and Pearl C. Francis"
+    },
+    {
+      "id": "theodore-hinson-jr",
+      "fullName": "Theodore Hinson Jr.",
+      "firstName": "Theodore",
+      "lastName": "Hinson",
+      "nicknames": [
+        "Ted"
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        15,
+        16
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Husband of Marlene Hinson Francis"
+    },
+    {
+      "id": "peter-van-hinson",
+      "fullName": "Peter Van Hinson",
+      "firstName": "Peter Van",
+      "lastName": "Hinson",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        15,
+        16
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Son of Marlene Hinson Francis"
+    },
+    {
+      "id": "cecil-n-green",
+      "fullName": "Cecil N. Green",
+      "firstName": "Cecil N.",
+      "lastName": "Green",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        16
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Offspring of Marlene Francis"
+    },
+    {
+      "id": "alice-l-francis",
+      "fullName": "Alice L. Francis",
+      "firstName": "Alice L.",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        18
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Wife of Colandus Francis"
+    },
+    {
+      "id": "robyn-eilene-francis-thomas",
+      "fullName": "Robyn Eilene Francis-Thomas",
+      "firstName": "Robyn Eilene",
+      "lastName": "Francis-Thomas",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        17
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Daughter of Colandus Francis"
+    },
+    {
+      "id": "kevin-francis",
+      "fullName": "Kevin Francis",
+      "firstName": "Kevin",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        18
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Son of Colandus Francis"
+    },
+    {
+      "id": "karen-robinson-francis",
+      "fullName": "Karen Robinson Francis",
+      "firstName": "Karen Robinson",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        18
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Wife of Kevin Francis"
+    },
+    {
+      "id": "william-roosevelt-robinson",
+      "fullName": "William Roosevelt Robinson",
+      "firstName": "William Roosevelt",
+      "lastName": "Robinson",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        18
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Father of Karen Robinson Francis"
+    },
+    {
+      "id": "ouxvilla-robinson",
+      "fullName": "Ouxvilla Robinson",
+      "firstName": "Ouxvilla",
+      "lastName": "Robinson",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        18
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Mother of Karen Robinson Francis"
+    },
+    {
+      "id": "gilbert-l-samuels",
+      "fullName": "Gilbert L. Samuels",
+      "firstName": "Gilbert L.",
+      "lastName": "Samuels",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        19,
+        20
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Husband of Yvonne Francis"
+    },
+    {
+      "id": "shirley-watkins",
+      "fullName": "Shirley Watkins",
+      "firstName": "Shirley",
+      "lastName": "Watkins",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        20
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Mother in Samuels family"
+    },
+    {
+      "id": "trisha-samuels",
+      "fullName": "Trisha Samuels",
+      "firstName": "Trisha",
+      "lastName": "Samuels",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        20
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Daughter in Samuels family"
+    },
+    {
+      "id": "eleanor-patricia-francis",
+      "fullName": "Eleanor Patricia Francis",
+      "firstName": "Eleanor Patricia",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        25
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Daughter of Maurice E. Francis"
+    },
+    {
+      "id": "mildred-elaine-francis",
+      "fullName": "Mildred Elaine Francis",
+      "firstName": "Mildred Elaine",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        25
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Daughter of Maurice E. Francis"
+    },
+    {
+      "id": "joan-alease-francis-summers",
+      "fullName": "Joan Alease Francis Summers",
+      "firstName": "Joan Alease",
+      "lastName": "Summers",
+      "nicknames": [
+        "Joan Francis Summers"
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        3,
+        27,
+        28
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Daughter of Maurice E. Francis"
+    },
+    {
+      "id": "douglass-chiquito-summers",
+      "fullName": "Douglass Chiquito Summers",
+      "firstName": "Douglass Chiquito",
+      "lastName": "Summers",
+      "nicknames": [
+        "Douglass C. Summers"
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        27,
+        28
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Husband of Joan Francis Summers"
+    },
+    {
+      "id": "michael-christopher-summers",
+      "fullName": "Michael Christopher Summers",
+      "firstName": "Michael Christopher",
+      "lastName": "Summers",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        27
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Son of Joan Francis Summers"
+    },
+    {
+      "id": "deborah-s-robinson",
+      "fullName": "Deborah S. Robinson",
+      "firstName": "Deborah S.",
+      "lastName": "Robinson",
+      "nicknames": [
+        "Deborah C. S. Robinson"
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        26,
+        27
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Daughter of Maurice E. Francis"
+    },
+    {
+      "id": "william-price-robinson",
+      "fullName": "William Price Robinson",
+      "firstName": "William Price",
+      "lastName": "Robinson",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        28
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Husband of Deborah Robinson"
+    },
+    {
+      "id": "jovonne-farrow-robinson",
+      "fullName": "Jovonne Farrow Robinson",
+      "firstName": "Jovonne Farrow",
+      "lastName": "Robinson",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        28
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Daughter of Deborah Robinson"
+    },
+    {
+      "id": "lemuel-o-nixon",
+      "fullName": "Lemuel O. Nixon",
+      "firstName": "Lemuel O.",
+      "lastName": "Nixon",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        28
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Husband of Yvonne Nixon"
+    },
+    {
+      "id": "sally-cooper-francis",
+      "fullName": "Sally Cooper Francis",
+      "firstName": "Sally Cooper",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        31
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Wife of James Grady Francis"
+    },
+    {
+      "id": "frank-cooper",
+      "fullName": "Frank Cooper",
+      "firstName": "Frank",
+      "lastName": "Cooper",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        31
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Father of Sally Cooper"
+    },
+    {
+      "id": "doris-francis-kinard",
+      "fullName": "Doris Francis Kinard",
+      "firstName": "Doris E. Francis",
+      "lastName": "Kinard",
+      "nicknames": [
+        "Doris E. Francis Kinard"
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        32
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Daughter of James Grady Francis"
+    },
+    {
+      "id": "luther-n-kinard",
+      "fullName": "Luther N. Kinard",
+      "firstName": "Luther N.",
+      "lastName": "Kinard",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        32
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Husband of Doris Francis Kinard"
+    },
+    {
+      "id": "ruth-b-cherry",
+      "fullName": "Ruth B. Cherry",
+      "firstName": "Ruth B.",
+      "lastName": "Cherry",
+      "nicknames": [
+        "Ruth Bell Cherry"
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        30,
+        32
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Wife of Willis Wilbert Francis"
+    },
+    {
+      "id": "vera-g-francis",
+      "fullName": "Vera G. Francis",
+      "firstName": "Vera G.",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        35
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Wife of Willis Wilbert Francis"
+    },
+    {
+      "id": "woodrow-wilson-copeland",
+      "fullName": "Woodrow Wilson Copeland",
+      "firstName": "Woodrow Wilson",
+      "lastName": "Copeland",
+      "nicknames": [
+        "Woodrow W. Copeland, Sr."
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        4,
+        36,
+        37
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Husband of Eula Mae Francis Copeland"
+    },
+    {
+      "id": "lorne-garrett-copeland",
+      "fullName": "Lorne Garrett Copeland",
+      "firstName": "Lorne Garrett",
+      "lastName": "Copeland",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        37
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Son of Eula Mae Francis Copeland"
+    },
+    {
+      "id": "dennis-arnold-copeland",
+      "fullName": "Dennis Arnold Copeland",
+      "firstName": "Dennis Arnold",
+      "lastName": "Copeland",
+      "nicknames": [
+        "Dennis A. Copeland"
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        36
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Grandson of Eula Mae Francis Copeland"
+    },
+    {
+      "id": "janet-marie-copeland",
+      "fullName": "Janet Marie Copeland",
+      "firstName": "Janet Marie",
+      "lastName": "Copeland",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        36
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Copeland family"
+    },
+    {
+      "id": "ambrose-henry-goings",
+      "fullName": "Ambrose Henry Goings",
+      "firstName": "Ambrose Henry",
+      "lastName": "Goings",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        39
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Farrow/Goings family"
+    },
+    {
+      "id": "minnie-wade-goings",
+      "fullName": "Minnie Wade Goings",
+      "firstName": "Minnie Wade",
+      "lastName": "Goings",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        39
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Farrow/Goings family"
+    },
+    {
+      "id": "wilson-osborne-williams",
+      "fullName": "Wilson Osborne Williams",
+      "firstName": "Wilson Osborne",
+      "lastName": "Williams",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Husband of Celestine Francis Williams"
+    },
+    {
+      "id": "lionel-dion-williams",
+      "fullName": "Lionel Dion Williams",
+      "firstName": "Lionel Dion",
+      "lastName": "Williams",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        41
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Son of Celestine Francis Williams"
+    },
+    {
+      "id": "portia-marie-williams",
+      "fullName": "Portia Marie Williams",
+      "firstName": "Portia Marie",
+      "lastName": "Williams",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        41
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Daughter of Celestine Francis Williams"
+    },
+    {
+      "id": "tiffany-rene-williams",
+      "fullName": "Tiffany Rene Williams",
+      "firstName": "Tiffany Rene",
+      "lastName": "Williams",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        43
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Granddaughter of Celestine Francis Williams"
+    },
+    {
+      "id": "tinnica-celestine-williams",
+      "fullName": "Tinnica Celestine Williams",
+      "firstName": "Tinnica Celestine",
+      "lastName": "Williams",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        43
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Granddaughter of Celestine Francis Williams"
+    },
+    {
+      "id": "marquita-francine-williams",
+      "fullName": "Marquita Francine Williams",
+      "firstName": "Marquita Francine",
+      "lastName": "Williams",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        44
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Granddaughter of Celestine Francis Williams"
+    },
+    {
+      "id": "tyrone-francis-williams",
+      "fullName": "Tyrone Francis Williams",
+      "firstName": "Tyrone Francis",
+      "lastName": "Williams",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        44
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Grandson of Celestine Francis Williams"
+    },
+    {
+      "id": "james-donald-francis",
+      "fullName": "James Donald Francis",
+      "firstName": "James Donald",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        49
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Son of Eddie Rufus Francis"
+    },
+    {
+      "id": "barron-carroll-francis",
+      "fullName": "Barron Carroll Francis",
+      "firstName": "Barron Carroll",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        48
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Son of Eddie Rufus Francis"
+    },
+    {
+      "id": "david-earl-francis",
+      "fullName": "David Earl Francis",
+      "firstName": "David Earl",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        48
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Son of Eddie Rufus Francis"
+    },
+    {
+      "id": "bobree-mozell-eatmon",
+      "fullName": "Bobree Mozell Eatmon",
+      "firstName": "Bobree Mozell",
+      "lastName": "Eatmon",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        50
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Eddie Rufus Francis family"
+    },
+    {
+      "id": "erdine-francis-eatmon",
+      "fullName": "Erdine Francis Eatmon",
+      "firstName": "Erdine Francis",
+      "lastName": "Eatmon",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        50,
+        51
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Eddie Rufus Francis family"
+    },
+    {
+      "id": "glenn-herbert-eatmon",
+      "fullName": "Glenn Herbert Eatmon",
+      "firstName": "Glenn Herbert",
+      "lastName": "Eatmon",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        50
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Eddie Rufus Francis family"
+    },
+    {
+      "id": "george-glenn-eatmon",
+      "fullName": "George Glenn Eatmon",
+      "firstName": "George Glenn",
+      "lastName": "Eatmon",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        50,
+        51
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Eddie Rufus Francis family"
+    },
+    {
+      "id": "camilla-regina-eatmon",
+      "fullName": "Camilla Regina Eatmon",
+      "firstName": "Camilla Regina",
+      "lastName": "Eatmon",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        51
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Eddie Rufus Francis family"
+    },
+    {
+      "id": "jacqueline-francis-parker",
+      "fullName": "Jacqueline Francis Parker",
+      "firstName": "Jacqueline Francis",
+      "lastName": "Parker",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        56,
+        57,
+        58
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Granddaughter of Eddie Rufus Francis"
+    },
+    {
+      "id": "wayne-alton-parker",
+      "fullName": "Wayne Alton Parker",
+      "firstName": "Wayne Alton",
+      "lastName": "Parker",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        56,
+        57,
+        58
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Husband of Jacqueline Francis Parker"
+    },
+    {
+      "id": "berta-hawley-parker",
+      "fullName": "Berta Hawley Parker",
+      "firstName": "Berta Hawley",
+      "lastName": "Parker",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        57
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Parker family"
+    },
+    {
+      "id": "donna-lynnette-parker",
+      "fullName": "Donna Lynette Parker",
+      "firstName": "Donna Lynette",
+      "lastName": "Parker",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        58
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Daughter of Jacqueline Francis Parker"
+    },
+    {
+      "id": "annie-evans-francis",
+      "fullName": "Annie Evans Francis",
+      "firstName": "Annie Evans",
+      "lastName": "Francis",
+      "nicknames": [
+        "Inez Evans Francis"
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        61,
+        65
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Wife of Jesse Abel Francis"
+    },
+    {
+      "id": "jeanette-francis-robertson",
+      "fullName": "Jeanette Francis Robertson",
+      "firstName": "Jeanette Francis",
+      "lastName": "Robertson",
+      "nicknames": [
+        "Jeanette Robertson"
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        67,
+        68
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Descendant of Jesse Abel Francis"
+    },
+    {
+      "id": "velvet-legrande",
+      "fullName": "Velvet LeGrande",
+      "firstName": "Velvet",
+      "lastName": "LeGrande",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        67
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Francis family"
+    },
+    {
+      "id": "velvet-legrande-jr",
+      "fullName": "Velvet LeGrande Jr.",
+      "firstName": "Velvet Renard",
+      "lastName": "LeGrande",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        67,
+        68
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Francis family"
+    },
+    {
+      "id": "annice-veljean-legrande",
+      "fullName": "Annice Veljean LeGrande",
+      "firstName": "Annice Veljean",
+      "lastName": "LeGrande",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        66
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Francis family"
+    },
+    {
+      "id": "edward-mack-francis-jr",
+      "fullName": "Edward Mack Francis Jr.",
+      "firstName": "Edward Mack",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        71
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Son of Edward Mack Francis Sr."
+    },
+    {
+      "id": "edward-mack-francis-iii",
+      "fullName": "Edward Mack Francis III",
+      "firstName": "Edward Mack",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        72
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Grandson of Edward Mack Francis Sr."
+    },
+    {
+      "id": "nannie-teresa-williams-francis",
+      "fullName": "Nannie Teresa Williams Francis",
+      "firstName": "Nannie Teresa",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        71
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Wife of Edward Mack Francis Jr."
+    },
+    {
+      "id": "janice-guinn-francis",
+      "fullName": "Janice Guinn Francis",
+      "firstName": "Janice Guinn",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        72
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Edward Mack Francis family"
+    },
+    {
+      "id": "james-guinn",
+      "fullName": "James Guinn",
+      "firstName": "James",
+      "lastName": "Guinn",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        72
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Edward Mack Francis family"
+    },
+    {
+      "id": "marion-brown-guinn",
+      "fullName": "Marion Brown Guinn",
+      "firstName": "Marion Brown",
+      "lastName": "Guinn",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        72
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Edward Mack Francis family"
+    },
+    {
+      "id": "norwood-lee-carlyle",
+      "fullName": "Norwood Lee Carlyle",
+      "firstName": "Norwood Lee",
+      "lastName": "Carlyle",
+      "nicknames": [
+        "Norwood L. Carlyle, Jr."
+      ],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        75,
+        76,
+        78,
+        79,
+        81,
+        83
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Descendant of Mattie Francis Carlyle"
+    },
+    {
+      "id": "geraldine-currie-carlyle",
+      "fullName": "Geraldine Currie Carlyle",
+      "firstName": "Geraldine Currie",
+      "lastName": "Carlyle",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        78,
+        79
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Wife of Norwood Lee Carlyle"
+    },
+    {
+      "id": "keith-norwood-carlyle",
+      "fullName": "Keith Norwood Carlyle",
+      "firstName": "Keith Norwood",
+      "lastName": "Carlyle",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        79
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Son of Norwood Lee Carlyle"
+    },
+    {
+      "id": "gregory-currie-carlyle",
+      "fullName": "Gregory Currie-Carlyle",
+      "firstName": "Gregory",
+      "lastName": "Currie-Carlyle",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        76
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Carlyle family"
+    },
+    {
+      "id": "irene-isabella-sessoms-currie",
+      "fullName": "Irene Isabella Sessoms Currie",
+      "firstName": "Irene Isabella",
+      "lastName": "Currie",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        76
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Carlyle family"
+    },
+    {
+      "id": "james-currie",
+      "fullName": "James Currie",
+      "firstName": "James",
+      "lastName": "Currie",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        76
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Carlyle family"
+    },
+    {
+      "id": "victor-arthur-carlyle",
+      "fullName": "Victor Arthur Carlyle",
+      "firstName": "Victor Arthur",
+      "lastName": "Carlyle",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        83
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Carlyle family"
+    },
+    {
+      "id": "aisha-ann-harris",
+      "fullName": "Aisha Ann Harris",
+      "firstName": "Aisha Ann",
+      "lastName": "Harris",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        80,
+        81,
+        82
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Carlyle family"
+    },
+    {
+      "id": "marcus-john-harris",
+      "fullName": "Marcus John Harris",
+      "firstName": "Marcus John",
+      "lastName": "Harris",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        80,
+        81,
+        82
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Carlyle family"
+    },
+    {
+      "id": "robert-edward-harris",
+      "fullName": "Robert Edward Harris",
+      "firstName": "Robert Edward",
+      "lastName": "Harris",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        81,
+        82
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Carlyle family"
+    },
+    {
+      "id": "robert-edward-harris-jr",
+      "fullName": "Robert Edward Harris Jr.",
+      "firstName": "Robert Edward",
+      "lastName": "Harris",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        82
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Son of Robert Edward Harris"
+    },
+    {
+      "id": "dorothy-belle-branch-harris",
+      "fullName": "Dorothy Belle Branch Harris",
+      "firstName": "Dorothy Belle Branch",
+      "lastName": "Harris",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        81
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Harris family"
+    },
+    {
+      "id": "arvette-denise-carlyle-harris",
+      "fullName": "Arvette Denise Carlyle Harris",
+      "firstName": "Arvette Denise",
+      "lastName": "Harris",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        82
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Carlyle/Harris family"
+    },
+    {
+      "id": "celena-denise-francis",
+      "fullName": "Celena Denise Francis",
+      "firstName": "Celena Denise",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        87
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Descendant of Robert Calvin Francis"
+    },
+    {
+      "id": "robert-a-francis",
+      "fullName": "Robert A. Francis",
+      "firstName": "Robert A.",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        87
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Descendant of Robert Calvin Francis"
+    },
+    {
+      "id": "jessie-b-johnson-mcwilliams",
+      "fullName": "Jessie B. Johnson McWilliams",
+      "firstName": "Jessie B. Johnson",
+      "lastName": "McWilliams",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        87
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Francis family"
+    },
+    {
+      "id": "earlie-mc-williams",
+      "fullName": "Earlie Mc Williams",
+      "firstName": "Earlie",
+      "lastName": "McWilliams",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        87
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Francis family"
+    },
+    {
+      "id": "tony-delbert-francis",
+      "fullName": "Tony Delbert Francis",
+      "firstName": "Tony Delbert",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        90
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Descendant of Louis Claude Francis"
+    },
+    {
+      "id": "genesis-dieviche-francis",
+      "fullName": "Genesis Dievich\u00e9 Francis",
+      "firstName": "Genesis Dievich\u00e9",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        90
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Descendant of Louis Claude Francis"
+    },
+    {
+      "id": "theodocia-jean-francis",
+      "fullName": "Theodocia Jean Francis",
+      "firstName": "Theodocia Jean",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        90
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Descendant of Louis Claude Francis"
+    },
+    {
+      "id": "velma-a-francis",
+      "fullName": "Velma A. Francis",
+      "firstName": "Velma A.",
+      "lastName": "Francis",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        90
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Descendant of Louis Claude Francis"
+    },
+    {
+      "id": "shantique-veronica-pearson",
+      "fullName": "Shantique Veronica Pearson",
+      "firstName": "Shantique Veronica",
+      "lastName": "Pearson",
+      "nicknames": [],
+      "birthDate": "",
+      "deathDate": "",
+      "pageReferences": [
+        78
+      ],
+      "places": [],
+      "occupations": [],
+      "churches": [],
+      "schools": [],
+      "militaryService": [],
+      "businesses": [],
+      "cemeteries": [],
+      "notes": "Related to Carlyle family"
     }
-  ]
+  ],
+  "totalCount": 123
 }

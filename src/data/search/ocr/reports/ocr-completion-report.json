@@ -1,0 +1,318 @@
+{
+  "generatedAt": "2026-07-26T13:19:30.532Z",
+  "engine": "Tesseract 5.5.2",
+  "totalPages": 91,
+  "successfulPages": 91,
+  "failedPages": 0,
+  "totalWords": 17621,
+  "averageConfidence": 77.9,
+  "lowConfidencePages": [
+    {
+      "page": 2,
+      "lowConfWords": 21
+    },
+    {
+      "page": 4,
+      "lowConfWords": 41
+    },
+    {
+      "page": 5,
+      "lowConfWords": 21
+    },
+    {
+      "page": 6,
+      "lowConfWords": 32
+    },
+    {
+      "page": 7,
+      "lowConfWords": 32
+    },
+    {
+      "page": 10,
+      "lowConfWords": 21
+    },
+    {
+      "page": 11,
+      "lowConfWords": 132
+    },
+    {
+      "page": 13,
+      "lowConfWords": 29
+    },
+    {
+      "page": 14,
+      "lowConfWords": 27
+    },
+    {
+      "page": 16,
+      "lowConfWords": 89
+    },
+    {
+      "page": 17,
+      "lowConfWords": 35
+    },
+    {
+      "page": 18,
+      "lowConfWords": 52
+    },
+    {
+      "page": 19,
+      "lowConfWords": 20
+    },
+    {
+      "page": 20,
+      "lowConfWords": 19
+    },
+    {
+      "page": 21,
+      "lowConfWords": 21
+    },
+    {
+      "page": 22,
+      "lowConfWords": 11
+    },
+    {
+      "page": 24,
+      "lowConfWords": 18
+    },
+    {
+      "page": 25,
+      "lowConfWords": 23
+    },
+    {
+      "page": 26,
+      "lowConfWords": 32
+    },
+    {
+      "page": 27,
+      "lowConfWords": 49
+    },
+    {
+      "page": 28,
+      "lowConfWords": 25
+    },
+    {
+      "page": 29,
+      "lowConfWords": 11
+    },
+    {
+      "page": 30,
+      "lowConfWords": 25
+    },
+    {
+      "page": 31,
+      "lowConfWords": 45
+    },
+    {
+      "page": 32,
+      "lowConfWords": 13
+    },
+    {
+      "page": 33,
+      "lowConfWords": 14
+    },
+    {
+      "page": 34,
+      "lowConfWords": 16
+    },
+    {
+      "page": 35,
+      "lowConfWords": 26
+    },
+    {
+      "page": 36,
+      "lowConfWords": 38
+    },
+    {
+      "page": 37,
+      "lowConfWords": 20
+    },
+    {
+      "page": 38,
+      "lowConfWords": 135
+    },
+    {
+      "page": 39,
+      "lowConfWords": 119
+    },
+    {
+      "page": 40,
+      "lowConfWords": 39
+    },
+    {
+      "page": 44,
+      "lowConfWords": 54
+    },
+    {
+      "page": 45,
+      "lowConfWords": 63
+    },
+    {
+      "page": 46,
+      "lowConfWords": 33
+    },
+    {
+      "page": 47,
+      "lowConfWords": 115
+    },
+    {
+      "page": 48,
+      "lowConfWords": 11
+    },
+    {
+      "page": 49,
+      "lowConfWords": 32
+    },
+    {
+      "page": 50,
+      "lowConfWords": 29
+    },
+    {
+      "page": 51,
+      "lowConfWords": 13
+    },
+    {
+      "page": 52,
+      "lowConfWords": 120
+    },
+    {
+      "page": 53,
+      "lowConfWords": 25
+    },
+    {
+      "page": 54,
+      "lowConfWords": 181
+    },
+    {
+      "page": 55,
+      "lowConfWords": 100
+    },
+    {
+      "page": 56,
+      "lowConfWords": 57
+    },
+    {
+      "page": 58,
+      "lowConfWords": 24
+    },
+    {
+      "page": 59,
+      "lowConfWords": 168
+    },
+    {
+      "page": 61,
+      "lowConfWords": 22
+    },
+    {
+      "page": 62,
+      "lowConfWords": 18
+    },
+    {
+      "page": 63,
+      "lowConfWords": 26
+    },
+    {
+      "page": 64,
+      "lowConfWords": 20
+    },
+    {
+      "page": 65,
+      "lowConfWords": 11
+    },
+    {
+      "page": 66,
+      "lowConfWords": 23
+    },
+    {
+      "page": 67,
+      "lowConfWords": 22
+    },
+    {
+      "page": 68,
+      "lowConfWords": 13
+    },
+    {
+      "page": 70,
+      "lowConfWords": 37
+    },
+    {
+      "page": 71,
+      "lowConfWords": 37
+    },
+    {
+      "page": 72,
+      "lowConfWords": 11
+    },
+    {
+      "page": 73,
+      "lowConfWords": 86
+    },
+    {
+      "page": 74,
+      "lowConfWords": 84
+    },
+    {
+      "page": 75,
+      "lowConfWords": 164
+    },
+    {
+      "page": 76,
+      "lowConfWords": 41
+    },
+    {
+      "page": 78,
+      "lowConfWords": 84
+    },
+    {
+      "page": 79,
+      "lowConfWords": 31
+    },
+    {
+      "page": 81,
+      "lowConfWords": 47
+    },
+    {
+      "page": 82,
+      "lowConfWords": 93
+    },
+    {
+      "page": 84,
+      "lowConfWords": 141
+    },
+    {
+      "page": 85,
+      "lowConfWords": 44
+    },
+    {
+      "page": 86,
+      "lowConfWords": 108
+    },
+    {
+      "page": 87,
+      "lowConfWords": 15
+    },
+    {
+      "page": 88,
+      "lowConfWords": 70
+    },
+    {
+      "page": 89,
+      "lowConfWords": 37
+    },
+    {
+      "page": 90,
+      "lowConfWords": 43
+    },
+    {
+      "page": 91,
+      "lowConfWords": 40
+    }
+  ],
+  "failed": [],
+  "structure": {
+    "rawTsv": "src/data/search/ocr/raw/",
+    "structuredJson": "src/data/search/ocr/pages/",
+    "corrections": "src/data/search/ocr/corrections/",
+    "reports": "src/data/search/ocr/reports/"
+  }
+}
