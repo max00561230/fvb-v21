@@ -1,0 +1,234 @@
+{
+  "pageId": "page-080",
+  "pageNumber": 80,
+  "sourceImage": "page-80.png",
+  "rawText": "78\n\nLeft: ARVETTE and\n\nROBERT HARRIS, JR.\n\nBottom left:\nAISHA ANN HARRIS\n\nBottom right:\nMARCUS JOHN HARRIS\n\n(Biographies\non the next\npage.)",
+  "cleanedText": "78\n\nLeft: ARVETTE and\n\nROBERT HARRIS, JR.\n\nBottom left:\nAISHA ANN HARRIS\n\nBottom right:\nMARCUS JOHN HARRIS\n\n(Biographies\non the next\npage.)",
+  "confidence": 100.1,
+  "wordCount": 22,
+  "words": [
+    {
+      "text": "88.170609",
+      "conf": 284,
+      "bbox": {
+        "left": 1,
+        "top": 6097,
+        "width": 263,
+        "height": 218
+      }
+    },
+    {
+      "text": "93.286896",
+      "conf": 95,
+      "bbox": {
+        "left": 1,
+        "top": 4154,
+        "width": 1340,
+        "height": 381
+      }
+    },
+    {
+      "text": "89.714920",
+      "conf": 87,
+      "bbox": {
+        "left": 2,
+        "top": 4656,
+        "width": 1336,
+        "height": 563
+      }
+    },
+    {
+      "text": "96.784401",
+      "conf": 90,
+      "bbox": {
+        "left": 3,
+        "top": 5320,
+        "width": 1328,
+        "height": 233
+      }
+    },
+    {
+      "text": "96.196167",
+      "conf": 88,
+      "bbox": {
+        "left": 1,
+        "top": 4737,
+        "width": 1612,
+        "height": 483
+      }
+    },
+    {
+      "text": "96.758934",
+      "conf": 96,
+      "bbox": {
+        "left": 2,
+        "top": 5320,
+        "width": 1607,
+        "height": 552
+      }
+    },
+    {
+      "text": "94.360214",
+      "conf": 83,
+      "bbox": {
+        "left": 3,
+        "top": 5990,
+        "width": 1603,
+        "height": 214
+      }
+    },
+    {
+      "text": "95.907982",
+      "conf": 90,
+      "bbox": {
+        "left": 1,
+        "top": 4160,
+        "width": 2307,
+        "height": 493
+      }
+    },
+    {
+      "text": "93.025520",
+      "conf": 92,
+      "bbox": {
+        "left": 2,
+        "top": 4749,
+        "width": 2299,
+        "height": 377
+      }
+    },
+    {
+      "text": "90.542877",
+      "conf": 85,
+      "bbox": {
+        "left": 1,
+        "top": 4499,
+        "width": 2446,
+        "height": 400
+      }
+    },
+    {
+      "text": "96.567795",
+      "conf": 82,
+      "bbox": {
+        "left": 2,
+        "top": 4999,
+        "width": 2444,
+        "height": 233
+      }
+    },
+    {
+      "text": "96.053398",
+      "conf": 83,
+      "bbox": {
+        "left": 3,
+        "top": 5328,
+        "width": 2436,
+        "height": 483
+      }
+    },
+    {
+      "text": "95.858757",
+      "conf": 89,
+      "bbox": {
+        "left": 1,
+        "top": 4167,
+        "width": 2999,
+        "height": 493
+      }
+    },
+    {
+      "text": "62.405006",
+      "conf": 117,
+      "bbox": {
+        "left": 2,
+        "top": 4750,
+        "width": 2985,
+        "height": 465
+      }
+    },
+    {
+      "text": "96.471451",
+      "conf": 85,
+      "bbox": {
+        "left": 1,
+        "top": 4503,
+        "width": 3134,
+        "height": 483
+      }
+    },
+    {
+      "text": "96.567604",
+      "conf": 85,
+      "bbox": {
+        "left": 2,
+        "top": 5088,
+        "width": 3133,
+        "height": 318
+      }
+    },
+    {
+      "text": "95.655525",
+      "conf": 83,
+      "bbox": {
+        "left": 3,
+        "top": 5500,
+        "width": 3127,
+        "height": 485
+      }
+    },
+    {
+      "text": "95.386154",
+      "conf": 123,
+      "bbox": {
+        "left": 1,
+        "top": 4195,
+        "width": 3537,
+        "height": 958
+      }
+    },
+    {
+      "text": "95.984283",
+      "conf": 63,
+      "bbox": {
+        "left": 1,
+        "top": 4175,
+        "width": 3714,
+        "height": 152
+      }
+    },
+    {
+      "text": "95.516808",
+      "conf": 93,
+      "bbox": {
+        "left": 2,
+        "top": 4427,
+        "width": 3687,
+        "height": 234
+      }
+    },
+    {
+      "text": "95.921837",
+      "conf": 90,
+      "bbox": {
+        "left": 3,
+        "top": 4758,
+        "width": 3687,
+        "height": 320
+      }
+    },
+    {
+      "text": "70.429428",
+      "conf": 120,
+      "bbox": {
+        "left": 1,
+        "top": 4178,
+        "width": 3820,
+        "height": 462
+      }
+    }
+  ],
+  "machineGenerated": true,
+  "generatedAt": "2026-07-26T02:40:48.059Z",
+  "tesseractVersion": "5.5.2"
+}

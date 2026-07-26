@@ -1,0 +1,32 @@
+{
+  "generatedAt": "2026-07-26T02:52:30.063Z",
+  "totalPages": 91,
+  "pagesProcessed": 91,
+  "pagesFailed": 0,
+  "lowConfidencePages": [
+    {
+      "page": 1,
+      "confidence": 53.8
+    },
+    {
+      "page": 6,
+      "confidence": 45.5
+    },
+    {
+      "page": 7,
+      "confidence": 45.5
+    },
+    {
+      "page": 12,
+      "confidence": 58.5
+    },
+    {
+      "page": 23,
+      "confidence": 0
+    }
+  ],
+  "failedPages": [],
+  "averageConfidence": 134.8,
+  "tesseractVersion": "5.5.2",
+  "machineGenerated": true
+}

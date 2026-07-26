@@ -1,0 +1,254 @@
+{
+  "pageId": "page-077",
+  "pageNumber": 77,
+  "sourceImage": "page-77.png",
+  "rawText": "een\nof\n\n© es ee\n\n> *\n\n“Left Top: Gregory Currie-Carlyle\nBottom Left: Malissa Pearson-Caxrlyle\nAbove: Shantique Pearson\n\nBiographies — on the next page",
+  "cleanedText": "een\nof\n\n© es ee\n\n> *\n\n“Left Top: Gregory Currie-Carlyle\nBottom Left: Malissa Pearson-Caxrlyle\nAbove: Shantique Pearson\n\nBiographies — on the next page",
+  "confidence": 74.6,
+  "wordCount": 24,
+  "words": [
+    {
+      "text": "34.448212",
+      "conf": 14,
+      "bbox": {
+        "left": 1,
+        "top": 1983,
+        "width": 6142,
+        "height": 86
+      }
+    },
+    {
+      "text": "50.328278",
+      "conf": 12,
+      "bbox": {
+        "left": 1,
+        "top": 1998,
+        "width": 6155,
+        "height": 29
+      }
+    },
+    {
+      "text": "26.159039",
+      "conf": 4,
+      "bbox": {
+        "left": 1,
+        "top": 1788,
+        "width": 6951,
+        "height": 6
+      }
+    },
+    {
+      "text": "33.904587",
+      "conf": 15,
+      "bbox": {
+        "left": 2,
+        "top": 1851,
+        "width": 6941,
+        "height": 65
+      }
+    },
+    {
+      "text": "52.471855",
+      "conf": 15,
+      "bbox": {
+        "left": 3,
+        "top": 1938,
+        "width": 6940,
+        "height": 20
+      }
+    },
+    {
+      "text": "38.838860",
+      "conf": 12,
+      "bbox": {
+        "left": 1,
+        "top": 3649,
+        "width": 7137,
+        "height": 49
+      }
+    },
+    {
+      "text": "39.697372",
+      "conf": 24,
+      "bbox": {
+        "left": 2,
+        "top": 3687,
+        "width": 7133,
+        "height": 14
+      }
+    },
+    {
+      "text": "68.621307",
+      "conf": 93,
+      "bbox": {
+        "left": 1,
+        "top": 3711,
+        "width": 7136,
+        "height": 335
+      }
+    },
+    {
+      "text": "92.245857",
+      "conf": 104,
+      "bbox": {
+        "left": 2,
+        "top": 4118,
+        "width": 7145,
+        "height": 253
+      }
+    },
+    {
+      "text": "93.288849",
+      "conf": 105,
+      "bbox": {
+        "left": 3,
+        "top": 4532,
+        "width": 7145,
+        "height": 480
+      }
+    },
+    {
+      "text": "74.021080",
+      "conf": 118,
+      "bbox": {
+        "left": 4,
+        "top": 5088,
+        "width": 7128,
+        "height": 973
+      }
+    },
+    {
+      "text": "96.326965",
+      "conf": 88,
+      "bbox": {
+        "left": 1,
+        "top": 3769,
+        "width": 7348,
+        "height": 421
+      }
+    },
+    {
+      "text": "93.234695",
+      "conf": 94,
+      "bbox": {
+        "left": 2,
+        "top": 4257,
+        "width": 7342,
+        "height": 324
+      }
+    },
+    {
+      "text": "91.240829",
+      "conf": 94,
+      "bbox": {
+        "left": 3,
+        "top": 4738,
+        "width": 7337,
+        "height": 490
+      }
+    },
+    {
+      "text": "46.724163",
+      "conf": 115,
+      "bbox": {
+        "left": 4,
+        "top": 5297,
+        "width": 7337,
+        "height": 1040
+      }
+    },
+    {
+      "text": "93.296944",
+      "conf": 91,
+      "bbox": {
+        "left": 1,
+        "top": 3772,
+        "width": 7550,
+        "height": 393
+      }
+    },
+    {
+      "text": "89.203209",
+      "conf": 119,
+      "bbox": {
+        "left": 2,
+        "top": 4258,
+        "width": 7542,
+        "height": 621
+      }
+    },
+    {
+      "text": "77.907883",
+      "conf": 87,
+      "bbox": {
+        "left": 3,
+        "top": 4952,
+        "width": 7554,
+        "height": 484
+      }
+    },
+    {
+      "text": "76.019547",
+      "conf": 120,
+      "bbox": {
+        "left": 1,
+        "top": 3907,
+        "width": 7749,
+        "height": 938
+      }
+    },
+    {
+      "text": "77.319084",
+      "conf": 130,
+      "bbox": {
+        "left": 2,
+        "top": 4748,
+        "width": 7743,
+        "height": 76
+      }
+    },
+    {
+      "text": "96.611977",
+      "conf": 65,
+      "bbox": {
+        "left": 3,
+        "top": 4952,
+        "width": 7778,
+        "height": 137
+      }
+    },
+    {
+      "text": "96.701698",
+      "conf": 95,
+      "bbox": {
+        "left": 4,
+        "top": 5160,
+        "width": 7753,
+        "height": 205
+      }
+    },
+    {
+      "text": "96.380005",
+      "conf": 89,
+      "bbox": {
+        "left": 5,
+        "top": 5437,
+        "width": 7756,
+        "height": 275
+      }
+    },
+    {
+      "text": "96.814926",
+      "conf": 88,
+      "bbox": {
+        "left": 6,
+        "top": 5784,
+        "width": 7774,
+        "height": 278
+      }
+    }
+  ],
+  "machineGenerated": true,
+  "generatedAt": "2026-07-26T02:37:22.154Z",
+  "tesseractVersion": "5.5.2"
+}
