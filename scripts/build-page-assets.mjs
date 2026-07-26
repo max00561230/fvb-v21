@@ -1,6 +1,7 @@
 import sharp from "sharp";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { metadataForPageId } from "./page-metadata.mjs";
 
 const SOURCE = path.resolve("archive-source/original-scans");
 const OUTPUT = path.resolve("public/book-pages");
@@ -54,6 +55,7 @@ async function buildPagesJsonFromDerivatives() {
     pages.push({
       id,
       pageNumber: num,
+      ...metadataForPageId(id),
       width: 0,
       height: 0,
       masterSrc: masterExists ? `/book-pages/masters/${id}.png` : "",
@@ -125,6 +127,7 @@ async function main() {
       pages.push({
         id,
         pageNumber: number,
+        ...metadataForPageId(id),
         width: metadata.width,
         height: metadata.height,
         masterSrc: `/book-pages/masters/${id}.png`,
@@ -162,6 +165,7 @@ async function main() {
     pages.push({
       id,
       pageNumber: number,
+      ...metadataForPageId(id),
       width: metadata.width,
       height: metadata.height,
       masterSrc: `/book-pages/masters/${id}.png`,

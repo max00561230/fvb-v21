@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Fuse from "fuse.js";
 import type { BookPage } from "../types";
+import { pageLabel } from "../lib/pageLabels";
 
 interface SearchEntry {
   pageNumber: number;
@@ -18,6 +19,7 @@ export function SearchPanel({
   const [results, setResults] = useState<{ pageNumber: number; text: string }[]>([]);
   const [loaded, setLoaded] = useState(false);
   const fuseRef = useRef<Fuse<SearchEntry> | null>(null);
+  const pageByNumber = new Map(pages.map((page) => [page.pageNumber, page]));
 
   useEffect(() => {
     fetch("/data/transcripts.json")
@@ -69,7 +71,7 @@ export function SearchPanel({
                   setResults([]);
                 }}
               >
-                <span className="search-page">Page {r.pageNumber}</span>
+                <span className="search-page">{pageByNumber.get(r.pageNumber) ? pageLabel(pageByNumber.get(r.pageNumber)!) : `Page ${r.pageNumber}`}</span>
                 <span className="search-snippet">{r.text.slice(0, 80)}...</span>
               </button>
             </li>

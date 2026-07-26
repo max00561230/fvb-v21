@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Navigation } from "./Navigation";
 import type { PagesManifest, BookPage, PlacementData } from "../types";
+import { pageLabel } from "../lib/pageLabels";
 
 // Lazy load fabric and jszip only when needed
 let fabricModule: any = null;
@@ -484,6 +485,7 @@ export function PhotoRestoration() {
     const metadata = {
       pageId: selectedPage.id,
       pageNumber: selectedPage.pageNumber,
+      originalPageNumber: selectedPage.originalPageNumber,
       exportedAt: new Date().toISOString(),
       exportedBy: "FVB v21.1 Photo Restoration Tool",
       originalImage: selectedPage.masterSrc,
@@ -529,7 +531,7 @@ export function PhotoRestoration() {
             <div className="restoration-sidebar">
               <div className="restoration-sidebar-section">
                 <h3>Proof Page</h3>
-                <p>{proofPageLabel}</p>
+                <p>{pageLabel(selectedPage)}</p>
                 <p className="restoration-help">Fixed page background: {selectedPage.masterSrc}</p>
                 <button
                   className="restoration-btn restoration-btn-secondary"

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import OpenSeadragon from "openseadragon";
 import type { BookPage } from "../types";
+import { pageLabel } from "../lib/pageLabels";
 
 export function ZoomPageViewer({ page }: { page: BookPage }) {
   const target = useRef<HTMLDivElement | null>(null);
@@ -43,7 +44,7 @@ export function ZoomPageViewer({ page }: { page: BookPage }) {
     <div
       ref={target}
       className="zoom-viewer"
-      aria-label={`Zoomable page ${page.pageNumber}`}
+      aria-label={`Zoomable ${pageLabel(page)}`}
     />
   );
 }

@@ -1,7 +1,7 @@
 {
   "version": "21.0.0",
   "totalPages": 91,
-  "generatedAt": "2026-07-26T13:20:21.189Z",
+  "generatedAt": "2026-07-26T15:07:36.222Z",
   "pages": [
     {
       "id": "page-001",
@@ -19,6 +19,7 @@
     {
       "id": "page-002",
       "pageNumber": 2,
+      "originalPageNumber": 89,
       "width": 5195,
       "height": 7144,
       "masterSrc": "/book-pages/masters/page-002.png",
