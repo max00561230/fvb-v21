@@ -1,5 +1,4 @@
 import type { BookPage } from "../types";
-import { pageLabel } from "../lib/pageLabels";
 
 export function ThumbnailStrip({
   pages,
@@ -18,12 +17,12 @@ export function ThumbnailStrip({
             key={page.id}
             className={`thumbnail-item ${page.pageNumber === currentPage ? "active" : ""}`}
             onClick={() => onSelect(page.pageNumber)}
-            aria-label={`Go to ${pageLabel(page)}`}
+            aria-label={`Go to page ${page.pageNumber}`}
             aria-current={page.pageNumber === currentPage}
           >
             <img
               src={page.thumbnailSrc}
-              alt={pageLabel(page)}
+              alt={`Page ${page.pageNumber}`}
               loading="lazy"
               decoding="async"
               width={60}

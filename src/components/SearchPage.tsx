@@ -8,7 +8,6 @@ import searchIndexData from "../data/search/search-index.json";
 interface SearchIndexPage {
   pageNumber: number;
   pageId: string;
-  originalPageNumber?: number;
   text: string;
   combinedText: string;
   wordCount: number;
@@ -67,7 +66,7 @@ export function SearchPage() {
         const snippet = extractSnippet(matchText, query, 150);
         pages.push({
           type: "page",
-          title: pageResultTitle(item),
+          title: `Page ${item.pageNumber}`,
           snippet,
           pageReference: item.pageNumber,
           url: `/?page=${item.pageNumber}&search=${encodeURIComponent(query)}`,
@@ -241,14 +240,6 @@ function formatPersonSnippet(person: Person): string {
   if (person.places?.length) parts.push(`Places: ${person.places.join(", ")}`);
   if (person.pageReferences?.length) parts.push(`Pages: ${person.pageReferences.join(", ")}`);
   return parts.join(" • ") || "No additional details";
-}
-
-function pageResultTitle(page: SearchIndexPage): string {
-  if (page.originalPageNumber && page.originalPageNumber !== page.pageNumber) {
-    return `Page ${page.pageNumber} (original page ${page.originalPageNumber})`;
-  }
-
-  return `Page ${page.pageNumber}`;
 }
 
 function escapeHtml(s: string): string {

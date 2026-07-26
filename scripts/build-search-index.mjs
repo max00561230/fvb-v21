@@ -13,18 +13,8 @@ import path from "node:path";
 const OCR_DIR = path.resolve("src/data/search/ocr/pages");
 const OLD_OCR_DIR = path.resolve("public/data/ocr");
 const PEOPLE_PATH = path.resolve("public/data/people.json");
-const PAGES_PATH = path.resolve("public/data/pages.json");
 const OUTPUT_DIR = path.resolve("src/data/search");
 const OUTPUT_PATH = path.join(OUTPUT_DIR, "search-index.json");
-
-async function loadPageMetadata() {
-  try {
-    const data = JSON.parse(await fs.readFile(PAGES_PATH, "utf-8"));
-    return new Map((data.pages || []).map(p => [p.id, p]));
-  } catch {
-    return new Map();
-  }
-}
 
 async function loadOcrPages() {
   const pages = [];
@@ -73,7 +63,7 @@ async function loadOcrPages() {
     }
   }
   
-  return pages;
+  return pages.sort((a, b) => a.pageNumber - b.pageNumber);
 }
 
 async function loadPeople() {
@@ -88,20 +78,16 @@ async function loadPeople() {
 async function main() {
   console.log("Building search index...");
   
-  const [ocrPages, people, pageMetadata] = await Promise.all([loadOcrPages(), loadPeople(), loadPageMetadata()]);
+  const [ocrPages, people] = await Promise.all([loadOcrPages(), loadPeople()]);
   
   // Build page entries
-  const pageEntries = ocrPages.map(p => {
-    const metadata = pageMetadata.get(p.pageId) || {};
-    return {
-      pageNumber: p.pageNumber,
-      pageId: p.pageId,
-      originalPageNumber: p.originalPageNumber ?? metadata.originalPageNumber,
-      text: p.text,
-      wordCount: p.wordCount,
-      avgConfidence: p.averageConfidence,
-    };
-  });
+  const pageEntries = ocrPages.map(p => ({
+    pageNumber: p.pageNumber,
+    pageId: p.pageId,
+    text: p.text,
+    wordCount: p.wordCount,
+    avgConfidence: p.averageConfidence,
+  }));
   
   // Build people entries (compact - just searchable fields)
   const peopleEntries = people.map(p => ({

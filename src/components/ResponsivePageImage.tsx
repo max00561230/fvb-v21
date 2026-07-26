@@ -1,5 +1,4 @@
 import type { BookPage } from "../types";
-import { pageLabel } from "../lib/pageLabels";
 
 export function ResponsivePageImage({
   page,
@@ -30,7 +29,7 @@ export function ResponsivePageImage({
         sizes="(max-width: 699px) 100vw, (max-width: 1199px) 90vw, 1100px"
         width={page.width}
         height={page.height}
-        alt={`Family heritage book ${pageLabel(page)}`}
+        alt={`Family heritage book page ${page.pageNumber}`}
         className="page-image"
         draggable={false}
         loading={priority ? "eager" : "lazy"}

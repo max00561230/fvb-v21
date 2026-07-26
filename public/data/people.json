@@ -20,12 +20,12 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
+        5,
         6,
         7,
         8,
         9,
-        10,
-        11
+        10
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -50,13 +50,13 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
+        5,
         6,
         7,
         8,
         9,
         10,
-        11,
-        13
+        12
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -79,7 +79,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        8
+        7
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -102,7 +102,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        8
+        7
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -125,7 +125,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        8
+        7
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -148,7 +148,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        8
+        7
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -171,7 +171,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        8
+        7
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -204,13 +204,13 @@
       ],
       "cemeteries": [],
       "pageReferences": [
+        13,
         14,
         15,
         16,
         17,
         18,
-        19,
-        20
+        19
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -235,9 +235,9 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
+        13,
         14,
-        15,
-        17
+        16
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -264,7 +264,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        15
+        14
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -292,7 +292,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        17
+        16
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -324,6 +324,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
+        20,
         21,
         22,
         23,
@@ -331,8 +332,7 @@
         25,
         26,
         27,
-        28,
-        29
+        28
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -360,8 +360,8 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        22,
-        24
+        21,
+        23
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -388,7 +388,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        29
+        28
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -413,7 +413,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        24
+        23
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -438,7 +438,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        24
+        23
       ],
       "storyIds": [],
       "mediaIds": "",
@@ -461,8 +461,8 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        30,
-        35
+        29,
+        34
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -489,7 +489,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        35
+        34
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -516,8 +516,8 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        40,
-        45
+        39,
+        44
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -545,7 +545,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        40
+        39
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -570,7 +570,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        40
+        39
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -595,7 +595,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        65
+        64
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -618,7 +618,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        65
+        64
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -641,7 +641,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        70
+        69
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -673,7 +673,7 @@
       ],
       "cemeteries": [],
       "pageReferences": [
-        85
+        84
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -698,7 +698,7 @@
       "businesses": [],
       "cemeteries": [],
       "pageReferences": [
-        85
+        84
       ],
       "storyIds": [],
       "mediaIds": [],
@@ -713,9 +713,9 @@
       "birthDate": "1914",
       "deathDate": "1950",
       "pageReferences": [
-        4,
-        13,
-        37
+        3,
+        12,
+        36
       ],
       "places": [],
       "occupations": [],
@@ -724,7 +724,7 @@
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "notes": "In Memoriam \u2014 daughter of James and Pearl Francis"
+      "notes": "In Memoriam — daughter of James and Pearl Francis"
     },
     {
       "id": "edward-mack-francis-sr",
@@ -737,11 +737,11 @@
       "birthDate": "1922",
       "deathDate": "1991",
       "pageReferences": [
-        4,
-        13,
+        3,
+        12,
+        69,
         70,
-        71,
-        72
+        71
       ],
       "places": [],
       "occupations": [],
@@ -763,8 +763,8 @@
       "birthDate": "1917",
       "deathDate": "1991",
       "pageReferences": [
-        4,
-        13
+        3,
+        12
       ],
       "places": [],
       "occupations": [],
@@ -784,9 +784,9 @@
       "birthDate": "",
       "deathDate": "1969",
       "pageReferences": [
-        4,
-        13,
-        89,
+        3,
+        12,
+        88,
         90
       ],
       "places": [],
@@ -807,8 +807,8 @@
       "birthDate": "1886",
       "deathDate": "1973",
       "pageReferences": [
-        4,
-        88
+        3,
+        87
       ],
       "places": [],
       "occupations": [],
@@ -817,7 +817,7 @@
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "notes": "In Memoriam \u2014 same as James Henry Francis"
+      "notes": "In Memoriam — same as James Henry Francis"
     },
     {
       "id": "pearl-c-francis-memoriam",
@@ -828,8 +828,8 @@
       "birthDate": "1890",
       "deathDate": "1978",
       "pageReferences": [
-        4,
-        88
+        3,
+        87
       ],
       "places": [],
       "occupations": [],
@@ -838,7 +838,7 @@
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "notes": "In Memoriam \u2014 same as Pearl Martha Ann Clanton Francis"
+      "notes": "In Memoriam — same as Pearl Martha Ann Clanton Francis"
     },
     {
       "id": "maurice-e-francis-memoriam",
@@ -849,7 +849,7 @@
       "birthDate": "1911",
       "deathDate": "1969",
       "pageReferences": [
-        4
+        3
       ],
       "places": [],
       "occupations": [],
@@ -858,7 +858,7 @@
       "militaryService": [],
       "businesses": [],
       "cemeteries": [],
-      "notes": "In Memoriam \u2014 same as Maurice Emanuel Francis"
+      "notes": "In Memoriam — same as Maurice Emanuel Francis"
     },
     {
       "id": "james-gradie-francis",
@@ -871,9 +871,9 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        13,
-        31,
-        32
+        12,
+        30,
+        31
       ],
       "places": [],
       "occupations": [],
@@ -895,11 +895,11 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        3,
-        13,
-        74,
-        76,
-        81
+        2,
+        12,
+        73,
+        75,
+        80
       ],
       "places": [],
       "occupations": [],
@@ -919,7 +919,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        13
+        12
       ],
       "places": [],
       "occupations": [],
@@ -939,8 +939,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        13,
-        87
+        12,
+        86
       ],
       "places": [],
       "occupations": [],
@@ -962,9 +962,9 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        13,
-        61,
-        68
+        12,
+        60,
+        67
       ],
       "places": [],
       "occupations": [],
@@ -986,8 +986,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        15,
-        16
+        14,
+        15
       ],
       "places": [],
       "occupations": [],
@@ -1007,8 +1007,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        15,
-        16
+        14,
+        15
       ],
       "places": [],
       "occupations": [],
@@ -1028,7 +1028,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        16
+        15
       ],
       "places": [],
       "occupations": [],
@@ -1048,7 +1048,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        18
+        17
       ],
       "places": [],
       "occupations": [],
@@ -1068,7 +1068,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        17
+        16
       ],
       "places": [],
       "occupations": [],
@@ -1088,7 +1088,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        18
+        17
       ],
       "places": [],
       "occupations": [],
@@ -1108,7 +1108,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        18
+        17
       ],
       "places": [],
       "occupations": [],
@@ -1128,7 +1128,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        18
+        17
       ],
       "places": [],
       "occupations": [],
@@ -1148,7 +1148,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        18
+        17
       ],
       "places": [],
       "occupations": [],
@@ -1168,8 +1168,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        19,
-        20
+        18,
+        19
       ],
       "places": [],
       "occupations": [],
@@ -1189,7 +1189,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        20
+        19
       ],
       "places": [],
       "occupations": [],
@@ -1209,7 +1209,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        20
+        19
       ],
       "places": [],
       "occupations": [],
@@ -1229,7 +1229,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        25
+        24
       ],
       "places": [],
       "occupations": [],
@@ -1249,7 +1249,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        25
+        24
       ],
       "places": [],
       "occupations": [],
@@ -1271,9 +1271,9 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        3,
-        27,
-        28
+        2,
+        26,
+        27
       ],
       "places": [],
       "occupations": [],
@@ -1295,8 +1295,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        27,
-        28
+        26,
+        27
       ],
       "places": [],
       "occupations": [],
@@ -1316,7 +1316,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        27
+        26
       ],
       "places": [],
       "occupations": [],
@@ -1338,8 +1338,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        26,
-        27
+        25,
+        26
       ],
       "places": [],
       "occupations": [],
@@ -1359,7 +1359,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        28
+        27
       ],
       "places": [],
       "occupations": [],
@@ -1379,7 +1379,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        28
+        27
       ],
       "places": [],
       "occupations": [],
@@ -1399,7 +1399,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        28
+        27
       ],
       "places": [],
       "occupations": [],
@@ -1419,7 +1419,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        31
+        30
       ],
       "places": [],
       "occupations": [],
@@ -1439,7 +1439,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        31
+        30
       ],
       "places": [],
       "occupations": [],
@@ -1461,7 +1461,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        32
+        31
       ],
       "places": [],
       "occupations": [],
@@ -1481,7 +1481,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        32
+        31
       ],
       "places": [],
       "occupations": [],
@@ -1503,8 +1503,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        30,
-        32
+        29,
+        31
       ],
       "places": [],
       "occupations": [],
@@ -1524,7 +1524,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        35
+        34
       ],
       "places": [],
       "occupations": [],
@@ -1546,9 +1546,9 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        4,
-        36,
-        37
+        3,
+        35,
+        36
       ],
       "places": [],
       "occupations": [],
@@ -1568,7 +1568,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        37
+        36
       ],
       "places": [],
       "occupations": [],
@@ -1590,7 +1590,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        36
+        35
       ],
       "places": [],
       "occupations": [],
@@ -1610,7 +1610,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        36
+        35
       ],
       "places": [],
       "occupations": [],
@@ -1630,7 +1630,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        39
+        38
       ],
       "places": [],
       "occupations": [],
@@ -1650,7 +1650,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        39
+        38
       ],
       "places": [],
       "occupations": [],
@@ -1670,11 +1670,11 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
+        40,
         41,
         42,
         43,
-        44,
-        45
+        44
       ],
       "places": [],
       "occupations": [],
@@ -1694,7 +1694,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        41
+        40
       ],
       "places": [],
       "occupations": [],
@@ -1714,7 +1714,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        41
+        40
       ],
       "places": [],
       "occupations": [],
@@ -1734,7 +1734,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        43
+        42
       ],
       "places": [],
       "occupations": [],
@@ -1754,7 +1754,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        43
+        42
       ],
       "places": [],
       "occupations": [],
@@ -1774,7 +1774,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        44
+        43
       ],
       "places": [],
       "occupations": [],
@@ -1794,7 +1794,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        44
+        43
       ],
       "places": [],
       "occupations": [],
@@ -1814,7 +1814,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        49
+        48
       ],
       "places": [],
       "occupations": [],
@@ -1834,7 +1834,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        48
+        47
       ],
       "places": [],
       "occupations": [],
@@ -1854,7 +1854,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        48
+        47
       ],
       "places": [],
       "occupations": [],
@@ -1874,7 +1874,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        50
+        49
       ],
       "places": [],
       "occupations": [],
@@ -1894,8 +1894,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        50,
-        51
+        49,
+        50
       ],
       "places": [],
       "occupations": [],
@@ -1915,7 +1915,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        50
+        49
       ],
       "places": [],
       "occupations": [],
@@ -1935,8 +1935,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        50,
-        51
+        49,
+        50
       ],
       "places": [],
       "occupations": [],
@@ -1956,7 +1956,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        51
+        50
       ],
       "places": [],
       "occupations": [],
@@ -1976,9 +1976,9 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
+        55,
         56,
-        57,
-        58
+        57
       ],
       "places": [],
       "occupations": [],
@@ -1998,9 +1998,9 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
+        55,
         56,
-        57,
-        58
+        57
       ],
       "places": [],
       "occupations": [],
@@ -2020,7 +2020,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        57
+        56
       ],
       "places": [],
       "occupations": [],
@@ -2040,7 +2040,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        58
+        57
       ],
       "places": [],
       "occupations": [],
@@ -2062,8 +2062,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        61,
-        65
+        60,
+        64
       ],
       "places": [],
       "occupations": [],
@@ -2085,8 +2085,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        67,
-        68
+        66,
+        67
       ],
       "places": [],
       "occupations": [],
@@ -2106,7 +2106,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        67
+        66
       ],
       "places": [],
       "occupations": [],
@@ -2126,8 +2126,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        67,
-        68
+        66,
+        67
       ],
       "places": [],
       "occupations": [],
@@ -2147,7 +2147,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        66
+        65
       ],
       "places": [],
       "occupations": [],
@@ -2167,7 +2167,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        71
+        70
       ],
       "places": [],
       "occupations": [],
@@ -2187,7 +2187,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        72
+        71
       ],
       "places": [],
       "occupations": [],
@@ -2207,7 +2207,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        71
+        70
       ],
       "places": [],
       "occupations": [],
@@ -2227,7 +2227,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        72
+        71
       ],
       "places": [],
       "occupations": [],
@@ -2247,7 +2247,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        72
+        71
       ],
       "places": [],
       "occupations": [],
@@ -2267,7 +2267,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        72
+        71
       ],
       "places": [],
       "occupations": [],
@@ -2289,12 +2289,12 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
+        74,
         75,
-        76,
+        77,
         78,
-        79,
-        81,
-        83
+        80,
+        82
       ],
       "places": [],
       "occupations": [],
@@ -2314,8 +2314,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        78,
-        79
+        77,
+        78
       ],
       "places": [],
       "occupations": [],
@@ -2335,7 +2335,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        79
+        78
       ],
       "places": [],
       "occupations": [],
@@ -2355,7 +2355,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        76
+        75
       ],
       "places": [],
       "occupations": [],
@@ -2375,7 +2375,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        76
+        75
       ],
       "places": [],
       "occupations": [],
@@ -2395,7 +2395,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        76
+        75
       ],
       "places": [],
       "occupations": [],
@@ -2415,7 +2415,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        83
+        82
       ],
       "places": [],
       "occupations": [],
@@ -2435,9 +2435,9 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
+        79,
         80,
-        81,
-        82
+        81
       ],
       "places": [],
       "occupations": [],
@@ -2457,9 +2457,9 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
+        79,
         80,
-        81,
-        82
+        81
       ],
       "places": [],
       "occupations": [],
@@ -2479,8 +2479,8 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        81,
-        82
+        80,
+        81
       ],
       "places": [],
       "occupations": [],
@@ -2500,7 +2500,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        82
+        81
       ],
       "places": [],
       "occupations": [],
@@ -2520,7 +2520,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        81
+        80
       ],
       "places": [],
       "occupations": [],
@@ -2540,7 +2540,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        82
+        81
       ],
       "places": [],
       "occupations": [],
@@ -2560,7 +2560,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        87
+        86
       ],
       "places": [],
       "occupations": [],
@@ -2580,7 +2580,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        87
+        86
       ],
       "places": [],
       "occupations": [],
@@ -2600,7 +2600,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        87
+        86
       ],
       "places": [],
       "occupations": [],
@@ -2620,7 +2620,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        87
+        86
       ],
       "places": [],
       "occupations": [],
@@ -2653,8 +2653,8 @@
     },
     {
       "id": "genesis-dieviche-francis",
-      "fullName": "Genesis Dievich\u00e9 Francis",
-      "firstName": "Genesis Dievich\u00e9",
+      "fullName": "Genesis Dieviché Francis",
+      "firstName": "Genesis Dieviché",
       "lastName": "Francis",
       "nicknames": [],
       "birthDate": "",
@@ -2720,7 +2720,7 @@
       "birthDate": "",
       "deathDate": "",
       "pageReferences": [
-        78
+        77
       ],
       "places": [],
       "occupations": [],

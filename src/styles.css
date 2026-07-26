@@ -163,15 +163,6 @@ html, body {
   padding: 0 12px;
   white-space: nowrap;
   color: var(--color-accent-light);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.page-original-label {
-  color: rgba(255, 255, 255, 0.72);
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
 }
 
 .toolbar-divider {
@@ -570,10 +561,6 @@ html, body {
   font-family: var(--font-serif);
   font-size: 0.9rem;
   color: var(--color-accent-light);
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 1.2;
 }
 
 /* Responsive */

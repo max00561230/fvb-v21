@@ -1,7 +1,7 @@
 import sharp from "sharp";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { metadataForPageId } from "./page-metadata.mjs";
+import { pageNumberForPageId } from "./page-metadata.mjs";
 
 const SOURCE = path.resolve("archive-source/original-scans");
 const OUTPUT = path.resolve("public/book-pages");
@@ -54,8 +54,7 @@ async function buildPagesJsonFromDerivatives() {
 
     pages.push({
       id,
-      pageNumber: num,
-      ...metadataForPageId(id),
+      pageNumber: pageNumberForPageId(id) ?? num,
       width: 0,
       height: 0,
       masterSrc: masterExists ? `/book-pages/masters/${id}.png` : "",
@@ -123,11 +122,10 @@ async function main() {
 
     if (allExist) {
       const metadata = await sharp(masterPath).metadata();
-      const number = Number(id.split("-")[1]);
+      const number = pageNumberForPageId(id) ?? Number(id.split("-")[1]);
       pages.push({
         id,
         pageNumber: number,
-        ...metadataForPageId(id),
         width: metadata.width,
         height: metadata.height,
         masterSrc: `/book-pages/masters/${id}.png`,
@@ -161,11 +159,10 @@ async function main() {
         .toFile(path.join(outDir, `${id}.webp`));
     }
 
-    const number = Number(id.split("-")[1]);
+    const number = pageNumberForPageId(id) ?? Number(id.split("-")[1]);
     pages.push({
       id,
       pageNumber: number,
-      ...metadataForPageId(id),
       width: metadata.width,
       height: metadata.height,
       masterSrc: `/book-pages/masters/${id}.png`,

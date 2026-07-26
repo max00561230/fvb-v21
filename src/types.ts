@@ -1,7 +1,6 @@
 export interface BookPage {
   id: string;
   pageNumber: number;
-  originalPageNumber?: number;
   width: number;
   height: number;
   masterSrc: string;
@@ -99,7 +98,6 @@ export interface SearchResult {
 export interface OcrPageData {
   pageId: string;
   pageNumber: number;
-  originalPageNumber?: number;
   sourceImage: string;
   rawText: string;
   cleanedText: string;
@@ -114,7 +112,6 @@ export interface OcrPageData {
 export interface SearchIndexEntry {
   pageNumber: number;
   pageId: string;
-  originalPageNumber?: number;
   text: string;
   title?: string;
 }

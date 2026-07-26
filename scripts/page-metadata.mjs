@@ -1,10 +1,9 @@
-export const PAGE_METADATA = {
-  "page-002": {
-    originalPageNumber: 89
-  }
-};
+export function pageNumberForPageId(pageId) {
+  const match = pageId.match(/^page-(\d{3})$/);
+  if (!match) return undefined;
 
-export function metadataForPageId(pageId) {
-  return PAGE_METADATA[pageId] ?? {};
+  const scanNumber = Number(match[1]);
+  if (scanNumber === 2) return 89;
+  if (scanNumber >= 3 && scanNumber <= 89) return scanNumber - 1;
+  return scanNumber;
 }
-

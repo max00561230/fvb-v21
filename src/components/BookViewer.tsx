@@ -8,7 +8,6 @@ import { ThumbnailStrip } from "./ThumbnailStrip";
 import { Navigation } from "./Navigation";
 import { useBookPage } from "../hooks/useBookPage";
 import { useBookmarks } from "../hooks/useBookmarks";
-import { originalPageNote } from "../lib/pageLabels";
 
 export function BookViewer({
   manifest
@@ -25,7 +24,6 @@ export function BookViewer({
   const [hotspots, setHotspots] = useState<PageHotspot[]>([]);
 
   const currentPage = manifest.pages.find((p) => p.pageNumber === pageNumber) ?? manifest.pages[0];
-  const originalNote = originalPageNote(currentPage);
 
   // Load hotspots for current page
   useEffect(() => {
@@ -103,8 +101,7 @@ export function BookViewer({
           ‹
         </button>
         <span className="page-indicator">
-          <span>Page {pageNumber} of {manifest.totalPages}</span>
-          {originalNote && <span className="page-original-label">{originalNote}</span>}
+          Page {pageNumber} of {manifest.totalPages}
         </span>
         <button
           className="toolbar-btn"
@@ -249,10 +246,7 @@ export function BookViewer({
         >
           ‹ Prev
         </button>
-        <span className="bottom-nav-page">
-          <span>{pageNumber} / {manifest.totalPages}</span>
-          {originalNote && <span className="page-original-label">{originalNote}</span>}
-        </span>
+        <span className="bottom-nav-page">{pageNumber} / {manifest.totalPages}</span>
         <button
           className="bottom-nav-btn"
           onClick={() => setPageNumber(pageNumber + 1)}

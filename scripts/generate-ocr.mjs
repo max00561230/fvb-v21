@@ -15,7 +15,7 @@ import { execSync } from "child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync, rmSync } from "fs";
 import { join } from "path";
 import { tmpdir } from "os";
-import { metadataForPageId } from "./page-metadata.mjs";
+import { pageNumberForPageId } from "./page-metadata.mjs";
 
 const TESSERACT = "/opt/homebrew/bin/tesseract";
 const PROJECT_ROOT = new URL("..", import.meta.url).pathname;
@@ -52,7 +52,6 @@ function preprocessImage(srcPath, pageNum) {
   }
 
   const padded = String(pageNum).padStart(3, "0");
-  const pageId = `page-${padded}`;
   const tempProcessed = join(TEMP_DIR, `page-${padded}-processed.png`);
 
   // ImageMagick preprocessing: grayscale, contrast enhance, deskew, 2x enlarge
@@ -224,10 +223,10 @@ function processPage(pageNum) {
     }
   }
 
+  const pageId = `page-${padded}`;
   const output = {
     pageId,
-    pageNumber: pageNum,
-    ...metadataForPageId(pageId),
+    pageNumber: pageNumberForPageId(pageId) ?? pageNum,
     sourceImage: `page-${String(pageNum).padStart(2, "0")}.png`,
     rawText: result.rawText,
     cleanedText: result.cleanedText,

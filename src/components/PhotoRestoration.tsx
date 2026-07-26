@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Navigation } from "./Navigation";
 import type { PagesManifest, BookPage, PlacementData } from "../types";
-import { pageLabel } from "../lib/pageLabels";
 
 // Lazy load fabric and jszip only when needed
 let fabricModule: any = null;
@@ -25,8 +24,7 @@ interface HistoryState {
   fabricState: string;
 }
 
-const PROOF_PAGE_NUMBER = 17;
-const proofPageLabel = `Page ${PROOF_PAGE_NUMBER}`;
+const PROOF_PAGE_ID = "page-017";
 
 export function PhotoRestoration() {
   const [manifest, setManifest] = useState<PagesManifest | null>(null);
@@ -47,6 +45,7 @@ export function PhotoRestoration() {
   const [status, setStatus] = useState<"editing" | "preview" | "approved">("editing");
   const [loading, setLoading] = useState(true);
   const [notice, setNotice] = useState<string | null>(null);
+  const proofPageLabel = selectedPage ? `Page ${selectedPage.pageNumber}` : PROOF_PAGE_ID;
 
   // Load manifest
   useEffect(() => {
@@ -54,7 +53,7 @@ export function PhotoRestoration() {
       .then((r) => r.json())
       .then((data: PagesManifest) => {
         setManifest(data);
-        setSelectedPage(data.pages.find((page) => page.pageNumber === PROOF_PAGE_NUMBER) ?? data.pages[0] ?? null);
+        setSelectedPage(data.pages.find((page) => page.id === PROOF_PAGE_ID) ?? data.pages[0] ?? null);
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -485,7 +484,6 @@ export function PhotoRestoration() {
     const metadata = {
       pageId: selectedPage.id,
       pageNumber: selectedPage.pageNumber,
-      originalPageNumber: selectedPage.originalPageNumber,
       exportedAt: new Date().toISOString(),
       exportedBy: "FVB v21.1 Photo Restoration Tool",
       originalImage: selectedPage.masterSrc,
@@ -531,12 +529,12 @@ export function PhotoRestoration() {
             <div className="restoration-sidebar">
               <div className="restoration-sidebar-section">
                 <h3>Proof Page</h3>
-                <p>{pageLabel(selectedPage)}</p>
+                <p>{proofPageLabel}</p>
                 <p className="restoration-help">Fixed page background: {selectedPage.masterSrc}</p>
                 <button
                   className="restoration-btn restoration-btn-secondary"
                   onClick={() => {
-                    handlePageSelect(manifest?.pages.find((page) => page.pageNumber === PROOF_PAGE_NUMBER) ?? selectedPage);
+                    handlePageSelect(manifest?.pages.find((page) => page.id === PROOF_PAGE_ID) ?? selectedPage);
                     if (fabricRef.current) {
                       fabricRef.current.dispose();
                       fabricRef.current = null;
