@@ -1530,5 +1530,6 @@
   ],
   "machineGenerated": true,
   "generatedAt": "2026-07-26T01:59:23.749Z",
-  "tesseractVersion": "5.5.2"
+  "tesseractVersion": "5.5.2",
+  "originalPageNumber": 42
 }

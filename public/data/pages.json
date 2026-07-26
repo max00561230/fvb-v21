@@ -1,11 +1,12 @@
 {
   "version": "21.0.0",
   "totalPages": 91,
-  "generatedAt": "2026-07-26T15:15:53.786Z",
+  "generatedAt": "2026-07-26T19:52:28.380Z",
   "pages": [
     {
       "id": "page-001",
       "pageNumber": 1,
+      "originalPageNumber": 1,
       "width": 5195,
       "height": 7144,
       "masterSrc": "/book-pages/masters/page-001.png",
@@ -19,6 +20,7 @@
     {
       "id": "page-003",
       "pageNumber": 2,
+      "originalPageNumber": 3,
       "width": 5195,
       "height": 7144,
       "masterSrc": "/book-pages/masters/page-003.png",
@@ -32,6 +34,7 @@
     {
       "id": "page-004",
       "pageNumber": 3,
+      "originalPageNumber": 4,
       "width": 5195,
       "height": 7144,
       "masterSrc": "/book-pages/masters/page-004.png",
@@ -45,6 +48,7 @@
     {
       "id": "page-005",
       "pageNumber": 4,
+      "originalPageNumber": 5,
       "width": 5195,
       "height": 7144,
       "masterSrc": "/book-pages/masters/page-005.png",
@@ -58,6 +62,7 @@
     {
       "id": "page-006",
       "pageNumber": 5,
+      "originalPageNumber": 6,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-006.png",
@@ -71,6 +76,7 @@
     {
       "id": "page-007",
       "pageNumber": 6,
+      "originalPageNumber": 7,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-007.png",
@@ -84,6 +90,7 @@
     {
       "id": "page-008",
       "pageNumber": 7,
+      "originalPageNumber": 8,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-008.png",
@@ -97,6 +104,7 @@
     {
       "id": "page-009",
       "pageNumber": 8,
+      "originalPageNumber": 9,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-009.png",
@@ -110,6 +118,7 @@
     {
       "id": "page-010",
       "pageNumber": 9,
+      "originalPageNumber": 10,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-010.png",
@@ -123,6 +132,7 @@
     {
       "id": "page-011",
       "pageNumber": 10,
+      "originalPageNumber": 11,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-011.png",
@@ -136,6 +146,7 @@
     {
       "id": "page-012",
       "pageNumber": 11,
+      "originalPageNumber": 12,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-012.png",
@@ -149,6 +160,7 @@
     {
       "id": "page-013",
       "pageNumber": 12,
+      "originalPageNumber": 13,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-013.png",
@@ -162,6 +174,7 @@
     {
       "id": "page-014",
       "pageNumber": 13,
+      "originalPageNumber": 14,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-014.png",
@@ -175,6 +188,7 @@
     {
       "id": "page-015",
       "pageNumber": 14,
+      "originalPageNumber": 15,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-015.png",
@@ -188,6 +202,7 @@
     {
       "id": "page-016",
       "pageNumber": 15,
+      "originalPageNumber": 16,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-016.png",
@@ -201,6 +216,7 @@
     {
       "id": "page-017",
       "pageNumber": 16,
+      "originalPageNumber": 17,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-017.png",
@@ -214,6 +230,7 @@
     {
       "id": "page-018",
       "pageNumber": 17,
+      "originalPageNumber": 18,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-018.png",
@@ -227,6 +244,7 @@
     {
       "id": "page-019",
       "pageNumber": 18,
+      "originalPageNumber": 19,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-019.png",
@@ -240,6 +258,7 @@
     {
       "id": "page-020",
       "pageNumber": 19,
+      "originalPageNumber": 20,
       "width": 3542,
       "height": 4871,
       "masterSrc": "/book-pages/masters/page-020.png",
@@ -253,6 +272,7 @@
     {
       "id": "page-021",
       "pageNumber": 20,
+      "originalPageNumber": 21,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-021.png",
@@ -266,6 +286,7 @@
     {
       "id": "page-022",
       "pageNumber": 21,
+      "originalPageNumber": 22,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-022.png",
@@ -279,6 +300,7 @@
     {
       "id": "page-023",
       "pageNumber": 22,
+      "originalPageNumber": 23,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-023.png",
@@ -292,6 +314,7 @@
     {
       "id": "page-024",
       "pageNumber": 23,
+      "originalPageNumber": 24,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-024.png",
@@ -305,6 +328,7 @@
     {
       "id": "page-025",
       "pageNumber": 24,
+      "originalPageNumber": 25,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-025.png",
@@ -318,6 +342,7 @@
     {
       "id": "page-026",
       "pageNumber": 25,
+      "originalPageNumber": 26,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-026.png",
@@ -331,6 +356,7 @@
     {
       "id": "page-027",
       "pageNumber": 26,
+      "originalPageNumber": 27,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-027.png",
@@ -344,6 +370,7 @@
     {
       "id": "page-028",
       "pageNumber": 27,
+      "originalPageNumber": 28,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-028.png",
@@ -357,6 +384,7 @@
     {
       "id": "page-029",
       "pageNumber": 28,
+      "originalPageNumber": 29,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-029.png",
@@ -370,6 +398,7 @@
     {
       "id": "page-030",
       "pageNumber": 29,
+      "originalPageNumber": 30,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-030.png",
@@ -383,6 +412,7 @@
     {
       "id": "page-031",
       "pageNumber": 30,
+      "originalPageNumber": 31,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-031.png",
@@ -396,6 +426,7 @@
     {
       "id": "page-032",
       "pageNumber": 31,
+      "originalPageNumber": 32,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-032.png",
@@ -409,6 +440,7 @@
     {
       "id": "page-033",
       "pageNumber": 32,
+      "originalPageNumber": 33,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-033.png",
@@ -422,6 +454,7 @@
     {
       "id": "page-034",
       "pageNumber": 33,
+      "originalPageNumber": 34,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-034.png",
@@ -435,6 +468,7 @@
     {
       "id": "page-035",
       "pageNumber": 34,
+      "originalPageNumber": 35,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-035.png",
@@ -448,6 +482,7 @@
     {
       "id": "page-036",
       "pageNumber": 35,
+      "originalPageNumber": 36,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-036.png",
@@ -461,6 +496,7 @@
     {
       "id": "page-037",
       "pageNumber": 36,
+      "originalPageNumber": 37,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-037.png",
@@ -474,6 +510,7 @@
     {
       "id": "page-038",
       "pageNumber": 37,
+      "originalPageNumber": 38,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-038.png",
@@ -487,6 +524,7 @@
     {
       "id": "page-039",
       "pageNumber": 38,
+      "originalPageNumber": 39,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-039.png",
@@ -500,6 +538,7 @@
     {
       "id": "page-040",
       "pageNumber": 39,
+      "originalPageNumber": 40,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-040.png",
@@ -513,6 +552,7 @@
     {
       "id": "page-041",
       "pageNumber": 40,
+      "originalPageNumber": 41,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-041.png",
@@ -526,6 +566,7 @@
     {
       "id": "page-042",
       "pageNumber": 41,
+      "originalPageNumber": 42,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-042.png",
@@ -539,6 +580,7 @@
     {
       "id": "page-043",
       "pageNumber": 42,
+      "originalPageNumber": 43,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-043.png",
@@ -552,6 +594,7 @@
     {
       "id": "page-044",
       "pageNumber": 43,
+      "originalPageNumber": 44,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-044.png",
@@ -565,6 +608,7 @@
     {
       "id": "page-045",
       "pageNumber": 44,
+      "originalPageNumber": 45,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-045.png",
@@ -578,6 +622,7 @@
     {
       "id": "page-046",
       "pageNumber": 45,
+      "originalPageNumber": 46,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-046.png",
@@ -591,6 +636,7 @@
     {
       "id": "page-047",
       "pageNumber": 46,
+      "originalPageNumber": 47,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-047.png",
@@ -604,6 +650,7 @@
     {
       "id": "page-048",
       "pageNumber": 47,
+      "originalPageNumber": 48,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-048.png",
@@ -617,6 +664,7 @@
     {
       "id": "page-049",
       "pageNumber": 48,
+      "originalPageNumber": 49,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-049.png",
@@ -630,6 +678,7 @@
     {
       "id": "page-050",
       "pageNumber": 49,
+      "originalPageNumber": 50,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-050.png",
@@ -643,6 +692,7 @@
     {
       "id": "page-051",
       "pageNumber": 50,
+      "originalPageNumber": 51,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-051.png",
@@ -656,6 +706,7 @@
     {
       "id": "page-052",
       "pageNumber": 51,
+      "originalPageNumber": 52,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-052.png",
@@ -669,6 +720,7 @@
     {
       "id": "page-053",
       "pageNumber": 52,
+      "originalPageNumber": 53,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-053.png",
@@ -682,6 +734,7 @@
     {
       "id": "page-054",
       "pageNumber": 53,
+      "originalPageNumber": 54,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-054.png",
@@ -695,6 +748,7 @@
     {
       "id": "page-055",
       "pageNumber": 54,
+      "originalPageNumber": 55,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-055.png",
@@ -708,6 +762,7 @@
     {
       "id": "page-056",
       "pageNumber": 55,
+      "originalPageNumber": 56,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-056.png",
@@ -721,6 +776,7 @@
     {
       "id": "page-057",
       "pageNumber": 56,
+      "originalPageNumber": 57,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-057.png",
@@ -734,6 +790,7 @@
     {
       "id": "page-058",
       "pageNumber": 57,
+      "originalPageNumber": 58,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-058.png",
@@ -747,6 +804,7 @@
     {
       "id": "page-059",
       "pageNumber": 58,
+      "originalPageNumber": 59,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-059.png",
@@ -760,6 +818,7 @@
     {
       "id": "page-060",
       "pageNumber": 59,
+      "originalPageNumber": 60,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-060.png",
@@ -773,6 +832,7 @@
     {
       "id": "page-061",
       "pageNumber": 60,
+      "originalPageNumber": 61,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-061.png",
@@ -786,6 +846,7 @@
     {
       "id": "page-062",
       "pageNumber": 61,
+      "originalPageNumber": 62,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-062.png",
@@ -799,6 +860,7 @@
     {
       "id": "page-063",
       "pageNumber": 62,
+      "originalPageNumber": 63,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-063.png",
@@ -812,6 +874,7 @@
     {
       "id": "page-064",
       "pageNumber": 63,
+      "originalPageNumber": 64,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-064.png",
@@ -825,6 +888,7 @@
     {
       "id": "page-065",
       "pageNumber": 64,
+      "originalPageNumber": 65,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-065.png",
@@ -838,6 +902,7 @@
     {
       "id": "page-066",
       "pageNumber": 65,
+      "originalPageNumber": 66,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-066.png",
@@ -851,6 +916,7 @@
     {
       "id": "page-067",
       "pageNumber": 66,
+      "originalPageNumber": 67,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-067.png",
@@ -864,6 +930,7 @@
     {
       "id": "page-068",
       "pageNumber": 67,
+      "originalPageNumber": 68,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-068.png",
@@ -877,6 +944,7 @@
     {
       "id": "page-069",
       "pageNumber": 68,
+      "originalPageNumber": 69,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-069.png",
@@ -890,6 +958,7 @@
     {
       "id": "page-070",
       "pageNumber": 69,
+      "originalPageNumber": 70,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-070.png",
@@ -903,6 +972,7 @@
     {
       "id": "page-071",
       "pageNumber": 70,
+      "originalPageNumber": 71,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-071.png",
@@ -916,6 +986,7 @@
     {
       "id": "page-072",
       "pageNumber": 71,
+      "originalPageNumber": 72,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-072.png",
@@ -929,6 +1000,7 @@
     {
       "id": "page-073",
       "pageNumber": 72,
+      "originalPageNumber": 73,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-073.png",
@@ -942,6 +1014,7 @@
     {
       "id": "page-074",
       "pageNumber": 73,
+      "originalPageNumber": 74,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-074.png",
@@ -955,6 +1028,7 @@
     {
       "id": "page-075",
       "pageNumber": 74,
+      "originalPageNumber": 75,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-075.png",
@@ -968,6 +1042,7 @@
     {
       "id": "page-076",
       "pageNumber": 75,
+      "originalPageNumber": 76,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-076.png",
@@ -981,6 +1056,7 @@
     {
       "id": "page-077",
       "pageNumber": 76,
+      "originalPageNumber": 77,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-077.png",
@@ -994,6 +1070,7 @@
     {
       "id": "page-078",
       "pageNumber": 77,
+      "originalPageNumber": 78,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-078.png",
@@ -1007,6 +1084,7 @@
     {
       "id": "page-079",
       "pageNumber": 78,
+      "originalPageNumber": 79,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-079.png",
@@ -1020,6 +1098,7 @@
     {
       "id": "page-080",
       "pageNumber": 79,
+      "originalPageNumber": 80,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-080.png",
@@ -1033,6 +1112,7 @@
     {
       "id": "page-081",
       "pageNumber": 80,
+      "originalPageNumber": 81,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-081.png",
@@ -1046,6 +1126,7 @@
     {
       "id": "page-082",
       "pageNumber": 81,
+      "originalPageNumber": 82,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-082.png",
@@ -1059,6 +1140,7 @@
     {
       "id": "page-083",
       "pageNumber": 82,
+      "originalPageNumber": 83,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-083.png",
@@ -1072,6 +1154,7 @@
     {
       "id": "page-084",
       "pageNumber": 83,
+      "originalPageNumber": 84,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-084.png",
@@ -1085,6 +1168,7 @@
     {
       "id": "page-085",
       "pageNumber": 84,
+      "originalPageNumber": 85,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-085.png",
@@ -1098,6 +1182,7 @@
     {
       "id": "page-086",
       "pageNumber": 85,
+      "originalPageNumber": 86,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-086.png",
@@ -1111,6 +1196,7 @@
     {
       "id": "page-087",
       "pageNumber": 86,
+      "originalPageNumber": 87,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-087.png",
@@ -1124,6 +1210,7 @@
     {
       "id": "page-088",
       "pageNumber": 87,
+      "originalPageNumber": 88,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-088.png",
@@ -1137,6 +1224,7 @@
     {
       "id": "page-089",
       "pageNumber": 88,
+      "originalPageNumber": 89,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-089.png",
@@ -1150,6 +1238,7 @@
     {
       "id": "page-002",
       "pageNumber": 89,
+      "originalPageNumber": 2,
       "width": 5195,
       "height": 7144,
       "masterSrc": "/book-pages/masters/page-002.png",
@@ -1163,6 +1252,7 @@
     {
       "id": "page-090",
       "pageNumber": 90,
+      "originalPageNumber": 90,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-090.png",
@@ -1176,6 +1266,7 @@
     {
       "id": "page-091",
       "pageNumber": 91,
+      "originalPageNumber": 91,
       "width": 7084,
       "height": 9742,
       "masterSrc": "/book-pages/masters/page-091.png",

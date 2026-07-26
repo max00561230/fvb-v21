@@ -31,6 +31,7 @@ async function loadOcrPages() {
         const data = JSON.parse(await fs.readFile(fpath, "utf-8"));
         pages.push({
           pageNumber: data.pageNumber,
+          originalPageNumber: data.originalPageNumber,
           pageId: data.pageId,
           text: data.cleanText || data.rawText || "",
           wordCount: data.wordCount || 0,
@@ -52,6 +53,7 @@ async function loadOcrPages() {
         const data = JSON.parse(await fs.readFile(fpath, "utf-8"));
         pages.push({
           pageNumber: data.pageNumber || i,
+          originalPageNumber: data.originalPageNumber || i,
           pageId: `page-${padded}`,
           text: data.cleanedText || data.rawText || "",
           wordCount: data.wordCount || 0,
@@ -83,6 +85,7 @@ async function main() {
   // Build page entries
   const pageEntries = ocrPages.map(p => ({
     pageNumber: p.pageNumber,
+    originalPageNumber: p.originalPageNumber,
     pageId: p.pageId,
     text: p.text,
     wordCount: p.wordCount,
