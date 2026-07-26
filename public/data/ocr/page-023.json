@@ -1,0 +1,13 @@
+{
+  "pageId": "page-023",
+  "pageNumber": 23,
+  "sourceImage": "page-23.png",
+  "rawText": "",
+  "cleanedText": "",
+  "confidence": 0,
+  "wordCount": 0,
+  "words": [],
+  "machineGenerated": true,
+  "generatedAt": "2026-07-26T01:28:22.698Z",
+  "tesseractVersion": "5.5.2"
+}

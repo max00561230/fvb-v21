@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Fuse from "fuse.js";
 import { Navigation } from "./Navigation";
 import type { Person, OcrPageData, SearchResult } from "../types";
 
 export function SearchPage() {
-  const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("q") || "");
   const [people, setPeople] = useState<Person[]>([]);
   const [ocrData, setOcrData] = useState<OcrPageData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -17,23 +18,18 @@ export function SearchPage() {
       .then((data) => setPeople(data.people || []))
       .catch(() => setPeople([]));
 
-    // Load OCR data index
-    fetch("/data/ocr/ocr-report.json")
-      .then((r) => r.ok ? r.json() : null)
-      .then(() => {
-        // Load all OCR page files
-        const promises = [];
-        for (let i = 1; i <= 91; i++) {
-          const padded = String(i).padStart(3, "0");
-          promises.push(
-            fetch(`/data/ocr/page-${padded}.json`)
-              .then((r) => r.ok ? r.json() : null)
-              .then((d) => d)
-              .catch(() => null)
-          );
-        }
-        return Promise.all(promises);
-      })
+    // Load all available OCR page files directly
+    const promises = [];
+    for (let i = 1; i <= 91; i++) {
+      const padded = String(i).padStart(3, "0");
+      promises.push(
+        fetch(`/data/ocr/page-${padded}.json`)
+          .then((r) => r.ok ? r.json() : null)
+          .then((d) => d)
+          .catch(() => null)
+      );
+    }
+    Promise.all(promises)
       .then((results) => {
         setOcrData(results.filter(Boolean));
         setLoading(false);
@@ -134,7 +130,7 @@ export function SearchPage() {
             className="search-page-input"
             placeholder="Search names, places, churches, schools, military, text..."
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => { setQuery(e.target.value); setSearchParams(e.target.value ? { q: e.target.value } : {}); }}
             aria-label="Search query"
             autoFocus
           />
