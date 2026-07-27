@@ -1,7 +1,7 @@
 {
   "pageId": "page-024",
   "pageNumber": 23,
-  "sourceImage": "page-024.png",
+  "sourceImage": "page-24.png",
   "rawText": "Bi re - * i « is = DORIS LOUISE FARROW FRANCIS DeOwe. = Moya72, 1904 PLACE: Brinkleyville, N.C. MOTHER: Nellie Johnson Farrow FATHER: Arseola Farrow BIRTH ORDER: First child OCCUPATION: Retired Accounting Technician RELATIONSHIP: Widow of Maurice Francis HOBBIES: Crossword puzzles, exploring new places and bargain hunting SKILLS: Sewing, crocheting, tatting and kna-ttang 4: LIKES: Traveling and eating in nice restaurants DISLIKES: Fat meat and standing in lines ASPIRATION: To live, to see the twenty first century and=be lucid enough to know that I have MOTTO: Where there is a will, there is a way OFFSPRING: Eleanor Patricia, Mildred Elaine, Joan Alease Lynwood Wayne",
   "cleanText": "Bi re - * i   is = DORIS LOUISE FARROW FRANCIS DeOwe. = Moya72, 1904 PLACE: Brinkleyville, N.C. MOTHER: Nellie Johnson Farrow FATHER: Arseola Farrow BIRTH ORDER: First child OCCUPATION: Retired Accounting Technician RELATIONSHIP: Widow of Maurice Francis HOBBIES: Crossword puzzles, exploring new places and bargain hunting SKILLS: Sewing, crocheting, tatting and kna-ttang 4: LIKES: Traveling and eating in nice restaurants DISLIKES: Fat meat and standing in lines ASPIRATION: To live, to see the twenty first century and=be lucid enough to know that I have MOTTO: Where there is a will, there is a way OFFSPRING: Eleanor Patricia, Mildred Elaine, Joan Alease Lynwood Wayne",
   "averageConfidence": 80.7,
@@ -1270,5 +1270,9 @@
       "word": 2
     }
   ],
-  "originalPageNumber": 24
+  "originalPageNumber": 24,
+  "readingPosition": 23,
+  "displayNumber": 23,
+  "originalPrintedPageNumber": 24,
+  "sourceFile": "page-24.png"
 }

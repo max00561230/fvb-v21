@@ -1,7 +1,7 @@
 {
   "pageId": "page-023",
   "pageNumber": 22,
-  "sourceImage": "page-023.png",
+  "sourceImage": "page-23.png",
   "rawText": "",
   "cleanText": "",
   "averageConfidence": 0,
@@ -9,5 +9,9 @@
   "lowConfidenceWords": 0,
   "reviewStatus": "machine-generated",
   "words": [],
-  "originalPageNumber": 23
+  "originalPageNumber": 23,
+  "readingPosition": 22,
+  "displayNumber": 22,
+  "originalPrintedPageNumber": 23,
+  "sourceFile": "page-23.png"
 }

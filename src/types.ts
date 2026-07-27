@@ -20,7 +20,10 @@ export interface BookPage {
   };
 }
 
-export interface InactiveBookPage extends Omit<BookPage, "pageNumber"> {
+export interface InactiveBookPage extends Omit<BookPage, "readingPosition" | "displayNumber" | "pageNumber"> {
+  active: false;
+  readingPosition: null;
+  displayNumber: null;
   duplicateOf: string;
   inactiveReason: string;
 }
@@ -111,13 +114,16 @@ export interface SearchResult {
 
 export interface OcrPageData {
   pageId: string;
-  pageNumber: number;
-  readingPosition?: number;
-  displayNumber?: number;
+  pageNumber: number | null;
+  readingPosition?: number | null;
+  displayNumber?: number | null;
   originalPrintedPageNumber?: number | null;
   originalPageNumber?: number | null;
   sourceFile?: string;
   sourceImage: string;
+  inactive?: boolean;
+  inactiveReason?: string;
+  duplicateOf?: string;
   rawText: string;
   cleanedText: string;
   confidence: number;

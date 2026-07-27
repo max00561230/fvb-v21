@@ -1121,5 +1121,9 @@
   "machineGenerated": true,
   "generatedAt": "2026-07-26T01:31:38.247Z",
   "tesseractVersion": "5.5.2",
-  "originalPageNumber": 26
+  "originalPageNumber": 26,
+  "readingPosition": 25,
+  "displayNumber": 25,
+  "originalPrintedPageNumber": 26,
+  "sourceFile": "page-26.png"
 }

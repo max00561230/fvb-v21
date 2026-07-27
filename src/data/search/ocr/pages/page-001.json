@@ -1,7 +1,7 @@
 {
   "pageId": "page-001",
   "pageNumber": 1,
-  "sourceImage": "page-001.png",
+  "sourceImage": "page-01.png",
   "rawText": "FRANCIS FAMILY REUNION Enfield, North Carolina July 31 - Aug. 1, 1993 sll kn me (ow 2 ae",
   "cleanText": "FRANCIS FAMILY REUNION Enfield, North Carolina July 31 - Aug. 1, 1993 sll kn me (ow 2 ae",
   "averageConfidence": 68.9,
@@ -226,5 +226,9 @@
       "word": 6
     }
   ],
-  "originalPageNumber": 1
+  "originalPageNumber": 1,
+  "readingPosition": 1,
+  "displayNumber": 1,
+  "originalPrintedPageNumber": 1,
+  "sourceFile": "page-01.png"
 }

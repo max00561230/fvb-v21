@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-07-26T02:52:30.063Z",
-  "totalPages": 91,
+  "totalPages": 90,
   "pagesProcessed": 91,
   "pagesFailed": 0,
   "lowConfidencePages": [
@@ -28,5 +28,15 @@
   "failedPages": [],
   "averageConfidence": 134.8,
   "tesseractVersion": "5.5.2",
-  "machineGenerated": true
+  "machineGenerated": true,
+  "totalPhysicalPages": 91,
+  "activeReadingPages": 90,
+  "inactivePages": [
+    {
+      "pageId": "page-007",
+      "sourceFile": "page-07.png",
+      "duplicateOf": "page-006",
+      "inactiveReason": "Duplicate scan preserved for audit but excluded from the active 90-page reading sequence per Tony clarification."
+    }
+  ]
 }

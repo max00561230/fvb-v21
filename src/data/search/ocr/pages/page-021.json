@@ -1,7 +1,7 @@
 {
   "pageId": "page-021",
   "pageNumber": 20,
-  "sourceImage": "page-021.png",
+  "sourceImage": "page-21.png",
   "rawText": "_--~—s«* The second child of James H. and Pearl C. Francis, born July 6, 1911. ' in Enfield, N.C. He attended Daniel Chapel Elementery school, Henderson ‘Institute and Eastman High School. ac he Bis age ae +) = _ ball. Unfortunately, an injury to his right shoulder, early in his life, - curtailed his participation in any activity that necessitated a throwing enjoyed most sports but he especially liked to hunt and play base- pes eee Ce as _ ‘motion with his right arm. He did however, continue to hunt whenever possi- va = die. ( Note: He eaxmed a letter in sports at Henderson Institute.) Ga He joined Daniel Chapel Baptist Church at an early age and the religious training he received there as well as in his home, was the foundation for the philosophy that he lived by all of his life.",
   "cleanText": "_--~ s * The second child of James H. and Pearl C. Francis, born July 6, 1911. ' in Enfield, N.C. He attended Daniel Chapel Elementery school, Henderson  Institute and Eastman High School. ac he Bis age ae +) = _ ball. Unfortunately, an injury to his right shoulder, early in his life, - curtailed his participation in any activity that necessitated a throwing enjoyed most sports but he especially liked to hunt and play base- pes eee Ce as _  motion with his right arm. He did however, continue to hunt whenever possi- va = die. ( Note: He eaxmed a letter in sports at Henderson Institute.) Ga He joined Daniel Chapel Baptist Church at an early age and the religious training he received there as well as in his home, was the foundation for the philosophy that he lived by all of his life.",
   "averageConfidence": 84.5,
@@ -1738,5 +1738,9 @@
       "word": 10
     }
   ],
-  "originalPageNumber": 21
+  "originalPageNumber": 21,
+  "readingPosition": 20,
+  "displayNumber": 20,
+  "originalPrintedPageNumber": 21,
+  "sourceFile": "page-21.png"
 }

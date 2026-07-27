@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Re-run Tesseract with full TSV output for all 91 pages.
+ * Re-run Tesseract with full TSV output for all 91 physical source pages.
  * Generates structured JSON per Tony's spec:
  *   src/data/search/ocr/raw/    — raw TSV files
  *   src/data/search/ocr/pages/   — structured JSON per page
@@ -17,6 +17,8 @@ import { promisify } from "node:util";
 import fs from "node:fs/promises";
 import path from "node:path";
 import {
+  INACTIVE_PAGES,
+  TOTAL_READING_PAGES,
   originalPageNumberForPageId,
   pageNumberForPageId,
   pageRecordForPageId,
@@ -146,16 +148,22 @@ function parseTsv(tsvContent, pageNum) {
 
   const pageId = `page-${pad3(pageNum)}`;
   const pageRecord = pageRecordForPageId(pageId);
+  const activePageNumber = pageNumberForPageId(pageId) ?? null;
+  const activeReadingPosition = readingPositionForPageId(pageId) ?? null;
+  const inactive = activePageNumber === null;
 
   return {
     pageId,
-    pageNumber: pageNumberForPageId(pageId) ?? pageNum,
-    readingPosition: readingPositionForPageId(pageId) ?? pageNum,
-    displayNumber: pageNumberForPageId(pageId) ?? pageNum,
+    pageNumber: activePageNumber,
+    readingPosition: activeReadingPosition,
+    displayNumber: activePageNumber,
     originalPrintedPageNumber: originalPageNumberForPageId(pageId) ?? pageNum,
     originalPageNumber: originalPageNumberForPageId(pageId) ?? pageNum,
     sourceFile: sourceFileForPageId(pageId) ?? `page-${pad3(pageNum)}.png`,
     sourceImage: pageRecord?.sourceFile ?? `page-${pad3(pageNum)}.png`,
+    inactive,
+    inactiveReason: inactive ? pageRecord?.inactiveReason : undefined,
+    duplicateOf: inactive ? pageRecord?.duplicateOf : undefined,
     rawText: rawText,
     cleanText: cleanText,
     averageConfidence: Math.round(avgConf * 10) / 10,
@@ -214,7 +222,15 @@ async function main() {
   const report = {
     generatedAt: new Date().toISOString(),
     engine: "Tesseract 5.5.2",
-    totalPages: TOTAL_PAGES,
+    totalPages: TOTAL_READING_PAGES,
+    totalPhysicalPages: TOTAL_PAGES,
+    activeReadingPages: TOTAL_READING_PAGES,
+    inactivePages: INACTIVE_PAGES.map((page) => ({
+      pageId: page.pageId,
+      sourceFile: page.sourceFile,
+      duplicateOf: page.duplicateOf,
+      inactiveReason: page.inactiveReason,
+    })),
     successfulPages: successPages.length,
     failedPages: failedPages.length,
     totalWords: totalWords,

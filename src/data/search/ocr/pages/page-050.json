@@ -1,7 +1,7 @@
 {
   "pageId": "page-050",
   "pageNumber": 49,
-  "sourceImage": "page-050.png",
+  "sourceImage": "page-50.png",
   "rawText": "| ee on oo NAME: DATE OF BIRTH: PLACE OF BIRTH: MOTHER’S NAME: FATHER’S NAME: BIRTH ORDER: OCCUPATION: RELATIONSHIP: TALENTS: SKILLS: GOALS: DISLIKES: OFFSPRING: MOTTO: NAME: DATE OF BIRTH: PLACE OF BIRTH: WIFE’S NAME: MOTHER’S NAME: FATHER’S NAME: BIRTH GRDER: OCCUPATION: RELATIONSHIP: INTERESTS: ABILITIES: DISLIKES: GOALS: OFFSPRING: Erdine Francis Eatmon September 28, 1942 Enfield, North Carolina Eulilla Goins Francis Eddie Rufus Francis, Sr. Seventh child of eleven children Secretary at BCBSNCA, and a student at Prince George's Community College. Granddaughter Have not discovered one at the present time. PC Computer My goals are to help my children to escape the violence and drugs that are so prevalent in our society today. | dislike the young people of today’s society who do not have respect for themselves or for others. Camilla Regina and George, Jr. Education is our passport to the future, for tomorrow belongs to the people who prepare for it today. George Glenn Eatmon, Sr. January 6, 1937 Macro, N.C. Erdine Francis Eatmon Bobree Mozell Eatmon Glenn Herbert Eatmon Second child of four children Retired from Sears Roebuck & Company Grandson-in-law Deep Sea Fishing Working with the young boys in my community Young people who think the world owes them something, but they don’t have anything to give in return. My goals are to see my son and daughter reach their goals in life, and to be successful. Camilla Regina and George, Jr. SAAS - SRS Re Saves Do ee ee fe Oe te <2\", ih. SO te We a A Sey te Oh ER ae",
   "cleanText": "| ee on oo NAME: DATE OF BIRTH: PLACE OF BIRTH: MOTHER S NAME: FATHER S NAME: BIRTH ORDER: OCCUPATION: RELATIONSHIP: TALENTS: SKILLS: GOALS: DISLIKES: OFFSPRING: MOTTO: NAME: DATE OF BIRTH: PLACE OF BIRTH: WIFE S NAME: MOTHER S NAME: FATHER S NAME: BIRTH GRDER: OCCUPATION: RELATIONSHIP: INTERESTS: ABILITIES: DISLIKES: GOALS: OFFSPRING: Erdine Francis Eatmon September 28, 1942 Enfield, North Carolina Eulilla Goins Francis Eddie Rufus Francis, Sr. Seventh child of eleven children Secretary at BCBSNCA, and a student at Prince George's Community College. Granddaughter Have not discovered one at the present time. PC Computer My goals are to help my children to escape the violence and drugs that are so prevalent in our society today. | dislike the young people of today s society who do not have respect for themselves or for others. Camilla Regina and George, Jr. Education is our passport to the future, for tomorrow belongs to the people who prepare for it today. George Glenn Eatmon, Sr. January 6, 1937 Macro, N.C. Erdine Francis Eatmon Bobree Mozell Eatmon Glenn Herbert Eatmon Second child of four children Retired from Sears Roebuck & Company Grandson-in-law Deep Sea Fishing Working with the young boys in my community Young people who think the world owes them something, but they don t have anything to give in return. My goals are to see my son and daughter reach their goals in life, and to be successful. Camilla Regina and George, Jr. SAAS - SRS Re Saves Do ee ee fe Oe te <2\", ih. SO te We a A Sey te Oh ER ae",
   "averageConfidence": 87.9,
@@ -3094,5 +3094,9 @@
       "word": 2
     }
   ],
-  "originalPageNumber": 50
+  "originalPageNumber": 50,
+  "readingPosition": 49,
+  "displayNumber": 49,
+  "originalPrintedPageNumber": 50,
+  "sourceFile": "page-50.png"
 }

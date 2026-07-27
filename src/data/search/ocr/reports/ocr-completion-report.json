@@ -1,7 +1,7 @@
 {
   "generatedAt": "2026-07-26T13:19:30.532Z",
   "engine": "Tesseract 5.5.2",
-  "totalPages": 91,
+  "totalPages": 90,
   "successfulPages": 91,
   "failedPages": 0,
   "totalWords": 17621,
@@ -314,5 +314,15 @@
     "structuredJson": "src/data/search/ocr/pages/",
     "corrections": "src/data/search/ocr/corrections/",
     "reports": "src/data/search/ocr/reports/"
-  }
+  },
+  "totalPhysicalPages": 91,
+  "activeReadingPages": 90,
+  "inactivePages": [
+    {
+      "pageId": "page-007",
+      "sourceFile": "page-07.png",
+      "duplicateOf": "page-006",
+      "inactiveReason": "Duplicate scan preserved for audit but excluded from the active 90-page reading sequence per Tony clarification."
+    }
+  ]
 }

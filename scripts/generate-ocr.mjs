@@ -2,7 +2,7 @@
 /**
  * OCR Generation Script for FVB v21.1
  * 
- * Processes all 91 pages using Tesseract CLI with ImageMagick preprocessing.
+ * Processes all 91 physical source pages using Tesseract CLI with ImageMagick preprocessing.
  * NEVER touches archival masters — all preprocessing done on temporary copies.
  * 
  * Usage: node scripts/generate-ocr.mjs
@@ -16,6 +16,8 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync, rmSync } from "fs";
 import { join } from "path";
 import { tmpdir } from "os";
 import {
+  INACTIVE_PAGES,
+  TOTAL_READING_PAGES,
   originalPageNumberForPageId,
   pageNumberForPageId,
   pageRecordForPageId,
@@ -231,15 +233,21 @@ function processPage(pageNum) {
 
   const pageId = `page-${padded}`;
   const pageRecord = pageRecordForPageId(pageId);
+  const activePageNumber = pageNumberForPageId(pageId) ?? null;
+  const activeReadingPosition = readingPositionForPageId(pageId) ?? null;
+  const inactive = activePageNumber === null;
   const output = {
     pageId,
-    pageNumber: pageNumberForPageId(pageId) ?? pageNum,
-    readingPosition: readingPositionForPageId(pageId) ?? pageNum,
-    displayNumber: pageNumberForPageId(pageId) ?? pageNum,
+    pageNumber: activePageNumber,
+    readingPosition: activeReadingPosition,
+    displayNumber: activePageNumber,
     originalPrintedPageNumber: originalPageNumberForPageId(pageId) ?? pageNum,
     originalPageNumber: originalPageNumberForPageId(pageId) ?? pageNum,
     sourceFile: sourceFileForPageId(pageId) ?? `page-${String(pageNum).padStart(2, "0")}.png`,
     sourceImage: pageRecord?.sourceFile ?? `page-${String(pageNum).padStart(2, "0")}.png`,
+    inactive,
+    inactiveReason: inactive ? pageRecord?.inactiveReason : undefined,
+    duplicateOf: inactive ? pageRecord?.duplicateOf : undefined,
     rawText: result.rawText,
     cleanedText: result.cleanedText,
     confidence: result.confidence,
@@ -303,7 +311,15 @@ function main() {
 
   const report = {
     generatedAt: new Date().toISOString(),
-    totalPages: 91,
+    totalPages: TOTAL_READING_PAGES,
+    totalPhysicalPages: 91,
+    activeReadingPages: TOTAL_READING_PAGES,
+    inactivePages: INACTIVE_PAGES.map((page) => ({
+      pageId: page.pageId,
+      sourceFile: page.sourceFile,
+      duplicateOf: page.duplicateOf,
+      inactiveReason: page.inactiveReason,
+    })),
     pagesProcessed: succeeded.length,
     pagesFailed: failed.length,
     lowConfidencePages: lowConfidence.map(r => ({

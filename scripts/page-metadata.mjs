@@ -10,16 +10,18 @@ export const readingOrderManifest = JSON.parse(
 );
 
 export const READING_ORDER = readingOrderManifest.pages;
+export const INACTIVE_PAGES = readingOrderManifest.inactivePages || [];
 export const TOTAL_READING_PAGES = readingOrderManifest.totalPages;
 export const ACTIVE_PAGE_IDS = READING_ORDER.map((page) => page.pageId);
 
 const pagesById = new Map(READING_ORDER.map((page) => [page.pageId, page]));
+const inactivePagesById = new Map(INACTIVE_PAGES.map((page) => [page.pageId, page]));
 const pagesByReadingPosition = new Map(
   READING_ORDER.map((page) => [page.readingPosition, page])
 );
 
 export function pageRecordForPageId(pageId) {
-  return pagesById.get(pageId);
+  return pagesById.get(pageId) ?? inactivePagesById.get(pageId);
 }
 
 export function pageRecordForReadingPosition(readingPosition) {
@@ -35,13 +37,17 @@ export function readingPositionForPageId(pageId) {
 }
 
 export function originalPageNumberForPageId(pageId) {
-  return pagesById.get(pageId)?.originalPrintedPageNumber ?? null;
+  return pageRecordForPageId(pageId)?.originalPrintedPageNumber ?? null;
 }
 
 export function sourceFileForPageId(pageId) {
-  return pagesById.get(pageId)?.sourceFile;
+  return pageRecordForPageId(pageId)?.sourceFile;
 }
 
 export function isActivePageId(pageId) {
   return pagesById.has(pageId);
+}
+
+export function inactivePageRecordForPageId(pageId) {
+  return inactivePagesById.get(pageId);
 }

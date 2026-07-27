@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 const KEY = "fvb-v21-bookmarks";
 const VERSION_KEY = "fvb-v21-bookmarks-version";
-const CURRENT_VERSION = "authoritative-reading-order-91";
-const MAX_PAGE = 91;
+const CURRENT_VERSION = "authoritative-reading-order-90";
+const MAX_PAGE = 90;
 
 function normalizeBookmarks(value: unknown, maxPage = MAX_PAGE) {
   if (!Array.isArray(value)) return [];

@@ -1,7 +1,7 @@
 {
   "pageId": "page-080",
   "pageNumber": 79,
-  "sourceImage": "page-080.png",
+  "sourceImage": "page-80.png",
   "rawText": "78 Left: ARVETTE and ROBERT HARRIS, JR. Bottom left: AISHA ANN HARRIS Bottom right: MARCUS JOHN HARRIS (Biographies on the next page.)",
   "cleanText": "78 Left: ARVETTE and ROBERT HARRIS, JR. Bottom left: AISHA ANN HARRIS Bottom right: MARCUS JOHN HARRIS (Biographies on the next page.)",
   "averageConfidence": 92.2,
@@ -274,5 +274,9 @@
       "word": 1
     }
   ],
-  "originalPageNumber": 80
+  "originalPageNumber": 80,
+  "readingPosition": 79,
+  "displayNumber": 79,
+  "originalPrintedPageNumber": 80,
+  "sourceFile": "page-80.png"
 }

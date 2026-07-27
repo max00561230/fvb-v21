@@ -1,7 +1,7 @@
 {
   "pageId": "page-012",
   "pageNumber": 11,
-  "sourceImage": "page-012.png",
+  "sourceImage": "page-12.png",
   "rawText": "FRANCIS QUILTS HANDMADE BY PEARL C,",
   "cleanText": "FRANCIS QUILTS HANDMADE BY PEARL C,",
   "averageConfidence": 91.7,
@@ -82,5 +82,9 @@
       "word": 5
     }
   ],
-  "originalPageNumber": 12
+  "originalPageNumber": 12,
+  "readingPosition": 11,
+  "displayNumber": 11,
+  "originalPrintedPageNumber": 12,
+  "sourceFile": "page-12.png"
 }

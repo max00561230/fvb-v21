@@ -1,7 +1,7 @@
 {
   "pageId": "page-019",
   "pageNumber": 18,
-  "sourceImage": "page-019.png",
+  "sourceImage": "page-19.png",
   "rawText": "YVONNE F. SAMUELS DeO.Bos svanuary 26, 2941 PLACE: Newport News, Virginia MOTHER: Victoria S. Francis FATHER: Copey Roy Francis BIRTH ORDER: Third of four children OCCUPATION: Postal Service Clerk RELATIONSHIP: Daughter of Copey Roy Francis HOBBIES/INTERESTS: Oil painting; reading movies TALENTS/ABILITIES/SKILLS: Sewing; crocheting LIKES: The fact that most of my friends have been (so) for more than thirty-five years FAVORITE SAYING/MOTTO: Today is the first day of the est of your life. ASSPIRATIONS/GOALS: Retirement in two years OFFSPRING: Gilbert L. Samuels Wildl AL. $s § ¥. PAP Ss # 3 é¢ , Yee tf, To YG eee",
   "cleanText": "YVONNE F. SAMUELS DeO.Bos svanuary 26, 2941 PLACE: Newport News, Virginia MOTHER: Victoria S. Francis FATHER: Copey Roy Francis BIRTH ORDER: Third of four children OCCUPATION: Postal Service Clerk RELATIONSHIP: Daughter of Copey Roy Francis HOBBIES/INTERESTS: Oil painting; reading movies TALENTS/ABILITIES/SKILLS: Sewing; crocheting LIKES: The fact that most of my friends have been (so) for more than thirty-five years FAVORITE SAYING/MOTTO: Today is the first day of the est of your life. ASSPIRATIONS/GOALS: Retirement in two years OFFSPRING: Gilbert L. Samuels Wildl AL. $s    . PAP Ss # 3    , Yee tf, To YG eee",
   "averageConfidence": 78.3,
@@ -1174,5 +1174,9 @@
       "word": 1
     }
   ],
-  "originalPageNumber": 19
+  "originalPageNumber": 19,
+  "readingPosition": 18,
+  "displayNumber": 18,
+  "originalPrintedPageNumber": 19,
+  "sourceFile": "page-19.png"
 }
