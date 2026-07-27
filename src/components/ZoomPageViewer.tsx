@@ -43,7 +43,7 @@ export function ZoomPageViewer({ page }: { page: BookPage }) {
     <div
       ref={target}
       className="zoom-viewer"
-      aria-label={`Zoomable page ${page.pageNumber}`}
+      aria-label={`Zoomable page ${page.displayNumber}`}
     />
   );
 }

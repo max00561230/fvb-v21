@@ -9,7 +9,7 @@
     "validate:pages": "node scripts/validate-pages.mjs",
     "generate:ocr": "node scripts/generate-ocr.mjs",
     "build:search-index": "node scripts/build-search-index.mjs",
-    "prebuild": "npm run build:assets --if-present && npm run validate:pages --if-present && npm run build:search-index --if-present",
+    "prebuild": "npm run build:assets --if-present && npm run build:search-index --if-present && npm run validate:pages --if-present",
     "build": "vite build",
     "preview": "vite preview"
   },

@@ -14,21 +14,21 @@ export function ThumbnailStrip({
       <div className="thumbnail-list">
         {pages.map((page) => (
           <button
-            key={page.id}
-            className={`thumbnail-item ${page.pageNumber === currentPage ? "active" : ""}`}
-            onClick={() => onSelect(page.pageNumber)}
-            aria-label={`Go to page ${page.pageNumber}`}
-            aria-current={page.pageNumber === currentPage}
+            key={page.pageId}
+            className={`thumbnail-item ${page.displayNumber === currentPage ? "active" : ""}`}
+            onClick={() => onSelect(page.displayNumber)}
+            aria-label={`Go to page ${page.displayNumber}`}
+            aria-current={page.displayNumber === currentPage}
           >
             <img
               src={page.thumbnailSrc}
-              alt={`Page ${page.pageNumber}`}
+              alt={`Page ${page.displayNumber}`}
               loading="lazy"
               decoding="async"
               width={60}
               height={80}
             />
-            <span className="thumbnail-number">{page.pageNumber}</span>
+            <span className="thumbnail-number">{page.displayNumber}</span>
           </button>
         ))}
       </div>

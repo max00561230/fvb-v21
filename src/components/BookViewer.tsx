@@ -23,18 +23,18 @@ export function BookViewer({
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [hotspots, setHotspots] = useState<PageHotspot[]>([]);
 
-  const currentPage = manifest.pages.find((p) => p.pageNumber === pageNumber) ?? manifest.pages[0];
+  const currentPage = manifest.pages.find((p) => p.displayNumber === pageNumber) ?? manifest.pages[0];
 
   // Load hotspots for current page
   useEffect(() => {
     fetch("/data/hotspots.json")
       .then((r) => r.json())
       .then((data: HotspotsManifest) => {
-        const pageHotspots = data.hotspots.filter((h) => h.pageNumber === pageNumber);
+        const pageHotspots = data.hotspots.filter((h) => h.pageNumber === currentPage.displayNumber);
         setHotspots(pageHotspots);
       })
       .catch(() => setHotspots([]));
-  }, [pageNumber]);
+  }, [currentPage.displayNumber]);
 
   // Fullscreen handling
   useEffect(() => {

@@ -29,7 +29,7 @@ export function ResponsivePageImage({
         sizes="(max-width: 699px) 100vw, (max-width: 1199px) 90vw, 1100px"
         width={page.width}
         height={page.height}
-        alt={`Family heritage book page ${page.pageNumber}`}
+        alt={`Family heritage book page ${page.displayNumber}`}
         className="page-image"
         draggable={false}
         loading={priority ? "eager" : "lazy"}

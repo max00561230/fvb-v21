@@ -15,7 +15,13 @@ import { execSync } from "child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync, rmSync } from "fs";
 import { join } from "path";
 import { tmpdir } from "os";
-import { originalPageNumberForPageId, pageNumberForPageId } from "./page-metadata.mjs";
+import {
+  originalPageNumberForPageId,
+  pageNumberForPageId,
+  pageRecordForPageId,
+  readingPositionForPageId,
+  sourceFileForPageId
+} from "./page-metadata.mjs";
 
 const TESSERACT = "/opt/homebrew/bin/tesseract";
 const PROJECT_ROOT = new URL("..", import.meta.url).pathname;
@@ -224,11 +230,16 @@ function processPage(pageNum) {
   }
 
   const pageId = `page-${padded}`;
+  const pageRecord = pageRecordForPageId(pageId);
   const output = {
     pageId,
     pageNumber: pageNumberForPageId(pageId) ?? pageNum,
+    readingPosition: readingPositionForPageId(pageId) ?? pageNum,
+    displayNumber: pageNumberForPageId(pageId) ?? pageNum,
+    originalPrintedPageNumber: originalPageNumberForPageId(pageId) ?? pageNum,
     originalPageNumber: originalPageNumberForPageId(pageId) ?? pageNum,
-    sourceImage: `page-${String(pageNum).padStart(2, "0")}.png`,
+    sourceFile: sourceFileForPageId(pageId) ?? `page-${String(pageNum).padStart(2, "0")}.png`,
+    sourceImage: pageRecord?.sourceFile ?? `page-${String(pageNum).padStart(2, "0")}.png`,
     rawText: result.rawText,
     cleanedText: result.cleanedText,
     confidence: result.confidence,

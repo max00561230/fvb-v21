@@ -1,41 +1,47 @@
-export const INACTIVE_PAGES = [
-  {
-    id: "page-007",
-    duplicateOf: "page-006",
-    inactiveReason: "Duplicate scan removed from the active 90-page reading sequence.",
-  },
-];
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const inactivePageIds = new Set(INACTIVE_PAGES.map((page) => page.id));
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const READING_ORDER_PATH = path.resolve(__dirname, "../src/data/reading-order.json");
 
-export const ACTIVE_PAGE_IDS = [
-  "page-001",
-  "page-003",
-  "page-004",
-  "page-005",
-  "page-006",
-  ...Array.from({ length: 81 }, (_, index) => `page-${String(index + 8).padStart(3, "0")}`),
-  "page-091",
-  "page-089",
-  "page-002",
-  "page-090",
-];
-
-const activePageNumbers = new Map(
-  ACTIVE_PAGE_IDS.map((pageId, index) => [pageId, index + 1])
+export const readingOrderManifest = JSON.parse(
+  fs.readFileSync(READING_ORDER_PATH, "utf-8")
 );
 
+export const READING_ORDER = readingOrderManifest.pages;
+export const TOTAL_READING_PAGES = readingOrderManifest.totalPages;
+export const ACTIVE_PAGE_IDS = READING_ORDER.map((page) => page.pageId);
+
+const pagesById = new Map(READING_ORDER.map((page) => [page.pageId, page]));
+const pagesByReadingPosition = new Map(
+  READING_ORDER.map((page) => [page.readingPosition, page])
+);
+
+export function pageRecordForPageId(pageId) {
+  return pagesById.get(pageId);
+}
+
+export function pageRecordForReadingPosition(readingPosition) {
+  return pagesByReadingPosition.get(readingPosition);
+}
+
 export function pageNumberForPageId(pageId) {
-  return activePageNumbers.get(pageId);
+  return pagesById.get(pageId)?.displayNumber;
+}
+
+export function readingPositionForPageId(pageId) {
+  return pagesById.get(pageId)?.readingPosition;
 }
 
 export function originalPageNumberForPageId(pageId) {
-  const match = pageId.match(/^page-(\d{3})$/);
-  if (!match) return undefined;
+  return pagesById.get(pageId)?.originalPrintedPageNumber ?? null;
+}
 
-  return Number(match[1]);
+export function sourceFileForPageId(pageId) {
+  return pagesById.get(pageId)?.sourceFile;
 }
 
 export function isActivePageId(pageId) {
-  return activePageNumbers.has(pageId) && !inactivePageIds.has(pageId);
+  return pagesById.has(pageId);
 }

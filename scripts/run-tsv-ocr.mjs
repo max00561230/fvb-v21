@@ -16,7 +16,13 @@ import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { originalPageNumberForPageId, pageNumberForPageId } from "./page-metadata.mjs";
+import {
+  originalPageNumberForPageId,
+  pageNumberForPageId,
+  pageRecordForPageId,
+  readingPositionForPageId,
+  sourceFileForPageId
+} from "./page-metadata.mjs";
 
 const execFileAsync = promisify(execFile);
 
@@ -139,12 +145,17 @@ function parseTsv(tsvContent, pageNum) {
     .trim();
 
   const pageId = `page-${pad3(pageNum)}`;
+  const pageRecord = pageRecordForPageId(pageId);
 
   return {
     pageId,
     pageNumber: pageNumberForPageId(pageId) ?? pageNum,
+    readingPosition: readingPositionForPageId(pageId) ?? pageNum,
+    displayNumber: pageNumberForPageId(pageId) ?? pageNum,
+    originalPrintedPageNumber: originalPageNumberForPageId(pageId) ?? pageNum,
     originalPageNumber: originalPageNumberForPageId(pageId) ?? pageNum,
-    sourceImage: `page-${pad3(pageNum)}.png`,
+    sourceFile: sourceFileForPageId(pageId) ?? `page-${pad3(pageNum)}.png`,
+    sourceImage: pageRecord?.sourceFile ?? `page-${pad3(pageNum)}.png`,
     rawText: rawText,
     cleanText: cleanText,
     averageConfidence: Math.round(avgConf * 10) / 10,

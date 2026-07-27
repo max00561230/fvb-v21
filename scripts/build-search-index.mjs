@@ -37,8 +37,12 @@ async function loadOcrPages(activePages) {
         const data = JSON.parse(await fs.readFile(fpath, "utf-8"));
         pages.push({
           pageNumber: activePage.pageNumber,
+          readingPosition: activePage.readingPosition,
+          displayNumber: activePage.displayNumber,
+          originalPrintedPageNumber: activePage.originalPrintedPageNumber,
           originalPageNumber: activePage.originalPageNumber,
-          pageId: activePage.id,
+          pageId: activePage.pageId,
+          sourceFile: activePage.sourceFile,
           text: data.cleanText || data.rawText || "",
           wordCount: data.wordCount || 0,
           averageConfidence: data.averageConfidence || 0,
@@ -58,8 +62,12 @@ async function loadOcrPages(activePages) {
         const data = JSON.parse(await fs.readFile(fpath, "utf-8"));
         pages.push({
           pageNumber: activePage.pageNumber,
+          readingPosition: activePage.readingPosition,
+          displayNumber: activePage.displayNumber,
+          originalPrintedPageNumber: activePage.originalPrintedPageNumber,
           originalPageNumber: activePage.originalPageNumber,
-          pageId: activePage.id,
+          pageId: activePage.pageId,
+          sourceFile: activePage.sourceFile,
           text: data.cleanedText || data.rawText || "",
           wordCount: data.wordCount || 0,
           averageConfidence: data.confidence || 0,
@@ -70,7 +78,7 @@ async function loadOcrPages(activePages) {
     }
   }
   
-  return pages.sort((a, b) => a.pageNumber - b.pageNumber);
+  return pages.sort((a, b) => a.readingPosition - b.readingPosition);
 }
 
 async function loadPeople() {
@@ -91,8 +99,12 @@ async function main() {
   // Build page entries
   const pageEntries = ocrPages.map(p => ({
     pageNumber: p.pageNumber,
+    readingPosition: p.readingPosition,
+    displayNumber: p.displayNumber,
+    originalPrintedPageNumber: p.originalPrintedPageNumber,
     originalPageNumber: p.originalPageNumber,
     pageId: p.pageId,
+    sourceFile: p.sourceFile,
     text: p.text,
     wordCount: p.wordCount,
     avgConfidence: p.averageConfidence,

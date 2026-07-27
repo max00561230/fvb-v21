@@ -7,7 +7,11 @@ import searchIndexData from "../data/search/search-index.json";
 
 interface SearchIndexPage {
   pageNumber: number;
+  readingPosition: number;
+  displayNumber: number;
+  originalPrintedPageNumber: number | null;
   pageId: string;
+  sourceFile: string;
   text: string;
   combinedText: string;
   wordCount: number;
@@ -64,12 +68,13 @@ export function SearchPage() {
         const item = hit.item;
         const matchText = hit.matches?.[0]?.value || item.text || item.combinedText;
         const snippet = extractSnippet(matchText, query, 150);
+        const displayNumber = item.displayNumber ?? item.pageNumber;
         pages.push({
           type: "page",
-          title: `Page ${item.pageNumber}`,
+          title: `Page ${displayNumber}`,
           snippet,
-          pageReference: item.pageNumber,
-          url: `/?page=${item.pageNumber}&search=${encodeURIComponent(query)}`,
+          pageReference: displayNumber,
+          url: `/?page=${displayNumber}&search=${encodeURIComponent(query)}`,
           score: 1 - (hit.score || 0),
         });
       }

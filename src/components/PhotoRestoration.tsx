@@ -45,7 +45,7 @@ export function PhotoRestoration() {
   const [status, setStatus] = useState<"editing" | "preview" | "approved">("editing");
   const [loading, setLoading] = useState(true);
   const [notice, setNotice] = useState<string | null>(null);
-  const proofPageLabel = selectedPage ? `Page ${selectedPage.pageNumber}` : PROOF_PAGE_ID;
+  const proofPageLabel = selectedPage ? `Page ${selectedPage.displayNumber}` : PROOF_PAGE_ID;
 
   // Load manifest
   useEffect(() => {
@@ -483,7 +483,7 @@ export function PhotoRestoration() {
     // Export metadata
     const metadata = {
       pageId: selectedPage.id,
-      pageNumber: selectedPage.pageNumber,
+      pageNumber: selectedPage.displayNumber,
       exportedAt: new Date().toISOString(),
       exportedBy: "FVB v21.1 Photo Restoration Tool",
       originalImage: selectedPage.masterSrc,

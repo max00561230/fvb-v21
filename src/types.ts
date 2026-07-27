@@ -1,7 +1,14 @@
 export interface BookPage {
   id: string;
+  pageId: string;
+  readingPosition: number;
+  displayNumber: number;
+  originalPrintedPageNumber: number | null;
+  sourceFile: string;
   pageNumber: number;
-  originalPageNumber?: number;
+  originalPageNumber?: number | null;
+  duplicateOf?: string;
+  metadataNote?: string;
   width: number;
   height: number;
   masterSrc: string;
@@ -105,7 +112,11 @@ export interface SearchResult {
 export interface OcrPageData {
   pageId: string;
   pageNumber: number;
-  originalPageNumber?: number;
+  readingPosition?: number;
+  displayNumber?: number;
+  originalPrintedPageNumber?: number | null;
+  originalPageNumber?: number | null;
+  sourceFile?: string;
   sourceImage: string;
   rawText: string;
   cleanedText: string;
@@ -119,8 +130,12 @@ export interface OcrPageData {
 
 export interface SearchIndexEntry {
   pageNumber: number;
-  originalPageNumber?: number;
+  readingPosition?: number;
+  displayNumber?: number;
+  originalPrintedPageNumber?: number | null;
+  originalPageNumber?: number | null;
   pageId: string;
+  sourceFile?: string;
   text: string;
   title?: string;
 }
