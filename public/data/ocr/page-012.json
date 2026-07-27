@@ -1,6 +1,6 @@
 {
   "pageId": "page-012",
-  "pageNumber": 11,
+  "pageNumber": 10,
   "sourceImage": "page-12.png",
   "rawText": "—\n\n_\n-—\n\nQUILTS HANDMADE BY PEARL C, FRANCTS\n\nrT).\n4a",
   "cleanedText": "—\n\n_\n-—\n\nQUILTS HANDMADE BY PEARL C, FRANCTS\n\nrT).\n4a",
@@ -122,8 +122,8 @@
   "generatedAt": "2026-07-26T01:22:17.706Z",
   "tesseractVersion": "5.5.2",
   "originalPageNumber": 12,
-  "readingPosition": 11,
-  "displayNumber": 11,
+  "readingPosition": 10,
+  "displayNumber": 10,
   "originalPrintedPageNumber": 12,
   "sourceFile": "page-12.png"
 }

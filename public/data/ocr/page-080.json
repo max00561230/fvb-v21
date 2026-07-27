@@ -1,6 +1,6 @@
 {
   "pageId": "page-080",
-  "pageNumber": 79,
+  "pageNumber": 78,
   "sourceImage": "page-80.png",
   "rawText": "78\n\nLeft: ARVETTE and\n\nROBERT HARRIS, JR.\n\nBottom left:\nAISHA ANN HARRIS\n\nBottom right:\nMARCUS JOHN HARRIS\n\n(Biographies\non the next\npage.)",
   "cleanedText": "78\n\nLeft: ARVETTE and\n\nROBERT HARRIS, JR.\n\nBottom left:\nAISHA ANN HARRIS\n\nBottom right:\nMARCUS JOHN HARRIS\n\n(Biographies\non the next\npage.)",
@@ -232,8 +232,8 @@
   "generatedAt": "2026-07-26T02:40:48.059Z",
   "tesseractVersion": "5.5.2",
   "originalPageNumber": 80,
-  "readingPosition": 79,
-  "displayNumber": 79,
+  "readingPosition": 78,
+  "displayNumber": 78,
   "originalPrintedPageNumber": 80,
   "sourceFile": "page-80.png"
 }
