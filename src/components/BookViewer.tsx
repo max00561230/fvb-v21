@@ -256,6 +256,9 @@ export function BookViewer({
           Next ›
         </button>
       </nav>
+      <a className="reader-admin-entry" href="/admin">
+        Admin Tools
+      </a>
     </div>
   );
 }

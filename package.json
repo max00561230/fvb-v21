@@ -7,6 +7,7 @@
     "dev": "vite",
     "build:assets": "node scripts/build-page-assets.mjs",
     "validate:pages": "node scripts/validate-pages.mjs",
+    "validate:admin-tools": "node scripts/validate-admin-tools.mjs",
     "generate:ocr": "node scripts/run-tsv-ocr.mjs",
     "build:search-index": "node scripts/build-search-index.mjs",
     "prebuild": "npm run build:assets --if-present && npm run build:search-index --if-present && npm run validate:pages --if-present",

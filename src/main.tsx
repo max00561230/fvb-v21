@@ -2,10 +2,10 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
+import { AdminGate } from "./components/AdminGate";
+import { AdminTools } from "./components/AdminTools";
 import "./styles.css";
 import "./styles-phase1.css";
-
-const restorationEnabled = import.meta.env.VITE_ENABLE_RESTORATION_TOOLS === "true";
 
 const routes = [
   {
@@ -34,36 +34,27 @@ const routes = [
     },
   },
   {
-    path: "/admin/photo-restoration",
-    lazy: async () => {
-      if (!restorationEnabled) {
-        return { Component: PhotoRestorationPlaceholder };
-      }
-
-      const mod = await import("./components/PhotoRestoration");
-      return { Component: mod.PhotoRestoration };
-    },
+    path: "/admin",
+    element: <AdminGate />,
+    children: [
+      {
+        index: true,
+        element: <AdminTools />,
+      },
+      {
+        path: "photo-restoration",
+        lazy: async () => {
+          const mod = await import("./components/PhotoRestoration");
+          return { Component: mod.PhotoRestoration };
+        },
+      },
+    ],
   },
   {
     path: "*",
     element: <NotFound />,
   },
 ];
-
-function PhotoRestorationPlaceholder() {
-  return (
-    <div className="not-found">
-      <div className="not-found-content">
-        <h1>Phase 1B Placeholder</h1>
-        <p>
-          The private photo restoration workspace is not enabled in this build.
-          Fabric editing remains unavailable to the public reader.
-        </p>
-        <a href="/" className="not-found-link">← Back to Book</a>
-      </div>
-    </div>
-  );
-}
 
 function NotFound() {
   return (
