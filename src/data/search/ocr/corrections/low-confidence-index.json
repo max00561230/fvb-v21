@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-28T02:48:32Z",
+  "sourceReport": "src/data/search/ocr/reports/ocr-completion-report.json",
+  "totalVisiblePages": 90,
+  "lowConfidencePageThreshold": 75,
+  "lowConfidencePageCount": 27,
+  "sortOrder": [
+    "averageConfidence asc",
+    "pageNumber asc"
+  ],
+  "initialBatch": {
+    "batchId": "phase-1a-batch-001",
+    "selectionRule": "First five lowest-confidence visible pages from the OCR completion report.",
+    "status": "queued",
+    "pageIds": [
+      "page-023",
+      "page-091",
+      "page-075",
+      "page-054",
+      "page-055"
+    ]
+  },
+  "pages": [
+    {
+      "pageId": "page-023",
+      "pageNumber": 21,
+      "originalPageNumber": 23,
+      "sourceImage": "page-23.png",
+      "averageConfidence": 0,
+      "lowConfidenceWords": 0,
+      "status": "queued",
+      "correctionFile": "src/data/search/ocr/corrections/page-023.json",
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-091",
+      "pageNumber": 90,
+      "originalPageNumber": 91,
+      "sourceImage": "page-91.png",
+      "averageConfidence": 37.5,
+      "lowConfidenceWords": 40,
+      "status": "queued",
+      "correctionFile": "src/data/search/ocr/corrections/page-091.json",
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-075",
+      "pageNumber": 73,
+      "originalPageNumber": 75,
+      "sourceImage": "page-75.png",
+      "averageConfidence": 45.7,
+      "lowConfidenceWords": 50,
+      "status": "queued",
+      "correctionFile": "src/data/search/ocr/corrections/page-075.json",
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-054",
+      "pageNumber": 52,
+      "originalPageNumber": 54,
+      "sourceImage": "page-54.png",
+      "averageConfidence": 50.6,
+      "lowConfidenceWords": 181,
+      "status": "queued",
+      "correctionFile": "src/data/search/ocr/corrections/page-054.json",
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-055",
+      "pageNumber": 53,
+      "originalPageNumber": 55,
+      "sourceImage": "page-55.png",
+      "averageConfidence": 51,
+      "lowConfidenceWords": 100,
+      "status": "queued",
+      "correctionFile": "src/data/search/ocr/corrections/page-055.json",
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-052",
+      "pageNumber": 50,
+      "originalPageNumber": 52,
+      "sourceImage": "page-52.png",
+      "averageConfidence": 51.5,
+      "lowConfidenceWords": 120,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-059",
+      "pageNumber": 57,
+      "originalPageNumber": 59,
+      "sourceImage": "page-59.png",
+      "averageConfidence": 51.9,
+      "lowConfidenceWords": 168,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-039",
+      "pageNumber": 37,
+      "originalPageNumber": 39,
+      "sourceImage": "page-39.png",
+      "averageConfidence": 52.8,
+      "lowConfidenceWords": 201,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-006",
+      "pageNumber": 5,
+      "originalPageNumber": 6,
+      "sourceImage": "page-06.png",
+      "averageConfidence": 55.9,
+      "lowConfidenceWords": 32,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-047",
+      "pageNumber": 45,
+      "originalPageNumber": 47,
+      "sourceImage": "page-47.png",
+      "averageConfidence": 56.4,
+      "lowConfidenceWords": 115,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-084",
+      "pageNumber": 82,
+      "originalPageNumber": 84,
+      "sourceImage": "page-84.png",
+      "averageConfidence": 57.2,
+      "lowConfidenceWords": 141,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-038",
+      "pageNumber": 36,
+      "originalPageNumber": 38,
+      "sourceImage": "page-38.png",
+      "averageConfidence": 60.1,
+      "lowConfidenceWords": 135,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-073",
+      "pageNumber": 71,
+      "originalPageNumber": 73,
+      "sourceImage": "page-73.png",
+      "averageConfidence": 65.6,
+      "lowConfidenceWords": 86,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-078",
+      "pageNumber": 76,
+      "originalPageNumber": 78,
+      "sourceImage": "page-78.png",
+      "averageConfidence": 68.7,
+      "lowConfidenceWords": 84,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-001",
+      "pageNumber": 1,
+      "originalPageNumber": 1,
+      "sourceImage": "page-01.png",
+      "averageConfidence": 68.9,
+      "lowConfidenceWords": 6,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-040",
+      "pageNumber": 38,
+      "originalPageNumber": 40,
+      "sourceImage": "page-40.png",
+      "averageConfidence": 70.5,
+      "lowConfidenceWords": 39,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-036",
+      "pageNumber": 34,
+      "originalPageNumber": 36,
+      "sourceImage": "page-36.png",
+      "averageConfidence": 70.7,
+      "lowConfidenceWords": 38,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-074",
+      "pageNumber": 72,
+      "originalPageNumber": 74,
+      "sourceImage": "page-74.png",
+      "averageConfidence": 71.5,
+      "lowConfidenceWords": 84,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-004",
+      "pageNumber": 3,
+      "originalPageNumber": 4,
+      "sourceImage": "page-04.png",
+      "averageConfidence": 71.7,
+      "lowConfidenceWords": 41,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-016",
+      "pageNumber": 14,
+      "originalPageNumber": 16,
+      "sourceImage": "page-16.png",
+      "averageConfidence": 71.9,
+      "lowConfidenceWords": 89,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-082",
+      "pageNumber": 80,
+      "originalPageNumber": 82,
+      "sourceImage": "page-82.png",
+      "averageConfidence": 72.1,
+      "lowConfidenceWords": 93,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-026",
+      "pageNumber": 24,
+      "originalPageNumber": 26,
+      "sourceImage": "page-26.png",
+      "averageConfidence": 72.2,
+      "lowConfidenceWords": 32,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-077",
+      "pageNumber": 75,
+      "originalPageNumber": 77,
+      "sourceImage": "page-77.png",
+      "averageConfidence": 72.2,
+      "lowConfidenceWords": 8,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-089",
+      "pageNumber": 87,
+      "originalPageNumber": 89,
+      "sourceImage": "page-89.png",
+      "averageConfidence": 73,
+      "lowConfidenceWords": 37,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-045",
+      "pageNumber": 43,
+      "originalPageNumber": 45,
+      "sourceImage": "page-45.png",
+      "averageConfidence": 73.3,
+      "lowConfidenceWords": 63,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-090",
+      "pageNumber": 88,
+      "originalPageNumber": 90,
+      "sourceImage": "page-90.png",
+      "averageConfidence": 74.7,
+      "lowConfidenceWords": 43,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "pageId": "page-088",
+      "pageNumber": 86,
+      "originalPageNumber": 88,
+      "sourceImage": "page-88.png",
+      "averageConfidence": 74.8,
+      "lowConfidenceWords": 70,
+      "status": "pending-queue",
+      "correctionFile": null,
+      "reviewStatus": "needs-human-review"
+    }
+  ]
+}
+

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "pageId": "page-055",
+  "pageNumber": 53,
+  "sourceImage": "page-55.png",
+  "sourceImagePath": "archive-source/original-scans/page-55.png",
+  "machineOcr": {
+    "path": "src/data/search/ocr/pages/page-055.json",
+    "textFields": [
+      "rawText",
+      "cleanText"
+    ],
+    "averageConfidence": 51,
+    "lowConfidenceWords": 100
+  },
+  "correctedText": null,
+  "reviewedNames": [],
+  "uncertainText": [],
+  "notes": "Queued from low-confidence OCR report; human image review required before adding any correction.",
+  "reviewStatus": "needs-human-review",
+  "reviewer": null,
+  "updatedAt": "2026-07-28T02:48:32Z"
+}
+
