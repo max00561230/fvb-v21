@@ -33,22 +33,37 @@ const routes = [
       return { Component: mod.PersonDetail };
     },
   },
-  ...(restorationEnabled
-    ? [
-        {
-          path: "/admin/photo-restoration",
-          lazy: async () => {
-            const mod = await import("./components/PhotoRestoration");
-            return { Component: mod.PhotoRestoration };
-          },
-        },
-      ]
-    : []),
+  {
+    path: "/admin/photo-restoration",
+    lazy: async () => {
+      if (!restorationEnabled) {
+        return { Component: PhotoRestorationPlaceholder };
+      }
+
+      const mod = await import("./components/PhotoRestoration");
+      return { Component: mod.PhotoRestoration };
+    },
+  },
   {
     path: "*",
     element: <NotFound />,
   },
 ];
+
+function PhotoRestorationPlaceholder() {
+  return (
+    <div className="not-found">
+      <div className="not-found-content">
+        <h1>Phase 1B Placeholder</h1>
+        <p>
+          The private photo restoration workspace is not enabled in this build.
+          Fabric editing remains unavailable to the public reader.
+        </p>
+        <a href="/" className="not-found-link">← Back to Book</a>
+      </div>
+    </div>
+  );
+}
 
 function NotFound() {
   return (
