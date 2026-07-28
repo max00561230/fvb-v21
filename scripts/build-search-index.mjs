@@ -9,6 +9,10 @@
 
 import fs from "node:fs/promises";
 import path from "node:path";
+import {
+  EXPECTED_TOTAL_READING_PAGES,
+  REQUIRED_VISIBLE_PAGE_CHECKPOINTS
+} from "./page-metadata.mjs";
 
 const OCR_DIR = path.resolve("src/data/search/ocr/pages");
 const OLD_OCR_DIR = path.resolve("public/data/ocr");
@@ -20,7 +24,30 @@ const PUBLIC_OUTPUT_PATH = path.resolve("public/data/search-index.json");
 
 async function loadActivePagesManifest() {
   const manifest = JSON.parse(await fs.readFile(PAGES_MANIFEST_PATH, "utf-8"));
-  return manifest.pages || [];
+  const activePages = manifest.pages || [];
+  assertActivePages(activePages, manifest);
+  return activePages;
+}
+
+function assertActivePages(activePages, manifest) {
+  if (manifest.totalPages !== EXPECTED_TOTAL_READING_PAGES || activePages.length !== EXPECTED_TOTAL_READING_PAGES) {
+    throw new Error(`Search index requires ${EXPECTED_TOTAL_READING_PAGES} active pages; got ${activePages.length}/${manifest.totalPages}.`);
+  }
+  if (activePages.some((page) => page.pageId === "page-007" || page.id === "page-007")) {
+    throw new Error("Search index source manifest must not include inactive duplicate page-007 as active.");
+  }
+
+  for (const checkpoint of REQUIRED_VISIBLE_PAGE_CHECKPOINTS) {
+    const page = activePages.find((entry) => entry.displayNumber === checkpoint.displayNumber);
+    if (!page) {
+      throw new Error(`Search index source manifest is missing visible Page ${checkpoint.displayNumber}.`);
+    }
+    if (page.pageId !== checkpoint.pageId || page.sourceFile !== checkpoint.sourceFile) {
+      throw new Error(
+        `Search index source visible Page ${checkpoint.displayNumber} must be ${checkpoint.pageId}/${checkpoint.sourceFile}; got ${page.pageId}/${page.sourceFile}.`
+      );
+    }
+  }
 }
 
 async function loadOcrPages(activePages) {

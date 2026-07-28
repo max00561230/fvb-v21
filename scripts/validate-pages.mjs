@@ -3,13 +3,15 @@ import crypto from "node:crypto";
 import path from "node:path";
 import sharp from "sharp";
 import {
+  EXPECTED_TOTAL_READING_PAGES,
   INACTIVE_PAGES,
   READING_ORDER,
+  REQUIRED_VISIBLE_PAGE_CHECKPOINTS,
   TOTAL_READING_PAGES,
   readingOrderManifest
 } from "./page-metadata.mjs";
 
-const EXPECTED_TOTAL = 90;
+const EXPECTED_TOTAL = EXPECTED_TOTAL_READING_PAGES;
 const SOURCE = path.resolve("archive-source/original-scans");
 const PUBLIC_DATA = path.resolve("public/data");
 const REPORT_PATH = path.resolve("qa/page-order-validation-report.md");
@@ -162,15 +164,11 @@ function validateRuntimePages(runtimeManifest) {
   if (runtimeManifest.totalPages !== EXPECTED_TOTAL || pages.length !== EXPECTED_TOTAL) {
     fail(`Runtime pages manifest has ${pages.length}/${runtimeManifest.totalPages}; expected ${EXPECTED_TOTAL}.`);
   }
+  if (pages.some((entry) => entry.pageId === "page-007" || entry.id === "page-007")) {
+    fail("Runtime active pages must not include inactive duplicate page-007.");
+  }
 
-  const checkpoints = [
-    { displayNumber: 2, pageId: "page-003", sourceFile: "page-03.png", formerVisiblePage: 3 },
-    { displayNumber: 88, pageId: "page-090", sourceFile: "page-90.png", formerVisiblePage: 89 },
-    { displayNumber: 89, pageId: "page-002", sourceFile: "page-02.png", formerVisiblePage: 2 },
-    { displayNumber: 90, pageId: "page-091", sourceFile: "page-91.png", formerVisiblePage: 90 },
-  ];
-
-  for (const checkpoint of checkpoints) {
+  for (const checkpoint of REQUIRED_VISIBLE_PAGE_CHECKPOINTS) {
     const page = pages.find((entry) => entry.displayNumber === checkpoint.displayNumber);
     if (!page) {
       fail(`Missing required visible page checkpoint ${checkpoint.displayNumber}.`);
@@ -178,8 +176,23 @@ function validateRuntimePages(runtimeManifest) {
     }
     if (page.pageId !== checkpoint.pageId || page.sourceFile !== checkpoint.sourceFile) {
       fail(
-        `Visible page ${checkpoint.displayNumber} should use former visible page ${checkpoint.formerVisiblePage} source ${checkpoint.pageId}/${checkpoint.sourceFile}; got ${page.pageId}/${page.sourceFile}.`
+        `Visible page ${checkpoint.displayNumber} should use source ${checkpoint.pageId}/${checkpoint.sourceFile}; got ${page.pageId}/${page.sourceFile}.`
       );
+    }
+  }
+
+  const inactivePage007 = (runtimeManifest.inactivePages || []).find((entry) => entry.pageId === "page-007" || entry.id === "page-007");
+  if (!inactivePage007) {
+    fail("Runtime manifest must preserve page-007 only under inactivePages.");
+  } else {
+    if (inactivePage007.active !== false) {
+      fail("Runtime inactive page-007 must be marked active: false.");
+    }
+    if (inactivePage007.duplicateOf !== "page-006") {
+      fail("Runtime inactive page-007 must keep duplicateOf page-006.");
+    }
+    if (inactivePage007.displayNumber !== null || inactivePage007.readingPosition !== null) {
+      fail("Runtime inactive page-007 must not have visible display or reading positions.");
     }
   }
 
@@ -240,6 +253,18 @@ function validateSearchIndex(searchIndex, runtimeManifest) {
   }
   if (pages.some((entry) => entry.pageId === "page-007")) {
     fail("Inactive duplicate page-007 must not appear in the active search index.");
+  }
+  for (const checkpoint of REQUIRED_VISIBLE_PAGE_CHECKPOINTS) {
+    const entry = pages.find((page) => page.displayNumber === checkpoint.displayNumber);
+    if (!entry) {
+      fail(`Search index is missing visible page checkpoint ${checkpoint.displayNumber}.`);
+      continue;
+    }
+    if (entry.pageId !== checkpoint.pageId || entry.sourceFile !== checkpoint.sourceFile) {
+      fail(
+        `Search index visible page ${checkpoint.displayNumber} should use ${checkpoint.pageId}/${checkpoint.sourceFile}; got ${entry.pageId}/${entry.sourceFile}.`
+      );
+    }
   }
 
   for (const entry of pages) {
