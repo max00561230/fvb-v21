@@ -1,7 +1,13 @@
 {
   "pageId": "page-003",
   "pageNumber": 2,
+  "readingPosition": 2,
+  "displayNumber": 2,
+  "originalPrintedPageNumber": 3,
+  "originalPageNumber": 3,
+  "sourceFile": "page-03.png",
   "sourceImage": "page-03.png",
+  "sourceImagePath": "archive-source/original-scans/page-03.png",
   "rawText": "INTRODUCTION and ACKNOWLEDGEMENTS We wish to thank all of you for your enthusiastic support of our efforts to make this Francis Family reunion a memorable one. You accepted the project of compiling a Family Album as an endeavor of value, and your cooperation made us eager to put together a booklet that you would be proud of. We hope that we have succeeded. We thank you also for your time, your attention to detail, your suggestions, your offers of assistance, and your Shawing Of your skills and talents. We are especially thankful to those whose UNIQUE CONTRIBUTIONS made this album and this reunion a reality: Mattie Francis Carlyle Sally C..Francis Jesse A. Francis Renee D. Exrancis Dennis A. Copeland Exdine F. Eatmon Jacqueline F. Parker _ Patricia Williams Yvonne F. Samuels Douglass C. Summers Doris F. Kinard This Francis Family Album is dedicated, in loving memory, to the values, hard work, and individual attri- butes of James Henry and Pearl Clanton Francis. The purpose of compiling this album is threefold: (1) to in- troduce younger.family members to a brief family history, (2) to enable the family members to get to know one another more intimately, and (3) to inspire and motivate the youngest family members through positive examples. We hope this Album fudfills its purpose; and that it will become a cherished document worthy of the people who have Contributed to it. THE REUNION COMMITTEE Eleanor P. Francis Joan Francis Summers Deris hLeouzse (Farrow) Francis",
   "cleanText": "INTRODUCTION and ACKNOWLEDGEMENTS We wish to thank all of you for your enthusiastic support of our efforts to make this Francis Family reunion a memorable one. You accepted the project of compiling a Family Album as an endeavor of value, and your cooperation made us eager to put together a booklet that you would be proud of. We hope that we have succeeded. We thank you also for your time, your attention to detail, your suggestions, your offers of assistance, and your Shawing Of your skills and talents. We are especially thankful to those whose UNIQUE CONTRIBUTIONS made this album and this reunion a reality: Mattie Francis Carlyle Sally C..Francis Jesse A. Francis Renee D. Exrancis Dennis A. Copeland Exdine F. Eatmon Jacqueline F. Parker _ Patricia Williams Yvonne F. Samuels Douglass C. Summers Doris F. Kinard This Francis Family Album is dedicated, in loving memory, to the values, hard work, and individual attri- butes of James Henry and Pearl Clanton Francis. The purpose of compiling this album is threefold: (1) to in- troduce younger.family members to a brief family history, (2) to enable the family members to get to know one another more intimately, and (3) to inspire and motivate the youngest family members through positive examples. We hope this Album fudfills its purpose; and that it will become a cherished document worthy of the people who have Contributed to it. THE REUNION COMMITTEE Eleanor P. Francis Joan Francis Summers Deris hLeouzse (Farrow) Francis",
   "averageConfidence": 91.9,
@@ -2949,10 +2955,5 @@
       "line": 1,
       "word": 4
     }
-  ],
-  "originalPageNumber": 3,
-  "readingPosition": 2,
-  "displayNumber": 2,
-  "originalPrintedPageNumber": 3,
-  "sourceFile": "page-03.png"
+  ]
 }

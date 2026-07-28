@@ -1,7 +1,13 @@
 {
   "pageId": "page-066",
   "pageNumber": 64,
+  "readingPosition": 64,
+  "displayNumber": 64,
+  "originalPrintedPageNumber": 66,
+  "originalPageNumber": 66,
+  "sourceFile": "page-66.png",
   "sourceImage": "page-66.png",
+  "sourceImagePath": "archive-source/original-scans/page-66.png",
   "rawText": "JEANETTE FRANCIS ROBERTSON DsEOJBe3 :3=3=46 PEACE: ‘Entvelda, *North Carolina MOTHER: Eulilla Francis; Annie Francis FATHER: Eddie Francis; Jesse Francis 1] BIRTH ORDER: Seventh child of Eulilla and Eddie Francis; First child of Annie and Jesse Francis OCCUPATION: Data Communication Specialist RELATIONSHIP: Daughter of Jesse Francis and Eddie Francis HOBBIES/INTERESTS: Jewelry making; Candy making TALENTS /ABILITIES/SKILUS: “Many -—--— Many LIKES: “Mus tes “AreESsanca Crafts DISLIKES: TV remote controls and Sports --- on Sunday OFFSPRING: Annice Veljean LeGrande Patrice Antoinette LeGrande Velvet Renard LeGrande ROOSEVELT ROBERTSON D.O.B.: 3-27-41 PLACE: ~ Rock#Hiill, -South\\-Carotina | a, OCCUPATION: Shipping Supervisor and N. C. Athletic Official RELATIONSHIP: Son-in-law of Jesse and Eddie Francis (Husband of Jeanette Francis Robertson) HOBBIES/INTERESTS: Sports, Sports and Sports LEKES: °“Sports,. “Sports*and: Sports DISLIKES: “My wife controlling the TV 64",
   "cleanText": "JEANETTE FRANCIS ROBERTSON DsEOJBe3 :3=3=46 PEACE:  Entvelda, *North Carolina MOTHER: Eulilla Francis; Annie Francis FATHER: Eddie Francis; Jesse Francis 1] BIRTH ORDER: Seventh child of Eulilla and Eddie Francis; First child of Annie and Jesse Francis OCCUPATION: Data Communication Specialist RELATIONSHIP: Daughter of Jesse Francis and Eddie Francis HOBBIES/INTERESTS: Jewelry making; Candy making TALENTS /ABILITIES/SKILUS:  Many - --  Many LIKES:  Mus tes  AreESsanca Crafts DISLIKES: TV remote controls and Sports --- on Sunday OFFSPRING: Annice Veljean LeGrande Patrice Antoinette LeGrande Velvet Renard LeGrande ROOSEVELT ROBERTSON D.O.B.: 3-27-41 PLACE: ~ Rock#Hiill, -South\\-Carotina | a, OCCUPATION: Shipping Supervisor and N. C. Athletic Official RELATIONSHIP: Son-in-law of Jesse and Eddie Francis (Husband of Jeanette Francis Robertson) HOBBIES/INTERESTS: Sports, Sports and Sports LEKES:   Sports,.  Sports*and: Sports DISLIKES:  My wife controlling the TV 64",
   "averageConfidence": 79.9,
@@ -1545,10 +1551,5 @@
       "line": 1,
       "word": 1
     }
-  ],
-  "originalPageNumber": 66,
-  "readingPosition": 64,
-  "displayNumber": 64,
-  "originalPrintedPageNumber": 66,
-  "sourceFile": "page-66.png"
+  ]
 }

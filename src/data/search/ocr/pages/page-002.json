@@ -1,7 +1,13 @@
 {
   "pageId": "page-002",
   "pageNumber": 89,
+  "readingPosition": 89,
+  "displayNumber": 89,
+  "originalPrintedPageNumber": 2,
+  "originalPageNumber": 2,
+  "sourceFile": "page-02.png",
   "sourceImage": "page-02.png",
+  "sourceImagePath": "archive-source/original-scans/page-02.png",
   "rawText": "A acama/ BY Langston Hughes ; HOLD FAST TO DREAMS HOLD FAST TO DREAMS FOR IF DREAMS DIE FOR WHEN DREAMS GO LIFE IS A BROKEN-WINGED BIRD LIFE IS A BARREN FIELD THAT CANNOT FLY. FROZEN WITH SNOW. (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) You Can Even Change Tomorrow By Russell A. Kemp You can even change tomorrow By the thoughts you think today, For we form and shape our future | By our thoughts along the way. Sometimes we never even dream We can lose some long-sought good, Even throw away our future By not thinking as we should. So, don’t fret about your future. You're deciding it, right now, And it’s shaping up within you! Let God’s wisdom show you how. Choose just what you want to happen, Dwell upon it, give it love. Picture it in vivid detail As you’re guided from above. Yes, you can change your tomorrow By the way you think today! You need never fear your future— Choose and shape it, in this way. Daily Word 13 On the cover: THE FRANCIS FAMILY HOME PLACE Current owner: The Carlyle Family - 89 —E ~ _ i —---+ ~~ — os > _ the _ \" a",
   "cleanText": "A acama/ BY Langston Hughes ; HOLD FAST TO DREAMS HOLD FAST TO DREAMS FOR IF DREAMS DIE FOR WHEN DREAMS GO LIFE IS A BROKEN-WINGED BIRD LIFE IS A BARREN FIELD THAT CANNOT FLY. FROZEN WITH SNOW. (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) (0) You Can Even Change Tomorrow By Russell A. Kemp You can even change tomorrow By the thoughts you think today, For we form and shape our future | By our thoughts along the way. Sometimes we never even dream We can lose some long-sought good, Even throw away our future By not thinking as we should. So, don t fret about your future. You're deciding it, right now, And it s shaping up within you! Let God s wisdom show you how. Choose just what you want to happen, Dwell upon it, give it love. Picture it in vivid detail As you re guided from above. Yes, you can change your tomorrow By the way you think today! You need never fear your future  Choose and shape it, in this way. Daily Word 13 On the cover: THE FRANCIS FAMILY HOME PLACE Current owner: The Carlyle Family - 89  E ~ _ i  ---+ ~~   os > _ the _ \" a",
   "averageConfidence": 87.6,
@@ -2625,10 +2631,5 @@
       "line": 1,
       "word": 14
     }
-  ],
-  "originalPageNumber": 2,
-  "readingPosition": 89,
-  "displayNumber": 89,
-  "originalPrintedPageNumber": 2,
-  "sourceFile": "page-02.png"
+  ]
 }

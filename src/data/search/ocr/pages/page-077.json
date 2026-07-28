@@ -1,7 +1,13 @@
 {
   "pageId": "page-077",
   "pageNumber": 75,
+  "readingPosition": 75,
+  "displayNumber": 75,
+  "originalPrintedPageNumber": 77,
+  "originalPageNumber": 77,
+  "sourceFile": "page-77.png",
   "sourceImage": "page-77.png",
+  "sourceImagePath": "archive-source/original-scans/page-77.png",
   "rawText": "een of © es ee > * “Left Top: Gregory Currie-Carlyle Bottom Left: Malissa Pearson-Caxrlyle Above: Shantique Pearson Biographies — on the next page",
   "cleanText": "een of   es ee > *  Left Top: Gregory Currie-Carlyle Bottom Left: Malissa Pearson-Caxrlyle Above: Shantique Pearson Biographies   on the next page",
   "averageConfidence": 72.2,
@@ -297,10 +303,5 @@
       "line": 1,
       "word": 6
     }
-  ],
-  "originalPageNumber": 77,
-  "readingPosition": 75,
-  "displayNumber": 75,
-  "originalPrintedPageNumber": 77,
-  "sourceFile": "page-77.png"
+  ]
 }

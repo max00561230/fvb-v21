@@ -1,7 +1,13 @@
 {
   "pageId": "page-068",
   "pageNumber": 66,
+  "readingPosition": 66,
+  "displayNumber": 66,
+  "originalPrintedPageNumber": 68,
+  "originalPageNumber": 68,
+  "sourceFile": "page-68.png",
   "sourceImage": "page-68.png",
+  "sourceImagePath": "archive-source/original-scans/page-68.png",
   "rawText": "VELVET RENARD LE GRANDE, III DO. Ba: ° tt=a7=70 PLACE: High Point, North Carolina MOTHER: Jeanette Francis Robertson FATHER: Velvet LeGrande, Jr. BIRTH ORDER: Third and last OCCUPATION: Shipping Clerk RFLATIONSHIP: Grandson of Eddie and Jesse Francis HOBBIES/INTERESTS: Recording music LIKES: Music and Cooking Left: Anice, Patrice | and Velvet Le Grande,III RICKY FRANCIS DO. Be. o) h2=H22=-62 PRACE: ‘Washington; Da 0C. MOTHER: Annie Francis FATHER: Jesse A. Francis BIRTH ORDER: Second child OCCUPATION: Studio Supervisor Over Set-Up RELATIONSHIP: Son of Jesse Francis HOBBIES/INTERESTS: Basketball TALENTS/ABILITIES/SKILLS: Singing OFFSPRING: Robin Francis Racyne Francis G6",
   "cleanText": "VELVET RENARD LE GRANDE, III DO. Ba:   tt=a7=70 PLACE: High Point, North Carolina MOTHER: Jeanette Francis Robertson FATHER: Velvet LeGrande, Jr. BIRTH ORDER: Third and last OCCUPATION: Shipping Clerk RFLATIONSHIP: Grandson of Eddie and Jesse Francis HOBBIES/INTERESTS: Recording music LIKES: Music and Cooking Left: Anice, Patrice | and Velvet Le Grande,III RICKY FRANCIS DO. Be. o) h2=H22=-62 PRACE:  Washington; Da 0C. MOTHER: Annie Francis FATHER: Jesse A. Francis BIRTH ORDER: Second child OCCUPATION: Studio Supervisor Over Set-Up RELATIONSHIP: Son of Jesse Francis HOBBIES/INTERESTS: Basketball TALENTS/ABILITIES/SKILLS: Singing OFFSPRING: Robin Francis Racyne Francis G6",
   "averageConfidence": 82.9,
@@ -1125,10 +1131,5 @@
       "line": 1,
       "word": 1
     }
-  ],
-  "originalPageNumber": 68,
-  "readingPosition": 66,
-  "displayNumber": 66,
-  "originalPrintedPageNumber": 68,
-  "sourceFile": "page-68.png"
+  ]
 }

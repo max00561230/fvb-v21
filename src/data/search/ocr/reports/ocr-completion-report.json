@@ -1,321 +1,8 @@
 {
-  "generatedAt": "2026-07-26T13:19:30.532Z",
-  "engine": "Tesseract 5.5.2",
+  "generatedAt": "2026-07-28T02:40:53.593Z",
+  "engine": "tesseract 5.5.2",
   "totalPages": 90,
-  "successfulPages": 91,
-  "failedPages": 0,
-  "totalWords": 17621,
-  "averageConfidence": 77.9,
-  "lowConfidencePages": [
-    {
-      "page": 2,
-      "lowConfWords": 21
-    },
-    {
-      "page": 4,
-      "lowConfWords": 41
-    },
-    {
-      "page": 5,
-      "lowConfWords": 21
-    },
-    {
-      "page": 6,
-      "lowConfWords": 32
-    },
-    {
-      "page": 7,
-      "lowConfWords": 32
-    },
-    {
-      "page": 10,
-      "lowConfWords": 21
-    },
-    {
-      "page": 11,
-      "lowConfWords": 132
-    },
-    {
-      "page": 13,
-      "lowConfWords": 29
-    },
-    {
-      "page": 14,
-      "lowConfWords": 27
-    },
-    {
-      "page": 16,
-      "lowConfWords": 89
-    },
-    {
-      "page": 17,
-      "lowConfWords": 35
-    },
-    {
-      "page": 18,
-      "lowConfWords": 52
-    },
-    {
-      "page": 19,
-      "lowConfWords": 20
-    },
-    {
-      "page": 20,
-      "lowConfWords": 19
-    },
-    {
-      "page": 21,
-      "lowConfWords": 21
-    },
-    {
-      "page": 22,
-      "lowConfWords": 11
-    },
-    {
-      "page": 24,
-      "lowConfWords": 18
-    },
-    {
-      "page": 25,
-      "lowConfWords": 23
-    },
-    {
-      "page": 26,
-      "lowConfWords": 32
-    },
-    {
-      "page": 27,
-      "lowConfWords": 49
-    },
-    {
-      "page": 28,
-      "lowConfWords": 25
-    },
-    {
-      "page": 29,
-      "lowConfWords": 11
-    },
-    {
-      "page": 30,
-      "lowConfWords": 25
-    },
-    {
-      "page": 31,
-      "lowConfWords": 45
-    },
-    {
-      "page": 32,
-      "lowConfWords": 13
-    },
-    {
-      "page": 33,
-      "lowConfWords": 14
-    },
-    {
-      "page": 34,
-      "lowConfWords": 16
-    },
-    {
-      "page": 35,
-      "lowConfWords": 26
-    },
-    {
-      "page": 36,
-      "lowConfWords": 38
-    },
-    {
-      "page": 37,
-      "lowConfWords": 20
-    },
-    {
-      "page": 38,
-      "lowConfWords": 135
-    },
-    {
-      "page": 39,
-      "lowConfWords": 119
-    },
-    {
-      "page": 40,
-      "lowConfWords": 39
-    },
-    {
-      "page": 44,
-      "lowConfWords": 54
-    },
-    {
-      "page": 45,
-      "lowConfWords": 63
-    },
-    {
-      "page": 46,
-      "lowConfWords": 33
-    },
-    {
-      "page": 47,
-      "lowConfWords": 115
-    },
-    {
-      "page": 48,
-      "lowConfWords": 11
-    },
-    {
-      "page": 49,
-      "lowConfWords": 32
-    },
-    {
-      "page": 50,
-      "lowConfWords": 29
-    },
-    {
-      "page": 51,
-      "lowConfWords": 13
-    },
-    {
-      "page": 52,
-      "lowConfWords": 120
-    },
-    {
-      "page": 53,
-      "lowConfWords": 25
-    },
-    {
-      "page": 54,
-      "lowConfWords": 181
-    },
-    {
-      "page": 55,
-      "lowConfWords": 100
-    },
-    {
-      "page": 56,
-      "lowConfWords": 57
-    },
-    {
-      "page": 58,
-      "lowConfWords": 24
-    },
-    {
-      "page": 59,
-      "lowConfWords": 168
-    },
-    {
-      "page": 61,
-      "lowConfWords": 22
-    },
-    {
-      "page": 62,
-      "lowConfWords": 18
-    },
-    {
-      "page": 63,
-      "lowConfWords": 26
-    },
-    {
-      "page": 64,
-      "lowConfWords": 20
-    },
-    {
-      "page": 65,
-      "lowConfWords": 11
-    },
-    {
-      "page": 66,
-      "lowConfWords": 23
-    },
-    {
-      "page": 67,
-      "lowConfWords": 22
-    },
-    {
-      "page": 68,
-      "lowConfWords": 13
-    },
-    {
-      "page": 70,
-      "lowConfWords": 37
-    },
-    {
-      "page": 71,
-      "lowConfWords": 37
-    },
-    {
-      "page": 72,
-      "lowConfWords": 11
-    },
-    {
-      "page": 73,
-      "lowConfWords": 86
-    },
-    {
-      "page": 74,
-      "lowConfWords": 84
-    },
-    {
-      "page": 75,
-      "lowConfWords": 164
-    },
-    {
-      "page": 76,
-      "lowConfWords": 41
-    },
-    {
-      "page": 78,
-      "lowConfWords": 84
-    },
-    {
-      "page": 79,
-      "lowConfWords": 31
-    },
-    {
-      "page": 81,
-      "lowConfWords": 47
-    },
-    {
-      "page": 82,
-      "lowConfWords": 93
-    },
-    {
-      "page": 84,
-      "lowConfWords": 141
-    },
-    {
-      "page": 85,
-      "lowConfWords": 44
-    },
-    {
-      "page": 86,
-      "lowConfWords": 108
-    },
-    {
-      "page": 87,
-      "lowConfWords": 15
-    },
-    {
-      "page": 88,
-      "lowConfWords": 70
-    },
-    {
-      "page": 89,
-      "lowConfWords": 37
-    },
-    {
-      "page": 90,
-      "lowConfWords": 43
-    },
-    {
-      "page": 91,
-      "lowConfWords": 40
-    }
-  ],
-  "failed": [],
-  "structure": {
-    "rawTsv": "src/data/search/ocr/raw/",
-    "structuredJson": "src/data/search/ocr/pages/",
-    "corrections": "src/data/search/ocr/corrections/",
-    "reports": "src/data/search/ocr/reports/"
-  },
-  "totalPhysicalPages": 91,
+  "pagesProcessed": 90,
   "activeReadingPages": 90,
   "inactivePages": [
     {
@@ -324,5 +11,754 @@
       "duplicateOf": "page-006",
       "inactiveReason": "Duplicate scan preserved for audit but excluded from the active 90-page reading sequence per Tony clarification."
     }
-  ]
+  ],
+  "successfulPages": 90,
+  "failedPages": 0,
+  "totalWords": 17530,
+  "averageConfidence": 78.1,
+  "lowConfidencePageThreshold": 75,
+  "lowConfidencePages": [
+    {
+      "pageId": "page-001",
+      "pageNumber": 1,
+      "originalPageNumber": 1,
+      "averageConfidence": 68.9,
+      "lowConfWords": 6
+    },
+    {
+      "pageId": "page-004",
+      "pageNumber": 3,
+      "originalPageNumber": 4,
+      "averageConfidence": 71.7,
+      "lowConfWords": 41
+    },
+    {
+      "pageId": "page-006",
+      "pageNumber": 5,
+      "originalPageNumber": 6,
+      "averageConfidence": 55.9,
+      "lowConfWords": 32
+    },
+    {
+      "pageId": "page-016",
+      "pageNumber": 14,
+      "originalPageNumber": 16,
+      "averageConfidence": 71.9,
+      "lowConfWords": 89
+    },
+    {
+      "pageId": "page-023",
+      "pageNumber": 21,
+      "originalPageNumber": 23,
+      "averageConfidence": 0,
+      "lowConfWords": 0
+    },
+    {
+      "pageId": "page-026",
+      "pageNumber": 24,
+      "originalPageNumber": 26,
+      "averageConfidence": 72.2,
+      "lowConfWords": 32
+    },
+    {
+      "pageId": "page-036",
+      "pageNumber": 34,
+      "originalPageNumber": 36,
+      "averageConfidence": 70.7,
+      "lowConfWords": 38
+    },
+    {
+      "pageId": "page-038",
+      "pageNumber": 36,
+      "originalPageNumber": 38,
+      "averageConfidence": 60.1,
+      "lowConfWords": 135
+    },
+    {
+      "pageId": "page-039",
+      "pageNumber": 37,
+      "originalPageNumber": 39,
+      "averageConfidence": 52.8,
+      "lowConfWords": 201
+    },
+    {
+      "pageId": "page-040",
+      "pageNumber": 38,
+      "originalPageNumber": 40,
+      "averageConfidence": 70.5,
+      "lowConfWords": 39
+    },
+    {
+      "pageId": "page-045",
+      "pageNumber": 43,
+      "originalPageNumber": 45,
+      "averageConfidence": 73.3,
+      "lowConfWords": 63
+    },
+    {
+      "pageId": "page-047",
+      "pageNumber": 45,
+      "originalPageNumber": 47,
+      "averageConfidence": 56.4,
+      "lowConfWords": 115
+    },
+    {
+      "pageId": "page-052",
+      "pageNumber": 50,
+      "originalPageNumber": 52,
+      "averageConfidence": 51.5,
+      "lowConfWords": 120
+    },
+    {
+      "pageId": "page-054",
+      "pageNumber": 52,
+      "originalPageNumber": 54,
+      "averageConfidence": 50.6,
+      "lowConfWords": 181
+    },
+    {
+      "pageId": "page-055",
+      "pageNumber": 53,
+      "originalPageNumber": 55,
+      "averageConfidence": 51,
+      "lowConfWords": 100
+    },
+    {
+      "pageId": "page-059",
+      "pageNumber": 57,
+      "originalPageNumber": 59,
+      "averageConfidence": 51.9,
+      "lowConfWords": 168
+    },
+    {
+      "pageId": "page-073",
+      "pageNumber": 71,
+      "originalPageNumber": 73,
+      "averageConfidence": 65.6,
+      "lowConfWords": 86
+    },
+    {
+      "pageId": "page-074",
+      "pageNumber": 72,
+      "originalPageNumber": 74,
+      "averageConfidence": 71.5,
+      "lowConfWords": 84
+    },
+    {
+      "pageId": "page-075",
+      "pageNumber": 73,
+      "originalPageNumber": 75,
+      "averageConfidence": 45.7,
+      "lowConfWords": 50
+    },
+    {
+      "pageId": "page-077",
+      "pageNumber": 75,
+      "originalPageNumber": 77,
+      "averageConfidence": 72.2,
+      "lowConfWords": 8
+    },
+    {
+      "pageId": "page-078",
+      "pageNumber": 76,
+      "originalPageNumber": 78,
+      "averageConfidence": 68.7,
+      "lowConfWords": 84
+    },
+    {
+      "pageId": "page-082",
+      "pageNumber": 80,
+      "originalPageNumber": 82,
+      "averageConfidence": 72.1,
+      "lowConfWords": 93
+    },
+    {
+      "pageId": "page-084",
+      "pageNumber": 82,
+      "originalPageNumber": 84,
+      "averageConfidence": 57.2,
+      "lowConfWords": 141
+    },
+    {
+      "pageId": "page-088",
+      "pageNumber": 86,
+      "originalPageNumber": 88,
+      "averageConfidence": 74.8,
+      "lowConfWords": 70
+    },
+    {
+      "pageId": "page-089",
+      "pageNumber": 87,
+      "originalPageNumber": 89,
+      "averageConfidence": 73,
+      "lowConfWords": 37
+    },
+    {
+      "pageId": "page-090",
+      "pageNumber": 88,
+      "originalPageNumber": 90,
+      "averageConfidence": 74.7,
+      "lowConfWords": 43
+    },
+    {
+      "pageId": "page-091",
+      "pageNumber": 90,
+      "originalPageNumber": 91,
+      "averageConfidence": 37.5,
+      "lowConfWords": 40
+    }
+  ],
+  "averageConfidenceByPage": [
+    {
+      "pageId": "page-001",
+      "pageNumber": 1,
+      "originalPageNumber": 1,
+      "averageConfidence": 68.9
+    },
+    {
+      "pageId": "page-003",
+      "pageNumber": 2,
+      "originalPageNumber": 3,
+      "averageConfidence": 91.9
+    },
+    {
+      "pageId": "page-004",
+      "pageNumber": 3,
+      "originalPageNumber": 4,
+      "averageConfidence": 71.7
+    },
+    {
+      "pageId": "page-005",
+      "pageNumber": 4,
+      "originalPageNumber": 5,
+      "averageConfidence": 87.4
+    },
+    {
+      "pageId": "page-006",
+      "pageNumber": 5,
+      "originalPageNumber": 6,
+      "averageConfidence": 55.9
+    },
+    {
+      "pageId": "page-008",
+      "pageNumber": 6,
+      "originalPageNumber": 8,
+      "averageConfidence": 93.9
+    },
+    {
+      "pageId": "page-009",
+      "pageNumber": 7,
+      "originalPageNumber": 9,
+      "averageConfidence": 95.3
+    },
+    {
+      "pageId": "page-010",
+      "pageNumber": 8,
+      "originalPageNumber": 10,
+      "averageConfidence": 93.5
+    },
+    {
+      "pageId": "page-011",
+      "pageNumber": 9,
+      "originalPageNumber": 11,
+      "averageConfidence": 75.2
+    },
+    {
+      "pageId": "page-012",
+      "pageNumber": 10,
+      "originalPageNumber": 12,
+      "averageConfidence": 87.2
+    },
+    {
+      "pageId": "page-013",
+      "pageNumber": 11,
+      "originalPageNumber": 13,
+      "averageConfidence": 82.4
+    },
+    {
+      "pageId": "page-014",
+      "pageNumber": 12,
+      "originalPageNumber": 14,
+      "averageConfidence": 89.2
+    },
+    {
+      "pageId": "page-015",
+      "pageNumber": 13,
+      "originalPageNumber": 15,
+      "averageConfidence": 94.8
+    },
+    {
+      "pageId": "page-016",
+      "pageNumber": 14,
+      "originalPageNumber": 16,
+      "averageConfidence": 71.9
+    },
+    {
+      "pageId": "page-017",
+      "pageNumber": 15,
+      "originalPageNumber": 17,
+      "averageConfidence": 77.7
+    },
+    {
+      "pageId": "page-018",
+      "pageNumber": 16,
+      "originalPageNumber": 18,
+      "averageConfidence": 77.3
+    },
+    {
+      "pageId": "page-019",
+      "pageNumber": 17,
+      "originalPageNumber": 19,
+      "averageConfidence": 78.3
+    },
+    {
+      "pageId": "page-020",
+      "pageNumber": 18,
+      "originalPageNumber": 20,
+      "averageConfidence": 85.6
+    },
+    {
+      "pageId": "page-021",
+      "pageNumber": 19,
+      "originalPageNumber": 21,
+      "averageConfidence": 84.5
+    },
+    {
+      "pageId": "page-022",
+      "pageNumber": 20,
+      "originalPageNumber": 22,
+      "averageConfidence": 91.1
+    },
+    {
+      "pageId": "page-023",
+      "pageNumber": 21,
+      "originalPageNumber": 23,
+      "averageConfidence": 0
+    },
+    {
+      "pageId": "page-024",
+      "pageNumber": 22,
+      "originalPageNumber": 24,
+      "averageConfidence": 80.7
+    },
+    {
+      "pageId": "page-025",
+      "pageNumber": 23,
+      "originalPageNumber": 25,
+      "averageConfidence": 83.5
+    },
+    {
+      "pageId": "page-026",
+      "pageNumber": 24,
+      "originalPageNumber": 26,
+      "averageConfidence": 72.2
+    },
+    {
+      "pageId": "page-027",
+      "pageNumber": 25,
+      "originalPageNumber": 27,
+      "averageConfidence": 75.6
+    },
+    {
+      "pageId": "page-028",
+      "pageNumber": 26,
+      "originalPageNumber": 28,
+      "averageConfidence": 85.1
+    },
+    {
+      "pageId": "page-029",
+      "pageNumber": 27,
+      "originalPageNumber": 29,
+      "averageConfidence": 88.8
+    },
+    {
+      "pageId": "page-030",
+      "pageNumber": 28,
+      "originalPageNumber": 30,
+      "averageConfidence": 79
+    },
+    {
+      "pageId": "page-031",
+      "pageNumber": 29,
+      "originalPageNumber": 31,
+      "averageConfidence": 81.8
+    },
+    {
+      "pageId": "page-032",
+      "pageNumber": 30,
+      "originalPageNumber": 32,
+      "averageConfidence": 86.7
+    },
+    {
+      "pageId": "page-033",
+      "pageNumber": 31,
+      "originalPageNumber": 33,
+      "averageConfidence": 81.8
+    },
+    {
+      "pageId": "page-034",
+      "pageNumber": 32,
+      "originalPageNumber": 34,
+      "averageConfidence": 88.8
+    },
+    {
+      "pageId": "page-035",
+      "pageNumber": 33,
+      "originalPageNumber": 35,
+      "averageConfidence": 76.7
+    },
+    {
+      "pageId": "page-036",
+      "pageNumber": 34,
+      "originalPageNumber": 36,
+      "averageConfidence": 70.7
+    },
+    {
+      "pageId": "page-037",
+      "pageNumber": 35,
+      "originalPageNumber": 37,
+      "averageConfidence": 81
+    },
+    {
+      "pageId": "page-038",
+      "pageNumber": 36,
+      "originalPageNumber": 38,
+      "averageConfidence": 60.1
+    },
+    {
+      "pageId": "page-039",
+      "pageNumber": 37,
+      "originalPageNumber": 39,
+      "averageConfidence": 52.8
+    },
+    {
+      "pageId": "page-040",
+      "pageNumber": 38,
+      "originalPageNumber": 40,
+      "averageConfidence": 70.5
+    },
+    {
+      "pageId": "page-041",
+      "pageNumber": 39,
+      "originalPageNumber": 41,
+      "averageConfidence": 94
+    },
+    {
+      "pageId": "page-042",
+      "pageNumber": 40,
+      "originalPageNumber": 42,
+      "averageConfidence": 95.3
+    },
+    {
+      "pageId": "page-043",
+      "pageNumber": 41,
+      "originalPageNumber": 43,
+      "averageConfidence": 94.5
+    },
+    {
+      "pageId": "page-044",
+      "pageNumber": 42,
+      "originalPageNumber": 44,
+      "averageConfidence": 76.9
+    },
+    {
+      "pageId": "page-045",
+      "pageNumber": 43,
+      "originalPageNumber": 45,
+      "averageConfidence": 73.3
+    },
+    {
+      "pageId": "page-046",
+      "pageNumber": 44,
+      "originalPageNumber": 46,
+      "averageConfidence": 77.5
+    },
+    {
+      "pageId": "page-047",
+      "pageNumber": 45,
+      "originalPageNumber": 47,
+      "averageConfidence": 56.4
+    },
+    {
+      "pageId": "page-048",
+      "pageNumber": 46,
+      "originalPageNumber": 48,
+      "averageConfidence": 88
+    },
+    {
+      "pageId": "page-049",
+      "pageNumber": 47,
+      "originalPageNumber": 49,
+      "averageConfidence": 82.8
+    },
+    {
+      "pageId": "page-050",
+      "pageNumber": 48,
+      "originalPageNumber": 50,
+      "averageConfidence": 87.9
+    },
+    {
+      "pageId": "page-051",
+      "pageNumber": 49,
+      "originalPageNumber": 51,
+      "averageConfidence": 92.3
+    },
+    {
+      "pageId": "page-052",
+      "pageNumber": 50,
+      "originalPageNumber": 52,
+      "averageConfidence": 51.5
+    },
+    {
+      "pageId": "page-053",
+      "pageNumber": 51,
+      "originalPageNumber": 53,
+      "averageConfidence": 81.7
+    },
+    {
+      "pageId": "page-054",
+      "pageNumber": 52,
+      "originalPageNumber": 54,
+      "averageConfidence": 50.6
+    },
+    {
+      "pageId": "page-055",
+      "pageNumber": 53,
+      "originalPageNumber": 55,
+      "averageConfidence": 51
+    },
+    {
+      "pageId": "page-056",
+      "pageNumber": 54,
+      "originalPageNumber": 56,
+      "averageConfidence": 82.5
+    },
+    {
+      "pageId": "page-057",
+      "pageNumber": 55,
+      "originalPageNumber": 57,
+      "averageConfidence": 95.6
+    },
+    {
+      "pageId": "page-058",
+      "pageNumber": 56,
+      "originalPageNumber": 58,
+      "averageConfidence": 85.5
+    },
+    {
+      "pageId": "page-059",
+      "pageNumber": 57,
+      "originalPageNumber": 59,
+      "averageConfidence": 51.9
+    },
+    {
+      "pageId": "page-060",
+      "pageNumber": 58,
+      "originalPageNumber": 60,
+      "averageConfidence": 93.8
+    },
+    {
+      "pageId": "page-061",
+      "pageNumber": 59,
+      "originalPageNumber": 61,
+      "averageConfidence": 85.7
+    },
+    {
+      "pageId": "page-062",
+      "pageNumber": 60,
+      "originalPageNumber": 62,
+      "averageConfidence": 90.9
+    },
+    {
+      "pageId": "page-063",
+      "pageNumber": 61,
+      "originalPageNumber": 63,
+      "averageConfidence": 87.9
+    },
+    {
+      "pageId": "page-064",
+      "pageNumber": 62,
+      "originalPageNumber": 64,
+      "averageConfidence": 91.6
+    },
+    {
+      "pageId": "page-065",
+      "pageNumber": 63,
+      "originalPageNumber": 65,
+      "averageConfidence": 90.6
+    },
+    {
+      "pageId": "page-066",
+      "pageNumber": 64,
+      "originalPageNumber": 66,
+      "averageConfidence": 79.9
+    },
+    {
+      "pageId": "page-067",
+      "pageNumber": 65,
+      "originalPageNumber": 67,
+      "averageConfidence": 80.2
+    },
+    {
+      "pageId": "page-068",
+      "pageNumber": 66,
+      "originalPageNumber": 68,
+      "averageConfidence": 82.9
+    },
+    {
+      "pageId": "page-069",
+      "pageNumber": 67,
+      "originalPageNumber": 69,
+      "averageConfidence": 91.3
+    },
+    {
+      "pageId": "page-070",
+      "pageNumber": 68,
+      "originalPageNumber": 70,
+      "averageConfidence": 79.7
+    },
+    {
+      "pageId": "page-071",
+      "pageNumber": 69,
+      "originalPageNumber": 71,
+      "averageConfidence": 82.3
+    },
+    {
+      "pageId": "page-072",
+      "pageNumber": 70,
+      "originalPageNumber": 72,
+      "averageConfidence": 88.8
+    },
+    {
+      "pageId": "page-073",
+      "pageNumber": 71,
+      "originalPageNumber": 73,
+      "averageConfidence": 65.6
+    },
+    {
+      "pageId": "page-074",
+      "pageNumber": 72,
+      "originalPageNumber": 74,
+      "averageConfidence": 71.5
+    },
+    {
+      "pageId": "page-075",
+      "pageNumber": 73,
+      "originalPageNumber": 75,
+      "averageConfidence": 45.7
+    },
+    {
+      "pageId": "page-076",
+      "pageNumber": 74,
+      "originalPageNumber": 76,
+      "averageConfidence": 80.9
+    },
+    {
+      "pageId": "page-077",
+      "pageNumber": 75,
+      "originalPageNumber": 77,
+      "averageConfidence": 72.2
+    },
+    {
+      "pageId": "page-078",
+      "pageNumber": 76,
+      "originalPageNumber": 78,
+      "averageConfidence": 68.7
+    },
+    {
+      "pageId": "page-079",
+      "pageNumber": 77,
+      "originalPageNumber": 79,
+      "averageConfidence": 83.7
+    },
+    {
+      "pageId": "page-080",
+      "pageNumber": 78,
+      "originalPageNumber": 80,
+      "averageConfidence": 92.2
+    },
+    {
+      "pageId": "page-081",
+      "pageNumber": 79,
+      "originalPageNumber": 81,
+      "averageConfidence": 79.4
+    },
+    {
+      "pageId": "page-082",
+      "pageNumber": 80,
+      "originalPageNumber": 82,
+      "averageConfidence": 72.1
+    },
+    {
+      "pageId": "page-083",
+      "pageNumber": 81,
+      "originalPageNumber": 83,
+      "averageConfidence": 88.4
+    },
+    {
+      "pageId": "page-084",
+      "pageNumber": 82,
+      "originalPageNumber": 84,
+      "averageConfidence": 57.2
+    },
+    {
+      "pageId": "page-085",
+      "pageNumber": 83,
+      "originalPageNumber": 85,
+      "averageConfidence": 82.2
+    },
+    {
+      "pageId": "page-086",
+      "pageNumber": 84,
+      "originalPageNumber": 86,
+      "averageConfidence": 77.8
+    },
+    {
+      "pageId": "page-087",
+      "pageNumber": 85,
+      "originalPageNumber": 87,
+      "averageConfidence": 82.6
+    },
+    {
+      "pageId": "page-088",
+      "pageNumber": 86,
+      "originalPageNumber": 88,
+      "averageConfidence": 74.8
+    },
+    {
+      "pageId": "page-089",
+      "pageNumber": 87,
+      "originalPageNumber": 89,
+      "averageConfidence": 73
+    },
+    {
+      "pageId": "page-090",
+      "pageNumber": 88,
+      "originalPageNumber": 90,
+      "averageConfidence": 74.7
+    },
+    {
+      "pageId": "page-002",
+      "pageNumber": 89,
+      "originalPageNumber": 2,
+      "averageConfidence": 87.6
+    },
+    {
+      "pageId": "page-091",
+      "pageNumber": 90,
+      "originalPageNumber": 91,
+      "averageConfidence": 37.5
+    }
+  ],
+  "failed": [],
+  "removedStaleOutputs": [
+    "src/data/search/ocr/pages/page-007.json",
+    "src/data/search/ocr/raw/page-007.tsv"
+  ],
+  "structure": {
+    "rawTsv": "src/data/search/ocr/raw/",
+    "structuredJson": "src/data/search/ocr/pages/",
+    "corrections": "src/data/search/ocr/corrections/",
+    "reports": "src/data/search/ocr/reports/"
+  }
 }

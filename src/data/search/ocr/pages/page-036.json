@@ -1,7 +1,13 @@
 {
   "pageId": "page-036",
   "pageNumber": 34,
+  "readingPosition": 34,
+  "displayNumber": 34,
+  "originalPrintedPageNumber": 36,
+  "originalPageNumber": 36,
+  "sourceFile": "page-36.png",
   "sourceImage": "page-36.png",
+  "sourceImagePath": "archive-source/original-scans/page-36.png",
   "rawText": "SS AS » eh, a. ee Ee Be. Hk tee * a Me “ “ - Yi f ys rs Aas tS; e ee D.O2s. -<Octeber 20, 1914 PLACE Bnttela, N.C. MOTHER Pearl C. Francis FATHER James H. Francis BIRTH ORDER Patth chad OCCUPATION Homemaker HOBBIES Gardening MARITAL STATUS Married to Wiison Copeland . TALENTS Singing (She was a member of the church choir.) She was also active in various clubs and commitees in fhe chucch.  — MOTTO \"Whatever you do; do your very best.\" DEPARTED THIS LIFE: October 20, 1950. ¥ | OFFSPRING Evelyn :-Christine Copeland Gaines Kenneth olson Copeland Janet Marie Copeland Smith Dennis Axnold Copeland a | Woodrow Wilson Copeland ‘ | ij",
   "cleanText": "SS AS   eh, a. ee Ee Be. Hk tee * a Me     - Yi f ys rs Aas tS; e ee D.O2s. -<Octeber 20, 1914 PLACE Bnttela, N.C. MOTHER Pearl C. Francis FATHER James H. Francis BIRTH ORDER Patth chad OCCUPATION Homemaker HOBBIES Gardening MARITAL STATUS Married to Wiison Copeland . TALENTS Singing (She was a member of the church choir.) She was also active in various clubs and commitees in fhe chucch.   MOTTO \"Whatever you do; do your very best.\" DEPARTED THIS LIFE: October 20, 1950.   | OFFSPRING Evelyn :-Christine Copeland Gaines Kenneth olson Copeland Janet Marie Copeland Smith Dennis Axnold Copeland a | Woodrow Wilson Copeland   | ij",
   "averageConfidence": 70.7,
@@ -1401,10 +1407,5 @@
       "line": 1,
       "word": 1
     }
-  ],
-  "originalPageNumber": 36,
-  "readingPosition": 34,
-  "displayNumber": 34,
-  "originalPrintedPageNumber": 36,
-  "sourceFile": "page-36.png"
+  ]
 }

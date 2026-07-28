@@ -1,26 +1,20 @@
 {
   "pageId": "page-012",
   "pageNumber": 10,
+  "readingPosition": 10,
+  "displayNumber": 10,
+  "originalPrintedPageNumber": 12,
+  "originalPageNumber": 12,
+  "sourceFile": "page-12.png",
   "sourceImage": "page-12.png",
-  "rawText": "FRANCIS QUILTS HANDMADE BY PEARL C,",
-  "cleanText": "FRANCIS QUILTS HANDMADE BY PEARL C,",
-  "averageConfidence": 91.7,
-  "wordCount": 6,
+  "sourceImagePath": "archive-source/original-scans/page-12.png",
+  "rawText": "QUILTS HANDMADE BY PEARL C, FRANCIS (0",
+  "cleanText": "QUILTS HANDMADE BY PEARL C, FRANCIS (0",
+  "averageConfidence": 87.2,
+  "wordCount": 7,
   "lowConfidenceWords": 0,
   "reviewStatus": "machine-generated",
   "words": [
-    {
-      "text": "FRANCIS",
-      "confidence": 79.711029,
-      "x": 1225,
-      "y": 4275,
-      "width": 239,
-      "height": 46,
-      "block": 2,
-      "paragraph": 1,
-      "line": 1,
-      "word": 1
-    },
     {
       "text": "QUILTS",
       "confidence": 96.329163,
@@ -28,7 +22,7 @@
       "y": 4253,
       "width": 204,
       "height": 48,
-      "block": 6,
+      "block": 4,
       "paragraph": 1,
       "line": 1,
       "word": 1
@@ -40,7 +34,7 @@
       "y": 4258,
       "width": 276,
       "height": 46,
-      "block": 6,
+      "block": 4,
       "paragraph": 1,
       "line": 1,
       "word": 2
@@ -52,7 +46,7 @@
       "y": 4266,
       "width": 69,
       "height": 40,
-      "block": 6,
+      "block": 4,
       "paragraph": 1,
       "line": 1,
       "word": 3
@@ -64,7 +58,7 @@
       "y": 4267,
       "width": 173,
       "height": 43,
-      "block": 6,
+      "block": 4,
       "paragraph": 1,
       "line": 1,
       "word": 4
@@ -76,15 +70,34 @@
       "y": 4271,
       "width": 59,
       "height": 44,
-      "block": 6,
+      "block": 4,
       "paragraph": 1,
       "line": 1,
       "word": 5
+    },
+    {
+      "text": "FRANCIS",
+      "confidence": 79.711029,
+      "x": 1225,
+      "y": 4275,
+      "width": 239,
+      "height": 46,
+      "block": 5,
+      "paragraph": 1,
+      "line": 1,
+      "word": 1
+    },
+    {
+      "text": "(0",
+      "confidence": 60.564701,
+      "x": 356,
+      "y": 259,
+      "width": 98,
+      "height": 82,
+      "block": 8,
+      "paragraph": 1,
+      "line": 1,
+      "word": 1
     }
-  ],
-  "originalPageNumber": 12,
-  "readingPosition": 10,
-  "displayNumber": 10,
-  "originalPrintedPageNumber": 12,
-  "sourceFile": "page-12.png"
+  ]
 }

@@ -1,7 +1,13 @@
 {
   "pageId": "page-025",
   "pageNumber": 23,
+  "readingPosition": 23,
+  "displayNumber": 23,
+  "originalPrintedPageNumber": 25,
+  "originalPageNumber": 25,
+  "sourceFile": "page-25.png",
   "sourceImage": "page-25.png",
+  "sourceImagePath": "archive-source/original-scans/page-25.png",
   "rawText": "SS ee ELEANOR PATRICIA FRANCIS D.O2.Bs25 SAprale97 72) 936 PLACE: Washington, D. C. | MOTHER: Doris Louise (Farrow) Francis FATHER: Maurice Emanuel Francis BIRTH: ORDER] First of four children OCCUPATION: Teacher, Blind and Visually Impaired RELATIONSHIP: Daughter of Maurice E. Francis HOBBIES/INTERESTS: Singing; photography; travel; bowling; arts and crafts; reading TALENTS /ABILITIES/SKILLS: Singing; ballroom dancing; reading ana writing braitte LEKES:= Musics singing; 1ce cream; chocolate anything; attend- ing plays and musicals; optimism; generosity DISLIKES: Over-cooked vegetables; pessimism; prejudices; €hesapnrase I can't” FAVORIT SAYING/MOTTO: Where there's a will, there's a way! ASPIRATIONS/GOALS: To enjoy a rewarding and financially secure retirement ina few years MILDRED ELAINE FRANCIS D.O.B.. -OctEober \"5 PLACE: Washington, D:.C. MOTHER: Doris Louise (Farrow) Francis FATHER: Maurice Emanuel Francis BIRTH ORDER: Second child | OCCUPATION: Bio-Statistician RELATIONSHIP: Daughter of Maurice E. Francis HOBBIES/INTERESTS: Tennis; reading; theatre TALENTS/ABILITIES/SKILLS: Statistics; computer LIKES: Good food; good conversation DISLIKES: - Filling out forms; waiting in doctors’ offices; rap music FAVORITE SAYING/MOTTO: Life is not a rehearsal. ASPIRATIONS/GOALS: To obtain a position in the medical/public health field. :",
   "cleanText": "SS ee ELEANOR PATRICIA FRANCIS D.O2.Bs25 SAprale97 72) 936 PLACE: Washington, D. C. | MOTHER: Doris Louise (Farrow) Francis FATHER: Maurice Emanuel Francis BIRTH: ORDER] First of four children OCCUPATION: Teacher, Blind and Visually Impaired RELATIONSHIP: Daughter of Maurice E. Francis HOBBIES/INTERESTS: Singing; photography; travel; bowling; arts and crafts; reading TALENTS /ABILITIES/SKILLS: Singing; ballroom dancing; reading ana writing braitte LEKES:= Musics singing; 1ce cream; chocolate anything; attend- ing plays and musicals; optimism; generosity DISLIKES: Over-cooked vegetables; pessimism; prejudices;  hesapnrase I can't  FAVORIT SAYING/MOTTO: Where there's a will, there's a way! ASPIRATIONS/GOALS: To enjoy a rewarding and financially secure retirement ina few years MILDRED ELAINE FRANCIS D.O.B.. -OctEober \"5 PLACE: Washington, D:.C. MOTHER: Doris Louise (Farrow) Francis FATHER: Maurice Emanuel Francis BIRTH ORDER: Second child | OCCUPATION: Bio-Statistician RELATIONSHIP: Daughter of Maurice E. Francis HOBBIES/INTERESTS: Tennis; reading; theatre TALENTS/ABILITIES/SKILLS: Statistics; computer LIKES: Good food; good conversation DISLIKES: - Filling out forms; waiting in doctors  offices; rap music FAVORITE SAYING/MOTTO: Life is not a rehearsal. ASPIRATIONS/GOALS: To obtain a position in the medical/public health field. :",
   "averageConfidence": 83.5,
@@ -2097,10 +2103,5 @@
       "line": 2,
       "word": 3
     }
-  ],
-  "originalPageNumber": 25,
-  "readingPosition": 23,
-  "displayNumber": 23,
-  "originalPrintedPageNumber": 25,
-  "sourceFile": "page-25.png"
+  ]
 }

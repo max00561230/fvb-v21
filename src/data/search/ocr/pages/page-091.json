@@ -1,7 +1,13 @@
 {
   "pageId": "page-091",
   "pageNumber": 90,
+  "readingPosition": 90,
+  "displayNumber": 90,
+  "originalPrintedPageNumber": 91,
+  "originalPageNumber": 91,
+  "sourceFile": "page-91.png",
   "sourceImage": "page-91.png",
+  "sourceImagePath": "archive-source/original-scans/page-91.png",
   "rawText": "_ Son IS OUR HERITAGE, IS OUR RESPONSIBILITY, on a IS OUR CHALLENGE. te = - ~ —_ - a >—— — —— —— =—_w Eee ee ee —_—_— —- sae eee es ee —_—_——_—_—_-— i or - rr oo —— ee ——es ae — es [eeilllieeeeneeanntilceeenttillseenecnstillliennemnatiad - SS el a —_—~",
   "cleanText": "_ Son IS OUR HERITAGE, IS OUR RESPONSIBILITY, on a IS OUR CHALLENGE. te = - ~  _ - a >           = _w Eee ee ee  _ _   - sae eee es ee  _ _  _ _ _-  i or - rr oo    ee   es ae   es [eeilllieeeeneeanntilceeenttillseenecnstillliennemnatiad - SS el a  _ ~",
   "averageConfidence": 37.5,
@@ -633,10 +639,5 @@
       "line": 3,
       "word": 4
     }
-  ],
-  "originalPageNumber": 91,
-  "readingPosition": 90,
-  "displayNumber": 90,
-  "originalPrintedPageNumber": 91,
-  "sourceFile": "page-91.png"
+  ]
 }

@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 /**
- * Re-run Tesseract with full TSV output for all 91 physical source pages.
- * Generates structured JSON per Tony's spec:
+ * Re-run Tesseract with full TSV output for the 90 approved visible pages.
+ * Generates structured machine OCR JSON per Tony's spec:
  *   src/data/search/ocr/raw/    — raw TSV files
  *   src/data/search/ocr/pages/   — structured JSON per page
+ *   src/data/search/ocr/corrections/ — reserved for future manual corrections
  *   src/data/search/ocr/reports/ — completion report
  *
  * Each page JSON has: pageId, pageNumber, sourceImage, rawText, cleanText,
- *   averageConfidence, reviewStatus, words[] with text/confidence/x/y/w/h/block/paragraph/line/word
+ *   averageConfidence, reviewStatus, words[] with text/confidence/x/y/width/height/block/paragraph/line/word
  *
  * Usage: node scripts/run-tsv-ocr.mjs
  */
@@ -17,6 +18,7 @@ import { promisify } from "node:util";
 import fs from "node:fs/promises";
 import path from "node:path";
 import {
+  READING_ORDER,
   INACTIVE_PAGES,
   TOTAL_READING_PAGES,
   originalPageNumberForPageId,
@@ -29,15 +31,16 @@ import {
 const execFileAsync = promisify(execFile);
 
 const MASTERS_DIR = path.resolve("public/book-pages/masters");
+const ORIGINAL_SCANS_DIR = path.resolve("archive-source/original-scans");
 const RAW_DIR = path.resolve("src/data/search/ocr/raw");
 const PAGES_DIR = path.resolve("src/data/search/ocr/pages");
+const CORRECTIONS_DIR = path.resolve("src/data/search/ocr/corrections");
 const REPORTS_DIR = path.resolve("src/data/search/ocr/reports");
-const OLD_OCR_DIR = path.resolve("public/data/ocr");
-
-const TOTAL_PAGES = 91;
+const LOW_CONFIDENCE_WORD_THRESHOLD = 60;
+const LOW_CONFIDENCE_PAGE_THRESHOLD = 75;
 
 async function ensureDirs() {
-  for (const dir of [RAW_DIR, PAGES_DIR, REPORTS_DIR]) {
+  for (const dir of [RAW_DIR, PAGES_DIR, CORRECTIONS_DIR, REPORTS_DIR]) {
     await fs.mkdir(dir, { recursive: true });
   }
 }
@@ -46,53 +49,113 @@ function pad3(n) {
   return String(n).padStart(3, "0");
 }
 
-async function runTesseract(pageNum) {
-  const padded = pad3(pageNum);
-  const imgPath = path.join(MASTERS_DIR, `page-${padded}.png`);
-  const tsvPath = path.join(RAW_DIR, `page-${padded}.tsv`);
+function pageNumFromPageId(pageId) {
+  return Number(pageId.replace(/^page-/, ""));
+}
 
+async function existingPath(filePath) {
   try {
-    await fs.access(imgPath);
+    await fs.access(filePath);
+    return filePath;
   } catch {
-    return { pageNum, success: false, error: `Image not found: ${imgPath}` };
+    return null;
+  }
+}
+
+async function sourceImagePathForPage(record) {
+  const pageNum = pageNumFromPageId(record.pageId);
+  const candidates = [
+    path.join(ORIGINAL_SCANS_DIR, record.sourceFile),
+    path.join(MASTERS_DIR, `${record.pageId}.png`),
+    path.join(MASTERS_DIR, `page-${pad3(pageNum)}.png`),
+  ];
+
+  for (const candidate of candidates) {
+    const found = await existingPath(candidate);
+    if (found) return found;
+  }
+
+  return null;
+}
+
+async function getTesseractVersion() {
+  try {
+    const { stdout, stderr } = await execFileAsync("tesseract", ["--version"], {
+      timeout: 10000,
+      maxBuffer: 1024 * 1024,
+    });
+    return (stdout || stderr).split("\n")[0].trim();
+  } catch {
+    return "tesseract";
+  }
+}
+
+async function pruneStaleOutputs(activePageIds) {
+  const activeFiles = new Set([...activePageIds].map((pageId) => `${pageId}.json`));
+  const activeTsv = new Set([...activePageIds].map((pageId) => `${pageId}.tsv`));
+
+  const removed = [];
+  for (const [dir, allowed] of [[PAGES_DIR, activeFiles], [RAW_DIR, activeTsv]]) {
+    let entries = [];
+    try {
+      entries = await fs.readdir(dir);
+    } catch {
+      continue;
+    }
+
+    for (const entry of entries) {
+      if (!/^page-\d{3}\.(json|tsv)$/.test(entry) || allowed.has(entry)) continue;
+      const filePath = path.join(dir, entry);
+      await fs.unlink(filePath);
+      removed.push(path.relative(process.cwd(), filePath));
+    }
+  }
+
+  return removed;
+}
+
+async function runTesseract(record) {
+  const pageNum = pageNumFromPageId(record.pageId);
+  const padded = record.pageId.replace(/^page-/, "");
+  const imgPath = await sourceImagePathForPage(record);
+  const tsvPath = path.join(RAW_DIR, `${record.pageId}.tsv`);
+
+  if (!imgPath) {
+    return { pageId: record.pageId, pageNum, success: false, error: `Image not found for ${record.sourceFile}` };
   }
 
   try {
-    // Run tesseract with TSV output
-    await execFileAsync("tesseract", [imgPath, tsvPath.replace(/\.tsv$/, ""), "tsv"], {
-      timeout: 120000, // 2 min per page max
-      maxBuffer: 50 * 1024 * 1024, // 50MB buffer
+    await execFileAsync("tesseract", [imgPath, tsvPath.replace(/\.tsv$/, ""), "--psm", "1", "-l", "eng", "tsv"], {
+      timeout: 120000,
+      maxBuffer: 50 * 1024 * 1024,
     });
   } catch (err) {
-    return { pageNum, success: false, error: `Tesseract failed: ${err.message}` };
+    return { pageId: record.pageId, pageNum, success: false, error: `Tesseract failed: ${err.message}` };
   }
 
-  // Parse TSV
   try {
     const tsvContent = await fs.readFile(tsvPath, "utf-8");
-    const jsonData = parseTsv(tsvContent, pageNum);
+    const jsonData = parseTsv(tsvContent, record, imgPath);
 
-    // Write structured JSON
-    const jsonPath = path.join(PAGES_DIR, `page-${padded}.json`);
+    const jsonPath = path.join(PAGES_DIR, `${record.pageId}.json`);
     await fs.writeFile(jsonPath, JSON.stringify(jsonData, null, 2));
 
     return {
+      pageId: record.pageId,
       pageNum,
       success: true,
       wordCount: jsonData.words.length,
       avgConfidence: jsonData.averageConfidence,
-      lowConfidenceWords: jsonData.words.filter(w => w.confidence < 60).length,
+      lowConfidenceWords: jsonData.lowConfidenceWords,
     };
   } catch (err) {
-    return { pageNum, success: false, error: `TSV parse failed: ${err.message}` };
+    return { pageId: record.pageId, pageNum, success: false, error: `TSV parse failed: ${err.message}` };
   }
 }
 
-function parseTsv(tsvContent, pageNum) {
+function parseTsv(tsvContent, record, imgPath) {
   const lines = tsvContent.trim().split("\n");
-  const headers = lines[0].split("\t");
 
-  // Tesseract TSV columns: level page_num block_num par_num line_num word_num left top width height conf text
   const words = [];
   let fullText = [];
   let totalConf = 0;
@@ -111,28 +174,27 @@ function parseTsv(tsvContent, pageNum) {
     const width = parseInt(cols[8]);
     const height = parseInt(cols[9]);
     const conf = parseFloat(cols[10]);
-    const text = cols[11] || "";
+    const text = cols.slice(11).join("\t");
 
-    // Only word-level entries (level 5) have text
     if (level === 5 && text.trim()) {
-      const wordConf = conf; // Tesseract conf is 0-100, -1 for no text
+      const wordConf = Number.isFinite(conf) ? conf : -1;
       if (wordConf >= 0) {
         totalConf += wordConf;
         wordCount++;
-        if (wordConf < 60) lowConfCount++;
+        if (wordConf < LOW_CONFIDENCE_WORD_THRESHOLD) lowConfCount++;
       }
 
       words.push({
-        text: text,
+        text,
         confidence: wordConf,
         x: left,
         y: top,
-        width: width,
-        height: height,
-        block: block,
+        width,
+        height,
+        block,
         paragraph: par,
-        line: line,
-        word: word,
+        line,
+        word,
       });
 
       fullText.push(text);
@@ -146,54 +208,50 @@ function parseTsv(tsvContent, pageNum) {
     .replace(/[^\x20-\x7E\n]/g, " ")
     .trim();
 
-  const pageId = `page-${pad3(pageNum)}`;
+  const pageId = record.pageId;
   const pageRecord = pageRecordForPageId(pageId);
   const activePageNumber = pageNumberForPageId(pageId) ?? null;
   const activeReadingPosition = readingPositionForPageId(pageId) ?? null;
-  const inactive = activePageNumber === null;
 
   return {
     pageId,
     pageNumber: activePageNumber,
     readingPosition: activeReadingPosition,
     displayNumber: activePageNumber,
-    originalPrintedPageNumber: originalPageNumberForPageId(pageId) ?? pageNum,
-    originalPageNumber: originalPageNumberForPageId(pageId) ?? pageNum,
-    sourceFile: sourceFileForPageId(pageId) ?? `page-${pad3(pageNum)}.png`,
-    sourceImage: pageRecord?.sourceFile ?? `page-${pad3(pageNum)}.png`,
-    inactive,
-    inactiveReason: inactive ? pageRecord?.inactiveReason : undefined,
-    duplicateOf: inactive ? pageRecord?.duplicateOf : undefined,
-    rawText: rawText,
-    cleanText: cleanText,
+    originalPrintedPageNumber: originalPageNumberForPageId(pageId) ?? record.originalPrintedPageNumber,
+    originalPageNumber: originalPageNumberForPageId(pageId) ?? record.originalPrintedPageNumber,
+    sourceFile: sourceFileForPageId(pageId) ?? record.sourceFile,
+    sourceImage: pageRecord?.sourceFile ?? record.sourceFile,
+    sourceImagePath: path.relative(process.cwd(), imgPath),
+    rawText,
+    cleanText,
     averageConfidence: Math.round(avgConf * 10) / 10,
-    wordCount: wordCount,
+    wordCount,
     lowConfidenceWords: lowConfCount,
     reviewStatus: "machine-generated",
-    words: words,
+    words,
   };
 }
 
 async function main() {
-  console.log(`Starting TSV OCR run for ${TOTAL_PAGES} pages...`);
+  console.log(`Starting TSV OCR run for ${TOTAL_READING_PAGES} approved visible pages...`);
   await ensureDirs();
 
+  const tesseractVersion = await getTesseractVersion();
+  const activePageIds = new Set(READING_ORDER.map((page) => page.pageId));
+  const removedStaleOutputs = await pruneStaleOutputs(activePageIds);
   const results = [];
   const batchSize = 5; // Process 5 pages at a time to avoid memory issues
 
-  for (let batch = 0; batch < TOTAL_PAGES; batch += batchSize) {
+  for (let batch = 0; batch < READING_ORDER.length; batch += batchSize) {
     const batchNum = Math.floor(batch / batchSize) + 1;
-    const totalBatches = Math.ceil(TOTAL_PAGES / batchSize);
-    console.log(`\nBatch ${batchNum}/${totalBatches} — pages ${batch + 1}-${Math.min(batch + batchSize, TOTAL_PAGES)}`);
+    const totalBatches = Math.ceil(READING_ORDER.length / batchSize);
+    const batchRecords = READING_ORDER.slice(batch, Math.min(batch + batchSize, READING_ORDER.length));
+    console.log(`\nBatch ${batchNum}/${totalBatches} — visible pages ${batch + 1}-${batch + batchRecords.length}`);
 
-    const batchPromises = [];
-    for (let i = batch; i < Math.min(batch + batchSize, TOTAL_PAGES); i++) {
-      batchPromises.push(runTesseract(i + 1));
-    }
-    const batchResults = await Promise.all(batchPromises);
+    const batchResults = await Promise.all(batchRecords.map((record) => runTesseract(record)));
     results.push(...batchResults);
 
-    // Progress report
     const successCount = results.filter(r => r.success).length;
     const failCount = results.filter(r => !r.success).length;
     console.log(`  Progress: ${successCount} success, ${failCount} fail`);
@@ -214,16 +272,19 @@ async function main() {
   const avgConfAll = successPages.length > 0
     ? successPages.reduce((sum, r) => sum + r.avgConfidence, 0) / successPages.length
     : 0;
-  const lowConfPages = successPages.filter(r => r.lowConfidenceWords > 10).map(r => ({
-    page: r.pageNum,
+  const lowConfPages = successPages.filter(r => r.avgConfidence < LOW_CONFIDENCE_PAGE_THRESHOLD).map(r => ({
+    pageId: r.pageId,
+    pageNumber: pageNumberForPageId(r.pageId),
+    originalPageNumber: originalPageNumberForPageId(r.pageId),
+    averageConfidence: r.avgConfidence,
     lowConfWords: r.lowConfidenceWords,
   }));
 
   const report = {
     generatedAt: new Date().toISOString(),
-    engine: "Tesseract 5.5.2",
+    engine: tesseractVersion,
     totalPages: TOTAL_READING_PAGES,
-    totalPhysicalPages: TOTAL_PAGES,
+    pagesProcessed: results.length,
     activeReadingPages: TOTAL_READING_PAGES,
     inactivePages: INACTIVE_PAGES.map((page) => ({
       pageId: page.pageId,
@@ -235,8 +296,16 @@ async function main() {
     failedPages: failedPages.length,
     totalWords: totalWords,
     averageConfidence: Math.round(avgConfAll * 10) / 10,
+    lowConfidencePageThreshold: LOW_CONFIDENCE_PAGE_THRESHOLD,
     lowConfidencePages: lowConfPages,
-    failed: failedPages.map(r => ({ page: r.pageNum, error: r.error })),
+    averageConfidenceByPage: successPages.map((r) => ({
+      pageId: r.pageId,
+      pageNumber: pageNumberForPageId(r.pageId),
+      originalPageNumber: originalPageNumberForPageId(r.pageId),
+      averageConfidence: r.avgConfidence,
+    })),
+    failed: failedPages.map(r => ({ pageId: r.pageId, page: r.pageNum, error: r.error })),
+    removedStaleOutputs,
     structure: {
       rawTsv: "src/data/search/ocr/raw/",
       structuredJson: "src/data/search/ocr/pages/",
@@ -249,11 +318,12 @@ async function main() {
   await fs.writeFile(reportPath, JSON.stringify(report, null, 2));
 
   console.log(`\n=== OCR COMPLETE ===`);
-  console.log(`Success: ${successPages.length}/${TOTAL_PAGES}`);
+  console.log(`Success: ${successPages.length}/${TOTAL_READING_PAGES}`);
   console.log(`Failed: ${failedPages.length}`);
   console.log(`Total words: ${totalWords}`);
   console.log(`Average confidence: ${Math.round(avgConfAll * 10) / 10}`);
-  console.log(`Low-confidence pages (>10 words <60%): ${lowConfPages.length}`);
+  console.log(`Low-confidence pages (<${LOW_CONFIDENCE_PAGE_THRESHOLD}% avg): ${lowConfPages.length}`);
+  console.log(`Removed stale outputs: ${removedStaleOutputs.length}`);
   console.log(`Report saved: ${reportPath}`);
 }
 

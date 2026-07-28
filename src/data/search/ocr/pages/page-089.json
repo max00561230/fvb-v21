@@ -1,7 +1,13 @@
 {
   "pageId": "page-089",
   "pageNumber": 87,
+  "readingPosition": 87,
+  "displayNumber": 87,
+  "originalPrintedPageNumber": 89,
+  "originalPageNumber": 89,
+  "sourceFile": "page-89.png",
   "sourceImage": "page-89.png",
+  "sourceImagePath": "archive-source/original-scans/page-89.png",
   "rawText": "\"RARE 4 , > % - id i i 7 VELMA A. FRANCIS D,O,B,: February29, 1928 Peeehs Halls fax.County N.C. MOTHER'S NAME: The Late Peggie. iAdams FATHER'S NAME: Frank Adams BIR®E ORDER: Second child OCCUPATION: Retired Elementary School Teacher RELATIONSHIP: Wife of Louis Claude Francis INTERESTS: Reading, Gardening, making flower arrangements WM: and traveling a -_ LIKES: One of my most enjoyable past-times is; exploring Up @mnterior Decoration MOTTO: “Good, better, best, never let it rest, till good is better and better is best.\" GOALS: To improve my typing skills and to volunteer my time and energyto help children succeed, morally as well as educationally, because children are most valuable resource. OFFSPRINGS Tony D. Francis PPD ELLE L ILIA LILI IAS LL ESE I PIPL LLG SPRL ET LOI PP Ts",
   "cleanText": "\"RARE 4 , > % - id i i 7 VELMA A. FRANCIS D,O,B,: February29, 1928 Peeehs Halls fax.County N.C. MOTHER'S NAME: The Late Peggie. iAdams FATHER'S NAME: Frank Adams BIR E ORDER: Second child OCCUPATION: Retired Elementary School Teacher RELATIONSHIP: Wife of Louis Claude Francis INTERESTS: Reading, Gardening, making flower arrangements WM: and traveling a -_ LIKES: One of my most enjoyable past-times is; exploring Up @mnterior Decoration MOTTO:  Good, better, best, never let it rest, till good is better and better is best.\" GOALS: To improve my typing skills and to volunteer my time and energyto help children succeed, morally as well as educationally, because children are most valuable resource. OFFSPRINGS Tony D. Francis PPD ELLE L ILIA LILI IAS LL ESE I PIPL LLG SPRL ET LOI PP Ts",
   "averageConfidence": 73,
@@ -1581,10 +1587,5 @@
       "line": 1,
       "word": 16
     }
-  ],
-  "originalPageNumber": 89,
-  "readingPosition": 87,
-  "displayNumber": 87,
-  "originalPrintedPageNumber": 89,
-  "sourceFile": "page-89.png"
+  ]
 }

@@ -1,7 +1,13 @@
 {
   "pageId": "page-087",
   "pageNumber": 85,
+  "readingPosition": 85,
+  "displayNumber": 85,
+  "originalPrintedPageNumber": 87,
+  "originalPageNumber": 87,
+  "sourceFile": "page-87.png",
   "sourceImage": "page-87.png",
+  "sourceImagePath": "archive-source/original-scans/page-87.png",
   "rawText": "ERMA L. MC WILLIAMS FRANCIS D. OOBees*= March 16 PLAGEe== Enfield, Habiftax, North Carolina MOTHER: Jessie B. Johnson McWilliams FATHER: Earlie Mc Williams BIRTH ORDER: Second Chiid OCCUPATION: Retired RELATIONSHIP: Spouse of Robert C. Francis FAVORITE SAYING/MOTTO: Do unto others as you would have others do unto you. OFFSPRING: Robert A. Francis Celena D. Francis CELENA DENISE FRANCIS D0 2B<3 January 25 PLACE: Brooklyn, New. York MOTHER: Erma L. Mc Williams Francis FATHER: Robert Calvin Francis BERTH “ORDER: “Second :ecniitd ‘of “Robert Cabkvin -and Erma L. Francis OCCUPATION: Office AssPstant RELATIONSHIP: Daughter of Robert Calvin Francis 85",
   "cleanText": "ERMA L. MC WILLIAMS FRANCIS D. OOBees*= March 16 PLAGEe== Enfield, Habiftax, North Carolina MOTHER: Jessie B. Johnson McWilliams FATHER: Earlie Mc Williams BIRTH ORDER: Second Chiid OCCUPATION: Retired RELATIONSHIP: Spouse of Robert C. Francis FAVORITE SAYING/MOTTO: Do unto others as you would have others do unto you. OFFSPRING: Robert A. Francis Celena D. Francis CELENA DENISE FRANCIS D0 2B<3 January 25 PLACE: Brooklyn, New. York MOTHER: Erma L. Mc Williams Francis FATHER: Robert Calvin Francis BERTH  ORDER:  Second :ecniitd  of  Robert Cabkvin -and Erma L. Francis OCCUPATION: Office AssPstant RELATIONSHIP: Daughter of Robert Calvin Francis 85",
   "averageConfidence": 82.6,
@@ -1173,10 +1179,5 @@
       "line": 1,
       "word": 1
     }
-  ],
-  "originalPageNumber": 87,
-  "readingPosition": 85,
-  "displayNumber": 85,
-  "originalPrintedPageNumber": 87,
-  "sourceFile": "page-87.png"
+  ]
 }

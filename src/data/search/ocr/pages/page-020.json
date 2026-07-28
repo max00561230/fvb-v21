@@ -1,7 +1,13 @@
 {
   "pageId": "page-020",
   "pageNumber": 18,
+  "readingPosition": 18,
+  "displayNumber": 18,
+  "originalPrintedPageNumber": 20,
+  "originalPageNumber": 20,
+  "sourceFile": "page-20.png",
   "sourceImage": "page-20.png",
+  "sourceImagePath": "archive-source/original-scans/page-20.png",
   "rawText": "ee nh oe i SE YOLANDA ALVE WATKINS BsO.bee October 7, 1982 PLACE: Columbus, Georgia MOTHER: Shirley Watkins FATHER: Gilbert L. Samuels BIRTH ORDER: Second child of two ©GCUPATION: Student SCHOOL: Oliver Elementary, Seale, Alabama GRADE: Fourth | FAVORITE SUBJECTS: Math; Spelling RELATIONSHIP: Great-granddaughter of Copey Roy Francis’ HOBBIES/INTERESTS: Kickball; cheerleading; basketball TALENTS/ABILITIES/SKILLS: Singing; dancing LIKES: Jumprope DISLIKES: Getting in trouble FAVORITE SAYING/MOTTO: Huh!! Chow. JANINA SAMUELS DeOeB.- «February 21). 1986 PLACE: Marlton, New Jersey MOTHER: Txrisha Samuels FATHER: Gilbert L. Samuels BIRTH ORDER: Fixst of two children OCCUPATION: Student SCHOOL: Grandview, Pittsburgh, Pennsylvania GRADE: First FAVORITE SUBJECT: Reading RELATIONSHIP: Great-granddaughter of Copey Roy Francis HOBBIES/ INTERESTS: Axt TALENTS/ABILITIES/SKILLS: Play chess LIKES: Going to the park DISLIKES: Tomatoes; doesn't like to wear pants YVETTE SAMUELS D,0.B.2 ‘November 11). 1987 PLACE: Camden, New Jersey MOTHER: Trisha Samuels FATHER: Gilbert L. Samuels OCCUPATION: Student. SCHOOL: Grandview, Pittsburgh, Pennsylvania GRADE: Kindergarten FAVORITE “SUBJECIS=] — Art; Gym RELATIONSHIP: Great-granddaughter of Copey Roy Francis HOBBIES/INTERESTS: Playing board games LIKES: Oxanges; bananas DISLIKES: Doesn't like to get needles. BIRTH ORDER: Second child of two",
   "cleanText": "ee nh oe i SE YOLANDA ALVE WATKINS BsO.bee October 7, 1982 PLACE: Columbus, Georgia MOTHER: Shirley Watkins FATHER: Gilbert L. Samuels BIRTH ORDER: Second child of two  GCUPATION: Student SCHOOL: Oliver Elementary, Seale, Alabama GRADE: Fourth | FAVORITE SUBJECTS: Math; Spelling RELATIONSHIP: Great-granddaughter of Copey Roy Francis  HOBBIES/INTERESTS: Kickball; cheerleading; basketball TALENTS/ABILITIES/SKILLS: Singing; dancing LIKES: Jumprope DISLIKES: Getting in trouble FAVORITE SAYING/MOTTO: Huh!! Chow. JANINA SAMUELS DeOeB.-  February 21). 1986 PLACE: Marlton, New Jersey MOTHER: Txrisha Samuels FATHER: Gilbert L. Samuels BIRTH ORDER: Fixst of two children OCCUPATION: Student SCHOOL: Grandview, Pittsburgh, Pennsylvania GRADE: First FAVORITE SUBJECT: Reading RELATIONSHIP: Great-granddaughter of Copey Roy Francis HOBBIES/ INTERESTS: Axt TALENTS/ABILITIES/SKILLS: Play chess LIKES: Going to the park DISLIKES: Tomatoes; doesn't like to wear pants YVETTE SAMUELS D,0.B.2  November 11). 1987 PLACE: Camden, New Jersey MOTHER: Trisha Samuels FATHER: Gilbert L. Samuels OCCUPATION: Student. SCHOOL: Grandview, Pittsburgh, Pennsylvania GRADE: Kindergarten FAVORITE  SUBJECIS=]   Art; Gym RELATIONSHIP: Great-granddaughter of Copey Roy Francis HOBBIES/INTERESTS: Playing board games LIKES: Oxanges; bananas DISLIKES: Doesn't like to get needles. BIRTH ORDER: Second child of two",
   "averageConfidence": 85.6,
@@ -2145,10 +2151,5 @@
       "line": 2,
       "word": 6
     }
-  ],
-  "originalPageNumber": 20,
-  "readingPosition": 18,
-  "displayNumber": 18,
-  "originalPrintedPageNumber": 20,
-  "sourceFile": "page-20.png"
+  ]
 }

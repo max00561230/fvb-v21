@@ -1,7 +1,13 @@
 {
   "pageId": "page-073",
   "pageNumber": 71,
+  "readingPosition": 71,
+  "displayNumber": 71,
+  "originalPrintedPageNumber": 73,
+  "originalPageNumber": 73,
+  "sourceFile": "page-73.png",
   "sourceImage": "page-73.png",
+  "sourceImagePath": "archive-source/original-scans/page-73.png",
   "rawText": "bia é a7, | Wy ee iv “Lhd hhh o? oe th, FA Yb FT Pi = = — = i ms Oe Ba (ff if Yi & Fo P A i” s i C0y7, FOL EEL I Wy 7, Pipi $ s ” x ya - * aa r > RY Le We CL, 7 - eo > a - - , » ? * P ” ? © @ ware reanrrancis carivie @ @ Eleventh child of James and Pearl C. Francis, born April 8, 1923, in Enfield, North Carolina. = —— a After graduating from Mc Daniel Elementary and Eastman High Schools, she went to live and work in Washington, D.C. for a few years. She came home, during World War II, to be with her parents. In 1946, she went to live in Brooklyn, N.Y. and work there. She met and married Norwood Carlyle, in 1948. To this union three children were born, Norwqgd Jr., Arvette and Victor. oa ; After her children were well along in their schooling, she went back to school, to further her education. She received credits as a Library Technical Assistant from New York University and Pratt Institute. aan Y * P - oe ib NENA SRE . RQGQGLWL AS SEN SSA i -",
   "cleanText": "bia   a7, | Wy ee iv  Lhd hhh o? oe th, FA Yb FT Pi = =   = i ms Oe Ba (ff if Yi & Fo P A i  s i C0y7, FOL EEL I Wy 7, Pipi $ s   x ya - * aa r > RY Le We CL, 7 - eo > a - - ,   ? * P   ?   @ ware reanrrancis carivie @ @ Eleventh child of James and Pearl C. Francis, born April 8, 1923, in Enfield, North Carolina. =    a After graduating from Mc Daniel Elementary and Eastman High Schools, she went to live and work in Washington, D.C. for a few years. She came home, during World War II, to be with her parents. In 1946, she went to live in Brooklyn, N.Y. and work there. She met and married Norwood Carlyle, in 1948. To this union three children were born, Norwqgd Jr., Arvette and Victor. oa ; After her children were well along in their schooling, she went back to school, to further her education. She received credits as a Library Technical Assistant from New York University and Pratt Institute. aan Y * P - oe ib NENA SRE . RQGQGLWL AS SEN SSA i -",
   "averageConfidence": 65.6,
@@ -2565,10 +2571,5 @@
       "line": 1,
       "word": 1
     }
-  ],
-  "originalPageNumber": 73,
-  "readingPosition": 71,
-  "displayNumber": 71,
-  "originalPrintedPageNumber": 73,
-  "sourceFile": "page-73.png"
+  ]
 }

@@ -1,7 +1,13 @@
 {
   "pageId": "page-083",
   "pageNumber": 81,
+  "readingPosition": 81,
+  "displayNumber": 81,
+  "originalPrintedPageNumber": 83,
+  "originalPageNumber": 83,
+  "sourceFile": "page-83.png",
   "sourceImage": "page-83.png",
+  "sourceImagePath": "archive-source/original-scans/page-83.png",
   "rawText": "VICTOR ARTHUR CARLYLE DOS Bs PLACE: MOTHER: FATHER: BIRTH ORDER: Third child of Mattie and Norwood Carlyle OCCUPATION: Parcel” Post Driver (U.~ P. S.) RELATIONSHIP: Son of Mattie R. (Francis) Carlyle HOBBIES/INTERESTS: Reading; weight lifting/training; TALENTS/ABILITIES/SKILLS: Play saxophone; play keyboards; _ LIKES: 8-14-55 Bronx, New York Mattie Rean (Francis) Carlyle Norwood Lee Carlyle music play electric base guitar; drawing; weight Litting Music; art; reading: good food: family; intelligent conversation DISLIKES: Ignorance; undisciplined children FAVORITE SAYING/MOTTO: A quitter never wins, and a winner never quits. ASPIRATIONS/GOALS: To retire from my present occupation before 50, and be financially set by 45. Front Row: Arvette, Mattie ,Noxwood Sr. Back Row: Victor and Norwood Jr.",
   "cleanText": "VICTOR ARTHUR CARLYLE DOS Bs PLACE: MOTHER: FATHER: BIRTH ORDER: Third child of Mattie and Norwood Carlyle OCCUPATION: Parcel  Post Driver (U.~ P. S.) RELATIONSHIP: Son of Mattie R. (Francis) Carlyle HOBBIES/INTERESTS: Reading; weight lifting/training; TALENTS/ABILITIES/SKILLS: Play saxophone; play keyboards; _ LIKES: 8-14-55 Bronx, New York Mattie Rean (Francis) Carlyle Norwood Lee Carlyle music play electric base guitar; drawing; weight Litting Music; art; reading: good food: family; intelligent conversation DISLIKES: Ignorance; undisciplined children FAVORITE SAYING/MOTTO: A quitter never wins, and a winner never quits. ASPIRATIONS/GOALS: To retire from my present occupation before 50, and be financially set by 45. Front Row: Arvette, Mattie ,Noxwood Sr. Back Row: Victor and Norwood Jr.",
   "averageConfidence": 88.4,
@@ -1341,10 +1347,5 @@
       "line": 2,
       "word": 6
     }
-  ],
-  "originalPageNumber": 83,
-  "readingPosition": 81,
-  "displayNumber": 81,
-  "originalPrintedPageNumber": 83,
-  "sourceFile": "page-83.png"
+  ]
 }

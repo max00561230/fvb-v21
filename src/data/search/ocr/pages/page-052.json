@@ -1,7 +1,13 @@
 {
   "pageId": "page-052",
   "pageNumber": 50,
+  "readingPosition": 50,
+  "displayNumber": 50,
+  "originalPrintedPageNumber": 52,
+  "originalPageNumber": 52,
+  "sourceFile": "page-52.png",
   "sourceImage": "page-52.png",
+  "sourceImagePath": "archive-source/original-scans/page-52.png",
   "rawText": "SSN ~ s ‘ ANG * SS SN ~ a a2. A SX . ‘. oe ee ve ~~ SAAN * “s SSN win ta ta te aA a & ~~. \\ ‘ * > *, ~~ “> “ “a oe ee . NY . 7 ~*~ a » ». a » * s~\\ - x. a * * 2 nr J >» i & & ~~ s ™ * ~*~ te ™. ~ * r t > > _ ~~ . : *, »,% : . 4 . » ™s , , * ~~ + a yA AS SOAS ee.” > « \\ . ’ . z . ‘ “ i, , + a 7 ‘ “\\ ‘S, : e . . - D.O.B.: BIRTH PLACE: MOTHER’S NAME: FATHER’S NAME: BIRTH ORDER: OCCUPATION: HOBBIES: DISLIKES: MOTTO: ASPIRATIONS: OFFSPRINGS: EDNA FRANCIS FUNDERBURK May 14, 1944 Halifax County, N.C. Eulilla (Leah) Goins Francis Eddie Rufus (Bud) Francis 8TH Child of 11 Children Tenant Lease Coordinator Reading, Tennis and Baking Being rushed, and caned foods \"it Done When Twas Done, Then Twas Well Twas Done Quickly.” To be a full time Bible Teacher Leroy James, Lillian Yvette *, 2 ¥ a a B. *% ¢ a i: we J",
   "cleanText": "SSN ~ s   ANG * SS SN ~ a a2. A SX .  . oe ee ve ~~ SAAN *  s SSN win ta ta te aA a & ~~. \\   * > *, ~~  >    a oe ee . NY . 7 ~*~ a    . a   * s~\\ - x. a * * 2 nr J >  i & & ~~ s   * ~*~ te  . ~ * r t > > _ ~~ . : *,  ,% : . 4 .    s , , * ~~ + a yA AS SOAS ee.  >   \\ .   . z .     i, , + a 7    \\  S, : e . . - D.O.B.: BIRTH PLACE: MOTHER S NAME: FATHER S NAME: BIRTH ORDER: OCCUPATION: HOBBIES: DISLIKES: MOTTO: ASPIRATIONS: OFFSPRINGS: EDNA FRANCIS FUNDERBURK May 14, 1944 Halifax County, N.C. Eulilla (Leah) Goins Francis Eddie Rufus (Bud) Francis 8TH Child of 11 Children Tenant Lease Coordinator Reading, Tennis and Baking Being rushed, and caned foods \"it Done When Twas Done, Then Twas Well Twas Done Quickly.  To be a full time Bible Teacher Leroy James, Lillian Yvette *, 2   a a B. *%   a i: we J",
   "averageConfidence": 51.5,
@@ -2493,10 +2499,5 @@
       "line": 1,
       "word": 11
     }
-  ],
-  "originalPageNumber": 52,
-  "readingPosition": 50,
-  "displayNumber": 50,
-  "originalPrintedPageNumber": 52,
-  "sourceFile": "page-52.png"
+  ]
 }

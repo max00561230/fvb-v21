@@ -1,7 +1,13 @@
 {
   "pageId": "page-041",
   "pageNumber": 39,
+  "readingPosition": 39,
+  "displayNumber": 39,
+  "originalPrintedPageNumber": 41,
+  "originalPageNumber": 41,
+  "sourceFile": "page-41.png",
   "sourceImage": "page-41.png",
+  "sourceImagePath": "archive-source/original-scans/page-41.png",
   "rawText": "| Patricia Williams Date of Birth: August 19, 1951 Place of Birth: Washington, D.C. Mother’s Name: Celestine Francis Williams Father’s Name: Wilson Osborne Williams, Sr. Birth Order: First child of ten children Occupation: Bartender Favorite Subjects: History Hobbies: Crossword puzzles Likes: Sweets, old music, reading, T.V., movies Dislikes: Rap Music, telephone, liars and theives Favorite Saying: I’sa doing all right. (Country slang). ; Aspirations: To quit work and enjoy life, relaxation and rid myself of children. Family Relationship: Granddaughter of Eddie Rufus Francis, Sr. Names of My Offspring: | Portia Marie Williams - 22 years old | D’ Andre Niler - 5 years old Alondre Williams - 3 years old Akila Young - 7 months old Cassandra LaShun Williams - 21 years old Micheal Bell, Jr. - 5 years old Lionel Dion Williams - 10 years old",
   "cleanText": "| Patricia Williams Date of Birth: August 19, 1951 Place of Birth: Washington, D.C. Mother s Name: Celestine Francis Williams Father s Name: Wilson Osborne Williams, Sr. Birth Order: First child of ten children Occupation: Bartender Favorite Subjects: History Hobbies: Crossword puzzles Likes: Sweets, old music, reading, T.V., movies Dislikes: Rap Music, telephone, liars and theives Favorite Saying: I sa doing all right. (Country slang). ; Aspirations: To quit work and enjoy life, relaxation and rid myself of children. Family Relationship: Granddaughter of Eddie Rufus Francis, Sr. Names of My Offspring: | Portia Marie Williams - 22 years old | D  Andre Niler - 5 years old Alondre Williams - 3 years old Akila Young - 7 months old Cassandra LaShun Williams - 21 years old Micheal Bell, Jr. - 5 years old Lionel Dion Williams - 10 years old",
   "averageConfidence": 94,
@@ -1653,10 +1659,5 @@
       "line": 1,
       "word": 7
     }
-  ],
-  "originalPageNumber": 41,
-  "readingPosition": 39,
-  "displayNumber": 39,
-  "originalPrintedPageNumber": 41,
-  "sourceFile": "page-41.png"
+  ]
 }
