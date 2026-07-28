@@ -163,6 +163,26 @@ function validateRuntimePages(runtimeManifest) {
     fail(`Runtime pages manifest has ${pages.length}/${runtimeManifest.totalPages}; expected ${EXPECTED_TOTAL}.`);
   }
 
+  const checkpoints = [
+    { displayNumber: 2, pageId: "page-003", sourceFile: "page-03.png", formerVisiblePage: 3 },
+    { displayNumber: 88, pageId: "page-090", sourceFile: "page-90.png", formerVisiblePage: 89 },
+    { displayNumber: 89, pageId: "page-002", sourceFile: "page-02.png", formerVisiblePage: 2 },
+    { displayNumber: 90, pageId: "page-091", sourceFile: "page-91.png", formerVisiblePage: 90 },
+  ];
+
+  for (const checkpoint of checkpoints) {
+    const page = pages.find((entry) => entry.displayNumber === checkpoint.displayNumber);
+    if (!page) {
+      fail(`Missing required visible page checkpoint ${checkpoint.displayNumber}.`);
+      continue;
+    }
+    if (page.pageId !== checkpoint.pageId || page.sourceFile !== checkpoint.sourceFile) {
+      fail(
+        `Visible page ${checkpoint.displayNumber} should use former visible page ${checkpoint.formerVisiblePage} source ${checkpoint.pageId}/${checkpoint.sourceFile}; got ${page.pageId}/${page.sourceFile}.`
+      );
+    }
+  }
+
   for (let index = 0; index < READING_ORDER.length; index += 1) {
     const expected = READING_ORDER[index];
     const page = pages[index];

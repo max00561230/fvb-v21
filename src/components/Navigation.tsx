@@ -1,7 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 
-const restorationEnabled = import.meta.env.VITE_ENABLE_RESTORATION_TOOLS === "true";
-
 export function Navigation({ variant = "default" }: { variant?: "default" | "overlay" }) {
   const location = useLocation();
   const isReader = location.pathname === "/";
@@ -10,9 +8,6 @@ export function Navigation({ variant = "default" }: { variant?: "default" | "ove
     { to: "/", label: "Read the Book", active: isReader },
     { to: "/search", label: "Search", active: location.pathname === "/search" },
     { to: "/people", label: "People", active: location.pathname.startsWith("/people") },
-    ...(restorationEnabled
-      ? [{ to: "/admin/photo-restoration", label: "Photo Restoration", active: location.pathname === "/admin/photo-restoration" }]
-      : []),
   ];
 
   if (variant === "overlay") {

@@ -1,500 +1,688 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type { ChangeEvent } from "react";
 import { Navigation } from "./Navigation";
-import type { PagesManifest, BookPage, PlacementData } from "../types";
+import type { BookPage, PagesManifest } from "../types";
 
-// Lazy load fabric and jszip only when needed
 let fabricModule: any = null;
 let jszipModule: any = null;
 
 async function loadFabric() {
-  if (!fabricModule) {
-    fabricModule = await import("fabric");
-  }
+  if (!fabricModule) fabricModule = await import("fabric");
   return fabricModule;
 }
 
 async function loadJsZip() {
-  if (!jszipModule) {
-    jszipModule = await import("jszip");
-  }
+  if (!jszipModule) jszipModule = await import("jszip");
   return jszipModule;
 }
 
-interface HistoryState {
-  fabricState: string;
+const STORAGE_KEY = "fvb-phase-1b-photo-restorations";
+const AUTOSAVE_MS = 500;
+const RESTORATION_STATUSES = [
+  "unreviewed",
+  "region-marked",
+  "photo-added",
+  "draft",
+  "ready-for-review",
+  "approved",
+  "rejected",
+  "published",
+] as const;
+
+type RestorationStatus = (typeof RESTORATION_STATUSES)[number];
+type ViewMode = "restored" | "original" | "side-by-side" | "overlay";
+type ImageAsset = {
+  id: string;
+  fileName: string;
+  mimeType: string;
+  dataUrl: string;
+  originalWidth: number;
+  originalHeight: number;
+  addedAt: string;
+};
+type RectCoords = { x: number; y: number; width: number; height: number };
+type PlacementCoords = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  scaleX: number;
+  scaleY: number;
+  rotation: number;
+};
+type CropSettings = {
+  enabled: boolean;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+type Revision = {
+  revision: number;
+  status: RestorationStatus;
+  createdAt: string;
+  locked: boolean;
+  snapshot: RestorationRecord;
+};
+type RestorationRecord = {
+  schemaVersion: "phase-1b-local-v1";
+  pageId: string;
+  readingPosition: number;
+  displayNumber: number;
+  sourceFile: string;
+  originalDimensions: { width: number; height: number };
+  notes: string;
+  status: RestorationStatus;
+  revision: number;
+  publishedRevision: number | null;
+  updatedAt: string;
+  region: RectCoords | null;
+  placement: PlacementCoords | null;
+  crop: CropSettings;
+  recoveredPhoto: ImageAsset | null;
+  revisions: Revision[];
+};
+type ProjectStore = {
+  schemaVersion: "phase-1b-local-store-v1";
+  updatedAt: string;
+  records: Record<string, RestorationRecord>;
+};
+
+function emptyStore(): ProjectStore {
+  return { schemaVersion: "phase-1b-local-store-v1", updatedAt: new Date().toISOString(), records: {} };
 }
 
-const PROOF_PAGE_ID = "page-017";
+function normalizeRect(rect: RectCoords, page: BookPage) {
+  return {
+    x: rect.x / page.width,
+    y: rect.y / page.height,
+    width: rect.width / page.width,
+    height: rect.height / page.height,
+  };
+}
+
+function normalizePlacement(placement: PlacementCoords, page: BookPage) {
+  return {
+    x: placement.x / page.width,
+    y: placement.y / page.height,
+    width: placement.width / page.width,
+    height: placement.height / page.height,
+    scaleX: placement.scaleX,
+    scaleY: placement.scaleY,
+    rotation: placement.rotation,
+  };
+}
+
+function makeRecord(page: BookPage, previous?: RestorationRecord): RestorationRecord {
+  return {
+    schemaVersion: "phase-1b-local-v1",
+    pageId: page.pageId,
+    readingPosition: page.readingPosition,
+    displayNumber: page.displayNumber,
+    sourceFile: page.sourceFile,
+    originalDimensions: { width: page.width, height: page.height },
+    notes: previous?.notes ?? "",
+    status: previous?.status ?? "unreviewed",
+    revision: previous?.revision ?? 1,
+    publishedRevision: previous?.publishedRevision ?? null,
+    updatedAt: previous?.updatedAt ?? new Date().toISOString(),
+    region: previous?.region ?? null,
+    placement: previous?.placement ?? null,
+    crop: previous?.crop ?? { enabled: false, x: 0, y: 0, width: 0, height: 0 },
+    recoveredPhoto: previous?.recoveredPhoto ?? null,
+    revisions: previous?.revisions ?? [],
+  };
+}
+
+function readStore(): ProjectStore {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "");
+    if (parsed?.schemaVersion === "phase-1b-local-store-v1") return parsed;
+  } catch {}
+  return emptyStore();
+}
+
+async function loadImage(src: string) {
+  const image = new Image();
+  image.crossOrigin = "anonymous";
+  image.src = src;
+  await new Promise<void>((resolve, reject) => {
+    image.onload = () => resolve();
+    image.onerror = () => reject(new Error(`Unable to load image: ${src}`));
+  });
+  return image;
+}
+
+function downloadBlob(blob: Blob, filename: string) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function downloadText(text: string, filename: string, type = "application/json") {
+  downloadBlob(new Blob([text], { type }), filename);
+}
+
+function recordForExport(record: RestorationRecord, page: BookPage) {
+  return {
+    ...record,
+    readingPosition: page.readingPosition,
+    displayNumber: page.displayNumber,
+    sourceFile: page.sourceFile,
+    originalDimensions: { width: page.width, height: page.height },
+    regionNormalized: record.region ? normalizeRect(record.region, page) : null,
+    placementNormalized: record.placement ? normalizePlacement(record.placement, page) : null,
+  };
+}
+
+async function renderFullResolutionPreview(page: BookPage, record: RestorationRecord) {
+  const canvas = document.createElement("canvas");
+  canvas.width = page.width;
+  canvas.height = page.height;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("Unable to create export canvas");
+
+  const original = await loadImage(page.masterSrc);
+  ctx.drawImage(original, 0, 0, page.width, page.height);
+
+  if (record.recoveredPhoto && record.placement) {
+    const photo = await loadImage(record.recoveredPhoto.dataUrl);
+    const p = record.placement;
+    ctx.save();
+    if (record.crop.enabled) {
+      ctx.beginPath();
+      ctx.rect(record.crop.x, record.crop.y, record.crop.width, record.crop.height);
+      ctx.clip();
+    }
+    ctx.translate(p.x + p.width / 2, p.y + p.height / 2);
+    ctx.rotate((p.rotation * Math.PI) / 180);
+    ctx.drawImage(photo, -p.width / 2, -p.height / 2, p.width, p.height);
+    ctx.restore();
+  }
+
+  return new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error("Unable to render PNG"))), "image/png");
+  });
+}
 
 export function PhotoRestoration() {
   const [manifest, setManifest] = useState<PagesManifest | null>(null);
-  const [selectedPage, setSelectedPage] = useState<BookPage | null>(null);
-  const [fabricCanvas, setFabricCanvas] = useState<any>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const fabricRef = useRef<any>(null);
-  const [uploadedPhoto, setUploadedPhoto] = useState<string | null>(null);
-  const [photoObject, setPhotoObject] = useState<any>(null);
-  const [openingRect, setOpeningRect] = useState<any>(null);
-  const [showOriginal, setShowOriginal] = useState(false);
-  const [personName, setPersonName] = useState("");
-  const [submittedBy, setSubmittedBy] = useState("");
-  const [sourceDescription, setSourceDescription] = useState("");
-  const [undoStack, setUndoStack] = useState<HistoryState[]>([]);
-  const [redoStack, setRedoStack] = useState<HistoryState[]>([]);
-  const [savedPlacements, setSavedPlacements] = useState<PlacementData[]>([]);
-  const [status, setStatus] = useState<"editing" | "preview" | "approved">("editing");
+  const [selectedPageId, setSelectedPageId] = useState<string>("");
+  const [records, setRecords] = useState<Record<string, RestorationRecord>>({});
+  const [record, setRecord] = useState<RestorationRecord | null>(null);
   const [loading, setLoading] = useState(true);
   const [notice, setNotice] = useState<string | null>(null);
-  const proofPageLabel = selectedPage ? `Page ${selectedPage.displayNumber}` : PROOF_PAGE_ID;
+  const [viewMode, setViewMode] = useState<ViewMode>("restored");
+  const [overlayOpacity, setOverlayOpacity] = useState(0.55);
+  const [zoom, setZoom] = useState(1);
+  const [undoStack, setUndoStack] = useState<RestorationRecord[]>([]);
+  const [redoStack, setRedoStack] = useState<RestorationRecord[]>([]);
+  const [dirty, setDirty] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const fabricRef = useRef<any>(null);
+  const scaleRef = useRef(1);
+  const autosaveRef = useRef<number | null>(null);
 
-  // Load manifest
+  const pages = manifest?.pages ?? [];
+  const selectedPage = useMemo(
+    () => pages.find((page) => page.pageId === selectedPageId) ?? pages[0] ?? null,
+    [pages, selectedPageId],
+  );
+  const currentExportRecord = record && selectedPage ? recordForExport(record, selectedPage) : null;
+
   useEffect(() => {
-    fetch("/data/pages.json")
-      .then((r) => r.json())
-      .then((data: PagesManifest) => {
-        setManifest(data);
-        setSelectedPage(data.pages.find((page) => page.id === PROOF_PAGE_ID) ?? data.pages[0] ?? null);
+    Promise.all([fetch("/data/pages.json").then((r) => r.json()), fetch("/data/reading-order.json").then((r) => r.json())])
+      .then(([runtimeManifest, readingOrder]) => {
+        const runtimePages = runtimeManifest.pages ?? [];
+        const authorityMatches =
+          runtimeManifest.totalPages === 90 &&
+          runtimePages.length === 90 &&
+          readingOrder.totalPages === 90 &&
+          runtimePages.every((page: BookPage, index: number) => page.pageId === readingOrder.pages?.[index]?.pageId);
+        if (!authorityMatches) throw new Error("Runtime pages manifest does not match authoritative reading order.");
+        const store = readStore();
+        setManifest(runtimeManifest);
+        setRecords(store.records);
+        setSelectedPageId(runtimePages[0]?.pageId ?? "");
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch((err) => {
+        setNotice(err.message);
+        setLoading(false);
+      });
   }, []);
 
-  // Load saved placements from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem("fvb-restoration-placements");
-    if (saved) {
-      try {
-        setSavedPlacements(JSON.parse(saved));
-      } catch {}
-    }
-  }, []);
-
-  const saveHistory = useCallback(() => {
-    if (!fabricRef.current) return;
-    const state = JSON.stringify(fabricRef.current.toJSON());
-    setUndoStack((prev) => [...prev, { fabricState: state }].slice(-50));
+    if (!selectedPage) return;
+    const nextRecord = makeRecord(selectedPage, records[selectedPage.pageId]);
+    setRecord(nextRecord);
+    setUndoStack([nextRecord]);
     setRedoStack([]);
+    setZoom(1);
+    setNotice(null);
+  }, [records, selectedPage]);
+
+  const persistRecords = useCallback((nextRecords: Record<string, RestorationRecord>) => {
+    const store: ProjectStore = {
+      schemaVersion: "phase-1b-local-store-v1",
+      updatedAt: new Date().toISOString(),
+      records: nextRecords,
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
   }, []);
 
-  const undo = useCallback(() => {
-    if (undoStack.length === 0 || !fabricRef.current) return;
-    const prev = undoStack[undoStack.length - 1];
-    setRedoStack((r) => [...r, { fabricState: JSON.stringify(fabricRef.current.toJSON()) }]);
-    fabricRef.current.loadFromJSON(prev.fabricState, () => {
-      fabricRef.current.renderAll();
-    });
-    setUndoStack((s) => s.slice(0, -1));
-  }, [undoStack]);
+  const updateRecord = useCallback(
+    (updater: (current: RestorationRecord) => RestorationRecord, saveHistory = true) => {
+      setRecord((current) => {
+        if (!current) return current;
+        const next = { ...updater(current), updatedAt: new Date().toISOString() };
+        if (saveHistory) {
+          setUndoStack((stack) => [...stack, current].slice(-60));
+          setRedoStack([]);
+        }
+        setDirty(true);
+        return next;
+      });
+    },
+    [],
+  );
 
-  const redo = useCallback(() => {
-    if (redoStack.length === 0 || !fabricRef.current) return;
-    const next = redoStack[redoStack.length - 1];
-    setUndoStack((s) => [...s, { fabricState: JSON.stringify(fabricRef.current.toJSON()) }]);
-    fabricRef.current.loadFromJSON(next.fabricState, () => {
-      fabricRef.current.renderAll();
-    });
-    setRedoStack((r) => r.slice(0, -1));
-  }, [redoStack]);
+  const saveDraft = useCallback(
+    (message = "Draft saved locally in this browser.") => {
+      if (!record) return;
+      const nextRecords = { ...records, [record.pageId]: record };
+      setRecords(nextRecords);
+      persistRecords(nextRecords);
+      setDirty(false);
+      setNotice(message);
+    },
+    [persistRecords, record, records],
+  );
 
-  // Initialize Fabric canvas when a page is selected
   useEffect(() => {
-    if (!selectedPage || !canvasRef.current) return;
-
-    let cancelled = false;
-
-    (async () => {
-      const fabric = await loadFabric();
-
-      if (cancelled || !canvasRef.current) return;
-
-      // Get the master image to determine dimensions
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-      img.src = selectedPage.masterSrc;
-
-      await new Promise((resolve, reject) => {
-        img.onload = resolve;
-        img.onerror = reject;
-      });
-
-      if (cancelled) return;
-
-      const canvasWidth = Math.min(img.naturalWidth, 2000);
-      const scale = canvasWidth / img.naturalWidth;
-      const canvasHeight = img.naturalHeight * scale;
-
-      // Create fabric canvas
-      if (fabricRef.current) {
-        fabricRef.current.dispose();
-      }
-
-      const canvas = new fabric.Canvas(canvasRef.current, {
-        width: canvasWidth,
-        height: canvasHeight,
-        backgroundColor: "#transparent",
-      });
-
-      fabricRef.current = canvas;
-
-      // Add background image (locked)
-      const bgImg = new fabric.Image(img, {
-        left: 0,
-        top: 0,
-        scaleX: scale,
-        scaleY: scale,
-        selectable: false,
-        evented: false,
-        lockMovementX: true,
-        lockMovementY: true,
-        lockRotation: true,
-        lockScalingX: true,
-        lockScalingY: true,
-        hasControls: false,
-        hasBorders: false,
-      });
-
-      canvas.add(bgImg);
-      canvas.backgroundColor = "#333";
-      canvas.renderAll();
-
-      setFabricCanvas(canvas);
-      canvas.on("object:modified", saveHistory);
-
-      // Save initial history
-      setUndoStack([{ fabricState: JSON.stringify(canvas.toJSON()) }]);
-      setRedoStack([]);
-    })();
-
+    if (!record || !dirty) return;
+    if (autosaveRef.current) window.clearTimeout(autosaveRef.current);
+    autosaveRef.current = window.setTimeout(() => {
+      const nextRecords = { ...records, [record.pageId]: record };
+      setRecords(nextRecords);
+      persistRecords(nextRecords);
+      setDirty(false);
+      setNotice("Autosaved locally.");
+    }, AUTOSAVE_MS);
     return () => {
-      cancelled = true;
+      if (autosaveRef.current) window.clearTimeout(autosaveRef.current);
     };
-  }, [selectedPage]);
+  }, [dirty, persistRecords, record, records]);
 
-  const handlePageSelect = (page: BookPage) => {
-    setSelectedPage(page);
-    setUploadedPhoto(null);
-    setPhotoObject(null);
-    setOpeningRect(null);
-    setStatus("editing");
-    setPersonName("");
-    setSubmittedBy("");
-    setSourceDescription("");
-    setNotice(null);
-  };
+  useEffect(() => {
+    const handler = (event: BeforeUnloadEvent) => {
+      if (!dirty) return;
+      event.preventDefault();
+      event.returnValue = "";
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [dirty]);
 
-  const handleDrawOpening = async () => {
-    if (!fabricRef.current) return;
-    saveHistory();
-
-    const fabric = await loadFabric();
-
-    // Draw a semi-transparent rectangle for the opening
-    const rect = new fabric.Rect({
-      left: 100,
-      top: 100,
-      width: 300,
-      height: 400,
-      fill: "rgba(0, 0, 0, 0.18)",
-      stroke: "#CAA24B",
-      strokeWidth: 3,
-      cornerColor: "#CAA24B",
-      cornerSize: 10,
-      transparentCorners: false,
-      objectCaching: false,
+  const syncFromCanvas = useCallback(() => {
+    const canvas = fabricRef.current;
+    const page = selectedPage;
+    if (!canvas || !page) return;
+    const scale = scaleRef.current || 1;
+    const regionObj = canvas.getObjects().find((obj: any) => obj.fvbRole === "region");
+    const photoObj = canvas.getObjects().find((obj: any) => obj.fvbRole === "photo");
+    updateRecord((current) => {
+      const region = regionObj
+        ? {
+            x: Math.round((regionObj.left || 0) / scale),
+            y: Math.round((regionObj.top || 0) / scale),
+            width: Math.round((regionObj.getScaledWidth?.() || 0) / scale),
+            height: Math.round((regionObj.getScaledHeight?.() || 0) / scale),
+          }
+        : current.region;
+      const placement = photoObj
+        ? {
+            x: Math.round((photoObj.left || 0) / scale),
+            y: Math.round((photoObj.top || 0) / scale),
+            width: Math.round((photoObj.getScaledWidth?.() || 0) / scale),
+            height: Math.round((photoObj.getScaledHeight?.() || 0) / scale),
+            scaleX: Number((photoObj.scaleX || 1).toFixed(6)),
+            scaleY: Number((photoObj.scaleY || 1).toFixed(6)),
+            rotation: Number((photoObj.angle || 0).toFixed(2)),
+          }
+        : current.placement;
+      const crop = current.crop.enabled && region ? { ...current.crop, ...region } : current.crop;
+      const status = photoObj ? "photo-added" : regionObj ? "region-marked" : current.status;
+      return { ...current, region, placement, crop, status };
     });
+  }, [selectedPage, updateRecord]);
 
-    fabricRef.current.add(rect);
-    setOpeningRect(rect);
-    fabricRef.current.setActiveObject(rect);
-    fabricRef.current.renderAll();
-  };
+  const drawCanvas = useCallback(async () => {
+    if (!selectedPage || !record || !canvasRef.current) return;
+    const fabric = await loadFabric();
+    if (fabricRef.current) fabricRef.current.dispose();
 
-  const handleUploadPhoto = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file || !fabricRef.current) return;
+    const canvasWidth = Math.min(selectedPage.width, 1120);
+    const scale = canvasWidth / selectedPage.width;
+    scaleRef.current = scale;
+    const canvasHeight = Math.round(selectedPage.height * scale);
+    const canvas = new fabric.Canvas(canvasRef.current, {
+      width: canvasWidth,
+      height: canvasHeight,
+      preserveObjectStacking: true,
+      backgroundColor: "#151515",
+    });
+    fabricRef.current = canvas;
 
-    const reader = new FileReader();
-    reader.onload = async (e) => {
-      const dataUrl = e.target?.result as string;
-      setUploadedPhoto(dataUrl);
+    const original = await loadImage(selectedPage.masterSrc);
+    const bg = new fabric.Image(original, {
+      left: 0,
+      top: 0,
+      scaleX: scale,
+      scaleY: scale,
+      selectable: false,
+      evented: false,
+      lockMovementX: true,
+      lockMovementY: true,
+      lockRotation: true,
+      lockScalingX: true,
+      lockScalingY: true,
+      hasControls: false,
+      hasBorders: false,
+    });
+    canvas.add(bg);
 
-      const fabric = await loadFabric();
-      const img = new Image();
-      img.src = dataUrl;
-
-      await new Promise((resolve) => {
-        img.onload = resolve;
+    if (record.region) {
+      const rect = new fabric.Rect({
+        left: record.region.x * scale,
+        top: record.region.y * scale,
+        width: record.region.width * scale,
+        height: record.region.height * scale,
+        fill: "rgba(202,162,75,0.16)",
+        stroke: "#CAA24B",
+        strokeWidth: 3,
+        cornerColor: "#CAA24B",
+        cornerSize: 10,
+        transparentCorners: false,
+        objectCaching: false,
+        selectable: record.status !== "published",
+        evented: record.status !== "published",
       });
+      rect.fvbRole = "region";
+      canvas.add(rect);
+    }
 
-      saveHistory();
-
-      const photoObj = new fabric.Image(img, {
-        left: 150,
-        top: 150,
-        scaleX: openingRect ? (openingRect.getScaledWidth?.() ?? openingRect.width ?? 300) / img.naturalWidth : 0.3,
-        scaleY: openingRect ? (openingRect.getScaledWidth?.() ?? openingRect.width ?? 300) / img.naturalWidth : 0.3,
+    if (record.recoveredPhoto && record.placement) {
+      const photo = await loadImage(record.recoveredPhoto.dataUrl);
+      const img = new fabric.Image(photo, {
+        left: record.placement.x * scale,
+        top: record.placement.y * scale,
+        scaleX: (record.placement.width * scale) / record.recoveredPhoto.originalWidth,
+        scaleY: (record.placement.height * scale) / record.recoveredPhoto.originalHeight,
+        angle: record.placement.rotation,
         cornerColor: "#CAA24B",
         cornerSize: 12,
         transparentCorners: false,
         borderColor: "#CAA24B",
         lockUniScaling: false,
+        selectable: record.status !== "approved" && record.status !== "published",
+        evented: record.status !== "approved" && record.status !== "published",
       });
-
-      if (openingRect) {
-        photoObj.set({
-          left: openingRect.left ?? 150,
-          top: openingRect.top ?? 150,
+      img.fvbRole = "photo";
+      if (record.crop.enabled) {
+        img.clipPath = new fabric.Rect({
+          left: record.crop.x * scale,
+          top: record.crop.y * scale,
+          width: record.crop.width * scale,
+          height: record.crop.height * scale,
+          absolutePositioned: true,
         });
       }
+      canvas.add(img);
+    }
 
-      fabricRef.current.add(photoObj);
-      setPhotoObject(photoObj);
-      fabricRef.current.setActiveObject(photoObj);
-      fabricRef.current.renderAll();
+    canvas.on("object:modified", syncFromCanvas);
+    canvas.renderAll();
+  }, [record, selectedPage, syncFromCanvas]);
+
+  useEffect(() => {
+    drawCanvas();
+    return () => {
+      if (fabricRef.current) {
+        fabricRef.current.dispose();
+        fabricRef.current = null;
+      }
+    };
+  }, [drawCanvas]);
+
+  const selectPage = (pageId: string) => {
+    if (dirty && !confirm("You have unsaved changes. Autosave is running, but switch pages anyway?")) return;
+    setSelectedPageId(pageId);
+  };
+
+  const markRegion = () => {
+    if (!selectedPage || !record || record.status === "published") return;
+    const width = Math.round(selectedPage.width * 0.28);
+    const height = Math.round(selectedPage.height * 0.24);
+    updateRecord((current) => ({
+      ...current,
+      region: current.region ?? {
+        x: Math.round(selectedPage.width * 0.12),
+        y: Math.round(selectedPage.height * 0.12),
+        width,
+        height,
+      },
+      crop: current.crop.enabled
+        ? current.crop
+        : { enabled: false, x: Math.round(selectedPage.width * 0.12), y: Math.round(selectedPage.height * 0.12), width, height },
+      status: current.recoveredPhoto ? "photo-added" : "region-marked",
+    }));
+  };
+
+  const uploadPhoto = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file || !selectedPage) return;
+    const reader = new FileReader();
+    reader.onload = async () => {
+      const dataUrl = String(reader.result);
+      const image = await loadImage(dataUrl);
+      updateRecord((current) => {
+        const region =
+          current.region ??
+          ({
+            x: Math.round(selectedPage.width * 0.12),
+            y: Math.round(selectedPage.height * 0.12),
+            width: Math.round(selectedPage.width * 0.28),
+            height: Math.round(selectedPage.height * 0.24),
+          } satisfies RectCoords);
+        const fitScale = Math.max(region.width / image.naturalWidth, region.height / image.naturalHeight);
+        return {
+          ...current,
+          region,
+          placement: {
+            x: region.x,
+            y: region.y,
+            width: Math.round(image.naturalWidth * fitScale),
+            height: Math.round(image.naturalHeight * fitScale),
+            scaleX: fitScale,
+            scaleY: fitScale,
+            rotation: 0,
+          },
+          crop: { enabled: current.crop.enabled, x: region.x, y: region.y, width: region.width, height: region.height },
+          recoveredPhoto: {
+            id: `photo-${Date.now()}`,
+            fileName: file.name,
+            mimeType: file.type || "application/octet-stream",
+            dataUrl,
+            originalWidth: image.naturalWidth,
+            originalHeight: image.naturalHeight,
+            addedAt: new Date().toISOString(),
+          },
+          status: "photo-added",
+        };
+      });
     };
     reader.readAsDataURL(file);
   };
 
-  const handleCompare = () => {
-    setShowOriginal((prev) => {
-      const newShow = !prev;
-      if (photoObject) {
-        photoObject.visible = !newShow;
-        fabricRef.current?.renderAll();
+  const updateStatus = (status: RestorationStatus) => {
+    updateRecord((current) => {
+      const statusCreatesRevision = ["draft", "ready-for-review", "approved", "rejected"].includes(status);
+      if (current.status === "published" && status !== "published") {
+        const nextRevision = current.revision + 1;
+        return { ...current, revision: nextRevision, publishedRevision: current.revision, status };
       }
-      return newShow;
+      if (statusCreatesRevision && current.status !== status) {
+        const next = { ...current, status };
+        return {
+          ...next,
+          revisions: [
+            ...current.revisions,
+            {
+              revision: current.revision,
+              status,
+              createdAt: new Date().toISOString(),
+              locked: false,
+              snapshot: next,
+            },
+          ],
+        };
+      }
+      return { ...current, status };
     });
   };
 
-  const buildPlacement = (exportStatus: "draft" | "approved"): PlacementData | null => {
-    if (!selectedPage) return null;
+  const publishRevision = () => {
+    updateRecord((current) => {
+      if (current.status !== "approved") return current;
+      const lockedSnapshot: RestorationRecord = { ...current, status: "published", publishedRevision: current.revision };
+      return {
+        ...lockedSnapshot,
+        revisions: [
+          ...current.revisions,
+          {
+            revision: current.revision,
+            status: "published",
+            createdAt: new Date().toISOString(),
+            locked: true,
+            snapshot: lockedSnapshot,
+          },
+        ],
+      };
+    });
+    setNotice("Published revision locked locally only. No public reader pages were replaced.");
+  };
 
-    const openingLeft = openingRect?.left ?? 0;
-    const openingTop = openingRect?.top ?? 0;
-    const openingWidth = openingRect?.getScaledWidth?.() ?? (openingRect?.width ?? 0) * (openingRect?.scaleX ?? 1);
-    const openingHeight = openingRect?.getScaledHeight?.() ?? (openingRect?.height ?? 0) * (openingRect?.scaleY ?? 1);
-    const photoWidth = photoObject?.getScaledWidth?.() ?? (photoObject?.width ?? 0) * (photoObject?.scaleX ?? 1);
-    const photoHeight = photoObject?.getScaledHeight?.() ?? (photoObject?.height ?? 0) * (photoObject?.scaleY ?? 1);
+  const undo = () => {
+    if (undoStack.length <= 1) return;
+    const previous = undoStack[undoStack.length - 1];
+    setRedoStack((stack) => [record!, ...stack]);
+    setUndoStack((stack) => stack.slice(0, -1));
+    setRecord(previous);
+    setDirty(true);
+  };
 
-    return {
-      pageId: selectedPage.id,
-      sourcePage: selectedPage.masterSrc,
-      restoredPhoto: uploadedPhoto ? `${selectedPage.id}-proof-photo` : "",
-      personName: personName || "Unknown",
-      opening: {
-        x: Math.round(openingLeft),
-        y: Math.round(openingTop),
-        width: Math.round(openingWidth),
-        height: Math.round(openingHeight),
-      },
-      placement: photoObject
+  const redo = () => {
+    const next = redoStack[0];
+    if (!next || !record) return;
+    setUndoStack((stack) => [...stack, record]);
+    setRedoStack((stack) => stack.slice(1));
+    setRecord(next);
+    setDirty(true);
+  };
+
+  const resetPlacement = () => {
+    updateRecord((current) => ({
+      ...current,
+      placement: null,
+      recoveredPhoto: null,
+      crop: { enabled: false, x: 0, y: 0, width: 0, height: 0 },
+      status: current.region ? "region-marked" : "unreviewed",
+    }));
+  };
+
+  const fitPhoto = () => {
+    if (!record?.region || !record.recoveredPhoto) return;
+    const scale = Math.max(record.region.width / record.recoveredPhoto.originalWidth, record.region.height / record.recoveredPhoto.originalHeight);
+    updateRecord((current) => ({
+      ...current,
+      placement: current.recoveredPhoto
         ? {
-            offsetX: Math.round((photoObject.left || 0) - openingLeft),
-            offsetY: Math.round((photoObject.top || 0) - openingTop),
-            scale: Math.round(((photoObject.scaleX || 1) + Number.EPSILON) * 1000) / 1000,
-            rotation: Math.round((photoObject.angle || 0) * 10) / 10,
+            x: current.region!.x,
+            y: current.region!.y,
+            width: Math.round(current.recoveredPhoto.originalWidth * scale),
+            height: Math.round(current.recoveredPhoto.originalHeight * scale),
+            scaleX: scale,
+            scaleY: scale,
+            rotation: 0,
           }
-        : { offsetX: 0, offsetY: 0, scale: 1, rotation: 0 },
-      sourceInformation: {
-        submittedBy,
-        sourceDescription: [
-          sourceDescription,
-          photoObject ? `Rendered size: ${Math.round(photoWidth)}x${Math.round(photoHeight)} canvas px` : "",
-          photoObject?.clipPath ? "Crop: clipped to opening rectangle" : "Crop: not applied",
-        ]
-          .filter(Boolean)
-          .join(" | "),
-        dateRestored: new Date().toISOString().split("T")[0],
-      },
-      status: exportStatus,
-    };
+        : current.placement,
+    }));
   };
 
-  const handleSave = () => {
-    if (!selectedPage || !fabricRef.current) return;
-
-    const placement = buildPlacement("draft");
-    if (!placement) return;
-
-    const updated = [...savedPlacements.filter((p) => p.pageId !== placement.pageId), placement];
-    setSavedPlacements(updated);
-    localStorage.setItem("fvb-restoration-placements", JSON.stringify(updated));
-    setNotice("Draft placement saved in this browser only.");
+  const toggleCrop = () => {
+    updateRecord((current) => ({
+      ...current,
+      crop: current.region
+        ? { enabled: !current.crop.enabled, x: current.region.x, y: current.region.y, width: current.region.width, height: current.region.height }
+        : current.crop,
+    }));
   };
 
-  const fitPhotoToOpening = () => {
-    if (!photoObject || !openingRect || !fabricRef.current) return;
-    saveHistory();
-    const openingWidth = openingRect.getScaledWidth?.() ?? openingRect.width ?? 1;
-    const openingHeight = openingRect.getScaledHeight?.() ?? openingRect.height ?? 1;
-    const scale = Math.max(openingWidth / (photoObject.width || 1), openingHeight / (photoObject.height || 1));
-
-    photoObject.set({
-      left: openingRect.left,
-      top: openingRect.top,
-      scaleX: scale,
-      scaleY: scale,
-      angle: 0,
-    });
-    fabricRef.current.setActiveObject(photoObject);
-    fabricRef.current.renderAll();
-  };
-
-  const cropPhotoToOpening = async () => {
-    if (!photoObject || !openingRect || !fabricRef.current) return;
-    saveHistory();
-    const fabric = await loadFabric();
-    const clipRect = new fabric.Rect({
-      left: openingRect.left,
-      top: openingRect.top,
-      width: openingRect.getScaledWidth?.() ?? openingRect.width ?? 0,
-      height: openingRect.getScaledHeight?.() ?? openingRect.height ?? 0,
-      absolutePositioned: true,
-    });
-
-    photoObject.set({ clipPath: clipRect });
-    fabricRef.current.setActiveObject(photoObject);
-    fabricRef.current.renderAll();
-    setNotice("Crop applied as a non-destructive canvas clip for this proof.");
-  };
-
-  const adjustPhotoScale = (value: number) => {
-    if (!photoObject || !fabricRef.current) return;
-    photoObject.set({ scaleX: value, scaleY: value });
-    fabricRef.current.renderAll();
-  };
-
-  const adjustPhotoRotation = (value: number) => {
-    if (!photoObject || !fabricRef.current) return;
-    photoObject.set({ angle: value });
-    fabricRef.current.renderAll();
-  };
-
-  const zoomCanvas = (factor: number) => {
-    if (!fabricRef.current) return;
-    const currentZoom = fabricRef.current.getZoom();
-    const nextZoom = Math.max(0.25, Math.min(3, currentZoom * factor));
-    fabricRef.current.zoomToPoint({ x: 0, y: 0 }, nextZoom);
-  };
-
-  const downloadBlob = (blob: Blob, filename: string) => {
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = filename;
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
-  const downloadText = (text: string, filename: string, type = "application/json") => {
-    downloadBlob(new Blob([text], { type }), filename);
-  };
-
-  const handleExportJson = () => {
-    const placement = buildPlacement(status === "approved" ? "approved" : "draft");
-    if (!placement || !selectedPage) return;
-    downloadText(JSON.stringify(placement, null, 2), `${selectedPage.id}-placement.json`);
-  };
-
-  const handleExportPng = () => {
-    if (!fabricRef.current || !selectedPage) return;
-    fabricRef.current.getElement().toBlob((blob: Blob | null) => {
-      if (blob) downloadBlob(blob, `${selectedPage.id}-restoration-proof.png`);
-    }, "image/png");
-  };
-
-  const handleApprove = () => {
-    setStatus("approved");
-    if (photoObject) {
-      photoObject.set({
-        selectable: false,
-        evented: false,
-        lockMovementX: true,
-        lockMovementY: true,
-        lockRotation: true,
-        lockScalingX: true,
-        lockScalingY: true,
-      });
-      fabricRef.current?.renderAll();
-    }
-    if (openingRect) {
-      openingRect.set({
-        selectable: false,
-        evented: false,
-      });
-      fabricRef.current?.renderAll();
-    }
-  };
-
-  const handleRevert = () => {
-    if (!confirm("Revert to original? This will remove all edits.")) return;
-    if (fabricRef.current) {
-      fabricRef.current.dispose();
-      fabricRef.current = null;
-      setPhotoObject(null);
-      setOpeningRect(null);
-      setUploadedPhoto(null);
-      setStatus("editing");
-      // Reinitialize by reselecting the page
-      if (selectedPage) {
-        const page = selectedPage;
-        setSelectedPage(null);
-        setTimeout(() => setSelectedPage(page), 100);
+  const importProject = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const parsed = JSON.parse(String(reader.result));
+        const importedRecords = parsed.schemaVersion === "phase-1b-local-store-v1" ? parsed.records : parsed.records ?? {};
+        const nextRecords = { ...records, ...importedRecords };
+        setRecords(nextRecords);
+        persistRecords(nextRecords);
+        setNotice("Imported restoration project data into local storage.");
+      } catch (err) {
+        setNotice(`Import failed: ${err instanceof Error ? err.message : "invalid JSON"}`);
       }
-    }
+    };
+    reader.readAsText(file);
   };
 
-  const handleExport = async () => {
-    if (!fabricRef.current || !selectedPage) return;
+  const exportProject = () => {
+    const store: ProjectStore = {
+      schemaVersion: "phase-1b-local-store-v1",
+      updatedAt: new Date().toISOString(),
+      records: record ? { ...records, [record.pageId]: record } : records,
+    };
+    downloadText(JSON.stringify(store, null, 2), "fvb-phase-1b-restoration-project.json");
+  };
 
+  const exportApprovedPackage = async () => {
+    if (!selectedPage || !record || record.status !== "approved") return;
     const JSZip = await loadJsZip();
     const zip = new JSZip();
-
-    // Export full-resolution canvas as PNG
-    const dataUrl = fabricRef.current.toDataURL({
-      format: "png",
-      multiplier: 2,
-    });
-    const pngData = dataUrl.split(",")[1];
-    zip.file(`${selectedPage.id}-restored.png`, pngData, { base64: true });
-
-    // Export placement JSON
-    const placement = buildPlacement("approved");
-    if (!placement) return;
-
-    zip.file(`${selectedPage.id}-placement.json`, JSON.stringify(placement, null, 2));
-
-    // Export recovered photo if available
-    if (uploadedPhoto) {
-      const photoBase64 = uploadedPhoto.split(",")[1];
-      if (photoBase64) {
-        zip.file(`${selectedPage.id}-person-01.jpg`, photoBase64, { base64: true });
-      }
+    const exportRecord = recordForExport(record, selectedPage);
+    const preview = await renderFullResolutionPreview(selectedPage, record);
+    zip.file(`${record.pageId}/restoration.json`, JSON.stringify(exportRecord, null, 2));
+    zip.file(`${record.pageId}/flattened-full-resolution-preview.png`, preview);
+    if (record.recoveredPhoto) {
+      const base64 = record.recoveredPhoto.dataUrl.split(",")[1];
+      const extension = record.recoveredPhoto.mimeType.split("/")[1] || "image";
+      zip.file(`${record.pageId}/original-recovered-photo.${extension}`, base64, { base64: true });
     }
-
-    // Export preview image (lower res)
-    const previewUrl = fabricRef.current.toDataURL({
-      format: "jpeg",
-      quality: 0.8,
-      multiplier: 0.5,
-    });
-    zip.file(`${selectedPage.id}-preview.jpg`, previewUrl.split(",")[1], { base64: true });
-
-    // Export metadata
-    const metadata = {
-      pageId: selectedPage.id,
-      pageNumber: selectedPage.displayNumber,
-      exportedAt: new Date().toISOString(),
-      exportedBy: "FVB v21.1 Photo Restoration Tool",
-      originalImage: selectedPage.masterSrc,
-      restorationVersion: "1.1-proof",
-      proofScope: "local-private one-page proof; no archival source images modified",
-    };
-    zip.file(`${selectedPage.id}-metadata.json`, JSON.stringify(metadata, null, 2));
-
-    // Generate and download
+    zip.file(
+      `${record.pageId}/README.txt`,
+      [
+        "FVB Phase 1B approved restoration export.",
+        "The flattened preview is generated client-side by drawing the original page master image to an offscreen canvas at original pixel dimensions, then compositing the recovered photo with saved original-pixel placement, crop, rotation, and scale.",
+        "This package does not replace public reader pages or modify original source scans.",
+      ].join("\n"),
+    );
     const blob = await zip.generateAsync({ type: "blob" });
-    downloadBlob(blob, `${selectedPage.id}-restoration.zip`);
+    downloadBlob(blob, `${record.pageId}-approved-restoration-export.zip`);
   };
 
   if (loading) {
@@ -503,7 +691,7 @@ export function PhotoRestoration() {
         <Navigation />
         <div className="loading-spinner-container">
           <div className="loading-spinner" />
-          <p>Loading restoration tool...</p>
+          <p>Loading restoration workspace...</p>
         </div>
       </div>
     );
@@ -513,239 +701,163 @@ export function PhotoRestoration() {
     <div className="restoration-page">
       <Navigation />
       <div className="restoration-content">
-        <h1 className="restoration-title">Photo Restoration Proof</h1>
-        <p className="restoration-subtitle">
-          Local-private Phase 1B proof fixed to {proofPageLabel}. Define an opening, upload one restored photo,
-          position it on the locked page background, then export placement JSON and a PNG proof. Original scans are never modified.
-        </p>
+        <div className="restoration-header">
+          <div>
+            <h1 className="restoration-title">Phase 1B Photo Restoration</h1>
+            <p className="restoration-subtitle">
+              Private local workspace. It consumes the same 90-page authoritative manifest as the reader and only prepares approved export packages.
+            </p>
+          </div>
+          <div className="restoration-badges" aria-label="Manifest checkpoints">
+            <span>90 visible pages</span>
+            <span>Page 2: page-003</span>
+            <span>Page 88: page-090</span>
+            <span>Page 89: page-002</span>
+            <span>Page 90: page-091</span>
+          </div>
+        </div>
 
-        {!selectedPage ? (
+        {notice && <p className="restoration-notice">{notice}</p>}
+
+        {!selectedPage || !record ? (
           <div className="restoration-page-selector">
-            <h2>Proof page unavailable</h2>
-            <p className="restoration-help">Could not load {proofPageLabel} from the generated page manifest.</p>
+            <h2>Workspace unavailable</h2>
+            <p className="restoration-help">The generated page manifest could not be loaded.</p>
           </div>
         ) : (
           <div className="restoration-workspace">
-            <div className="restoration-sidebar">
-              <div className="restoration-sidebar-section">
-                <h3>Proof Page</h3>
-                <p>{proofPageLabel}</p>
-                <p className="restoration-help">Fixed page background: {selectedPage.masterSrc}</p>
-                <button
-                  className="restoration-btn restoration-btn-secondary"
-                  onClick={() => {
-                    handlePageSelect(manifest?.pages.find((page) => page.id === PROOF_PAGE_ID) ?? selectedPage);
-                    if (fabricRef.current) {
-                      fabricRef.current.dispose();
-                      fabricRef.current = null;
-                    }
-                  }}
-                >
-                  Reset Proof Page
+            <aside className="restoration-sidebar">
+              <section className="restoration-sidebar-section">
+                <h3>Page</h3>
+                <select className="restoration-input" value={selectedPage.pageId} onChange={(event) => selectPage(event.target.value)}>
+                  {pages.map((page) => (
+                    <option key={page.pageId} value={page.pageId}>
+                      Page {page.displayNumber} · {page.pageId} · {page.sourceFile}
+                    </option>
+                  ))}
+                </select>
+                <dl className="restoration-meta">
+                  <div><dt>Visible page</dt><dd>{selectedPage.displayNumber}</dd></div>
+                  <div><dt>Permanent ID</dt><dd>{selectedPage.pageId}</dd></div>
+                  <div><dt>Source file</dt><dd>{selectedPage.sourceFile}</dd></div>
+                  <div><dt>Revision</dt><dd>{record.revision}</dd></div>
+                </dl>
+              </section>
+
+              <section className="restoration-sidebar-section">
+                <h3>Region</h3>
+                <button className="restoration-btn" onClick={markRegion} disabled={record.status === "published"}>
+                  Mark / Reset Region
                 </button>
-              </div>
+                {record.region && (
+                  <p className="restoration-help">
+                    Original pixels: x {record.region.x}, y {record.region.y}, {record.region.width} x {record.region.height}
+                  </p>
+                )}
+              </section>
 
-              <div className="restoration-sidebar-section">
-                <h3>1. Define Opening</h3>
-                <p className="restoration-help">Draw a rectangle where the missing photo belongs.</p>
-                <button
-                  className="restoration-btn"
-                  onClick={handleDrawOpening}
-                  disabled={status === "approved"}
-                >
-                  Draw Opening Box
-                </button>
-              </div>
+              <section className="restoration-sidebar-section">
+                <h3>Recovered Photo</h3>
+                <input className="restoration-file-input" type="file" accept="image/*" onChange={uploadPhoto} disabled={record.status === "approved" || record.status === "published"} />
+                {record.recoveredPhoto && <p className="restoration-help">{record.recoveredPhoto.fileName}</p>}
+                <div className="restoration-btn-group">
+                  <button className="restoration-btn" onClick={fitPhoto} disabled={!record.recoveredPhoto || !record.region || record.status === "approved" || record.status === "published"}>
+                    Fit
+                  </button>
+                  <button className="restoration-btn" onClick={toggleCrop} disabled={!record.recoveredPhoto || !record.region || record.status === "approved" || record.status === "published"}>
+                    {record.crop.enabled ? "Disable Crop" : "Crop"}
+                  </button>
+                  <button className="restoration-btn restoration-btn-danger" onClick={resetPlacement} disabled={record.status === "approved" || record.status === "published"}>
+                    Remove
+                  </button>
+                </div>
+              </section>
 
-              <div className="restoration-sidebar-section">
-                <h3>2. Upload Photo</h3>
-                <p className="restoration-help">Upload a recovered family photo to place in the opening.</p>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleUploadPhoto}
-                  disabled={status === "approved"}
-                  className="restoration-file-input"
-                />
-              </div>
+              <section className="restoration-sidebar-section">
+                <h3>Placement</h3>
+                <p className="restoration-help">Drag, resize, and rotate only the region/photo objects. The original page is locked.</p>
+                <div className="restoration-btn-group">
+                  <button className="restoration-btn" onClick={undo} disabled={undoStack.length <= 1 || record.status === "published"}>Undo</button>
+                  <button className="restoration-btn" onClick={redo} disabled={redoStack.length === 0 || record.status === "published"}>Redo</button>
+                  <button className="restoration-btn" onClick={() => setZoom((z) => Math.min(3, z + 0.2))}>Zoom +</button>
+                  <button className="restoration-btn" onClick={() => setZoom((z) => Math.max(0.35, z - 0.2))}>Zoom -</button>
+                </div>
+                {record.placement && (
+                  <p className="restoration-help">
+                    x {record.placement.x}, y {record.placement.y}, {record.placement.width} x {record.placement.height}, rotate {record.placement.rotation} deg
+                  </p>
+                )}
+              </section>
 
-              <div className="restoration-sidebar-section">
-                <h3>3. Photo Details</h3>
-                <input
-                  type="text"
-                  className="restoration-input"
-                  placeholder="Person's full name"
-                  value={personName}
-                  onChange={(e) => setPersonName(e.target.value)}
-                  disabled={status === "approved"}
-                />
-                <input
-                  type="text"
-                  className="restoration-input"
-                  placeholder="Submitted by"
-                  value={submittedBy}
-                  onChange={(e) => setSubmittedBy(e.target.value)}
-                  disabled={status === "approved"}
-                />
+              <section className="restoration-sidebar-section">
+                <h3>Review</h3>
+                <select className="restoration-input" value={viewMode} onChange={(event) => setViewMode(event.target.value as ViewMode)}>
+                  <option value="restored">Restored preview</option>
+                  <option value="original">Original</option>
+                  <option value="side-by-side">Side by side</option>
+                  <option value="overlay">Overlay</option>
+                </select>
+                {viewMode === "overlay" && (
+                  <label className="restoration-control-label">
+                    Overlay opacity
+                    <input type="range" min="0" max="1" step="0.05" value={overlayOpacity} onChange={(event) => setOverlayOpacity(Number(event.target.value))} />
+                  </label>
+                )}
                 <textarea
                   className="restoration-input restoration-textarea"
-                  placeholder="Source description (where the photo came from)"
-                  value={sourceDescription}
-                  onChange={(e) => setSourceDescription(e.target.value)}
-                  disabled={status === "approved"}
+                  placeholder="Reviewer notes"
+                  value={record.notes}
+                  onChange={(event) => updateRecord((current) => ({ ...current, notes: event.target.value }))}
                 />
-              </div>
+                <select className="restoration-input" value={record.status} onChange={(event) => updateStatus(event.target.value as RestorationStatus)}>
+                  {RESTORATION_STATUSES.map((status) => (
+                    <option key={status} value={status}>{status}</option>
+                  ))}
+                </select>
+              </section>
 
-              <div className="restoration-sidebar-section">
-                <h3>Placement Controls</h3>
-                <p className="restoration-help">Drag the photo directly on the page. Use the corner controls to resize and rotate.</p>
+              <section className="restoration-sidebar-section">
+                <h3>Save / Export</h3>
                 <div className="restoration-btn-group">
-                  <button
-                    className="restoration-btn"
-                    onClick={undo}
-                    disabled={undoStack.length <= 1 || status === "approved"}
-                  >
-                    ↶ Undo
+                  <button className="restoration-btn restoration-btn-primary" onClick={() => saveDraft("Draft saved locally.")}>Save Draft</button>
+                  <button className="restoration-btn restoration-btn-approve" onClick={() => updateStatus("approved")} disabled={!record.region || !record.recoveredPhoto}>
+                    Approve
                   </button>
-                  <button
-                    className="restoration-btn"
-                    onClick={redo}
-                    disabled={redoStack.length === 0 || status === "approved"}
-                  >
-                    ↷ Redo
+                  <button className="restoration-btn restoration-btn-export" onClick={exportApprovedPackage} disabled={record.status !== "approved"}>
+                    Export Approved ZIP
                   </button>
-                  <button
-                    className="restoration-btn"
-                    onClick={handleCompare}
-                    disabled={!photoObject}
-                  >
-                    {showOriginal ? "Show Restored" : "Compare Original"}
-                  </button>
-                  <button
-                    className="restoration-btn"
-                    onClick={fitPhotoToOpening}
-                    disabled={!photoObject || !openingRect || status === "approved"}
-                  >
-                    Fit to Opening
-                  </button>
-                  <button
-                    className="restoration-btn"
-                    onClick={cropPhotoToOpening}
-                    disabled={!photoObject || !openingRect || status === "approved"}
-                  >
-                    Crop to Opening
-                  </button>
-                  <button
-                    className="restoration-btn"
-                    onClick={() => zoomCanvas(1.2)}
-                  >
-                    Zoom In
-                  </button>
-                  <button
-                    className="restoration-btn"
-                    onClick={() => zoomCanvas(0.8)}
-                  >
-                    Zoom Out
+                  <button className="restoration-btn" onClick={exportProject}>Export Project JSON</button>
+                  <label className="restoration-btn restoration-import-btn">
+                    Import Project
+                    <input type="file" accept="application/json" onChange={importProject} />
+                  </label>
+                  <button className="restoration-btn restoration-btn-secondary" onClick={publishRevision} disabled={record.status !== "approved"}>
+                    Lock Published Revision
                   </button>
                 </div>
-                <label className="restoration-control-label">
-                  Photo scale
-                  <input
-                    type="range"
-                    min="0.05"
-                    max="2"
-                    step="0.01"
-                    value={photoObject?.scaleX ?? 0.3}
-                    onChange={(e) => adjustPhotoScale(Number(e.target.value))}
-                    disabled={!photoObject || status === "approved"}
-                  />
-                </label>
-                <label className="restoration-control-label">
-                  Rotation
-                  <input
-                    type="range"
-                    min="-45"
-                    max="45"
-                    step="0.5"
-                    value={photoObject?.angle ?? 0}
-                    onChange={(e) => adjustPhotoRotation(Number(e.target.value))}
-                    disabled={!photoObject || status === "approved"}
-                  />
-                </label>
-              </div>
+              </section>
+            </aside>
 
-              <div className="restoration-sidebar-section">
-                <h3>Actions</h3>
-                <div className="restoration-btn-group">
-                  <button
-                    className="restoration-btn"
-                    onClick={handleSave}
-                    disabled={status === "approved"}
-                  >
-                    💾 Save Progress
-                  </button>
-                  <button
-                    className="restoration-btn restoration-btn-primary"
-                    onClick={() => setStatus("preview")}
-                    disabled={!photoObject || status === "approved"}
-                  >
-                    👁 Preview
-                  </button>
-                  <button
-                    className="restoration-btn restoration-btn-approve"
-                    onClick={handleApprove}
-                    disabled={!photoObject || status === "approved"}
-                  >
-                    ✓ Approve & Lock
-                  </button>
-                  <button
-                    className="restoration-btn restoration-btn-export"
-                    onClick={handleExportJson}
-                    disabled={!photoObject}
-                  >
-                    Export JSON
-                  </button>
-                  <button
-                    className="restoration-btn restoration-btn-export"
-                    onClick={handleExportPng}
-                    disabled={!photoObject}
-                  >
-                    Export PNG
-                  </button>
-                  <button
-                    className="restoration-btn restoration-btn-export"
-                    onClick={handleExport}
-                    disabled={status !== "approved"}
-                  >
-                    📦 Export ZIP
-                  </button>
-                  <button
-                    className="restoration-btn restoration-btn-danger"
-                    onClick={handleRevert}
-                    disabled={status === "approved"}
-                  >
-                    ↺ Revert to Original
-                  </button>
-                </div>
-              </div>
-
-              {status === "approved" && (
-                <div className="restoration-sidebar-section restoration-status-approved">
-                  <p>✓ Restoration approved and locked. Export to save the ZIP file.</p>
+            <main className={`restoration-canvas-area view-${viewMode}`} aria-label="Photo restoration workspace">
+              {viewMode === "side-by-side" && (
+                <div className="restoration-original-panel">
+                  <img src={selectedPage.sources.desktop} alt={`Original page ${selectedPage.displayNumber}`} />
                 </div>
               )}
-
-              {notice && (
-                <div className="restoration-sidebar-section restoration-status-note">
-                  <p>{notice}</p>
-                </div>
-              )}
-            </div>
-
-            <div className="restoration-canvas-area">
-              <canvas ref={canvasRef} className="restoration-canvas" />
-            </div>
+              <div className="restoration-canvas-shell" style={{ transform: `scale(${zoom})`, transformOrigin: "top left" }}>
+                <canvas ref={canvasRef} className="restoration-canvas" />
+                {viewMode === "original" && <img className="restoration-original-overlay" src={selectedPage.sources.desktop} alt="" />}
+                {viewMode === "overlay" && <img className="restoration-original-overlay" style={{ opacity: overlayOpacity }} src={selectedPage.sources.desktop} alt="" />}
+              </div>
+            </main>
           </div>
+        )}
+
+        {currentExportRecord && (
+          <details className="restoration-json-preview">
+            <summary>Current editable restoration JSON</summary>
+            <pre>{JSON.stringify(currentExportRecord, null, 2)}</pre>
+          </details>
         )}
       </div>
     </div>
