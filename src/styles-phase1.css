@@ -207,7 +207,7 @@
 .search-result-card {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   padding: 14px 18px;
   background: var(--color-bg-paper);
   border: 1px solid var(--color-border);
@@ -228,6 +228,19 @@
   font-size: 0.95rem;
 }
 
+.search-result-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.search-result-meta {
+  flex: 0 0 auto;
+  color: var(--color-text-light);
+  font-size: 0.78rem;
+}
+
 .search-result-snippet {
   color: var(--color-text-light);
   font-size: 0.88rem;
@@ -240,6 +253,41 @@
   padding: 1px 3px;
   border-radius: 2px;
   font-weight: 600;
+}
+
+.search-result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.search-result-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.search-result-action.secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+.search-result-action:hover {
+  background: var(--color-accent);
+}
+
+.search-result-action.secondary:hover {
+  background: var(--color-bg);
+  border-color: var(--color-accent);
 }
 
 /* === People Directory === */

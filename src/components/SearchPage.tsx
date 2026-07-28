@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Fuse from "fuse.js";
 import { Navigation } from "./Navigation";
-import type { Person, SearchResult } from "../types";
+import type { Person } from "../types";
 import searchIndexData from "../data/search/search-index.json";
 
 interface SearchIndexPage {
@@ -12,6 +12,8 @@ interface SearchIndexPage {
   originalPrintedPageNumber: number | null;
   pageId: string;
   sourceFile: string;
+  title?: string;
+  caption?: string;
   text: string;
   combinedText: string;
   wordCount: number;
@@ -27,6 +29,59 @@ interface SearchIndex {
 }
 
 const index = searchIndexData as unknown as SearchIndex;
+const SEARCHABLE_PERSON_FIELDS = [
+  "fullName",
+  "firstName",
+  "lastName",
+  "nicknames",
+  "places",
+  "churches",
+  "schools",
+  "militaryService",
+  "businesses",
+  "cemeteries",
+  "occupations",
+  "pageReferences",
+] as const;
+
+const SEARCHABLE_PAGE_FIELDS = [
+  "combinedText",
+  "text",
+  "caption",
+  "title",
+  "sourceFile",
+] as const;
+
+type SearchCategory =
+  | "Page lookup"
+  | "Page OCR text"
+  | "Page caption"
+  | "Person record"
+  | "Family name"
+  | "First name"
+  | "Nickname"
+  | "Place"
+  | "Church"
+  | "School"
+  | "Military service"
+  | "Business"
+  | "Cemetery"
+  | "Occupation"
+  | "Linked page";
+
+interface GlobalSearchResult {
+  id: string;
+  title: string;
+  snippet: string;
+  category: SearchCategory;
+  source: string;
+  score: number;
+  pageReference?: number;
+  personId?: string;
+  pageReferences?: number[];
+  primaryUrl: string;
+  primaryAction: string;
+}
 
 export function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -36,10 +91,11 @@ export function SearchPage() {
   const ocrFuse = useMemo(() => {
     if (index.pages.length === 0) return null;
     return new Fuse(index.pages, {
-      keys: ["combinedText"],
+      keys: SEARCHABLE_PAGE_FIELDS as unknown as string[],
       includeScore: true,
       includeMatches: true,
-      threshold: 0.4,
+      ignoreLocation: true,
+      threshold: 0.35,
       minMatchCharLength: 2,
     });
   }, []);
@@ -47,34 +103,63 @@ export function SearchPage() {
   const peopleFuse = useMemo(() => {
     if (index.people.length === 0) return null;
     return new Fuse(index.people, {
-      keys: ["fullName", "firstName", "lastName", "nicknames", "places", "churches", "schools", "militaryService", "businesses", "cemeteries", "occupations"],
+      keys: SEARCHABLE_PERSON_FIELDS as unknown as string[],
       includeScore: true,
+      includeMatches: true,
+      ignoreLocation: true,
       threshold: 0.3,
+      minMatchCharLength: 2,
     });
   }, []);
 
   const results = useMemo(() => {
-    if (!query.trim() || (!ocrFuse && !peopleFuse)) return { pages: [], people: [], places: [], other: [] };
+    const cleanQuery = query.trim();
+    if (!cleanQuery || (!ocrFuse && !peopleFuse)) return [];
 
-    const pages: SearchResult[] = [];
-    const peopleResults: SearchResult[] = [];
-    const places: SearchResult[] = [];
-    const other: SearchResult[] = [];
+    const nextResults: GlobalSearchResult[] = [];
+    const seen = new Set<string>();
+
+    const addResult = (result: GlobalSearchResult) => {
+      if (seen.has(result.id)) return;
+      seen.add(result.id);
+      nextResults.push(result);
+    };
+
+    const pageLookup = parsePageLookup(cleanQuery);
+    if (pageLookup !== null) {
+      const page = index.pages.find((p) => p.displayNumber === pageLookup);
+      if (page) {
+        addResult({
+          id: `lookup-page-${page.displayNumber}`,
+          title: `Page ${page.displayNumber}`,
+          snippet: pageSummary(page),
+          category: "Page lookup",
+          source: pageSourceLabel(page),
+          pageReference: page.displayNumber,
+          primaryUrl: readerUrl(page.displayNumber, cleanQuery),
+          primaryAction: "Open page",
+          score: 2,
+        });
+      }
+    }
 
     // OCR full-text search
     if (ocrFuse) {
-      const ocrHits = ocrFuse.search(query).slice(0, 20);
+      const ocrHits = ocrFuse.search(cleanQuery).slice(0, 24);
       for (const hit of ocrHits) {
         const item = hit.item;
-        const matchText = hit.matches?.[0]?.value || item.text || item.combinedText;
-        const snippet = extractSnippet(matchText, query, 150);
+        const match = hit.matches?.find((m) => typeof m.value === "string" && m.value.trim());
+        const matchText = match?.value || item.caption || item.title || item.text || item.combinedText;
         const displayNumber = item.displayNumber ?? item.pageNumber;
-        pages.push({
-          type: "page",
+        addResult({
+          id: `ocr-page-${displayNumber}`,
           title: `Page ${displayNumber}`,
-          snippet,
+          snippet: extractSnippet(matchText, cleanQuery, 190),
+          category: pageMatchCategory(match?.key),
+          source: pageSourceLabel(item),
           pageReference: displayNumber,
-          url: `/?page=${displayNumber}&search=${encodeURIComponent(query)}`,
+          primaryUrl: readerUrl(displayNumber, cleanQuery),
+          primaryAction: "Open page",
           score: 1 - (hit.score || 0),
         });
       }
@@ -82,34 +167,30 @@ export function SearchPage() {
 
     // People search
     if (peopleFuse) {
-      const peopleHits = peopleFuse.search(query).slice(0, 15);
+      const peopleHits = peopleFuse.search(cleanQuery).slice(0, 24);
       for (const hit of peopleHits) {
         const person = hit.item as Person;
-        const result: SearchResult = {
-          type: "person",
-          title: person.fullName,
-          snippet: formatPersonSnippet(person),
-          personId: person.id,
-          url: `/people/${person.id}`,
-          score: 1 - (hit.score || 0),
-        };
-
-        // Categorize by match type
         const matchKey = hit.matches?.[0]?.key;
-        if (matchKey === "places") {
-          places.push(result);
-        } else if (matchKey && !["fullName", "firstName", "lastName", "nicknames"].includes(matchKey)) {
-          other.push(result);
-        } else {
-          peopleResults.push(result);
-        }
+        const matchText = stringifyMatchValue(hit.matches?.[0]?.value) || formatPersonSnippet(person);
+        addResult({
+          id: `person-${person.id}`,
+          title: person.fullName,
+          snippet: extractSnippet(matchText, cleanQuery, 190) || escapeHtml(formatPersonSnippet(person)),
+          category: personMatchCategory(matchKey),
+          source: `People record${matchKey ? `: ${personFieldLabel(matchKey)}` : ""}`,
+          personId: person.id,
+          pageReferences: person.pageReferences,
+          primaryUrl: `/people/${person.id}`,
+          primaryAction: "View person",
+          score: 1 - (hit.score || 0),
+        });
       }
     }
 
-    return { pages, people: peopleResults, places, other };
+    return nextResults.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title));
   }, [query, ocrFuse, peopleFuse]);
 
-  const totalResults = results.pages.length + results.people.length + results.places.length + results.other.length;
+  const totalResults = results.length;
 
   return (
     <div className="search-page">
@@ -141,7 +222,8 @@ export function SearchPage() {
             <h3>What you can search:</h3>
             <ul>
               <li><strong>Book Pages</strong> — Full-text OCR search across all {index.totalPages} pages</li>
-              <li><strong>People</strong> — Names, nicknames, and family members</li>
+              <li><strong>People</strong> — Family names, first names, nicknames, and linked page records</li>
+              <li><strong>Page Lookup</strong> — Enter a visible page number, such as 89</li>
               <li><strong>Places</strong> — Locations mentioned in the book</li>
               <li><strong>Churches, Schools, Military, Businesses, Cemeteries</strong> — Categorized references</li>
             </ul>
@@ -152,69 +234,41 @@ export function SearchPage() {
           <div className="search-results-grouped">
             <p className="search-results-count">{totalResults} results found</p>
 
-            {results.pages.length > 0 && (
-              <section className="search-section">
-                <h2 className="search-section-title">Book Pages ({results.pages.length})</h2>
-                <ul className="search-section-list">
-                  {results.pages.map((r, i) => (
-                    <li key={`page-${i}`}>
-                      <Link to={r.url} className="search-result-card">
-                        <span className="search-result-title">{r.title}</span>
-                        <span className="search-result-snippet" dangerouslySetInnerHTML={{ __html: r.snippet }} />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
-
-            {results.people.length > 0 && (
-              <section className="search-section">
-                <h2 className="search-section-title">People ({results.people.length})</h2>
-                <ul className="search-section-list">
-                  {results.people.map((r, i) => (
-                    <li key={`person-${i}`}>
-                      <Link to={r.url} className="search-result-card">
-                        <span className="search-result-title">{r.title}</span>
-                        <span className="search-result-snippet">{r.snippet}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
-
-            {results.places.length > 0 && (
-              <section className="search-section">
-                <h2 className="search-section-title">Places ({results.places.length})</h2>
-                <ul className="search-section-list">
-                  {results.places.map((r, i) => (
-                    <li key={`place-${i}`}>
-                      <Link to={r.url} className="search-result-card">
-                        <span className="search-result-title">{r.title}</span>
-                        <span className="search-result-snippet">{r.snippet}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
-
-            {results.other.length > 0 && (
-              <section className="search-section">
-                <h2 className="search-section-title">Other ({results.other.length})</h2>
-                <ul className="search-section-list">
-                  {results.other.map((r, i) => (
-                    <li key={`other-${i}`}>
-                      <Link to={r.url} className="search-result-card">
-                        <span className="search-result-title">{r.title}</span>
-                        <span className="search-result-snippet">{r.snippet}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
+            <section className="search-section">
+              <h2 className="search-section-title">Matches</h2>
+              <ul className="search-section-list">
+                {results.map((result) => (
+                  <li key={result.id}>
+                    <article className="search-result-card">
+                      <div className="search-result-header">
+                        <span className="search-result-title">{result.title}</span>
+                        <span className="search-result-meta">{result.category} · {result.source}</span>
+                      </div>
+                      <span className="search-result-snippet" dangerouslySetInnerHTML={{ __html: result.snippet }} />
+                      <div className="search-result-actions">
+                        <Link to={result.primaryUrl} className="search-result-action">
+                          {result.primaryAction}
+                        </Link>
+                        {result.pageReference && (
+                          <Link to={readerUrl(result.pageReference, query)} className="search-result-action secondary">
+                            Page {result.pageReference}
+                          </Link>
+                        )}
+                        {result.pageReferences?.slice(0, 6).map((pageNumber) => (
+                          <Link
+                            key={`${result.id}-${pageNumber}`}
+                            to={readerUrl(pageNumber, query)}
+                            className="search-result-action secondary"
+                          >
+                            Page {pageNumber}
+                          </Link>
+                        ))}
+                      </div>
+                    </article>
+                  </li>
+                ))}
+              </ul>
+            </section>
           </div>
         )}
       </div>
@@ -222,12 +276,97 @@ export function SearchPage() {
   );
 }
 
+function parsePageLookup(query: string): number | null {
+  const match = query.match(/^(?:p(?:age)?\.?\s*)?(\d{1,2})$/i);
+  if (!match) return null;
+  const pageNumber = Number(match[1]);
+  if (!Number.isInteger(pageNumber) || pageNumber < 1 || pageNumber > index.totalPages) return null;
+  return pageNumber;
+}
+
+function readerUrl(pageNumber: number, query?: string): string {
+  const params = new URLSearchParams({ page: String(pageNumber) });
+  if (query?.trim()) params.set("search", query.trim());
+  return `/?${params.toString()}`;
+}
+
+function pageSummary(page: SearchIndexPage): string {
+  const printed = page.originalPrintedPageNumber ? `Original printed page ${page.originalPrintedPageNumber}` : "No original printed page";
+  const source = page.sourceFile ? `Source file ${page.sourceFile}` : page.pageId;
+  return escapeHtml(`${printed}. ${source}. ${page.text ? plainSnippet(page.text, 110) : "No OCR text available."}`);
+}
+
+function pageSourceLabel(page: SearchIndexPage): string {
+  const printed = page.originalPrintedPageNumber ? `original ${page.originalPrintedPageNumber}` : "no printed number";
+  return `${page.pageId}, ${printed}`;
+}
+
+function pageMatchCategory(key?: string): SearchCategory {
+  if (key === "caption" || key === "title" || key === "sourceFile") return "Page caption";
+  return "Page OCR text";
+}
+
+function personMatchCategory(key?: string): SearchCategory {
+  switch (key) {
+    case "lastName":
+      return "Family name";
+    case "firstName":
+      return "First name";
+    case "nicknames":
+      return "Nickname";
+    case "places":
+      return "Place";
+    case "churches":
+      return "Church";
+    case "schools":
+      return "School";
+    case "militaryService":
+      return "Military service";
+    case "businesses":
+      return "Business";
+    case "cemeteries":
+      return "Cemetery";
+    case "occupations":
+      return "Occupation";
+    case "pageReferences":
+      return "Linked page";
+    default:
+      return "Person record";
+  }
+}
+
+function personFieldLabel(key: string): string {
+  switch (key) {
+    case "fullName":
+      return "full name";
+    case "firstName":
+      return "first name";
+    case "lastName":
+      return "family name";
+    case "nicknames":
+      return "nickname";
+    case "pageReferences":
+      return "linked pages";
+    case "militaryService":
+      return "military service";
+    default:
+      return key;
+  }
+}
+
+function stringifyMatchValue(value: unknown): string {
+  if (Array.isArray(value)) return value.join(", ");
+  if (typeof value === "number") return String(value);
+  if (typeof value === "string") return value;
+  return "";
+}
+
 function extractSnippet(text: string, query: string, maxLen: number): string {
   if (!text) return "";
   const lower = text.toLowerCase();
   const q = query.toLowerCase();
   const idx = lower.indexOf(q);
-  if (idx === -1) return escapeHtml(text.slice(0, maxLen) + "...");
+  if (idx === -1) return escapeHtml(plainSnippet(text, maxLen));
 
   const start = Math.max(0, idx - 40);
   const end = Math.min(text.length, idx + q.length + 80);
@@ -235,6 +374,11 @@ function extractSnippet(text: string, query: string, maxLen: number): string {
   const match = escapeHtml(text.slice(idx, idx + q.length));
   const after = escapeHtml(text.slice(idx + q.length, end));
   return (start > 0 ? "..." : "") + before + `<mark>${match}</mark>` + after + (end < text.length ? "..." : "");
+}
+
+function plainSnippet(text: string, maxLen: number): string {
+  const normalized = text.replace(/\s+/g, " ").trim();
+  return normalized.length > maxLen ? `${normalized.slice(0, maxLen).trim()}...` : normalized;
 }
 
 function formatPersonSnippet(person: Person): string {

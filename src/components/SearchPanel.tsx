@@ -1,58 +1,52 @@
-import { useEffect, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import Fuse from "fuse.js";
 import type { BookPage } from "../types";
+import searchIndexData from "../data/search/search-index.json";
 
 interface SearchEntry {
   pageNumber: number;
+  displayNumber: number;
+  pageId: string;
   text: string;
+  combinedText: string;
 }
 
 export function SearchPanel({
-  pages,
   onSelect
 }: {
   pages: BookPage[];
   onSelect: (pageNumber: number) => void;
 }) {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<{ pageNumber: number; text: string }[]>([]);
-  const [loaded, setLoaded] = useState(false);
-  const fuseRef = useRef<Fuse<SearchEntry> | null>(null);
+  const index = searchIndexData as unknown as { pages: SearchEntry[] };
+  const fuse = useMemo(() => new Fuse(index.pages, {
+    keys: ["combinedText", "text"],
+    includeScore: true,
+    ignoreLocation: true,
+    threshold: 0.35,
+    minMatchCharLength: 2,
+  }), [index.pages]);
 
-  useEffect(() => {
-    fetch("/data/transcripts.json")
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.transcripts && data.transcripts.length) {
-          fuseRef.current = new Fuse(data.transcripts, {
-            keys: ["text"],
-            includeScore: true,
-            threshold: 0.4
-          });
-          setLoaded(true);
-        }
-      })
-      .catch(() => {
-        // Transcripts not yet available
-      });
-  }, []);
+  const results = useMemo(() => {
+    const cleanQuery = query.trim();
+    if (!cleanQuery) return [];
 
-  useEffect(() => {
-    if (!fuseRef.current || !query.trim()) {
-      setResults([]);
-      return;
+    const pageLookup = cleanQuery.match(/^(?:p(?:age)?\.?\s*)?(\d{1,2})$/i);
+    if (pageLookup) {
+      const pageNumber = Number(pageLookup[1]);
+      const directPage = index.pages.find((page) => page.displayNumber === pageNumber);
+      if (directPage) return [directPage];
     }
 
-    const hits = fuseRef.current.search(query).slice(0, 20);
-    setResults(hits.map((h) => h.item));
-  }, [query]);
+    return fuse.search(cleanQuery).slice(0, 20).map((h) => h.item);
+  }, [fuse, index.pages, query]);
 
   return (
     <div className="search-panel">
       <input
         type="search"
         className="search-input"
-        placeholder={loaded ? "Search book text..." : "Search (transcripts loading...)"}
+        placeholder="Search book text or page number..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         aria-label="Search book text"
@@ -64,21 +58,25 @@ export function SearchPanel({
               <button
                 className="search-result-item"
                 onClick={() => {
-                  onSelect(r.pageNumber);
+                  onSelect(r.displayNumber);
                   setQuery("");
-                  setResults([]);
                 }}
               >
-                <span className="search-page">Page {r.pageNumber}</span>
-                <span className="search-snippet">{r.text.slice(0, 80)}...</span>
+                <span className="search-page">Page {r.displayNumber}</span>
+                <span className="search-snippet">{snippet(r.text)}</span>
               </button>
             </li>
           ))}
         </ul>
       )}
-      {loaded && query.trim() && results.length === 0 && (
+      {query.trim() && results.length === 0 && (
         <p className="search-empty">No matches found.</p>
       )}
     </div>
   );
+}
+
+function snippet(text: string) {
+  const normalized = text.replace(/\s+/g, " ").trim();
+  return normalized.length > 90 ? `${normalized.slice(0, 90).trim()}...` : normalized;
 }
