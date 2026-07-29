@@ -22,6 +22,7 @@ const STORAGE_KEY = "fvb-phase-1b-photo-restorations";
 const ADMIN_SESSION_KEY = "fvb-admin-unlocked-v1";
 const AUTOSAVE_MS = 500;
 const RESTORATION_TOOL_VERSION = "v22.1-photo-restoration";
+const PHOTO_INITIAL_PAGE_FRACTION = 0.4;
 const RESTORATION_STATUSES = [
   "unreviewed",
   "region-marked",
@@ -168,6 +169,23 @@ function recordWithPlacementFields(record: RestorationRecord, page: BookPage, pl
   };
 }
 
+function centeredPlacementForImage(page: BookPage, image: HTMLImageElement): PlacementCoords {
+  const maxWidth = page.width * PHOTO_INITIAL_PAGE_FRACTION;
+  const maxHeight = page.height * PHOTO_INITIAL_PAGE_FRACTION;
+  const fitScale = Math.min(maxWidth / image.naturalWidth, maxHeight / image.naturalHeight);
+  const width = Math.round(image.naturalWidth * fitScale);
+  const height = Math.round(image.naturalHeight * fitScale);
+  return {
+    x: Math.round((page.width - width) / 2),
+    y: Math.round((page.height - height) / 2),
+    width,
+    height,
+    scaleX: fitScale,
+    scaleY: fitScale,
+    rotation: 0,
+  };
+}
+
 function makeRecord(page: BookPage, previous?: RestorationRecord): RestorationRecord {
   const now = new Date().toISOString();
   const previousPlacement = previous?.placement ? normalizePlacement(previous.placement, page) : null;
@@ -307,9 +325,11 @@ export function PhotoRestoration() {
   const [undoStack, setUndoStack] = useState<RestorationRecord[]>([]);
   const [redoStack, setRedoStack] = useState<RestorationRecord[]>([]);
   const [dirty, setDirty] = useState(false);
+  const canvasAreaRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const fabricRef = useRef<any>(null);
   const scaleRef = useRef(1);
+  const autoScrolledPhotoIdRef = useRef<string | null>(null);
   const autosaveRef = useRef<number | null>(null);
 
   const pages = manifest?.pages ?? [];
@@ -500,8 +520,11 @@ export function PhotoRestoration() {
       height: canvasHeight,
       preserveObjectStacking: true,
       backgroundColor: "#151515",
+      selection: true,
+      enablePointerEvents: true,
     });
     fabricRef.current = canvas;
+    (window as any).__fvbPhotoCanvas = canvas;
 
     const original = await loadImage(selectedPage.masterSrc);
     const bg = new fabric.Image(original, {
@@ -520,6 +543,7 @@ export function PhotoRestoration() {
       hasBorders: false,
     });
     canvas.add(bg);
+    bg.sendToBack?.();
 
     if (record.region) {
       const rect = new fabric.Rect({
@@ -568,11 +592,48 @@ export function PhotoRestoration() {
         });
       }
       canvas.add(img);
+      img.bringToFront?.();
+      if (record.status !== "approved" && record.status !== "published") {
+        canvas.setActiveObject(img);
+      }
     }
 
-    canvas.on("object:modified", syncFromCanvas);
+    canvas.on("object:modified", (event: any) => {
+      syncFromCanvas();
+      if (event.target?.fvbRole === "photo") {
+        window.requestAnimationFrame(() => {
+          event.target.setCoords?.();
+          canvas.setActiveObject(event.target);
+          canvas.calcOffset?.();
+          canvas.requestRenderAll?.();
+        });
+      }
+    });
+    canvas.on("object:moving", () => {
+      const photoObj = canvas.getObjects().find((obj: any) => obj.fvbRole === "photo");
+      if (photoObj) photoObj.bringToFront?.();
+    });
+    canvas.setDimensions({ width: canvasWidth * zoom, height: canvasHeight * zoom });
+    canvas.setZoom(zoom);
     canvas.renderAll();
-  }, [record, selectedPage, syncFromCanvas]);
+
+    if (
+      record.recoveredPhoto &&
+      record.placement &&
+      autoScrolledPhotoIdRef.current !== record.recoveredPhoto.id &&
+      canvasAreaRef.current
+    ) {
+      const photoCenterX = (record.placement.x + record.placement.width / 2) * scale * zoom;
+      const photoCenterY = (record.placement.y + record.placement.height / 2) * scale * zoom;
+      canvasAreaRef.current.scrollTo({
+        left: Math.max(0, photoCenterX - canvasAreaRef.current.clientWidth / 2),
+        top: Math.max(0, photoCenterY - canvasAreaRef.current.clientHeight / 2),
+        behavior: "auto",
+      });
+      window.requestAnimationFrame(() => canvas.calcOffset?.());
+      autoScrolledPhotoIdRef.current = record.recoveredPhoto.id;
+    }
+  }, [record, selectedPage, syncFromCanvas, zoom]);
 
   useEffect(() => {
     drawCanvas();
@@ -617,28 +678,10 @@ export function PhotoRestoration() {
       const image = await loadImage(dataUrl);
       const photoId = `photo-${Date.now()}`;
       updateRecord((current) => {
-        const region =
-          current.region ??
-          ({
-            x: Math.round(selectedPage.width * 0.12),
-            y: Math.round(selectedPage.height * 0.12),
-            width: Math.round(selectedPage.width * 0.28),
-            height: Math.round(selectedPage.height * 0.24),
-          } satisfies RectCoords);
-        const fitScale = Math.max(region.width / image.naturalWidth, region.height / image.naturalHeight);
-        const placement = {
-          x: region.x,
-          y: region.y,
-          width: Math.round(image.naturalWidth * fitScale),
-          height: Math.round(image.naturalHeight * fitScale),
-          scaleX: fitScale,
-          scaleY: fitScale,
-          rotation: 0,
-        };
+        const placement = centeredPlacementForImage(selectedPage, image);
         return recordWithPlacementFields({
           ...current,
-          region,
-          crop: { enabled: current.crop.enabled, x: region.x, y: region.y, width: region.width, height: region.height },
+          crop: current.crop.enabled ? current.crop : { enabled: false, x: 0, y: 0, width: 0, height: 0 },
           recoveredPhoto: {
             id: photoId,
             fileName: file.name,
@@ -753,23 +796,16 @@ export function PhotoRestoration() {
   };
 
   const fitPhoto = () => {
-    if (!record?.region || !record.recoveredPhoto || !selectedPage) return;
-    const scale = Math.max(record.region.width / record.recoveredPhoto.originalWidth, record.region.height / record.recoveredPhoto.originalHeight);
+    if (!record?.recoveredPhoto || !selectedPage) return;
+    const imageLike = {
+      naturalWidth: record.recoveredPhoto.originalWidth,
+      naturalHeight: record.recoveredPhoto.originalHeight,
+    } as HTMLImageElement;
     updateRecord((current) => ({
       ...recordWithPlacementFields(
         current,
         selectedPage,
-        current.recoveredPhoto
-          ? {
-            x: current.region!.x,
-            y: current.region!.y,
-            width: Math.round(current.recoveredPhoto.originalWidth * scale),
-            height: Math.round(current.recoveredPhoto.originalHeight * scale),
-            scaleX: scale,
-            scaleY: scale,
-            rotation: 0,
-          }
-          : current.placement,
+        current.recoveredPhoto ? centeredPlacementForImage(selectedPage, imageLike) : current.placement,
       ),
     }));
   };
@@ -1075,10 +1111,11 @@ export function PhotoRestoration() {
                   {sidebarTab === "upload" && (
                     <>
                       <h2>Upload</h2>
+                      <p className="restoration-help">Upload Photo places the photo on the selected page automatically.</p>
                       <input className="restoration-file-input" type="file" accept="image/*" onChange={uploadPhoto} disabled={record.status === "approved" || record.status === "published"} />
                       {record.recoveredPhoto && <p className="restoration-help">{record.recoveredPhoto.fileName}</p>}
                       <div className="restoration-btn-group">
-                        <button className="restoration-btn" onClick={fitPhoto} disabled={!record.recoveredPhoto || !record.region || record.status === "approved" || record.status === "published"}>
+                        <button className="restoration-btn" onClick={fitPhoto} disabled={!record.recoveredPhoto || record.status === "approved" || record.status === "published"}>
                           Reset Photo
                         </button>
                         <button className="restoration-btn restoration-btn-danger" onClick={resetPlacement} disabled={record.status === "approved" || record.status === "published"}>
@@ -1091,7 +1128,7 @@ export function PhotoRestoration() {
                   {sidebarTab === "position-size" && (
                     <>
                       <h2>Position and Size</h2>
-                      <p className="restoration-help">Drag the photo directly on the canvas, use its resize handles, or use these size and zoom controls.</p>
+                      <p className="restoration-help">Drag the photo directly on the page. Use the corner handles to resize it.</p>
                       <div className="restoration-btn-group">
                         <button className="restoration-btn" onClick={undo} disabled={undoStack.length <= 1 || record.status === "published"}>Undo</button>
                         <button className="restoration-btn" onClick={redo} disabled={redoStack.length === 0 || record.status === "published"}>Redo</button>
@@ -1213,9 +1250,9 @@ export function PhotoRestoration() {
                       <h3>Select a Page</h3>
                       <p className="restoration-help">Use Page Selection. It lists visible pages 1-90 in authoritative reading order, including Page 89 as page-002 from page-02.png.</p>
                       <h3>Upload a Photo</h3>
-                      <p className="restoration-help">Use Upload to add a JPEG, PNG, WebP, or phone photo. The recovered photo stays in browser-local storage.</p>
+                      <p className="restoration-help">Use Upload to add a JPEG, PNG, WebP, or phone photo. Upload Photo places it centered on the selected page and keeps it in browser-local storage.</p>
                       <h3>Move and Resize</h3>
-                      <p className="restoration-help">Use Position and Size to undo, redo, resize, or zoom. Drag the recovered photo or use its resize handles on the canvas.</p>
+                      <p className="restoration-help">Use Position and Size. Drag the photo directly on the page. Use the corner handles to resize it. Zoom changes the canvas view without changing saved page-relative placement.</p>
                       <h3>Rotate and Crop</h3>
                       <p className="restoration-help">Use Rotate for Rotate - and Rotate +. Use Crop, Apply Crop, Cancel Crop, or Clear Crop in the Crop tab.</p>
                       <h3>Preview</h3>
@@ -1241,13 +1278,19 @@ export function PhotoRestoration() {
                   )}
                 </section>
 
-                <section className={`restoration-canvas-area view-${viewMode}`} aria-label="Photo restoration workspace">
+                <section
+                  ref={canvasAreaRef}
+                  className={`restoration-canvas-area view-${viewMode}`}
+                  aria-label="Photo restoration workspace"
+                  onScroll={() => fabricRef.current?.calcOffset?.()}
+                >
                   {viewMode === "side-by-side" && (
                     <div className="restoration-original-panel">
                       <img src={selectedPage.sources.desktop} alt={`Original page ${selectedPage.displayNumber}`} />
                     </div>
                   )}
-                  <div className="restoration-canvas-shell" style={{ transform: `scale(${zoom})`, transformOrigin: "top left" }}>
+                  <p className="restoration-canvas-instruction">Drag the photo directly on the page. Use the corner handles to resize it.</p>
+                  <div className="restoration-canvas-shell">
                     <canvas ref={canvasRef} className="restoration-canvas" />
                     {viewMode === "original" && <img className="restoration-original-overlay" src={selectedPage.sources.desktop} alt="" />}
                     {viewMode === "overlay" && <img className="restoration-original-overlay" style={{ opacity: overlayOpacity }} src={selectedPage.sources.desktop} alt="" />}

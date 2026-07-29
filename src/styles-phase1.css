@@ -982,21 +982,43 @@
   overscroll-behavior: contain;
   touch-action: pan-x pan-y;
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
   padding: 20px;
   gap: 16px;
 }
 
+.restoration-canvas-instruction {
+  flex: 0 0 100%;
+  width: 100%;
+  color: #d8c48d;
+  font-size: 0.86rem;
+  line-height: 1.35;
+  margin: 0 0 2px;
+}
+
 .restoration-canvas {
   max-width: 100%;
   max-height: 100%;
+  touch-action: none;
 }
 
 .restoration-canvas-shell {
   position: relative;
   flex: 0 0 auto;
   line-height: 0;
+  touch-action: none;
+}
+
+.restoration-canvas-shell .canvas-container,
+.restoration-canvas-shell .upper-canvas,
+.restoration-canvas-shell .lower-canvas {
+  touch-action: none;
+}
+
+.restoration-canvas-shell .upper-canvas {
+  pointer-events: auto;
 }
 
 .restoration-original-panel {

@@ -14,7 +14,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "photo-tool:acceptance": "node scripts/photo-tool-acceptance.mjs",
-    "photo-tool:blocking-acceptance": "node scripts/photo-tool-blocking-acceptance.mjs"
+    "photo-tool:blocking-acceptance": "node scripts/photo-tool-blocking-acceptance.mjs",
+    "photo-tool:v22.3-acceptance": "node scripts/photo-placement-v22-3-acceptance.mjs"
   },
   "dependencies": {
     "fuse.js": "^7.0.0",
