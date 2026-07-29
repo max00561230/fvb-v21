@@ -186,6 +186,10 @@ function centeredPlacementForImage(page: BookPage, image: HTMLImageElement): Pla
   };
 }
 
+function restorationPageImageSrc(page: BookPage) {
+  return page.masterSrc || page.sources.desktop;
+}
+
 function makeRecord(page: BookPage, previous?: RestorationRecord): RestorationRecord {
   const now = new Date().toISOString();
   const previousPlacement = previous?.placement ? normalizePlacement(previous.placement, page) : null;
@@ -283,7 +287,7 @@ async function renderExportPreview(page: BookPage, record: RestorationRecord) {
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("Unable to create export canvas");
 
-  const original = await loadImage(page.masterSrc);
+  const original = await loadImage(restorationPageImageSrc(page));
   ctx.drawImage(original, 0, 0, canvas.width, canvas.height);
 
   if (record.recoveredPhoto && record.placement) {
@@ -526,7 +530,7 @@ export function PhotoRestoration() {
     fabricRef.current = canvas;
     (window as any).__fvbPhotoCanvas = canvas;
 
-    const original = await loadImage(selectedPage.masterSrc);
+    const original = await loadImage(restorationPageImageSrc(selectedPage));
     const bg = new fabric.Image(original, {
       left: 0,
       top: 0,

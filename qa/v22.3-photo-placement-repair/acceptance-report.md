@@ -4,6 +4,8 @@
 
 Uploaded photos were initialized through a separate marked-region workflow and were not selected as foreground Fabric objects after upload. Canvas zoom was applied with a CSS transform outside Fabric, which could desynchronize pointer coordinates from page/object coordinates. Touch scrolling was also allowed on the canvas area, competing with direct photo manipulation.
 
+Post-deploy smoke also exposed a production-only base-page loading gap: Vercel builds intentionally emit `masterSrc: ""` because original master scans are not available in the deployment environment, so the photo editor must fall back to the deployed desktop page asset for the locked background and export preview.
+
 ## Files Changed
 
 - src/components/PhotoRestoration.tsx
@@ -14,6 +16,12 @@ Uploaded photos were initialized through a separate marked-region workflow and w
 ## Preview URL
 
 http://127.0.0.1:4179
+
+## Production Verification
+
+- Live URL: https://fvb-v21.vercel.app/admin/photo-restoration
+- Production smoke verified Page 10 JPEG upload creates a selected foreground Fabric photo object above a locked, unselectable base page.
+- Live page-order JSON verified exactly 90 active visible pages, inactive page-007, Page 2 page-003/page-03.png, Page 89 page-002/page-02.png, and Page 90 page-091/page-91.png.
 
 ## Screenshots
 
