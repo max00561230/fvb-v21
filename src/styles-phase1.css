@@ -688,49 +688,109 @@
   font-size: 0.8rem;
 }
 
-.restoration-workspace {
-  display: flex;
-  gap: 20px;
+.admin-photo-shell {
   flex: 1;
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 16px;
+  overflow: hidden;
+}
+
+.admin-photo-sidebar {
   min-height: 0;
   overflow: hidden;
-}
-
-.restoration-sidebar {
-  width: 300px;
-  min-width: 280px;
-  background: #222;
-  border-radius: 8px;
-  padding: 16px;
-  overflow-y: auto;
   overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  background: #222;
+  border: 1px solid #333;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
 
-.restoration-sidebar-section {
-  background: #2a2a2a;
-  border-radius: 6px;
+.admin-photo-sidebar-header,
+.admin-photo-sidebar-footer {
+  flex: 0 0 auto;
   padding: 14px;
-  min-width: 0;
-  overflow: hidden;
+  border-color: #343434;
 }
 
-.restoration-sidebar-section h3 {
+.admin-photo-sidebar-header {
+  border-bottom: 1px solid #343434;
+}
+
+.admin-photo-sidebar-header h2 {
   color: var(--color-accent);
-  font-size: 0.95rem;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  margin: 0 0 6px;
+}
+
+.admin-photo-sidebar-header p {
+  color: #bbb;
+  font-size: 0.78rem;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.admin-photo-sidebar-footer {
+  border-top: 1px solid #343434;
+}
+
+.admin-photo-main {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-photo-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  display: grid;
+  grid-template-rows: auto minmax(420px, 1fr);
+  gap: 16px;
+  padding-right: 4px;
+  padding-bottom: max(28px, env(safe-area-inset-bottom));
+}
+
+.restoration-tool-panel {
+  background: #222;
+  border: 1px solid #343434;
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 0;
+}
+
+.restoration-tool-panel h2,
+.restoration-help-panel h3 {
+  color: var(--color-accent);
+  font-size: 1rem;
   margin-bottom: 10px;
   font-family: var(--font-serif);
 }
 
 .restoration-tabs {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px 10px 260px;
 }
 
 .restoration-tab {
+  flex: 0 0 auto;
+  width: 100%;
   min-height: 44px;
   padding: 10px 12px;
   border: 1px solid #4c4c4c;
@@ -744,6 +804,11 @@
   border-color: var(--color-accent);
   background: #453c28;
   color: #f4dfab;
+}
+
+.restoration-drawer-toggle,
+.restoration-drawer-scrim {
+  display: none;
 }
 
 .restoration-meta {
@@ -774,6 +839,21 @@
   font-size: 0.8rem;
   margin-bottom: 10px;
   line-height: 1.45;
+}
+
+.restoration-help-panel {
+  max-height: min(52dvh, 560px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 8px;
+  padding-bottom: max(96px, env(safe-area-inset-bottom));
+}
+
+.restoration-help-panel h2 {
+  color: var(--color-accent);
+  font-family: var(--font-serif);
+  margin-bottom: 14px;
 }
 
 .restoration-btn {
@@ -1035,7 +1115,7 @@
 }
 
 .admin-shell {
-  height: 100vh;
+  height: 100dvh;
   background: #171717;
   color: #f1f1f1;
   display: flex;
@@ -1305,32 +1385,60 @@
   }
 
   .restoration-page {
-    height: auto;
-    min-height: 100%;
-    overflow: visible;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .restoration-content {
-    overflow: visible;
+    padding: 12px;
+    overflow: hidden;
   }
 
-  .restoration-workspace {
-    flex-direction: column;
-    height: auto;
-    overflow: visible;
+  .admin-photo-shell {
+    grid-template-columns: minmax(0, 1fr);
     width: 100%;
-    max-width: calc(100vw - 40px);
+    position: relative;
   }
 
-  .restoration-sidebar {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    max-height: none;
-    overflow: visible;
+  .admin-photo-sidebar {
+    position: fixed;
+    z-index: 80;
+    inset: 0 auto 0 0;
+    width: min(310px, calc(100vw - 42px));
+    height: 100dvh;
+    border-radius: 0;
+    transform: translateX(-105%);
+    transition: transform 0.18s ease;
   }
 
-  .restoration-sidebar-section,
+  .admin-photo-shell.sidebar-open .admin-photo-sidebar {
+    transform: translateX(0);
+  }
+
+  .restoration-drawer-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-height: 42px;
+    padding: 8px 12px;
+    border: 1px solid #665834;
+    border-radius: 6px;
+    background: #2d2a23;
+    color: #f4dfab;
+    font-weight: 700;
+  }
+
+  .restoration-drawer-scrim {
+    display: block;
+    position: fixed;
+    z-index: 70;
+    inset: 0;
+    border: 0;
+    background: rgba(0, 0, 0, 0.46);
+  }
+
   .restoration-header {
     width: 100%;
     max-width: 100%;
@@ -1345,7 +1453,7 @@
     width: 100%;
     max-width: 100%;
     min-height: 420px;
-    max-height: 72vh;
+    max-height: none;
   }
 
   .restoration-header {
@@ -1371,9 +1479,9 @@
   }
 
   .admin-shell {
-    height: auto;
-    min-height: 100vh;
-    overflow: visible;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .admin-shell-nav {

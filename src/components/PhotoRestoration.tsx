@@ -19,6 +19,7 @@ async function loadJsZip() {
 }
 
 const STORAGE_KEY = "fvb-phase-1b-photo-restorations";
+const ADMIN_SESSION_KEY = "fvb-admin-unlocked-v1";
 const AUTOSAVE_MS = 500;
 const RESTORATION_TOOL_VERSION = "v22.1-photo-restoration";
 const RESTORATION_STATUSES = [
@@ -34,7 +35,32 @@ const RESTORATION_STATUSES = [
 
 type RestorationStatus = (typeof RESTORATION_STATUSES)[number];
 type ViewMode = "restored" | "original" | "side-by-side" | "overlay";
-type SidebarTab = "tools" | "help";
+type SidebarTab =
+  | "editor"
+  | "page-selection"
+  | "upload"
+  | "position-size"
+  | "rotate"
+  | "crop"
+  | "preview"
+  | "drafts"
+  | "approval"
+  | "export"
+  | "help";
+
+const SIDEBAR_TABS: { id: SidebarTab; label: string }[] = [
+  { id: "editor", label: "Editor" },
+  { id: "page-selection", label: "Page Selection" },
+  { id: "upload", label: "Upload" },
+  { id: "position-size", label: "Position and Size" },
+  { id: "rotate", label: "Rotate" },
+  { id: "crop", label: "Crop" },
+  { id: "preview", label: "Preview" },
+  { id: "drafts", label: "Drafts" },
+  { id: "approval", label: "Approval" },
+  { id: "export", label: "Export" },
+  { id: "help", label: "Help" },
+];
 type ImageAsset = {
   id: string;
   fileName: string;
@@ -273,7 +299,8 @@ export function PhotoRestoration() {
   const [viewMode, setViewMode] = useState<ViewMode>("restored");
   const [overlayOpacity, setOverlayOpacity] = useState(0.55);
   const [zoom, setZoom] = useState(1);
-  const [sidebarTab, setSidebarTab] = useState<SidebarTab>("tools");
+  const [sidebarTab, setSidebarTab] = useState<SidebarTab>("editor");
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [cropMode, setCropMode] = useState(false);
   const [cropBackup, setCropBackup] = useState<CropSettings | null>(null);
   const [preparedExport, setPreparedExport] = useState<PreparedExport | null>(null);
@@ -807,6 +834,11 @@ export function PhotoRestoration() {
     setNotice("Returned to draft editing. Original scans remain unchanged.");
   };
 
+  const lockAdmin = () => {
+    sessionStorage.removeItem(ADMIN_SESSION_KEY);
+    window.location.assign("/admin/photo-restoration");
+  };
+
   const importProject = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -969,166 +1001,199 @@ export function PhotoRestoration() {
             <p className="restoration-help">The generated page manifest could not be loaded.</p>
           </div>
         ) : (
-          <div className="restoration-workspace">
-            <aside className="restoration-sidebar">
-              <section className="restoration-sidebar-section">
-                <h3>Page</h3>
-                <select className="restoration-input" value={selectedPage.pageId} onChange={(event) => selectPage(event.target.value)}>
-                  {pages.map((page) => (
-                    <option key={page.pageId} value={page.pageId}>
-                      Page {page.displayNumber} · {page.pageId} · {page.sourceFile}
-                    </option>
-                  ))}
-                </select>
-                <dl className="restoration-meta">
-                  <div><dt>Visible page</dt><dd>{selectedPage.displayNumber}</dd></div>
-                  <div><dt>Permanent ID</dt><dd>{selectedPage.pageId}</dd></div>
-                  <div><dt>Source file</dt><dd>{selectedPage.sourceFile}</dd></div>
-                  <div><dt>Revision</dt><dd>{record.revision}</dd></div>
-                </dl>
-              </section>
-
-              <div className="restoration-tabs" role="tablist" aria-label="Photo tool sidebar">
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={sidebarTab === "tools"}
-                  className={`restoration-tab ${sidebarTab === "tools" ? "active" : ""}`}
-                  onClick={() => setSidebarTab("tools")}
-                >
-                  Tools
-                </button>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={sidebarTab === "help"}
-                  className={`restoration-tab ${sidebarTab === "help" ? "active" : ""}`}
-                  onClick={() => setSidebarTab("help")}
-                >
-                  Help
-                </button>
+          <div className={`admin-photo-shell ${mobileSidebarOpen ? "sidebar-open" : ""}`}>
+            <button className="restoration-drawer-toggle" type="button" onClick={() => setMobileSidebarOpen(true)}>
+              Open Tools
+            </button>
+            {mobileSidebarOpen && <button className="restoration-drawer-scrim" type="button" aria-label="Close tools drawer" onClick={() => setMobileSidebarOpen(false)} />}
+            <aside className="admin-photo-sidebar" aria-label="Photo restoration tools">
+              <div className="admin-photo-sidebar-header">
+                <p className="admin-eyebrow">Admin Tools</p>
+                <h2>Photo Restoration</h2>
+                <p>Page {selectedPage.displayNumber} · {selectedPage.pageId}</p>
               </div>
+              <nav className="restoration-tabs" role="tablist" aria-label="Photo restoration menu">
+                {SIDEBAR_TABS.map((tab) => (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={sidebarTab === tab.id}
+                    className={`restoration-tab ${sidebarTab === tab.id ? "active" : ""}`}
+                    onClick={() => {
+                      setSidebarTab(tab.id);
+                      setMobileSidebarOpen(false);
+                    }}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </nav>
+              <div className="admin-photo-sidebar-footer">
+                <button className="restoration-btn restoration-btn-primary" onClick={() => saveDraft("Draft saved locally.")}>Save Draft</button>
+                <button className="restoration-btn" type="button" onClick={lockAdmin}>Lock Admin</button>
+              </div>
+            </aside>
 
-              {sidebarTab === "tools" ? (
-                <>
-                  <section className="restoration-sidebar-section">
-                    <h3>1. Define Opening</h3>
-                    <button className="restoration-btn" onClick={markRegion} disabled={record.status === "approved" || record.status === "published"}>
-                      Mark / Reset Region
-                    </button>
-                    {record.region && (
-                      <p className="restoration-help">
-                        Original pixels: x {record.region.x}, y {record.region.y}, {record.region.width} x {record.region.height}
-                      </p>
-                    )}
-                  </section>
+            <main className="admin-photo-main">
+              <div className="admin-photo-content">
+                <section className="restoration-tool-panel" role="tabpanel">
+                  {sidebarTab === "editor" && (
+                    <>
+                      <h2>Editor</h2>
+                      <p className="restoration-help">Mark the page opening, then use the canvas to drag the recovered photo. The original scan stays locked.</p>
+                      <button className="restoration-btn" onClick={markRegion} disabled={record.status === "approved" || record.status === "published"}>
+                        Mark / Reset Region
+                      </button>
+                      {record.region && (
+                        <p className="restoration-help">
+                          Original pixels: x {record.region.x}, y {record.region.y}, {record.region.width} x {record.region.height}
+                        </p>
+                      )}
+                    </>
+                  )}
 
-                  <section className="restoration-sidebar-section">
-                    <h3>2. Upload Photo</h3>
-                    <input className="restoration-file-input" type="file" accept="image/*" onChange={uploadPhoto} disabled={record.status === "approved" || record.status === "published"} />
-                    {record.recoveredPhoto && <p className="restoration-help">{record.recoveredPhoto.fileName}</p>}
-                    <div className="restoration-btn-group">
-                      <button className="restoration-btn" onClick={fitPhoto} disabled={!record.recoveredPhoto || !record.region || record.status === "approved" || record.status === "published"}>
-                        Reset Photo
-                      </button>
-                      <button
-                        className="restoration-btn"
-                        onClick={startCrop}
-                        title="Crop limits the recovered photo to the marked opening without changing the original scan."
-                        disabled={!record.recoveredPhoto || !record.region || record.status === "approved" || record.status === "published"}
-                      >
-                        Crop
-                      </button>
-                      <button className="restoration-btn" onClick={applyCrop} disabled={!cropMode}>
-                        Apply Crop
-                      </button>
-                      <button className="restoration-btn" onClick={cancelCrop} disabled={!cropMode}>
-                        Cancel Crop
-                      </button>
-                      <button className="restoration-btn" onClick={clearCrop} disabled={!record.crop.enabled || record.status === "approved" || record.status === "published"}>
-                        Clear Crop
-                      </button>
-                      <button className="restoration-btn restoration-btn-danger" onClick={resetPlacement} disabled={record.status === "approved" || record.status === "published"}>
-                        Remove Photo
-                      </button>
-                    </div>
-                  </section>
+                  {sidebarTab === "page-selection" && (
+                    <>
+                      <h2>Page Selection</h2>
+                      <select className="restoration-input" value={selectedPage.pageId} onChange={(event) => selectPage(event.target.value)}>
+                        {pages.map((page) => (
+                          <option key={page.pageId} value={page.pageId}>
+                            Page {page.displayNumber} · {page.pageId} · {page.sourceFile}
+                          </option>
+                        ))}
+                      </select>
+                      <dl className="restoration-meta">
+                        <div><dt>Visible page</dt><dd>{selectedPage.displayNumber}</dd></div>
+                        <div><dt>Permanent ID</dt><dd>{selectedPage.pageId}</dd></div>
+                        <div><dt>Source file</dt><dd>{selectedPage.sourceFile}</dd></div>
+                        <div><dt>Revision</dt><dd>{record.revision}</dd></div>
+                      </dl>
+                    </>
+                  )}
 
-                  <section className="restoration-sidebar-section">
-                    <h3>3. Place Photo</h3>
-                    <p className="restoration-help">Drag, resize, rotate, or crop only the region/photo objects. The original page is locked.</p>
-                    <div className="restoration-btn-group">
-                      <button className="restoration-btn" onClick={undo} disabled={undoStack.length <= 1 || record.status === "published"}>Undo</button>
-                      <button className="restoration-btn" onClick={redo} disabled={redoStack.length === 0 || record.status === "published"}>Redo</button>
-                      <button className="restoration-btn" onClick={() => adjustPhoto(-0.05, 0)} disabled={!record.recoveredPhoto || record.status === "approved" || record.status === "published"}>Resize -</button>
-                      <button className="restoration-btn" onClick={() => adjustPhoto(0.05, 0)} disabled={!record.recoveredPhoto || record.status === "approved" || record.status === "published"}>Resize +</button>
-                      <button className="restoration-btn" onClick={() => adjustPhoto(0, -5)} disabled={!record.recoveredPhoto || record.status === "approved" || record.status === "published"}>Rotate -</button>
-                      <button className="restoration-btn" onClick={() => adjustPhoto(0, 5)} disabled={!record.recoveredPhoto || record.status === "approved" || record.status === "published"}>Rotate +</button>
-                      <button className="restoration-btn" onClick={() => setZoom((z) => Math.min(3, z + 0.2))}>Zoom +</button>
-                      <button className="restoration-btn" onClick={() => setZoom((z) => Math.max(0.35, z - 0.2))}>Zoom -</button>
-                    </div>
-                    {record.placement && (
-                      <p className="restoration-help">
-                        x {record.placement.x}, y {record.placement.y}, {record.placement.width} x {record.placement.height}, rotate {record.placement.rotation} deg
-                      </p>
-                    )}
-                  </section>
+                  {sidebarTab === "upload" && (
+                    <>
+                      <h2>Upload</h2>
+                      <input className="restoration-file-input" type="file" accept="image/*" onChange={uploadPhoto} disabled={record.status === "approved" || record.status === "published"} />
+                      {record.recoveredPhoto && <p className="restoration-help">{record.recoveredPhoto.fileName}</p>}
+                      <div className="restoration-btn-group">
+                        <button className="restoration-btn" onClick={fitPhoto} disabled={!record.recoveredPhoto || !record.region || record.status === "approved" || record.status === "published"}>
+                          Reset Photo
+                        </button>
+                        <button className="restoration-btn restoration-btn-danger" onClick={resetPlacement} disabled={record.status === "approved" || record.status === "published"}>
+                          Remove Photo
+                        </button>
+                      </div>
+                    </>
+                  )}
 
-                  <section className="restoration-sidebar-section">
-                    <h3>4. Preview / Review</h3>
-                    <select
-                      className="restoration-input"
-                      value={viewMode}
-                      onChange={(event) => setViewMode(event.target.value as ViewMode)}
-                      title="Preview compares the local restored composite with the original page scan before approval."
-                    >
-                      <option value="restored">Restored preview</option>
-                      <option value="original">Original</option>
-                      <option value="side-by-side">Side by side</option>
-                      <option value="overlay">Overlay</option>
-                    </select>
-                    {viewMode === "overlay" && (
-                      <label className="restoration-control-label">
-                        Overlay opacity
-                        <input type="range" min="0" max="1" step="0.05" value={overlayOpacity} onChange={(event) => setOverlayOpacity(Number(event.target.value))} />
-                      </label>
-                    )}
-                    <textarea
-                      className="restoration-input restoration-textarea"
-                      placeholder="Reviewer notes"
-                      value={record.notes}
-                      onChange={(event) => updateRecord((current) => ({ ...current, notes: event.target.value }))}
-                    />
-                    <select className="restoration-input" value={record.status} onChange={(event) => updateStatus(event.target.value as RestorationStatus)}>
-                      {RESTORATION_STATUSES.map((status) => (
-                        <option key={status} value={status}>{status}</option>
-                      ))}
-                    </select>
-                  </section>
+                  {sidebarTab === "position-size" && (
+                    <>
+                      <h2>Position and Size</h2>
+                      <p className="restoration-help">Drag the photo directly on the canvas, use its resize handles, or use these size and zoom controls.</p>
+                      <div className="restoration-btn-group">
+                        <button className="restoration-btn" onClick={undo} disabled={undoStack.length <= 1 || record.status === "published"}>Undo</button>
+                        <button className="restoration-btn" onClick={redo} disabled={redoStack.length === 0 || record.status === "published"}>Redo</button>
+                        <button className="restoration-btn" onClick={() => adjustPhoto(-0.05, 0)} disabled={!record.recoveredPhoto || record.status === "approved" || record.status === "published"}>Resize -</button>
+                        <button className="restoration-btn" onClick={() => adjustPhoto(0.05, 0)} disabled={!record.recoveredPhoto || record.status === "approved" || record.status === "published"}>Resize +</button>
+                        <button className="restoration-btn" onClick={() => setZoom((z) => Math.min(3, z + 0.2))}>Zoom +</button>
+                        <button className="restoration-btn" onClick={() => setZoom((z) => Math.max(0.35, z - 0.2))}>Zoom -</button>
+                      </div>
+                      {record.placement && (
+                        <p className="restoration-help">
+                          x {record.placement.x}, y {record.placement.y}, {record.placement.width} x {record.placement.height}
+                        </p>
+                      )}
+                    </>
+                  )}
 
-                  <section className="restoration-sidebar-section">
-                    <h3>5. Save / Approve / Export</h3>
-                    <div className="restoration-btn-group">
-                      <button className="restoration-btn restoration-btn-primary" onClick={() => saveDraft("Draft saved locally.")}>Save Draft</button>
-                      <button
-                        className="restoration-btn restoration-btn-approve"
-                        onClick={approveRestoration}
-                        title="Approve locks the local placement until Return to Draft is selected."
-                        disabled={!record.region || !record.recoveredPhoto || record.status === "approved"}
-                      >
+                  {sidebarTab === "rotate" && (
+                    <>
+                      <h2>Rotate</h2>
+                      <div className="restoration-btn-group">
+                        <button className="restoration-btn" onClick={() => adjustPhoto(0, -5)} disabled={!record.recoveredPhoto || record.status === "approved" || record.status === "published"}>Rotate -</button>
+                        <button className="restoration-btn" onClick={() => adjustPhoto(0, 5)} disabled={!record.recoveredPhoto || record.status === "approved" || record.status === "published"}>Rotate +</button>
+                      </div>
+                      <p className="restoration-help">Current rotation: {record.placement?.rotation ?? record.rotation} deg</p>
+                    </>
+                  )}
+
+                  {sidebarTab === "crop" && (
+                    <>
+                      <h2>Crop</h2>
+                      <p className="restoration-help">Crop limits the recovered photo to the marked opening without changing the original scan.</p>
+                      <div className="restoration-btn-group">
+                        <button className="restoration-btn" onClick={startCrop} disabled={!record.recoveredPhoto || !record.region || record.status === "approved" || record.status === "published"}>Crop</button>
+                        <button className="restoration-btn" onClick={applyCrop} disabled={!cropMode}>Apply Crop</button>
+                        <button className="restoration-btn" onClick={cancelCrop} disabled={!cropMode}>Cancel Crop</button>
+                        <button className="restoration-btn" onClick={clearCrop} disabled={!record.crop.enabled || record.status === "approved" || record.status === "published"}>Clear Crop</button>
+                      </div>
+                    </>
+                  )}
+
+                  {sidebarTab === "preview" && (
+                    <>
+                      <h2>Preview</h2>
+                      <select className="restoration-input" value={viewMode} onChange={(event) => setViewMode(event.target.value as ViewMode)}>
+                        <option value="restored">Restored preview</option>
+                        <option value="original">Original</option>
+                        <option value="side-by-side">Side by side</option>
+                        <option value="overlay">Overlay</option>
+                      </select>
+                      {viewMode === "overlay" && (
+                        <label className="restoration-control-label">
+                          Overlay opacity
+                          <input type="range" min="0" max="1" step="0.05" value={overlayOpacity} onChange={(event) => setOverlayOpacity(Number(event.target.value))} />
+                        </label>
+                      )}
+                      <textarea className="restoration-input restoration-textarea" placeholder="Reviewer notes" value={record.notes} onChange={(event) => updateRecord((current) => ({ ...current, notes: event.target.value }))} />
+                    </>
+                  )}
+
+                  {sidebarTab === "drafts" && (
+                    <>
+                      <h2>Drafts</h2>
+                      <button className="restoration-btn restoration-btn-danger" onClick={() => { if (confirm(`Delete local draft for ${record.pageId}?`)) deleteDraft(); }} disabled={!records[record.pageId]}>
+                        Delete Draft
+                      </button>
+                      <div className="restoration-history-panel">
+                        {savedRecordList.length === 0 ? (
+                          <p className="restoration-help">No local drafts saved in this browser yet.</p>
+                        ) : (
+                          <ul>
+                            {savedRecordList.slice(0, 12).map((savedRecord) => (
+                              <li key={savedRecord.pageId}>
+                                <button type="button" onClick={() => selectPage(savedRecord.pageId)}>
+                                  Page {savedRecord.displayNumber} · {savedRecord.pageId} · {savedRecord.status}
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </>
+                  )}
+
+                  {sidebarTab === "approval" && (
+                    <>
+                      <h2>Approval</h2>
+                      <select className="restoration-input" value={record.status} onChange={(event) => updateStatus(event.target.value as RestorationStatus)}>
+                        {RESTORATION_STATUSES.map((status) => (
+                          <option key={status} value={status}>{status}</option>
+                        ))}
+                      </select>
+                      <button className="restoration-btn restoration-btn-approve" onClick={approveRestoration} disabled={!record.region || !record.recoveredPhoto || record.status === "approved"}>
                         Approve
                       </button>
-                      {record.status === "approved" && (
-                        <button className="restoration-btn" onClick={returnToDraft}>
-                          Return to Draft
-                        </button>
-                      )}
-                      <button
-                        className="restoration-btn restoration-btn-export"
-                        onClick={exportApprovedPackage}
-                        title="Export Restoration Package prepares a local ZIP. Download Prepared Package saves it without deploying or altering source scans."
-                        disabled={record.status !== "approved"}
-                      >
+                      {record.status === "approved" && <button className="restoration-btn" onClick={returnToDraft}>Return to Draft</button>}
+                    </>
+                  )}
+
+                  {sidebarTab === "export" && (
+                    <>
+                      <h2>Export</h2>
+                      <button className="restoration-btn restoration-btn-export" onClick={exportApprovedPackage} disabled={record.status !== "approved"}>
                         Export Restoration Package
                       </button>
                       {preparedExport && record.status === "approved" && (
@@ -1136,96 +1201,63 @@ export function PhotoRestoration() {
                           Download Prepared Package
                         </a>
                       )}
-                      <button className="restoration-btn" onClick={exportProject}>Export Project JSON</button>
-                      <label className="restoration-btn restoration-import-btn">
-                        Import Project
-                        <input type="file" accept="application/json" onChange={importProject} />
-                      </label>
-                      <button className="restoration-btn restoration-btn-secondary" onClick={publishRevision} disabled={record.status !== "approved"}>
-                        Lock Published Revision
-                      </button>
-                      <button
-                        className="restoration-btn restoration-btn-danger"
-                        onClick={() => {
-                          if (confirm(`Delete local draft for ${record.pageId}?`)) deleteDraft();
-                        }}
-                        disabled={!records[record.pageId]}
-                      >
-                        Delete Draft
-                      </button>
+                      <p className="restoration-help">Export prepares a local ZIP and does not upload photos, deploy changes, or modify original scans.</p>
+                    </>
+                  )}
+
+                  {sidebarTab === "help" && (
+                    <div className="restoration-help-panel" tabIndex={0}>
+                      <h2>Help</h2>
+                      <h3>Quick Start</h3>
+                      <p className="restoration-help">Open Admin Tools, unlock the PIN, choose Photo Restoration, select a page, upload a photo, edit it, preview it, save the draft, approve it, export the package, then use Lock Admin.</p>
+                      <h3>Select a Page</h3>
+                      <p className="restoration-help">Use Page Selection. It lists visible pages 1-90 in authoritative reading order, including Page 89 as page-002 from page-02.png.</p>
+                      <h3>Upload a Photo</h3>
+                      <p className="restoration-help">Use Upload to add a JPEG, PNG, WebP, or phone photo. The recovered photo stays in browser-local storage.</p>
+                      <h3>Move and Resize</h3>
+                      <p className="restoration-help">Use Position and Size to undo, redo, resize, or zoom. Drag the recovered photo or use its resize handles on the canvas.</p>
+                      <h3>Rotate and Crop</h3>
+                      <p className="restoration-help">Use Rotate for Rotate - and Rotate +. Use Crop, Apply Crop, Cancel Crop, or Clear Crop in the Crop tab.</p>
+                      <h3>Preview</h3>
+                      <p className="restoration-help">Use Preview to switch between Restored preview, Original, Side by side, and Overlay before approval.</p>
+                      <h3>Save and Reopen a Draft</h3>
+                      <p className="restoration-help">Save Draft writes this page's draft locally. Reopen it from Drafts or by selecting the same page after refresh.</p>
+                      <h3>Approve a Restoration</h3>
+                      <p className="restoration-help">Approve asks for confirmation, sets the local status to approved, and prevents accidental editing until Return to Draft.</p>
+                      <h3>Export the Restoration Package</h3>
+                      <p className="restoration-help">Export Restoration Package prepares a ZIP with the recovered photograph, placement JSON, manifest, preview, and README, then Download Prepared Package saves it locally.</p>
+                      <h3>Lock Admin</h3>
+                      <p className="restoration-help">Lock Admin clears the session unlock and protects Admin Tools and Photo Restoration again.</p>
+                      <h3>Feature Status</h3>
+                      <p className="restoration-help"><strong>Available now:</strong> page selector, upload photo, drag, resize, rotate left, rotate right, crop, apply crop, cancel crop, preview, return to editor, reset, delete photo, save draft, reopen draft, approve, return approved item to draft, export package, Help tab, sidebar scrolling, Help scrolling, and Lock Admin.</p>
+                      <p className="restoration-help"><strong>Temporarily unavailable:</strong> none. Project-level import/export and published-revision locking are intentionally not shown in this repair because they are outside the verified admin photo restoration workflow.</p>
+                      <h3>Where Drafts Are Stored</h3>
+                      <p className="restoration-help">Drafts are stored only in this browser's localStorage under fvb-phase-1b-photo-restorations. Each pageId has its own draft.</p>
+                      <h3>What Happens After Export</h3>
+                      <p className="restoration-help">The export is for offline processing. It does not deploy, publish, upload, or modify original scans.</p>
+                      <h3>Troubleshooting</h3>
+                      <p className="restoration-help">If a draft is missing, confirm the same browser profile is open. If controls are locked, use Return to Draft. If export is disabled, approve the restoration first. If the menu or Help is not at the section you expect, scroll inside its panel.</p>
                     </div>
-                  </section>
-
-                  <section className="restoration-sidebar-section restoration-history-panel">
-                    <h3>Restoration History/Drafts</h3>
-                    {savedRecordList.length === 0 ? (
-                      <p className="restoration-help">No local drafts saved in this browser yet.</p>
-                    ) : (
-                      <ul>
-                        {savedRecordList.slice(0, 8).map((savedRecord) => (
-                          <li key={savedRecord.pageId}>
-                            <button type="button" onClick={() => selectPage(savedRecord.pageId)}>
-                              Page {savedRecord.displayNumber} · {savedRecord.pageId} · {savedRecord.status}
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </section>
-                </>
-              ) : (
-                <section className="restoration-sidebar-section restoration-help-panel">
-                  <h3>Quick Start</h3>
-                  <p className="restoration-help">Open Admin Tools → Unlock PIN → Choose Page → Upload Photo → Drag / Resize / Rotate / Crop → Preview → Save Draft → Approve → Export Restoration Package → Lock Admin.</p>
-                  <h3>Select a Page</h3>
-                  <p className="restoration-help">Use the Page selector. It lists visible pages 1-90 in authoritative reading order, including Page 89 as page-002 from page-02.png.</p>
-                  <h3>Upload a Photo</h3>
-                  <p className="restoration-help">Use Upload Photo to add a JPEG, PNG, WebP, or phone photo. The recovered photo stays in browser-local storage.</p>
-                  <h3>Move and Resize</h3>
-                  <p className="restoration-help">Drag the recovered photo on the canvas, use resize handles, or use Resize - and Resize +. The original scan is locked behind it.</p>
-                  <h3>Rotate and Crop</h3>
-                  <p className="restoration-help">Use Rotate - / Rotate +, then Crop, Apply Crop, Cancel Crop, or Clear Crop. Crop only affects the restored photo in this draft.</p>
-                  <h3>Preview</h3>
-                  <p className="restoration-help">Use Preview / Review to switch between Restored preview, Original, Side by side, and Overlay before approval.</p>
-                  <h3>Save and Reopen a Draft</h3>
-                  <p className="restoration-help">Save Draft writes this page's draft locally. Reopen it from Restoration History/Drafts or by selecting the same page after refresh.</p>
-                  <h3>Approve a Restoration</h3>
-                  <p className="restoration-help">Approve asks for confirmation, sets the local status to approved, and prevents accidental editing until Return to Draft.</p>
-                  <h3>Export the Restoration Package</h3>
-                  <p className="restoration-help">Export Restoration Package prepares a ZIP with the recovered photograph, placement JSON, manifest, preview, and README, then Download Prepared Package saves it locally.</p>
-                  <h3>Lock Admin</h3>
-                  <p className="restoration-help">Lock Admin clears the session unlock and protects Admin Tools and Photo Restoration again.</p>
-                  <h3>Where Drafts Are Stored</h3>
-                  <p className="restoration-help">Drafts are stored only in this browser's localStorage under fvb-phase-1b-photo-restorations. Each pageId has its own draft.</p>
-                  <h3>What Happens After Export</h3>
-                  <p className="restoration-help">The export is for offline processing. It does not deploy, publish, upload, or modify original scans.</p>
-                  <h3>Troubleshooting</h3>
-                  <p className="restoration-help">If a draft is missing, confirm the same browser profile is open. If controls are locked, use Return to Draft. If export is disabled, approve the restoration first.</p>
+                  )}
                 </section>
-              )}
-            </aside>
 
-            <main className={`restoration-canvas-area view-${viewMode}`} aria-label="Photo restoration workspace">
-              {viewMode === "side-by-side" && (
-                <div className="restoration-original-panel">
-                  <img src={selectedPage.sources.desktop} alt={`Original page ${selectedPage.displayNumber}`} />
-                </div>
-              )}
-              <div className="restoration-canvas-shell" style={{ transform: `scale(${zoom})`, transformOrigin: "top left" }}>
-                <canvas ref={canvasRef} className="restoration-canvas" />
-                {viewMode === "original" && <img className="restoration-original-overlay" src={selectedPage.sources.desktop} alt="" />}
-                {viewMode === "overlay" && <img className="restoration-original-overlay" style={{ opacity: overlayOpacity }} src={selectedPage.sources.desktop} alt="" />}
+                <section className={`restoration-canvas-area view-${viewMode}`} aria-label="Photo restoration workspace">
+                  {viewMode === "side-by-side" && (
+                    <div className="restoration-original-panel">
+                      <img src={selectedPage.sources.desktop} alt={`Original page ${selectedPage.displayNumber}`} />
+                    </div>
+                  )}
+                  <div className="restoration-canvas-shell" style={{ transform: `scale(${zoom})`, transformOrigin: "top left" }}>
+                    <canvas ref={canvasRef} className="restoration-canvas" />
+                    {viewMode === "original" && <img className="restoration-original-overlay" src={selectedPage.sources.desktop} alt="" />}
+                    {viewMode === "overlay" && <img className="restoration-original-overlay" style={{ opacity: overlayOpacity }} src={selectedPage.sources.desktop} alt="" />}
+                  </div>
+                </section>
               </div>
             </main>
           </div>
         )}
 
-        {currentExportRecord && (
-          <details className="restoration-json-preview">
-            <summary>Current editable restoration JSON</summary>
-            <pre>{JSON.stringify(currentExportRecord, null, 2)}</pre>
-          </details>
-        )}
       </div>
     </div>
   );
