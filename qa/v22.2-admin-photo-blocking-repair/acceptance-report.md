@@ -2,7 +2,9 @@
 
 Date: 2026-07-29T02:31:39.911Z
 Preview URL: http://127.0.0.1:4178
-Live deployment: PENDING POST-ACCEPTANCE DEPLOY STEP.
+Live deployment: READY — dpl_J15vEqU2VPaG6tT3VqKGPnTJ7WRk
+Production deploy URL: https://fvb-v21-3ca0618io-max00561230s-projects.vercel.app
+Live URL: https://fvb-v21.vercel.app
 Original scan hash before: fe924556618ce068cc950cc39218b5861710476862d63a89b674b985dd5cd310  -
 Original scan hash after: fe924556618ce068cc950cc39218b5861710476862d63a89b674b985dd5cd310  -
 Original scans unchanged: PASS
@@ -131,5 +133,15 @@ Original scans unchanged: PASS
 ## Export Artifact
 
 - qa/v22.2-admin-photo-blocking-repair/example-page-002-approved-restoration-export.zip
+
+## Production Deployment
+
+- Deployment ID: dpl_J15vEqU2VPaG6tT3VqKGPnTJ7WRk
+- Production deploy URL: https://fvb-v21-3ca0618io-max00561230s-projects.vercel.app
+- Live alias: https://fvb-v21.vercel.app
+- Vercel build: PASS. Vercel emitted the expected source-image-directory warning; local validation covered source images before deploy.
+- Public alias page-order verification: PASS. Live JSON has exactly 90 active visible pages; page-007 inactive duplicateOf page-006; Page 2 = page-003/page-03.png; Page 89 = page-002/page-02.png; Page 90 = page-091/page-91.png; search index has 90 pages and excludes page-007.
+- Public alias /admin/photo-restoration verification at 1280x720: PASS. Admin PIN gate unlocked, all sidebar tabs rendered, sidebar menu scrolls, Help scrolls, and Help contains final Troubleshooting content.
+- Note: the unique Vercel deployment URL is SSO-protected for direct JSON/browser checks, so post-deploy verification used the public production alias.
 
 Overall: PASS
