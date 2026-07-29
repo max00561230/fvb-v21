@@ -130,6 +130,7 @@ type PreparedExport = {
   url: string;
   filename: string;
 };
+type DrawSignal = { cancelled: boolean };
 
 function emptyStore(): ProjectStore {
   return { schemaVersion: "phase-1b-local-store-v1", updatedAt: new Date().toISOString(), records: {} };
@@ -188,6 +189,13 @@ function centeredPlacementForImage(page: BookPage, image: HTMLImageElement): Pla
 
 function restorationPageImageSrc(page: BookPage) {
   return page.masterSrc || page.sources.desktop;
+}
+
+function disposeFabricCanvas(canvas: any) {
+  try {
+    const result = canvas.dispose?.();
+    if (result?.catch) result.catch(() => {});
+  } catch {}
 }
 
 function makeRecord(page: BookPage, previous?: RestorationRecord): RestorationRecord {
@@ -510,10 +518,16 @@ export function PhotoRestoration() {
     });
   }, [selectedPage, updateRecord]);
 
-  const drawCanvas = useCallback(async () => {
+  const drawCanvas = useCallback(async (signal: DrawSignal) => {
     if (!selectedPage || !record || !canvasRef.current) return;
     const fabric = await loadFabric();
-    if (fabricRef.current) fabricRef.current.dispose();
+    if (signal.cancelled || !canvasRef.current) return;
+    if (fabricRef.current) {
+      const previousCanvas = fabricRef.current;
+      fabricRef.current = null;
+      if ((window as any).__fvbPhotoCanvas === previousCanvas) (window as any).__fvbPhotoCanvas = null;
+      disposeFabricCanvas(previousCanvas);
+    }
 
     const canvasWidth = Math.min(selectedPage.width, 1120);
     const scale = canvasWidth / selectedPage.width;
@@ -531,6 +545,10 @@ export function PhotoRestoration() {
     (window as any).__fvbPhotoCanvas = canvas;
 
     const original = await loadImage(restorationPageImageSrc(selectedPage));
+    if (signal.cancelled || fabricRef.current !== canvas) {
+      disposeFabricCanvas(canvas);
+      return;
+    }
     const bg = new fabric.Image(original, {
       left: 0,
       top: 0,
@@ -571,6 +589,10 @@ export function PhotoRestoration() {
 
     if (record.recoveredPhoto && record.placement) {
       const photo = await loadImage(record.recoveredPhoto.dataUrl);
+      if (signal.cancelled || fabricRef.current !== canvas) {
+        disposeFabricCanvas(canvas);
+        return;
+      }
       const img = new fabric.Image(photo, {
         left: record.placement.x * scale,
         top: record.placement.y * scale,
@@ -640,11 +662,15 @@ export function PhotoRestoration() {
   }, [record, selectedPage, syncFromCanvas, zoom]);
 
   useEffect(() => {
-    drawCanvas();
+    const signal = { cancelled: false };
+    drawCanvas(signal);
     return () => {
+      signal.cancelled = true;
       if (fabricRef.current) {
-        fabricRef.current.dispose();
+        const currentCanvas = fabricRef.current;
         fabricRef.current = null;
+        if ((window as any).__fvbPhotoCanvas === currentCanvas) (window as any).__fvbPhotoCanvas = null;
+        disposeFabricCanvas(currentCanvas);
       }
     };
   }, [drawCanvas]);
