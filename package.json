@@ -12,7 +12,8 @@
     "build:search-index": "node scripts/build-search-index.mjs",
     "prebuild": "npm run build:assets --if-present && npm run build:search-index --if-present && npm run validate:pages --if-present",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "photo-tool:acceptance": "node scripts/photo-tool-acceptance.mjs"
   },
   "dependencies": {
     "fuse.js": "^7.0.0",
@@ -22,6 +23,7 @@
     "react-router-dom": "^7.18.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^4.3.0",

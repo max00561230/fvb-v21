@@ -11,12 +11,16 @@ async function loadFabric() {
 }
 
 async function loadJsZip() {
-  if (!jszipModule) jszipModule = await import("jszip");
+  if (!jszipModule) {
+    const module = await import("jszip");
+    jszipModule = module.default ?? module;
+  }
   return jszipModule;
 }
 
 const STORAGE_KEY = "fvb-phase-1b-photo-restorations";
 const AUTOSAVE_MS = 500;
+const RESTORATION_TOOL_VERSION = "v22.1-photo-restoration";
 const RESTORATION_STATUSES = [
   "unreviewed",
   "region-marked",
@@ -66,10 +70,17 @@ type Revision = {
 };
 type RestorationRecord = {
   schemaVersion: "phase-1b-local-v1";
+  draftId: string;
   pageId: string;
   readingPosition: number;
   displayNumber: number;
   sourceFile: string;
+  photoDataReference: string | null;
+  x: number | null;
+  y: number | null;
+  width: number | null;
+  height: number | null;
+  rotation: number;
   originalDimensions: { width: number; height: number };
   notes: string;
   createdAt: string;
@@ -87,6 +98,10 @@ type ProjectStore = {
   schemaVersion: "phase-1b-local-store-v1";
   updatedAt: string;
   records: Record<string, RestorationRecord>;
+};
+type PreparedExport = {
+  url: string;
+  filename: string;
 };
 
 function emptyStore(): ProjectStore {
@@ -114,14 +129,35 @@ function normalizePlacement(placement: PlacementCoords, page: BookPage) {
   };
 }
 
+function recordWithPlacementFields(record: RestorationRecord, page: BookPage, placement: PlacementCoords | null) {
+  const normalized = placement ? normalizePlacement(placement, page) : null;
+  return {
+    ...record,
+    placement,
+    x: normalized?.x ?? null,
+    y: normalized?.y ?? null,
+    width: normalized?.width ?? null,
+    height: normalized?.height ?? null,
+    rotation: placement?.rotation ?? 0,
+  };
+}
+
 function makeRecord(page: BookPage, previous?: RestorationRecord): RestorationRecord {
   const now = new Date().toISOString();
+  const previousPlacement = previous?.placement ? normalizePlacement(previous.placement, page) : null;
   return {
     schemaVersion: "phase-1b-local-v1",
+    draftId: previous?.draftId ?? `draft-${page.pageId}`,
     pageId: page.pageId,
     readingPosition: page.readingPosition,
     displayNumber: page.displayNumber,
     sourceFile: page.sourceFile,
+    photoDataReference: previous?.photoDataReference ?? previous?.recoveredPhoto?.id ?? null,
+    x: previous?.x ?? previousPlacement?.x ?? null,
+    y: previous?.y ?? previousPlacement?.y ?? null,
+    width: previous?.width ?? previousPlacement?.width ?? null,
+    height: previous?.height ?? previousPlacement?.height ?? null,
+    rotation: previous?.rotation ?? previous?.placement?.rotation ?? 0,
     originalDimensions: { width: page.width, height: page.height },
     notes: previous?.notes ?? "",
     createdAt: previous?.createdAt ?? now,
@@ -161,8 +197,13 @@ function downloadBlob(blob: Blob, filename: string) {
   const a = document.createElement("a");
   a.href = url;
   a.download = filename;
+  a.style.display = "none";
+  document.body.appendChild(a);
   a.click();
-  URL.revokeObjectURL(url);
+  window.setTimeout(() => {
+    a.remove();
+    URL.revokeObjectURL(url);
+  }, 1000);
 }
 
 function downloadText(text: string, filename: string, type = "application/json") {
@@ -170,26 +211,36 @@ function downloadText(text: string, filename: string, type = "application/json")
 }
 
 function recordForExport(record: RestorationRecord, page: BookPage) {
+  const placementNormalized = record.placement ? normalizePlacement(record.placement, page) : null;
   return {
     ...record,
+    restorationToolVersion: RESTORATION_TOOL_VERSION,
     readingPosition: page.readingPosition,
     displayNumber: page.displayNumber,
     sourceFile: page.sourceFile,
+    photoDataReference: record.recoveredPhoto?.id ?? record.photoDataReference,
+    x: placementNormalized?.x ?? record.x,
+    y: placementNormalized?.y ?? record.y,
+    width: placementNormalized?.width ?? record.width,
+    height: placementNormalized?.height ?? record.height,
+    rotation: record.placement?.rotation ?? record.rotation,
     originalDimensions: { width: page.width, height: page.height },
     regionNormalized: record.region ? normalizeRect(record.region, page) : null,
-    placementNormalized: record.placement ? normalizePlacement(record.placement, page) : null,
+    placementNormalized,
   };
 }
 
-async function renderFullResolutionPreview(page: BookPage, record: RestorationRecord) {
+async function renderExportPreview(page: BookPage, record: RestorationRecord) {
+  const maxPreviewWidth = 1800;
+  const previewScale = Math.min(1, maxPreviewWidth / page.width);
   const canvas = document.createElement("canvas");
-  canvas.width = page.width;
-  canvas.height = page.height;
+  canvas.width = Math.round(page.width * previewScale);
+  canvas.height = Math.round(page.height * previewScale);
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("Unable to create export canvas");
 
   const original = await loadImage(page.masterSrc);
-  ctx.drawImage(original, 0, 0, page.width, page.height);
+  ctx.drawImage(original, 0, 0, canvas.width, canvas.height);
 
   if (record.recoveredPhoto && record.placement) {
     const photo = await loadImage(record.recoveredPhoto.dataUrl);
@@ -197,18 +248,19 @@ async function renderFullResolutionPreview(page: BookPage, record: RestorationRe
     ctx.save();
     if (record.crop.enabled) {
       ctx.beginPath();
-      ctx.rect(record.crop.x, record.crop.y, record.crop.width, record.crop.height);
+      ctx.rect(record.crop.x * previewScale, record.crop.y * previewScale, record.crop.width * previewScale, record.crop.height * previewScale);
       ctx.clip();
     }
-    ctx.translate(p.x + p.width / 2, p.y + p.height / 2);
+    ctx.translate((p.x + p.width / 2) * previewScale, (p.y + p.height / 2) * previewScale);
     ctx.rotate((p.rotation * Math.PI) / 180);
-    ctx.drawImage(photo, -p.width / 2, -p.height / 2, p.width, p.height);
+    ctx.drawImage(photo, (-p.width / 2) * previewScale, (-p.height / 2) * previewScale, p.width * previewScale, p.height * previewScale);
     ctx.restore();
   }
 
-  return new Promise<Blob>((resolve, reject) => {
-    canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error("Unable to render PNG"))), "image/png");
+  const blob = await new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob((result) => (result ? resolve(result) : reject(new Error("Unable to render PNG"))), "image/png");
   });
+  return { blob, width: canvas.width, height: canvas.height, scale: previewScale };
 }
 
 export function PhotoRestoration() {
@@ -222,6 +274,9 @@ export function PhotoRestoration() {
   const [overlayOpacity, setOverlayOpacity] = useState(0.55);
   const [zoom, setZoom] = useState(1);
   const [sidebarTab, setSidebarTab] = useState<SidebarTab>("tools");
+  const [cropMode, setCropMode] = useState(false);
+  const [cropBackup, setCropBackup] = useState<CropSettings | null>(null);
+  const [preparedExport, setPreparedExport] = useState<PreparedExport | null>(null);
   const [undoStack, setUndoStack] = useState<RestorationRecord[]>([]);
   const [redoStack, setRedoStack] = useState<RestorationRecord[]>([]);
   const [dirty, setDirty] = useState(false);
@@ -273,7 +328,6 @@ export function PhotoRestoration() {
     setUndoStack([nextRecord]);
     setRedoStack([]);
     setZoom(1);
-    setNotice(null);
   }, [records, selectedPage]);
 
   const persistRecords = useCallback((nextRecords: Record<string, RestorationRecord>) => {
@@ -304,6 +358,10 @@ export function PhotoRestoration() {
   const saveDraft = useCallback(
     (message = "Draft saved locally in this browser.") => {
       if (!record) return;
+      if (autosaveRef.current) {
+        window.clearTimeout(autosaveRef.current);
+        autosaveRef.current = null;
+      }
       const nextRecords = { ...records, [record.pageId]: record };
       setRecords(nextRecords);
       persistRecords(nextRecords);
@@ -340,6 +398,12 @@ export function PhotoRestoration() {
   }, [dirty, persistRecords, record, records]);
 
   useEffect(() => {
+    return () => {
+      if (preparedExport) URL.revokeObjectURL(preparedExport.url);
+    };
+  }, [preparedExport]);
+
+  useEffect(() => {
     const handler = (event: BeforeUnloadEvent) => {
       if (!dirty) return;
       event.preventDefault();
@@ -374,11 +438,24 @@ export function PhotoRestoration() {
             scaleX: Number((photoObj.scaleX || 1).toFixed(6)),
             scaleY: Number((photoObj.scaleY || 1).toFixed(6)),
             rotation: Number((photoObj.angle || 0).toFixed(2)),
-          }
+        }
         : current.placement;
       const crop = current.crop.enabled && region ? { ...current.crop, ...region } : current.crop;
       const status = photoObj ? "photo-added" : regionObj ? "region-marked" : current.status;
-      return { ...current, region, placement, crop, status };
+      const placementNormalized = placement ? normalizePlacement(placement, page) : null;
+      return {
+        ...current,
+        region,
+        placement,
+        crop,
+        status,
+        photoDataReference: current.recoveredPhoto?.id ?? current.photoDataReference,
+        x: placementNormalized?.x ?? null,
+        y: placementNormalized?.y ?? null,
+        width: placementNormalized?.width ?? null,
+        height: placementNormalized?.height ?? null,
+        rotation: placement?.rotation ?? 0,
+      };
     });
   }, [selectedPage, updateRecord]);
 
@@ -430,8 +507,8 @@ export function PhotoRestoration() {
         cornerSize: 10,
         transparentCorners: false,
         objectCaching: false,
-        selectable: record.status !== "published",
-        evented: record.status !== "published",
+        selectable: record.status !== "approved" && record.status !== "published",
+        evented: record.status !== "approved" && record.status !== "published",
       });
       rect.fvbRole = "region";
       canvas.add(rect);
@@ -486,7 +563,7 @@ export function PhotoRestoration() {
   };
 
   const markRegion = () => {
-    if (!selectedPage || !record || record.status === "published") return;
+    if (!selectedPage || !record || record.status === "approved" || record.status === "published") return;
     const width = Math.round(selectedPage.width * 0.28);
     const height = Math.round(selectedPage.height * 0.24);
     updateRecord((current) => ({
@@ -511,6 +588,7 @@ export function PhotoRestoration() {
     reader.onload = async () => {
       const dataUrl = String(reader.result);
       const image = await loadImage(dataUrl);
+      const photoId = `photo-${Date.now()}`;
       updateRecord((current) => {
         const region =
           current.region ??
@@ -521,21 +599,21 @@ export function PhotoRestoration() {
             height: Math.round(selectedPage.height * 0.24),
           } satisfies RectCoords);
         const fitScale = Math.max(region.width / image.naturalWidth, region.height / image.naturalHeight);
-        return {
+        const placement = {
+          x: region.x,
+          y: region.y,
+          width: Math.round(image.naturalWidth * fitScale),
+          height: Math.round(image.naturalHeight * fitScale),
+          scaleX: fitScale,
+          scaleY: fitScale,
+          rotation: 0,
+        };
+        return recordWithPlacementFields({
           ...current,
           region,
-          placement: {
-            x: region.x,
-            y: region.y,
-            width: Math.round(image.naturalWidth * fitScale),
-            height: Math.round(image.naturalHeight * fitScale),
-            scaleX: fitScale,
-            scaleY: fitScale,
-            rotation: 0,
-          },
           crop: { enabled: current.crop.enabled, x: region.x, y: region.y, width: region.width, height: region.height },
           recoveredPhoto: {
-            id: `photo-${Date.now()}`,
+            id: photoId,
             fileName: file.name,
             mimeType: file.type || "application/octet-stream",
             dataUrl,
@@ -543,38 +621,53 @@ export function PhotoRestoration() {
             originalHeight: image.naturalHeight,
             addedAt: new Date().toISOString(),
           },
+          photoDataReference: photoId,
           status: "photo-added",
-        };
+        }, selectedPage, placement);
       });
     };
     reader.readAsDataURL(file);
   };
 
   const updateStatus = (status: RestorationStatus) => {
-    updateRecord((current) => {
-      const statusCreatesRevision = ["draft", "ready-for-review", "approved", "rejected"].includes(status);
-      if (current.status === "published" && status !== "published") {
-        const nextRevision = current.revision + 1;
-        return { ...current, revision: nextRevision, publishedRevision: current.revision, status };
-      }
-      if (statusCreatesRevision && current.status !== status) {
-        const next = { ...current, status };
-        return {
-          ...next,
-          revisions: [
-            ...current.revisions,
-            {
-              revision: current.revision,
-              status,
-              createdAt: new Date().toISOString(),
-              locked: false,
-              snapshot: next,
-            },
-          ],
-        };
-      }
-      return { ...current, status };
+    if (!record) return;
+    if (autosaveRef.current) {
+      window.clearTimeout(autosaveRef.current);
+      autosaveRef.current = null;
+    }
+    const statusCreatesRevision = ["draft", "ready-for-review", "approved", "rejected"].includes(status);
+    let next: RestorationRecord;
+    if (record.status === "published" && status !== "published") {
+      const nextRevision = record.revision + 1;
+      next = { ...record, revision: nextRevision, publishedRevision: record.revision, status };
+    } else if (statusCreatesRevision && record.status !== status) {
+      const snapshot = { ...record, status };
+      next = {
+        ...snapshot,
+        revisions: [
+          ...record.revisions,
+          {
+            revision: record.revision,
+            status,
+            createdAt: new Date().toISOString(),
+            locked: false,
+            snapshot,
+          },
+        ],
+      };
+    } else {
+      next = { ...record, status };
+    }
+    const persisted = { ...next, updatedAt: new Date().toISOString() };
+    const nextRecords = { ...records, [persisted.pageId]: persisted };
+    setRecord(persisted);
+    setRecords(nextRecords);
+    persistRecords(nextRecords);
+    setPreparedExport((current) => {
+      if (current) URL.revokeObjectURL(current.url);
+      return null;
     });
+    setDirty(false);
   };
 
   const publishRevision = () => {
@@ -621,18 +714,26 @@ export function PhotoRestoration() {
       ...current,
       placement: null,
       recoveredPhoto: null,
+      photoDataReference: null,
+      x: null,
+      y: null,
+      width: null,
+      height: null,
+      rotation: 0,
       crop: { enabled: false, x: 0, y: 0, width: 0, height: 0 },
       status: current.region ? "region-marked" : "unreviewed",
     }));
   };
 
   const fitPhoto = () => {
-    if (!record?.region || !record.recoveredPhoto) return;
+    if (!record?.region || !record.recoveredPhoto || !selectedPage) return;
     const scale = Math.max(record.region.width / record.recoveredPhoto.originalWidth, record.region.height / record.recoveredPhoto.originalHeight);
     updateRecord((current) => ({
-      ...current,
-      placement: current.recoveredPhoto
-        ? {
+      ...recordWithPlacementFields(
+        current,
+        selectedPage,
+        current.recoveredPhoto
+          ? {
             x: current.region!.x,
             y: current.region!.y,
             width: Math.round(current.recoveredPhoto.originalWidth * scale),
@@ -641,7 +742,8 @@ export function PhotoRestoration() {
             scaleY: scale,
             rotation: 0,
           }
-        : current.placement,
+          : current.placement,
+      ),
     }));
   };
 
@@ -661,13 +763,48 @@ export function PhotoRestoration() {
     syncFromCanvas();
   };
 
-  const toggleCrop = () => {
+  const startCrop = () => {
+    if (!record?.region || !record.recoveredPhoto || record.status === "approved" || record.status === "published") return;
+    setCropBackup(record.crop);
+    setCropMode(true);
     updateRecord((current) => ({
       ...current,
-      crop: current.region
-        ? { enabled: !current.crop.enabled, x: current.region.x, y: current.region.y, width: current.region.width, height: current.region.height }
-        : current.crop,
+      crop: current.region ? { enabled: true, x: current.region.x, y: current.region.y, width: current.region.width, height: current.region.height } : current.crop,
     }));
+  };
+
+  const applyCrop = () => {
+    syncFromCanvas();
+    setCropMode(false);
+    setCropBackup(null);
+    setNotice("Crop applied to this local draft.");
+  };
+
+  const cancelCrop = () => {
+    if (cropBackup) {
+      updateRecord((current) => ({ ...current, crop: cropBackup }), false);
+    }
+    setCropMode(false);
+    setCropBackup(null);
+    setNotice("Crop changes canceled.");
+  };
+
+  const clearCrop = () => {
+    updateRecord((current) => ({ ...current, crop: { enabled: false, x: 0, y: 0, width: 0, height: 0 } }));
+    setCropMode(false);
+    setCropBackup(null);
+  };
+
+  const approveRestoration = () => {
+    if (!record?.region || !record.recoveredPhoto) return;
+    if (!confirm("Approve this restoration and lock editing until you choose Return to Draft?")) return;
+    updateStatus("approved");
+    setNotice("Restoration approved locally. Export the restoration package when ready.");
+  };
+
+  const returnToDraft = () => {
+    updateStatus("draft");
+    setNotice("Returned to draft editing. Original scans remain unchanged.");
   };
 
   const importProject = (event: ChangeEvent<HTMLInputElement>) => {
@@ -700,12 +837,68 @@ export function PhotoRestoration() {
 
   const exportApprovedPackage = async () => {
     if (!selectedPage || !record || record.status !== "approved") return;
-    const JSZip = await loadJsZip();
-    const zip = new JSZip();
-    const exportRecord = recordForExport(record, selectedPage);
-    const preview = await renderFullResolutionPreview(selectedPage, record);
+    try {
+      const JSZip = await loadJsZip();
+      const exportRecord = recordForExport(record, selectedPage);
+      setNotice("Preparing local restoration export package...");
+      const zip = new JSZip();
+      const preview = await renderExportPreview(selectedPage, record);
+      const exportedAt = new Date().toISOString();
+    const packageManifest = {
+      schemaVersion: "fvb-v22.1-restoration-export-manifest-v1",
+      restorationToolVersion: RESTORATION_TOOL_VERSION,
+      exportedAt,
+      localOnly: true,
+      pageId: record.pageId,
+      visiblePageNumber: selectedPage.displayNumber,
+      readingPosition: selectedPage.readingPosition,
+      sourcePageFilename: selectedPage.sourceFile,
+      approvalStatus: record.status,
+      recoveredPhotoFilename: record.recoveredPhoto?.fileName ?? null,
+      exportPreview: {
+        file: `${record.pageId}/flattened-restoration-preview.png`,
+        width: preview.width,
+        height: preview.height,
+        scaleFromOriginal: preview.scale,
+      },
+      files: [
+        `${record.pageId}/restoration.json`,
+        `${record.pageId}/placement.json`,
+        `${record.pageId}/flattened-restoration-preview.png`,
+        record.recoveredPhoto ? `${record.pageId}/original-recovered-photo.${record.recoveredPhoto.mimeType.split("/")[1] || "image"}` : null,
+        `${record.pageId}/README.txt`,
+      ].filter(Boolean),
+      originalScanModified: false,
+    };
     zip.file(`${record.pageId}/restoration.json`, JSON.stringify(exportRecord, null, 2));
-    zip.file(`${record.pageId}/flattened-full-resolution-preview.png`, preview);
+    zip.file(
+      `${record.pageId}/placement.json`,
+      JSON.stringify(
+        {
+          pageId: record.pageId,
+          visiblePageNumber: selectedPage.displayNumber,
+          sourcePageFilename: selectedPage.sourceFile,
+          crop: exportRecord.crop,
+          rotation: exportRecord.rotation,
+          dimensions: {
+            x: exportRecord.x,
+            y: exportRecord.y,
+            width: exportRecord.width,
+            height: exportRecord.height,
+            unit: "page-relative",
+          },
+          placementPixels: record.placement,
+          placementNormalized: exportRecord.placementNormalized,
+          approvalStatus: record.status,
+          exportedAt,
+          restorationToolVersion: RESTORATION_TOOL_VERSION,
+        },
+        null,
+        2,
+      ),
+    );
+    zip.file("manifest.json", JSON.stringify(packageManifest, null, 2));
+    zip.file(`${record.pageId}/flattened-restoration-preview.png`, preview.blob);
     if (record.recoveredPhoto) {
       const base64 = record.recoveredPhoto.dataUrl.split(",")[1];
       const extension = record.recoveredPhoto.mimeType.split("/")[1] || "image";
@@ -715,12 +908,27 @@ export function PhotoRestoration() {
       `${record.pageId}/README.txt`,
       [
         "FVB Phase 1B approved restoration export.",
-        "The flattened preview is generated client-side by drawing the original page master image to an offscreen canvas at original pixel dimensions, then compositing the recovered photo with saved original-pixel placement, crop, rotation, and scale.",
+        `Restoration tool version: ${RESTORATION_TOOL_VERSION}`,
+        `Exported at: ${exportedAt}`,
+        `Page ID: ${record.pageId}`,
+        `Visible page number: ${selectedPage.displayNumber}`,
+        `Source page filename: ${selectedPage.sourceFile}`,
+        "The flattened preview is generated client-side from the original page master at a bounded preview size. The JSON files keep full original-pixel and normalized placement, crop, rotation, and scale data for final processing.",
         "This package does not replace public reader pages or modify original source scans.",
       ].join("\n"),
     );
     const blob = await zip.generateAsync({ type: "blob" });
-    downloadBlob(blob, `${record.pageId}-approved-restoration-export.zip`);
+    setPreparedExport((current) => {
+      if (current) URL.revokeObjectURL(current.url);
+      return {
+        url: URL.createObjectURL(blob),
+        filename: `${record.pageId}-approved-restoration-export.zip`,
+      };
+    });
+      setNotice("Restoration package ready. Use Download Prepared Package to save it locally.");
+    } catch (error) {
+      setNotice(`Export failed: ${error instanceof Error ? error.message : "unknown error"}`);
+    }
   };
 
   if (loading) {
@@ -805,7 +1013,7 @@ export function PhotoRestoration() {
                 <>
                   <section className="restoration-sidebar-section">
                     <h3>1. Define Opening</h3>
-                    <button className="restoration-btn" onClick={markRegion} disabled={record.status === "published"}>
+                    <button className="restoration-btn" onClick={markRegion} disabled={record.status === "approved" || record.status === "published"}>
                       Mark / Reset Region
                     </button>
                     {record.region && (
@@ -821,10 +1029,24 @@ export function PhotoRestoration() {
                     {record.recoveredPhoto && <p className="restoration-help">{record.recoveredPhoto.fileName}</p>}
                     <div className="restoration-btn-group">
                       <button className="restoration-btn" onClick={fitPhoto} disabled={!record.recoveredPhoto || !record.region || record.status === "approved" || record.status === "published"}>
-                        Fit
+                        Reset Photo
                       </button>
-                      <button className="restoration-btn" onClick={toggleCrop} disabled={!record.recoveredPhoto || !record.region || record.status === "approved" || record.status === "published"}>
-                        {record.crop.enabled ? "Disable Crop" : "Crop"}
+                      <button
+                        className="restoration-btn"
+                        onClick={startCrop}
+                        title="Crop limits the recovered photo to the marked opening without changing the original scan."
+                        disabled={!record.recoveredPhoto || !record.region || record.status === "approved" || record.status === "published"}
+                      >
+                        Crop
+                      </button>
+                      <button className="restoration-btn" onClick={applyCrop} disabled={!cropMode}>
+                        Apply Crop
+                      </button>
+                      <button className="restoration-btn" onClick={cancelCrop} disabled={!cropMode}>
+                        Cancel Crop
+                      </button>
+                      <button className="restoration-btn" onClick={clearCrop} disabled={!record.crop.enabled || record.status === "approved" || record.status === "published"}>
+                        Clear Crop
                       </button>
                       <button className="restoration-btn restoration-btn-danger" onClick={resetPlacement} disabled={record.status === "approved" || record.status === "published"}>
                         Remove Photo
@@ -854,7 +1076,12 @@ export function PhotoRestoration() {
 
                   <section className="restoration-sidebar-section">
                     <h3>4. Preview / Review</h3>
-                    <select className="restoration-input" value={viewMode} onChange={(event) => setViewMode(event.target.value as ViewMode)}>
+                    <select
+                      className="restoration-input"
+                      value={viewMode}
+                      onChange={(event) => setViewMode(event.target.value as ViewMode)}
+                      title="Preview compares the local restored composite with the original page scan before approval."
+                    >
                       <option value="restored">Restored preview</option>
                       <option value="original">Original</option>
                       <option value="side-by-side">Side by side</option>
@@ -883,12 +1110,32 @@ export function PhotoRestoration() {
                     <h3>5. Save / Approve / Export</h3>
                     <div className="restoration-btn-group">
                       <button className="restoration-btn restoration-btn-primary" onClick={() => saveDraft("Draft saved locally.")}>Save Draft</button>
-                      <button className="restoration-btn restoration-btn-approve" onClick={() => updateStatus("approved")} disabled={!record.region || !record.recoveredPhoto}>
+                      <button
+                        className="restoration-btn restoration-btn-approve"
+                        onClick={approveRestoration}
+                        title="Approve locks the local placement until Return to Draft is selected."
+                        disabled={!record.region || !record.recoveredPhoto || record.status === "approved"}
+                      >
                         Approve
                       </button>
-                      <button className="restoration-btn restoration-btn-export" onClick={exportApprovedPackage} disabled={record.status !== "approved"}>
+                      {record.status === "approved" && (
+                        <button className="restoration-btn" onClick={returnToDraft}>
+                          Return to Draft
+                        </button>
+                      )}
+                      <button
+                        className="restoration-btn restoration-btn-export"
+                        onClick={exportApprovedPackage}
+                        title="Export Restoration Package prepares a local ZIP. Download Prepared Package saves it without deploying or altering source scans."
+                        disabled={record.status !== "approved"}
+                      >
                         Export Restoration Package
                       </button>
+                      {preparedExport && record.status === "approved" && (
+                        <a className="restoration-btn restoration-btn-export" href={preparedExport.url} download={preparedExport.filename}>
+                          Download Prepared Package
+                        </a>
+                      )}
                       <button className="restoration-btn" onClick={exportProject}>Export Project JSON</button>
                       <label className="restoration-btn restoration-import-btn">
                         Import Project
@@ -928,24 +1175,32 @@ export function PhotoRestoration() {
                 </>
               ) : (
                 <section className="restoration-sidebar-section restoration-help-panel">
-                  <h3>Photo Tool Workflow</h3>
-                  <ol>
-                    <li>Select the visible book page from the authoritative 90-page reading order.</li>
-                    <li>Mark the opening where the recovered photo belongs.</li>
-                    <li>Upload the recovered photo from this computer. It stays local to this browser.</li>
-                    <li>Drag, resize, rotate, and crop until the photo fits the scan opening.</li>
-                    <li>Use original, side-by-side, or overlay preview modes to compare the source scan.</li>
-                    <li>Save a local draft, approve it when reviewed, then export a restoration package for local processing.</li>
-                    <li>Delete drafts that should not be kept. Original source scans are never modified.</li>
-                  </ol>
-
-                  <h3>Privacy and Page Order Rules</h3>
-                  <ul>
-                    <li>Uploads and drafts use browser storage only; there is no Supabase, Vercel upload, or database write.</li>
-                    <li>Restoration records attach to permanent pageId, even if visible page position changes later.</li>
-                    <li>Visible Page 89 must remain page-002 from page-02.png.</li>
-                    <li>Do not guess captions, names, dates, or source details in reviewer notes.</li>
-                  </ul>
+                  <h3>Quick Start</h3>
+                  <p className="restoration-help">Open Admin Tools → Unlock PIN → Choose Page → Upload Photo → Drag / Resize / Rotate / Crop → Preview → Save Draft → Approve → Export Restoration Package → Lock Admin.</p>
+                  <h3>Select a Page</h3>
+                  <p className="restoration-help">Use the Page selector. It lists visible pages 1-90 in authoritative reading order, including Page 89 as page-002 from page-02.png.</p>
+                  <h3>Upload a Photo</h3>
+                  <p className="restoration-help">Use Upload Photo to add a JPEG, PNG, WebP, or phone photo. The recovered photo stays in browser-local storage.</p>
+                  <h3>Move and Resize</h3>
+                  <p className="restoration-help">Drag the recovered photo on the canvas, use resize handles, or use Resize - and Resize +. The original scan is locked behind it.</p>
+                  <h3>Rotate and Crop</h3>
+                  <p className="restoration-help">Use Rotate - / Rotate +, then Crop, Apply Crop, Cancel Crop, or Clear Crop. Crop only affects the restored photo in this draft.</p>
+                  <h3>Preview</h3>
+                  <p className="restoration-help">Use Preview / Review to switch between Restored preview, Original, Side by side, and Overlay before approval.</p>
+                  <h3>Save and Reopen a Draft</h3>
+                  <p className="restoration-help">Save Draft writes this page's draft locally. Reopen it from Restoration History/Drafts or by selecting the same page after refresh.</p>
+                  <h3>Approve a Restoration</h3>
+                  <p className="restoration-help">Approve asks for confirmation, sets the local status to approved, and prevents accidental editing until Return to Draft.</p>
+                  <h3>Export the Restoration Package</h3>
+                  <p className="restoration-help">Export Restoration Package prepares a ZIP with the recovered photograph, placement JSON, manifest, preview, and README, then Download Prepared Package saves it locally.</p>
+                  <h3>Lock Admin</h3>
+                  <p className="restoration-help">Lock Admin clears the session unlock and protects Admin Tools and Photo Restoration again.</p>
+                  <h3>Where Drafts Are Stored</h3>
+                  <p className="restoration-help">Drafts are stored only in this browser's localStorage under fvb-phase-1b-photo-restorations. Each pageId has its own draft.</p>
+                  <h3>What Happens After Export</h3>
+                  <p className="restoration-help">The export is for offline processing. It does not deploy, publish, upload, or modify original scans.</p>
+                  <h3>Troubleshooting</h3>
+                  <p className="restoration-help">If a draft is missing, confirm the same browser profile is open. If controls are locked, use Return to Draft. If export is disabled, approve the restoration first.</p>
                 </section>
               )}
             </aside>

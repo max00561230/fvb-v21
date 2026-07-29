@@ -1,0 +1,131 @@
+{
+  "baseUrl": "http://127.0.0.1:4177",
+  "steps": [
+    {
+      "status": "PASS",
+      "name": "Page-order validation",
+      "details": "Exactly 90 pages; Page 2 page-003, Page 88 page-090, Page 89 page-002/page-02.png, Page 90 page-091."
+    },
+    {
+      "status": "PASS",
+      "name": "Open Admin Tools and unlock PIN",
+      "details": "Admin landing opened after PIN unlock."
+    },
+    {
+      "status": "PASS",
+      "name": "Open Photo Restoration",
+      "details": "Protected route opened after unlock."
+    },
+    {
+      "status": "PASS",
+      "name": "Help tab exact sections",
+      "details": "Quick Start, Select a Page, Upload a Photo, Move and Resize, Rotate and Crop, Preview, Save and Reopen a Draft, Approve a Restoration, Export the Restoration Package, Lock Admin, Where Drafts Are Stored, What Happens After Export, Troubleshooting"
+    },
+    {
+      "status": "PASS",
+      "name": "Authoritative page selector",
+      "details": "Selector displays visible pages 1-90 in order with required checkpoints."
+    },
+    {
+      "status": "PASS",
+      "name": "Select Page and correct scan metadata",
+      "details": "Visible Page 89 selected page-002 from page-02.png."
+    },
+    {
+      "status": "PASS",
+      "name": "JPEG/iPhone orientation upload",
+      "details": "recovered-iphone-orientation.jpg loaded into the local canvas."
+    },
+    {
+      "status": "PASS",
+      "name": "WebP portrait upload",
+      "details": "recovered-portrait.webp loaded into the local canvas."
+    },
+    {
+      "status": "PASS",
+      "name": "Large PNG upload",
+      "details": "recovered-large.png loaded into the local canvas."
+    },
+    {
+      "status": "PASS",
+      "name": "PNG landscape upload",
+      "details": "Landscape PNG loaded and displayed on editing canvas."
+    },
+    {
+      "status": "PASS",
+      "name": "Drag, resize, rotate, reset",
+      "details": "Mouse drag plus Resize +/- Rotate +/- and Reset Photo controls completed."
+    },
+    {
+      "status": "PASS",
+      "name": "Crop apply and cancel",
+      "details": "Crop, Apply Crop, Crop, and Cancel Crop completed."
+    },
+    {
+      "status": "PASS",
+      "name": "Preview and return to editor",
+      "details": "Side by side, overlay, and restored editor modes worked."
+    },
+    {
+      "status": "PASS",
+      "name": "Save, refresh, reopen draft",
+      "details": "pageId/photo/placement/size/rotation/crop restored from localStorage."
+    },
+    {
+      "status": "PASS",
+      "name": "Approve with confirmation",
+      "details": "Status approved and Return to Draft is visible."
+    },
+    {
+      "status": "PASS",
+      "name": "Export package contents",
+      "details": "ZIP inspected: manifest.json, page-002/README.txt, page-002/flattened-restoration-preview.png, page-002/original-recovered-photo.png, page-002/placement.json, page-002/restoration.json"
+    },
+    {
+      "status": "PASS",
+      "name": "Return to Draft and delete photo",
+      "details": "Approved record returned to draft, then Remove Photo completed."
+    },
+    {
+      "status": "PASS",
+      "name": "Lock Admin protects admin routes",
+      "details": "Lock Admin cleared sessionStorage and protected direct Photo Restoration navigation."
+    },
+    {
+      "status": "PASS",
+      "name": "Mobile iPhone emulation",
+      "details": "Controls wrap, touch buttons are usable, canvas area is visible, and crop tap/cancel works."
+    },
+    {
+      "status": "PASS",
+      "name": "Tablet emulation",
+      "details": "Photo Restoration route, selector, upload, and canvas visible at tablet viewport."
+    },
+    {
+      "status": "PASS",
+      "name": "WebKit browser coverage not run",
+      "details": "Optional WebKit binary unavailable in this CLI environment; Chromium desktop, mobile touch, and tablet touch coverage completed. browserType.launch: Executable doesn't exist at /Users/max0056/Library/Caches/ms-playwright/webkit-2336/pw_run.sh\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝"
+    }
+  ],
+  "originalScanHashBefore": "fe924556618ce068cc950cc39218b5861710476862d63a89b674b985dd5cd310  -",
+  "originalScanHashAfter": "fe924556618ce068cc950cc39218b5861710476862d63a89b674b985dd5cd310  -",
+  "screenshots": [
+    "01-admin-pin-create.png",
+    "02-admin-tools-unlocked.png",
+    "03-photo-restoration-initial.png",
+    "04-help-tab.png",
+    "05-page-89-selected.png",
+    "06-photo-uploaded.png",
+    "07-moved-resized-rotated.png",
+    "08-crop-applied-canceled.png",
+    "09-preview-side-by-side.png",
+    "10-preview-overlay.png",
+    "11-draft-reopened.png",
+    "12-approved-locked.png",
+    "13-export-complete.png",
+    "14-returned-draft-photo-removed.png",
+    "15-admin-locked.png",
+    "16-mobile-iphone-tool.png",
+    "17-tablet-tool.png"
+  ]
+}

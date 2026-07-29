@@ -54,12 +54,38 @@ function validateRestorationTool() {
     "displayNumber: page.displayNumber",
     "sourceFile: page.sourceFile",
     "createdAt",
-    "storage only",
-    "Photo Tool Workflow",
+    "browser-local storage",
     "Delete Draft",
     "Export Restoration Package",
+    "Download Prepared Package",
   ]) {
     if (!text.includes(needle)) fail(`PhotoRestoration.tsx missing ${needle}.`);
+  }
+
+  for (const field of ["draftId", "photoDataReference", "x", "y", "width", "height", "rotation", "crop", "status", "updatedAt"]) {
+    if (!text.includes(field)) fail(`PhotoRestoration.tsx missing required draft/export field ${field}.`);
+  }
+
+  for (const helpSection of [
+    "Quick Start",
+    "Select a Page",
+    "Upload a Photo",
+    "Move and Resize",
+    "Rotate and Crop",
+    "Preview",
+    "Save and Reopen a Draft",
+    "Approve a Restoration",
+    "Export the Restoration Package",
+    "Lock Admin",
+    "Where Drafts Are Stored",
+    "What Happens After Export",
+    "Troubleshooting",
+  ]) {
+    if (!text.includes(helpSection)) fail(`PhotoRestoration.tsx missing Help section ${helpSection}.`);
+  }
+
+  for (const exportFile of ["manifest.json", "placement.json", "original-recovered-photo", "flattened-restoration-preview.png", "README.txt"]) {
+    if (!text.includes(exportFile)) fail(`PhotoRestoration.tsx missing export package file ${exportFile}.`);
   }
 
   for (const forbidden of ["@supabase", "createClient(", "uploadBytes(", "fetch(\"/api/upload", "fetch('/api/upload"]) {
