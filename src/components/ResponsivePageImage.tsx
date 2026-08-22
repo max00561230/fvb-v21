@@ -7,15 +7,15 @@ export function ResponsivePageImage({
   page: BookPage;
   priority?: boolean;
 }) {
-  const originalScanSrc = `${page.masterSrc || page.sources.desktop}?v=original-scan-20260822`;
+  const fullPictureBookSrc = `/book-pages/full-picture-book-20260822/${page.pageId}.webp?v=full-picture-book-20260822`;
 
   return (
     <img
-      src={originalScanSrc}
+      src={fullPictureBookSrc}
       width={page.width}
       height={page.height}
-      alt={`Family heritage book original scan page ${page.displayNumber}`}
-      className="page-image original-scan-page-image"
+      alt={`Family heritage book page ${page.displayNumber}`}
+      className="page-image full-picture-book-page-image"
       draggable={false}
       loading={priority ? "eager" : "lazy"}
       decoding="async"
