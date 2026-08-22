@@ -200,7 +200,7 @@ html, body {
   justify-content: center;
 }
 
-.page-container-framed-sample {
+.page-container-framed {
   width: fit-content;
   max-width: min(100%, 1180px);
   padding: clamp(12px, 2vw, 24px);
@@ -211,7 +211,7 @@ html, body {
     inset 0 0 0 1px rgba(255, 253, 245, 0.28);
 }
 
-.page-container-framed-sample::before {
+.page-container-framed::before {
   content: "";
   position: absolute;
   inset: clamp(4px, 0.8vw, 8px);
@@ -219,7 +219,7 @@ html, body {
   pointer-events: none;
 }
 
-.page-container-framed-sample picture {
+.page-container-framed picture {
   position: relative;
   z-index: 1;
   display: block;
@@ -234,7 +234,7 @@ html, body {
     inset 0 0 0 7px rgba(156, 132, 76, 0.18);
 }
 
-.page-container-framed-sample picture::after {
+.page-container-framed picture::after {
   content: "";
   position: absolute;
   z-index: 2;
@@ -246,7 +246,7 @@ html, body {
   pointer-events: none;
 }
 
-.page-container-framed-sample .page-image {
+.page-container-framed .page-image {
   display: block;
   max-height: calc(100vh - var(--toolbar-height) - var(--bottom-nav-height) - 80px);
   border-radius: 0;

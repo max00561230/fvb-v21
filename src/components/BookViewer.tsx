@@ -217,7 +217,7 @@ export function BookViewer({
         {zoomMode ? (
           <ZoomPageViewer page={currentPage} />
         ) : (
-          <div className={`page-container ${currentPage.displayNumber === 1 ? "page-container-framed-sample" : ""}`}>
+          <div className="page-container page-container-framed">
             <ResponsivePageImage page={currentPage} priority={pageNumber <= 2} />
             <HotspotLayer hotspots={hotspots} />
           </div>
