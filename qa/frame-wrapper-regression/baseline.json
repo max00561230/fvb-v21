@@ -1,0 +1,52 @@
+{
+  "timestamp": "2026-08-22T21:27:46.952Z",
+  "hashes": {
+    "public/data/pages.json": "de2adf1290d82c57a013458ba620b7048d89e580fc7993f26fe5a37ee8de9914",
+    "public/data/reading-order.json": "345016abe5986cbd502fd5ff0ef4e64868010add5c6513cbd9f3d52b76b2cda4",
+    "public/data/search-index.json": "c4318d5289f999ee53778a2ecaf7ea8f2521f83d7d7206318c744cd7b1b539e5",
+    "src/data/search/search-index.json": "c4318d5289f999ee53778a2ecaf7ea8f2521f83d7d7206318c744cd7b1b539e5"
+  },
+  "totalPages": 90,
+  "pages": {
+    "1": {
+      "src": "http://127.0.0.1:4173/book-pages/full-picture-book-20260822/page-001.webp?v=full-picture-book-20260822",
+      "className": "page-image full-picture-book-page-image",
+      "naturalWidth": 2400,
+      "naturalHeight": 3300,
+      "renderedWidth": 628.359375,
+      "renderedHeight": 863.984375,
+      "pageText": "Page 1 of 90",
+      "pageCountText": "Page 1 of 90"
+    },
+    "6": {
+      "src": "http://127.0.0.1:4173/book-pages/full-picture-book-20260822/page-008.webp?v=full-picture-book-20260822",
+      "className": "page-image full-picture-book-page-image",
+      "naturalWidth": 2400,
+      "naturalHeight": 3300,
+      "renderedWidth": 628.359375,
+      "renderedHeight": 863.984375,
+      "pageText": "Page 6 of 90",
+      "pageCountText": "Page 6 of 90"
+    },
+    "89": {
+      "src": "http://127.0.0.1:4173/book-pages/full-picture-book-20260822/page-002.webp?v=full-picture-book-20260822",
+      "className": "page-image full-picture-book-page-image",
+      "naturalWidth": 2400,
+      "naturalHeight": 3300,
+      "renderedWidth": 628.359375,
+      "renderedHeight": 863.984375,
+      "pageText": "Page 89 of 90",
+      "pageCountText": "Page 89 of 90"
+    },
+    "90": {
+      "src": "http://127.0.0.1:4173/book-pages/full-picture-book-20260822/page-091.webp?v=full-picture-book-20260822",
+      "className": "page-image full-picture-book-page-image",
+      "naturalWidth": 2400,
+      "naturalHeight": 3300,
+      "renderedWidth": 628.359375,
+      "renderedHeight": 863.984375,
+      "pageText": "Page 90 of 90",
+      "pageCountText": "Page 90 of 90"
+    }
+  }
+}

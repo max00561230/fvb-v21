@@ -6,6 +6,7 @@ import { AdminGate } from "./components/AdminGate";
 import { AdminTools } from "./components/AdminTools";
 import "./styles.css";
 import "./styles/fvb-design-tokens.css";
+import "./styles/heritage-book-frame.css";
 import "./styles-phase1.css";
 
 const routes = [

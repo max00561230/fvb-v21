@@ -6,6 +6,7 @@ import { HotspotLayer } from "./HotspotLayer";
 import { SearchPanel } from "./SearchPanel";
 import { ThumbnailStrip } from "./ThumbnailStrip";
 import { Navigation } from "./Navigation";
+import { HeritageBookFrame } from "./HeritageBookFrame";
 import { useBookPage } from "../hooks/useBookPage";
 import { useBookmarks } from "../hooks/useBookmarks";
 
@@ -217,10 +218,12 @@ export function BookViewer({
         {zoomMode ? (
           <ZoomPageViewer page={currentPage} />
         ) : (
-          <div className="page-container">
-            <ResponsivePageImage page={currentPage} priority={pageNumber <= 2} />
-            <HotspotLayer hotspots={hotspots} />
-          </div>
+          <HeritageBookFrame>
+            <div className="page-container">
+              <ResponsivePageImage page={currentPage} priority={pageNumber <= 2} />
+              <HotspotLayer hotspots={hotspots} />
+            </div>
+          </HeritageBookFrame>
         )}
       </main>
 

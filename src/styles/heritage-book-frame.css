@@ -1,0 +1,43 @@
+.heritage-book-stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: clamp(12px, 2vw, 28px);
+  background:
+    linear-gradient(180deg, #f5f1e5, #eef2e7);
+}
+
+.heritage-book-frame {
+  width: min(100%, 1180px);
+  padding: clamp(5px, 0.8vw, 10px);
+  background:
+    linear-gradient(135deg, #75604a, #a88e65, #75604a);
+  border: 1px solid rgba(90, 72, 48, 0.45);
+  box-shadow: 0 14px 34px rgba(61, 53, 39, 0.18);
+}
+
+.heritage-book-mat {
+  padding: clamp(8px, 1.5vw, 18px);
+  background: #ebe3d2;
+  border: 1px solid #c6af76;
+}
+
+.heritage-book-page-shell {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #fffdf5;
+  border: 1px solid rgba(156, 132, 76, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+}
+
+.heritage-book-page-shell .page-container {
+  max-width: 100%;
+}
+
+.book-viewer.fullscreen .heritage-book-stage {
+  min-height: 100%;
+  padding: 0;
+  background: #1a1a1a;
+}
