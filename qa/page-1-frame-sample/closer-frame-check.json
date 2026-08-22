@@ -1,0 +1,32 @@
+{
+  "localUrl": "http://127.0.0.1:4181/book?page=1",
+  "results": {
+    "page1": {
+      "indicator": "Page 1 of 90",
+      "framed": true,
+      "imageComplete": true,
+      "imageNaturalWidth": 2400,
+      "imageNaturalHeight": 3300,
+      "noHorizontalOverflow": true,
+      "overlayBorderWidth": "34px"
+    },
+    "page2": {
+      "indicator": "Page 2 of 90",
+      "framed": false,
+      "imageComplete": true,
+      "imageNaturalWidth": 2400,
+      "imageNaturalHeight": 3300,
+      "noHorizontalOverflow": true,
+      "overlayBorderWidth": null
+    },
+    "page19": {
+      "indicator": "Page 19 of 90",
+      "framed": false,
+      "imageComplete": true,
+      "imageNaturalWidth": 2400,
+      "imageNaturalHeight": 3300,
+      "noHorizontalOverflow": true,
+      "overlayBorderWidth": null
+    }
+  }
+}

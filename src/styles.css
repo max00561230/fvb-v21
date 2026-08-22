@@ -223,13 +223,27 @@ html, body {
   position: relative;
   z-index: 1;
   display: block;
-  padding: clamp(10px, 1.8vw, 20px);
+  --page-frame-mat: clamp(10px, 1.8vw, 20px);
+  --page-frame-overlap: clamp(18px, 2.4vw, 34px);
+  padding: var(--page-frame-mat);
   background:
     linear-gradient(180deg, var(--fvb-ivory, #fffdf5), var(--fvb-paper, #f5f1e5));
   border: 1px solid var(--fvb-brass-light, #c6af76);
   box-shadow:
     inset 0 0 0 6px rgba(235, 227, 210, 0.86),
     inset 0 0 0 7px rgba(156, 132, 76, 0.18);
+}
+
+.page-container-framed-sample picture::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: var(--page-frame-mat);
+  border: var(--page-frame-overlap) solid var(--fvb-ivory, #fffdf5);
+  box-shadow:
+    inset 0 0 0 1px rgba(156, 132, 76, 0.3),
+    0 0 0 1px rgba(156, 132, 76, 0.24);
+  pointer-events: none;
 }
 
 .page-container-framed-sample .page-image {
