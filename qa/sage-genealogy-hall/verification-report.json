@@ -1,0 +1,359 @@
+{
+  "screenshots": [
+    "qa/sage-genealogy-hall/home-1440x900.png",
+    "qa/sage-genealogy-hall/home-1280x720.png",
+    "qa/sage-genealogy-hall/home-820x1180.png",
+    "qa/sage-genealogy-hall/home-390x844.png"
+  ],
+  "report": [
+    {
+      "viewport": "1440x900",
+      "pass": true,
+      "sealText": "F",
+      "divider": true,
+      "cornerMarks": 2,
+      "frameCount": 10,
+      "matCount": 10,
+      "plaqueTexts": [
+        "PERMANENT COLLECTION",
+        "GENEALOGY GALLERY",
+        "PEOPLE & LEGACY",
+        "VISUAL ARCHIVE",
+        "MEDIA COLLECTION",
+        "VOICE ARCHIVE",
+        "DOCUMENT ARCHIVE",
+        "RESEARCH DESK",
+        "FAMILY GATHERINGS",
+        "ARCHIVE NOTES"
+      ],
+      "icons": [
+        "📖",
+        "🌳",
+        "👨‍👩‍👧",
+        "📸",
+        "🎥",
+        "🎙",
+        "📜",
+        "🔍",
+        "📅",
+        "ℹ"
+      ],
+      "titles": [
+        "Heritage Book",
+        "Family Tree",
+        "Family Members",
+        "Photo Gallery",
+        "Family Videos",
+        "Oral History",
+        "Historical Documents",
+        "Search",
+        "Reunion Information",
+        "About the Project"
+      ],
+      "navLinks": [
+        "Home",
+        "Heritage Book",
+        "Family Tree",
+        "Family Members",
+        "Photo Gallery",
+        "Family Videos",
+        "Oral History",
+        "Historical Documents",
+        "Search",
+        "Reunion Information",
+        "About"
+      ],
+      "navRows": 1,
+      "toggleDisplay": "none",
+      "headingFont": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif",
+      "bodyFont": "Georgia, \"Times New Roman\", serif",
+      "colors": {
+        "sage": "#DFE8D8",
+        "paper": "#F5F1E5",
+        "ivory": "#FFFDF5",
+        "ink": "#354036",
+        "brass": "#9C844C"
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": "1280x720",
+      "pass": true,
+      "sealText": "F",
+      "divider": true,
+      "cornerMarks": 2,
+      "frameCount": 10,
+      "matCount": 10,
+      "plaqueTexts": [
+        "PERMANENT COLLECTION",
+        "GENEALOGY GALLERY",
+        "PEOPLE & LEGACY",
+        "VISUAL ARCHIVE",
+        "MEDIA COLLECTION",
+        "VOICE ARCHIVE",
+        "DOCUMENT ARCHIVE",
+        "RESEARCH DESK",
+        "FAMILY GATHERINGS",
+        "ARCHIVE NOTES"
+      ],
+      "icons": [
+        "📖",
+        "🌳",
+        "👨‍👩‍👧",
+        "📸",
+        "🎥",
+        "🎙",
+        "📜",
+        "🔍",
+        "📅",
+        "ℹ"
+      ],
+      "titles": [
+        "Heritage Book",
+        "Family Tree",
+        "Family Members",
+        "Photo Gallery",
+        "Family Videos",
+        "Oral History",
+        "Historical Documents",
+        "Search",
+        "Reunion Information",
+        "About the Project"
+      ],
+      "navLinks": [
+        "Home",
+        "Heritage Book",
+        "Family Tree",
+        "Family Members",
+        "Photo Gallery",
+        "Family Videos",
+        "Oral History",
+        "Historical Documents",
+        "Search",
+        "Reunion Information",
+        "About"
+      ],
+      "navRows": 1,
+      "toggleDisplay": "none",
+      "headingFont": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif",
+      "bodyFont": "Georgia, \"Times New Roman\", serif",
+      "colors": {
+        "sage": "#DFE8D8",
+        "paper": "#F5F1E5",
+        "ivory": "#FFFDF5",
+        "ink": "#354036",
+        "brass": "#9C844C"
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": "820x1180",
+      "pass": true,
+      "sealText": "F",
+      "divider": true,
+      "cornerMarks": 2,
+      "frameCount": 10,
+      "matCount": 10,
+      "plaqueTexts": [
+        "PERMANENT COLLECTION",
+        "GENEALOGY GALLERY",
+        "PEOPLE & LEGACY",
+        "VISUAL ARCHIVE",
+        "MEDIA COLLECTION",
+        "VOICE ARCHIVE",
+        "DOCUMENT ARCHIVE",
+        "RESEARCH DESK",
+        "FAMILY GATHERINGS",
+        "ARCHIVE NOTES"
+      ],
+      "icons": [
+        "📖",
+        "🌳",
+        "👨‍👩‍👧",
+        "📸",
+        "🎥",
+        "🎙",
+        "📜",
+        "🔍",
+        "📅",
+        "ℹ"
+      ],
+      "titles": [
+        "Heritage Book",
+        "Family Tree",
+        "Family Members",
+        "Photo Gallery",
+        "Family Videos",
+        "Oral History",
+        "Historical Documents",
+        "Search",
+        "Reunion Information",
+        "About the Project"
+      ],
+      "navLinks": [
+        "Home",
+        "Heritage Book",
+        "Family Tree",
+        "Family Members",
+        "Photo Gallery",
+        "Family Videos",
+        "Oral History",
+        "Historical Documents",
+        "Search",
+        "Reunion Information",
+        "About"
+      ],
+      "navRows": 2,
+      "toggleDisplay": "none",
+      "headingFont": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif",
+      "bodyFont": "Georgia, \"Times New Roman\", serif",
+      "colors": {
+        "sage": "#DFE8D8",
+        "paper": "#F5F1E5",
+        "ivory": "#FFFDF5",
+        "ink": "#354036",
+        "brass": "#9C844C"
+      },
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": "390x844",
+      "pass": true,
+      "sealText": "F",
+      "divider": true,
+      "cornerMarks": 2,
+      "frameCount": 10,
+      "matCount": 10,
+      "plaqueTexts": [
+        "PERMANENT COLLECTION",
+        "GENEALOGY GALLERY",
+        "PEOPLE & LEGACY",
+        "VISUAL ARCHIVE",
+        "MEDIA COLLECTION",
+        "VOICE ARCHIVE",
+        "DOCUMENT ARCHIVE",
+        "RESEARCH DESK",
+        "FAMILY GATHERINGS",
+        "ARCHIVE NOTES"
+      ],
+      "icons": [
+        "📖",
+        "🌳",
+        "👨‍👩‍👧",
+        "📸",
+        "🎥",
+        "🎙",
+        "📜",
+        "🔍",
+        "📅",
+        "ℹ"
+      ],
+      "titles": [
+        "Heritage Book",
+        "Family Tree",
+        "Family Members",
+        "Photo Gallery",
+        "Family Videos",
+        "Oral History",
+        "Historical Documents",
+        "Search",
+        "Reunion Information",
+        "About the Project"
+      ],
+      "navLinks": [
+        "Home",
+        "Heritage Book",
+        "Family Tree",
+        "Family Members",
+        "Photo Gallery",
+        "Family Videos",
+        "Oral History",
+        "Historical Documents",
+        "Search",
+        "Reunion Information",
+        "About"
+      ],
+      "navRows": 1,
+      "toggleDisplay": "block",
+      "headingFont": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif",
+      "bodyFont": "Georgia, \"Times New Roman\", serif",
+      "colors": {
+        "sage": "#DFE8D8",
+        "paper": "#F5F1E5",
+        "ivory": "#FFFDF5",
+        "ink": "#354036",
+        "brass": "#9C844C"
+      },
+      "horizontalOverflow": false
+    }
+  ],
+  "routeResults": [
+    {
+      "route": "/",
+      "status": 200,
+      "textVerified": true,
+      "overflow": false
+    },
+    {
+      "route": "/book?page=19",
+      "status": 200,
+      "textVerified": true,
+      "overflow": false
+    },
+    {
+      "route": "/family",
+      "status": 200,
+      "textVerified": true,
+      "overflow": false
+    },
+    {
+      "route": "/tree",
+      "status": 200,
+      "textVerified": true,
+      "overflow": false
+    },
+    {
+      "route": "/photos",
+      "status": 200,
+      "textVerified": true,
+      "overflow": false
+    },
+    {
+      "route": "/videos",
+      "status": 200,
+      "textVerified": true,
+      "overflow": false
+    },
+    {
+      "route": "/audio",
+      "status": 200,
+      "textVerified": true,
+      "overflow": false
+    },
+    {
+      "route": "/documents",
+      "status": 200,
+      "textVerified": true,
+      "overflow": false
+    },
+    {
+      "route": "/search",
+      "status": 200,
+      "textVerified": true,
+      "overflow": false
+    },
+    {
+      "route": "/reunion",
+      "status": 200,
+      "textVerified": true,
+      "overflow": false
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "textVerified": true,
+      "overflow": false
+    }
+  ],
+  "allPassed": true
+}

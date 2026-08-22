@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import Fuse from "fuse.js";
-import { Navigation } from "./Navigation";
+import { FvbArchiveNavigation, FvbMuseumHeader, FvbPlaque } from "./FvbMuseumComponents";
 import type { Person } from "../types";
 import searchIndexData from "../data/search/search-index.json";
 
@@ -193,9 +193,11 @@ export function SearchPage() {
   const totalResults = results.length;
 
   return (
-    <div className="search-page">
-      <Navigation />
+    <div className="search-page fvb-gallery-shell">
+      <FvbMuseumHeader />
+      <FvbArchiveNavigation />
       <div className="search-page-content">
+        <FvbPlaque>RESEARCH DESK</FvbPlaque>
         <h1 className="search-page-title">Global Search</h1>
         <p className="search-page-subtitle">
           Search the preserved Heritage Book now. Photos, videos, audio, documents, and tree records are ready to join

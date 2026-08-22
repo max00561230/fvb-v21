@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Navigation } from "./Navigation";
+import { FvbArchiveNavigation, FvbArchiveQuote, FvbMuseumHeader, FvbPlaque } from "./FvbMuseumComponents";
 
 interface SectionAction {
   label: string;
@@ -28,11 +28,12 @@ function EmptyArchiveSection({
   actions = [],
 }: EmptySectionProps) {
   return (
-    <div className="archive-shell">
-      <Navigation />
-      <main className="archive-section-page">
-        <header className="archive-section-header">
-          <p className="archive-kicker">{eyebrow}</p>
+    <div className="fvb-gallery-shell">
+      <FvbMuseumHeader />
+      <FvbArchiveNavigation />
+      <main className="archive-section-page fvb-section-page">
+        <header className="archive-section-header fvb-section-header">
+          <FvbPlaque>{eyebrow}</FvbPlaque>
           <h1>{title}</h1>
           <p>{description}</p>
         </header>
@@ -45,7 +46,7 @@ function EmptyArchiveSection({
           {actions.length > 0 && (
             <div className="archive-section-actions">
               {actions.map((action) => (
-                <Link key={action.href} to={action.href} className="archive-card-action">
+                <Link key={action.href} to={action.href} className="archive-card-action fvb-card-link">
                   {action.label}
                 </Link>
               ))}
@@ -82,8 +83,32 @@ function EmptyArchiveSection({
             </div>
           )}
         </section>
+        <FvbArchiveQuote />
       </main>
     </div>
+  );
+}
+
+export function FamilyMembersPage() {
+  return (
+    <EmptyArchiveSection
+      title="Family Members"
+      eyebrow="PEOPLE & LEGACY"
+      description="A ready structure for biographies, profile photos, Heritage Book links, and related archive media."
+      emptyTitle="No family member profiles have been added yet."
+      emptyBody="This section is ready for approved biographies and verified person records when Tony provides them."
+      categories={[
+        "Biographies",
+        "Profile photographs",
+        "Heritage Book links",
+        "Related photos",
+        "Related videos",
+        "Related audio",
+        "Related documents",
+        "Timeline notes",
+      ]}
+      actions={[{ label: "Open Heritage Book", href: "/book" }, { label: "Search Book", href: "/search" }]}
+    />
   );
 }
 
@@ -91,7 +116,7 @@ export function FamilyTreePage() {
   return (
     <EmptyArchiveSection
       title="Family Tree"
-      eyebrow="Living Family Archive"
+      eyebrow="GENEALOGY GALLERY"
       description="A verified family tree foundation for parent, child, spouse, and branch relationships."
       emptyTitle="No family tree records have been added yet."
       emptyBody="This section is ready for verified people and relationship data when Tony provides it."
@@ -105,7 +130,7 @@ export function PhotoGalleryPage() {
   return (
     <EmptyArchiveSection
       title="Photo Gallery"
-      eyebrow="Living Family Archive"
+      eyebrow="VISUAL ARCHIVE"
       description="A separate archive gallery for family photographs outside the scanned Heritage Book pages."
       emptyTitle="No archive photos have been added yet."
       emptyBody="This section is ready for approved family photos, optimized viewing copies, captions, and related people."
@@ -133,7 +158,7 @@ export function FamilyVideosPage() {
   return (
     <EmptyArchiveSection
       title="Family Videos"
-      eyebrow="Living Family Archive"
+      eyebrow="MEDIA COLLECTION"
       description="A media center for interviews, reunions, family-history recordings, and videos of important places."
       emptyTitle="No family videos have been added yet."
       emptyBody="This section is ready for future interviews, reunion recordings, and other family-history videos."
@@ -158,7 +183,7 @@ export function OralHistoryPage() {
   return (
     <EmptyArchiveSection
       title="Oral History"
-      eyebrow="Living Family Archive"
+      eyebrow="VOICE ARCHIVE"
       description="A place to preserve spoken family memories, interviews, and audio recordings with transcripts."
       emptyTitle="No oral-history audio has been added yet."
       emptyBody="This section is ready for approved recordings, speaker information, transcripts, and related archive links."
@@ -182,7 +207,7 @@ export function HistoricalDocumentsPage() {
   return (
     <EmptyArchiveSection
       title="Historical Documents"
-      eyebrow="Living Family Archive"
+      eyebrow="DOCUMENT ARCHIVE"
       description="A document archive for approved records, programs, certificates, articles, letters, and related files."
       emptyTitle="No historical documents have been added yet."
       emptyBody="This section is ready for approved documents, thumbnails, OCR text, download rules, and related people."
@@ -207,13 +232,38 @@ export function HistoricalDocumentsPage() {
   );
 }
 
+export function ReunionInformationPage() {
+  return (
+    <EmptyArchiveSection
+      title="Reunion Information"
+      eyebrow="FAMILY GATHERINGS"
+      description="A prepared place for family reunion history, dates, announcements, and approved reunion media."
+      emptyTitle="No reunion information has been added yet."
+      emptyBody="This section is ready for future reunion dates, locations, announcements, photographs, and videos."
+      categories={[
+        "Next Reunion",
+        "Date",
+        "Location",
+        "Announcements",
+        "Schedule",
+        "Directions",
+        "Past Reunions",
+        "Reunion Photos",
+        "Reunion Videos",
+        "Memorial Information",
+      ]}
+    />
+  );
+}
+
 export function AboutProjectPage() {
   return (
-    <div className="archive-shell">
-      <Navigation />
-      <main className="archive-section-page">
-        <header className="archive-section-header">
-          <p className="archive-kicker">About the Project</p>
+    <div className="fvb-gallery-shell">
+      <FvbMuseumHeader />
+      <FvbArchiveNavigation />
+      <main className="archive-section-page fvb-section-page">
+        <header className="archive-section-header fvb-section-header">
+          <FvbPlaque>ARCHIVE NOTES</FvbPlaque>
           <h1>Francis Family Digital Family History Center</h1>
           <p>
             The Family Virtual Book preserves the original 90-page Francis Family Heritage Book while creating a
@@ -255,6 +305,7 @@ export function AboutProjectPage() {
             </ul>
           </div>
         </section>
+        <FvbArchiveQuote />
       </main>
     </div>
   );

@@ -1,0 +1,15 @@
+:root {
+  --fvb-sage: #DFE8D8;
+  --fvb-sage-light: #EDF2E7;
+  --fvb-paper: #F5F1E5;
+  --fvb-ivory: #FFFDF5;
+  --fvb-ink: #354036;
+  --fvb-deep-green: #4D604B;
+  --fvb-muted: #6E786B;
+  --fvb-brass: #9C844C;
+  --fvb-brass-light: #C6AF76;
+  --fvb-line: #C8CFB9;
+  --fvb-walnut: #75604A;
+  --fvb-heading-font: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  --fvb-body-font: Georgia, "Times New Roman", serif;
+}

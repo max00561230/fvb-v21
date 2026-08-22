@@ -5,6 +5,7 @@ import App from "./App";
 import { AdminGate } from "./components/AdminGate";
 import { AdminTools } from "./components/AdminTools";
 import "./styles.css";
+import "./styles/fvb-design-tokens.css";
 import "./styles-phase1.css";
 
 const routes = [
@@ -15,6 +16,13 @@ const routes = [
   {
     path: "/book",
     element: <App view="book" />,
+  },
+  {
+    path: "/family",
+    lazy: async () => {
+      const mod = await import("./components/ArchiveSectionPage");
+      return { Component: mod.FamilyMembersPage };
+    },
   },
   {
     path: "/tree",
@@ -49,6 +57,13 @@ const routes = [
     lazy: async () => {
       const mod = await import("./components/ArchiveSectionPage");
       return { Component: mod.HistoricalDocumentsPage };
+    },
+  },
+  {
+    path: "/reunion",
+    lazy: async () => {
+      const mod = await import("./components/ArchiveSectionPage");
+      return { Component: mod.ReunionInformationPage };
     },
   },
   {
