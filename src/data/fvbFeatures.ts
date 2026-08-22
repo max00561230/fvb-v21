@@ -82,16 +82,6 @@ export const FVB_FEATURES = [
     countLabel: "Book OCR active",
   },
   {
-    id: "reunion-information",
-    icon: FVB_FEATURE_ICONS.reunionInformation,
-    title: "Reunion Information",
-    plaque: "FAMILY GATHERINGS",
-    description: "View family reunion history, dates and information.",
-    path: "/reunion",
-    actionLabel: "Explore Collection",
-    countLabel: "Ready for information",
-  },
-  {
     id: "about-project",
     icon: FVB_FEATURE_ICONS.aboutProject,
     title: "About the Project",

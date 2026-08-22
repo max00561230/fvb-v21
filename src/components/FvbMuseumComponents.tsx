@@ -12,7 +12,6 @@ const navLinks = [
   { to: "/audio", label: "Oral History" },
   { to: "/documents", label: "Historical Documents" },
   { to: "/search", label: "Search" },
-  { to: "/reunion", label: "Reunion Information" },
   { to: "/about", label: "About" },
 ];
 

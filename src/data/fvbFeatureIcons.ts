@@ -7,6 +7,5 @@ export const FVB_FEATURE_ICONS = {
   oralHistory: "🎙",
   historicalDocuments: "📜",
   search: "🔍",
-  reunionInformation: "📅",
   aboutProject: "ℹ",
 } as const;

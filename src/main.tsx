@@ -60,13 +60,6 @@ const routes = [
     },
   },
   {
-    path: "/reunion",
-    lazy: async () => {
-      const mod = await import("./components/ArchiveSectionPage");
-      return { Component: mod.ReunionInformationPage };
-    },
-  },
-  {
     path: "/about",
     lazy: async () => {
       const mod = await import("./components/ArchiveSectionPage");

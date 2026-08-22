@@ -9,11 +9,12 @@
     {
       "viewport": "1440x900",
       "pass": true,
+      "bodyHasReunion": false,
       "sealText": "F",
       "divider": true,
       "cornerMarks": 2,
-      "frameCount": 10,
-      "matCount": 10,
+      "frameCount": 9,
+      "matCount": 9,
       "plaqueTexts": [
         "PERMANENT COLLECTION",
         "GENEALOGY GALLERY",
@@ -23,7 +24,6 @@
         "VOICE ARCHIVE",
         "DOCUMENT ARCHIVE",
         "RESEARCH DESK",
-        "FAMILY GATHERINGS",
         "ARCHIVE NOTES"
       ],
       "icons": [
@@ -35,7 +35,6 @@
         "🎙",
         "📜",
         "🔍",
-        "📅",
         "ℹ"
       ],
       "titles": [
@@ -47,7 +46,6 @@
         "Oral History",
         "Historical Documents",
         "Search",
-        "Reunion Information",
         "About the Project"
       ],
       "navLinks": [
@@ -60,18 +58,14 @@
         "Oral History",
         "Historical Documents",
         "Search",
-        "Reunion Information",
         "About"
       ],
-      "navRows": 1,
       "toggleDisplay": "none",
       "headingFont": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif",
       "bodyFont": "Georgia, \"Times New Roman\", serif",
       "colors": {
         "sage": "#DFE8D8",
-        "paper": "#F5F1E5",
         "ivory": "#FFFDF5",
-        "ink": "#354036",
         "brass": "#9C844C"
       },
       "horizontalOverflow": false
@@ -79,11 +73,12 @@
     {
       "viewport": "1280x720",
       "pass": true,
+      "bodyHasReunion": false,
       "sealText": "F",
       "divider": true,
       "cornerMarks": 2,
-      "frameCount": 10,
-      "matCount": 10,
+      "frameCount": 9,
+      "matCount": 9,
       "plaqueTexts": [
         "PERMANENT COLLECTION",
         "GENEALOGY GALLERY",
@@ -93,7 +88,6 @@
         "VOICE ARCHIVE",
         "DOCUMENT ARCHIVE",
         "RESEARCH DESK",
-        "FAMILY GATHERINGS",
         "ARCHIVE NOTES"
       ],
       "icons": [
@@ -105,7 +99,6 @@
         "🎙",
         "📜",
         "🔍",
-        "📅",
         "ℹ"
       ],
       "titles": [
@@ -117,7 +110,6 @@
         "Oral History",
         "Historical Documents",
         "Search",
-        "Reunion Information",
         "About the Project"
       ],
       "navLinks": [
@@ -130,18 +122,14 @@
         "Oral History",
         "Historical Documents",
         "Search",
-        "Reunion Information",
         "About"
       ],
-      "navRows": 1,
       "toggleDisplay": "none",
       "headingFont": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif",
       "bodyFont": "Georgia, \"Times New Roman\", serif",
       "colors": {
         "sage": "#DFE8D8",
-        "paper": "#F5F1E5",
         "ivory": "#FFFDF5",
-        "ink": "#354036",
         "brass": "#9C844C"
       },
       "horizontalOverflow": false
@@ -149,11 +137,12 @@
     {
       "viewport": "820x1180",
       "pass": true,
+      "bodyHasReunion": false,
       "sealText": "F",
       "divider": true,
       "cornerMarks": 2,
-      "frameCount": 10,
-      "matCount": 10,
+      "frameCount": 9,
+      "matCount": 9,
       "plaqueTexts": [
         "PERMANENT COLLECTION",
         "GENEALOGY GALLERY",
@@ -163,7 +152,6 @@
         "VOICE ARCHIVE",
         "DOCUMENT ARCHIVE",
         "RESEARCH DESK",
-        "FAMILY GATHERINGS",
         "ARCHIVE NOTES"
       ],
       "icons": [
@@ -175,7 +163,6 @@
         "🎙",
         "📜",
         "🔍",
-        "📅",
         "ℹ"
       ],
       "titles": [
@@ -187,7 +174,6 @@
         "Oral History",
         "Historical Documents",
         "Search",
-        "Reunion Information",
         "About the Project"
       ],
       "navLinks": [
@@ -200,18 +186,14 @@
         "Oral History",
         "Historical Documents",
         "Search",
-        "Reunion Information",
         "About"
       ],
-      "navRows": 2,
       "toggleDisplay": "none",
       "headingFont": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif",
       "bodyFont": "Georgia, \"Times New Roman\", serif",
       "colors": {
         "sage": "#DFE8D8",
-        "paper": "#F5F1E5",
         "ivory": "#FFFDF5",
-        "ink": "#354036",
         "brass": "#9C844C"
       },
       "horizontalOverflow": false
@@ -219,11 +201,12 @@
     {
       "viewport": "390x844",
       "pass": true,
+      "bodyHasReunion": false,
       "sealText": "F",
       "divider": true,
       "cornerMarks": 2,
-      "frameCount": 10,
-      "matCount": 10,
+      "frameCount": 9,
+      "matCount": 9,
       "plaqueTexts": [
         "PERMANENT COLLECTION",
         "GENEALOGY GALLERY",
@@ -233,7 +216,6 @@
         "VOICE ARCHIVE",
         "DOCUMENT ARCHIVE",
         "RESEARCH DESK",
-        "FAMILY GATHERINGS",
         "ARCHIVE NOTES"
       ],
       "icons": [
@@ -245,7 +227,6 @@
         "🎙",
         "📜",
         "🔍",
-        "📅",
         "ℹ"
       ],
       "titles": [
@@ -257,7 +238,6 @@
         "Oral History",
         "Historical Documents",
         "Search",
-        "Reunion Information",
         "About the Project"
       ],
       "navLinks": [
@@ -270,18 +250,14 @@
         "Oral History",
         "Historical Documents",
         "Search",
-        "Reunion Information",
         "About"
       ],
-      "navRows": 1,
       "toggleDisplay": "block",
       "headingFont": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif",
       "bodyFont": "Georgia, \"Times New Roman\", serif",
       "colors": {
         "sage": "#DFE8D8",
-        "paper": "#F5F1E5",
         "ivory": "#FFFDF5",
-        "ink": "#354036",
         "brass": "#9C844C"
       },
       "horizontalOverflow": false
@@ -343,17 +319,16 @@
       "overflow": false
     },
     {
-      "route": "/reunion",
-      "status": 200,
-      "textVerified": true,
-      "overflow": false
-    },
-    {
       "route": "/about",
       "status": 200,
       "textVerified": true,
       "overflow": false
     }
   ],
+  "removedRouteCheck": {
+    "route": "/reunion",
+    "status": 200,
+    "renders404": true
+  },
   "allPassed": true
 }

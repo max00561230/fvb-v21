@@ -232,30 +232,6 @@ export function HistoricalDocumentsPage() {
   );
 }
 
-export function ReunionInformationPage() {
-  return (
-    <EmptyArchiveSection
-      title="Reunion Information"
-      eyebrow="FAMILY GATHERINGS"
-      description="A prepared place for family reunion history, dates, announcements, and approved reunion media."
-      emptyTitle="No reunion information has been added yet."
-      emptyBody="This section is ready for future reunion dates, locations, announcements, photographs, and videos."
-      categories={[
-        "Next Reunion",
-        "Date",
-        "Location",
-        "Announcements",
-        "Schedule",
-        "Directions",
-        "Past Reunions",
-        "Reunion Photos",
-        "Reunion Videos",
-        "Memorial Information",
-      ]}
-    />
-  );
-}
-
 export function AboutProjectPage() {
   return (
     <div className="fvb-gallery-shell">
