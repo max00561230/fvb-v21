@@ -1,12 +1,12 @@
 {
-  "name": "Francis Family Heritage Book",
-  "short_name": "Family Book",
-  "description": "Digital archive of the Francis Family Heritage Book",
+  "name": "Francis Family Digital Family History Center",
+  "short_name": "Family Archive",
+  "description": "Digital archive and preserved Heritage Book for the Francis family",
   "theme_color": "#6C1727",
   "background_color": "#F7F0DF",
   "display": "standalone",
   "orientation": "portrait",
-  "start_url": "/?page=1",
+  "start_url": "/",
   "icons": [
     {
       "src": "/favicon.svg",

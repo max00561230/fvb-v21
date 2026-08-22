@@ -13,6 +13,52 @@ const routes = [
     element: <App />,
   },
   {
+    path: "/book",
+    element: <App view="book" />,
+  },
+  {
+    path: "/tree",
+    lazy: async () => {
+      const mod = await import("./components/ArchiveSectionPage");
+      return { Component: mod.FamilyTreePage };
+    },
+  },
+  {
+    path: "/photos",
+    lazy: async () => {
+      const mod = await import("./components/ArchiveSectionPage");
+      return { Component: mod.PhotoGalleryPage };
+    },
+  },
+  {
+    path: "/videos",
+    lazy: async () => {
+      const mod = await import("./components/ArchiveSectionPage");
+      return { Component: mod.FamilyVideosPage };
+    },
+  },
+  {
+    path: "/audio",
+    lazy: async () => {
+      const mod = await import("./components/ArchiveSectionPage");
+      return { Component: mod.OralHistoryPage };
+    },
+  },
+  {
+    path: "/documents",
+    lazy: async () => {
+      const mod = await import("./components/ArchiveSectionPage");
+      return { Component: mod.HistoricalDocumentsPage };
+    },
+  },
+  {
+    path: "/about",
+    lazy: async () => {
+      const mod = await import("./components/ArchiveSectionPage");
+      return { Component: mod.AboutProjectPage };
+    },
+  },
+  {
     path: "/search",
     lazy: async () => {
       const mod = await import("./components/SearchPage");
@@ -62,7 +108,7 @@ function NotFound() {
       <div className="not-found-content">
         <h1>404</h1>
         <p>Page not found</p>
-        <a href="/" className="not-found-link">← Back to Book</a>
+        <a href="/" className="not-found-link">← Back to Digital Family History Center</a>
       </div>
     </div>
   );

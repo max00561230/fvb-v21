@@ -142,7 +142,7 @@ export function PersonDetail() {
               <h2>Referenced in Book</h2>
               <div className="person-page-refs">
                 {person.pageReferences.map((pg) => (
-                  <Link key={pg} to={`/?page=${pg}`} className="page-ref-link">
+                  <Link key={pg} to={`/book?page=${pg}`} className="page-ref-link">
                     Page {pg}
                   </Link>
                 ))}

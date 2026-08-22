@@ -196,9 +196,10 @@ export function SearchPage() {
     <div className="search-page">
       <Navigation />
       <div className="search-page-content">
-        <h1 className="search-page-title">Search the Heritage Book</h1>
+        <h1 className="search-page-title">Global Search</h1>
         <p className="search-page-subtitle">
-          Search through {index.totalPages} pages of text and {index.totalPeople} people records.
+          Search the preserved Heritage Book now. Photos, videos, audio, documents, and tree records are ready to join
+          this search as approved archive data is added.
         </p>
 
         <div className="search-page-input-wrapper">
@@ -222,7 +223,7 @@ export function SearchPage() {
             <h3>What you can search:</h3>
             <ul>
               <li><strong>Book Pages</strong> — Full-text OCR search across all {index.totalPages} pages</li>
-              <li><strong>People</strong> — Family names, first names, nicknames, and linked page records</li>
+              <li><strong>Family references</strong> — Names and linked page records from the book metadata</li>
               <li><strong>Page Lookup</strong> — Enter a visible page number, such as 89</li>
               <li><strong>Places</strong> — Locations mentioned in the book</li>
               <li><strong>Churches, Schools, Military, Businesses, Cemeteries</strong> — Categorized references</li>
@@ -287,7 +288,7 @@ function parsePageLookup(query: string): number | null {
 function readerUrl(pageNumber: number, query?: string): string {
   const params = new URLSearchParams({ page: String(pageNumber) });
   if (query?.trim()) params.set("search", query.trim());
-  return `/?${params.toString()}`;
+  return `/book?${params.toString()}`;
 }
 
 function pageSummary(page: SearchIndexPage): string {

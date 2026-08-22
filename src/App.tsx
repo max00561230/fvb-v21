@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { ArchiveHome } from "./components/ArchiveHome";
 import { BookViewer } from "./components/BookViewer";
 import type { PagesManifest } from "./types";
 
-export default function App() {
+export default function App({ view = "auto" }: { view?: "auto" | "book" }) {
+  const location = useLocation();
   const [manifest, setManifest] = useState<PagesManifest | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const queryParams = new URLSearchParams(location.search);
+  const legacyBookLink = location.pathname === "/" && (queryParams.has("page") || queryParams.has("search"));
 
   useEffect(() => {
     fetch("/data/pages.json")
@@ -27,7 +32,7 @@ export default function App() {
     return (
       <div className="app-loading">
         <div className="loading-spinner" />
-        <p>Loading Family Heritage Book...</p>
+        <p>Loading Digital Family History Center...</p>
       </div>
     );
   }
@@ -43,6 +48,10 @@ export default function App() {
   }
 
   if (!manifest) return null;
+
+  if (view !== "book" && !legacyBookLink) {
+    return <ArchiveHome totalPages={manifest.totalPages} />;
+  }
 
   return <BookViewer manifest={manifest} />;
 }
