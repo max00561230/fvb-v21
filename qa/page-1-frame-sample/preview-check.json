@@ -1,0 +1,32 @@
+{
+  "base": "https://fvb-v21-69y4nwgwd-max00561230s-projects.vercel.app",
+  "results": {
+    "page1": {
+      "statusText": "Page 1 of 90",
+      "framed": true,
+      "imageComplete": true,
+      "naturalWidth": 2400,
+      "naturalHeight": 3300,
+      "noHorizontalOverflow": true,
+      "httpStatus": 200
+    },
+    "page2": {
+      "statusText": "Page 2 of 90",
+      "framed": false,
+      "imageComplete": true,
+      "naturalWidth": 2400,
+      "naturalHeight": 3300,
+      "noHorizontalOverflow": true,
+      "httpStatus": 200
+    },
+    "page19": {
+      "statusText": "Page 19 of 90",
+      "framed": false,
+      "imageComplete": true,
+      "naturalWidth": 2400,
+      "naturalHeight": 3300,
+      "noHorizontalOverflow": true,
+      "httpStatus": 200
+    }
+  }
+}
