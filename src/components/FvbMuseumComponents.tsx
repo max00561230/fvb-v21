@@ -105,7 +105,7 @@ export function FvbPlaque({ children }: { children: string }) {
 
 export function FvbExhibitCard({ feature, countLabel }: { feature: FvbFeature; countLabel?: string }) {
   return (
-    <article className="fvb-exhibit-card">
+    <article className={`fvb-exhibit-card fvb-exhibit-card-${feature.id}`}>
       <div className="fvb-frame">
         <div className="fvb-inner-mat">
           <FvbRoundel icon={feature.icon} />

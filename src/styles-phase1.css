@@ -2228,6 +2228,38 @@
   pointer-events: none;
 }
 
+.fvb-exhibit-card-historical-documents .fvb-inner-mat {
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, .84), rgba(248, 244, 233, .74)),
+    url("/media/documents/francis-century-farm-certificate.webp") center 26% / cover no-repeat;
+}
+
+.fvb-exhibit-card-historical-documents .fvb-inner-mat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, .2), rgba(255, 253, 247, .78) 66%, rgba(255, 253, 247, .92)),
+    radial-gradient(circle at 50% 20%, rgba(255, 253, 247, .04), rgba(72, 56, 36, .18));
+}
+
+.fvb-exhibit-card-historical-documents .fvb-roundel,
+.fvb-exhibit-card-historical-documents h3,
+.fvb-exhibit-card-historical-documents p,
+.fvb-exhibit-card-historical-documents .fvb-plaque,
+.fvb-exhibit-card-historical-documents .fvb-card-count,
+.fvb-exhibit-card-historical-documents .fvb-card-link {
+  position: relative;
+  z-index: 1;
+}
+
+.fvb-exhibit-card-historical-documents .fvb-roundel {
+  background: rgba(255, 253, 247, .88);
+}
+
 .fvb-roundel {
   width: 40px;
   height: 40px;
@@ -2358,6 +2390,7 @@
 .archive-empty-state,
 .archive-detail-panel,
 .archive-video-card,
+.document-feature,
 .about-project-copy,
 .search-help,
 .search-result-card {
@@ -2373,8 +2406,55 @@
   box-shadow: inset 0 0 0 4px rgba(156,132,76,.06);
 }
 
+.document-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
+  gap: 1.15rem;
+  align-items: center;
+  margin-bottom: 1.35rem;
+  padding: 1.15rem;
+  border: 1px solid var(--fvb-line);
+  box-shadow: inset 0 0 0 4px rgba(156,132,76,.06);
+}
+
+.document-feature-image {
+  margin: 0;
+  padding: .55rem;
+  background: #F5EBD9;
+  border: 1px solid rgba(156,132,76,.28);
+  box-shadow: 0 5px 14px rgba(63,56,45,.1);
+}
+
+.document-feature-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(105,84,55,.16);
+}
+
+.document-feature-copy {
+  display: grid;
+  gap: .58rem;
+}
+
+.document-feature-copy h2 {
+  margin: 0;
+  color: var(--fvb-ink);
+  font-family: var(--fvb-heading-font);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.16;
+}
+
+.document-feature-copy p {
+  margin: 0;
+  color: var(--fvb-muted);
+  line-height: 1.55;
+}
+
 .archive-empty-state h2,
 .archive-detail-panel h2,
+.document-feature-copy h2,
 .about-project-copy h2,
 .search-help h3,
 .search-section-title,
@@ -2386,6 +2466,7 @@
 .archive-empty-state p,
 .archive-detail-panel ul,
 .archive-video-copy p,
+.document-feature-copy p,
 .about-project-copy p,
 .search-help li,
 .search-result-snippet,
@@ -2556,6 +2637,21 @@
 
   .fvb-inner-mat {
     min-height: 0;
+  }
+
+  .fvb-exhibit-card-historical-documents .fvb-inner-mat {
+    background:
+      linear-gradient(180deg, rgba(255, 253, 247, .86), rgba(248, 244, 233, .78)),
+      url("/media/documents/francis-century-farm-certificate.webp") center 22% / contain no-repeat;
+  }
+
+  .document-feature {
+    grid-template-columns: 1fr;
+    padding: .8rem;
+  }
+
+  .document-feature-image {
+    padding: .38rem;
   }
 
   .archive-detail-grid {

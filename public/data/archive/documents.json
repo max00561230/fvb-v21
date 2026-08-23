@@ -1,4 +1,13 @@
 {
   "version": "1.0.0",
-  "documents": []
+  "documents": [
+    {
+      "id": "francis-century-farm-certificate",
+      "title": "James and Pearl Francis Farm Century Farm Certificate",
+      "category": "Certificates",
+      "imageUrl": "/media/documents/francis-century-farm-certificate.webp",
+      "sourceUrl": "/media/documents/sources/francis-century-farm-certificate-original.jpg",
+      "description": "North Carolina Century Farm certificate recognizing 100 years of continuous agricultural heritage for the James and Pearl Francis Farm."
+    }
+  ]
 }

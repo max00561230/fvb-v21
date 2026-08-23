@@ -271,30 +271,80 @@ export function OralHistoryPage() {
 
 export function HistoricalDocumentsPage() {
   return (
-    <EmptyArchiveSection
-      title="Historical Documents"
-      eyebrow="DOCUMENT ARCHIVE"
-      description="A document archive for approved records, programs, certificates, articles, letters, and related files."
-      emptyTitle="No historical documents have been added yet."
-      emptyBody="This section is ready for approved documents, thumbnails, OCR text, download rules, and related people."
-      categories={[
-        "Birth Records",
-        "Marriage Records",
-        "Death Records",
-        "Military Records",
-        "Church Records",
-        "School Records",
-        "Newspaper Articles",
-        "Letters",
-        "Wills",
-        "Deeds",
-        "Certificates",
-        "Funeral Programs",
-        "Obituaries",
-        "Other",
-      ]}
-      acceptedFormats={["PDF", "PNG", "JPG", "WebP", "OCR text"]}
-    />
+    <div className="fvb-gallery-shell">
+      <FvbMuseumHeader />
+      <FvbArchiveNavigation />
+      <main className="archive-section-page fvb-section-page">
+        <header className="archive-section-header fvb-section-header">
+          <FvbPlaque>DOCUMENT ARCHIVE</FvbPlaque>
+          <h1>Historical Documents</h1>
+          <p>A document archive for approved records, programs, certificates, articles, letters, and related files.</p>
+        </header>
+
+        <section className="document-feature" aria-labelledby="century-farm-certificate-title">
+          <figure className="document-feature-image">
+            <img
+              src="/media/documents/francis-century-farm-certificate.webp"
+              alt="North Carolina Century Farm certificate presented to James and Pearl Francis Farm"
+            />
+          </figure>
+          <div className="document-feature-copy">
+            <p className="archive-video-category">Certificate</p>
+            <h2 id="century-farm-certificate-title">James and Pearl Francis Farm Century Farm Certificate</h2>
+            <p>
+              North Carolina Century Farm certificate recognizing 100 years of continuous agricultural heritage for the
+              James and Pearl Francis Farm.
+            </p>
+            <div className="archive-video-meta" aria-label="Century Farm certificate details">
+              <span>North Carolina Century Farm</span>
+              <span>Web viewing copy</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="archive-detail-grid" aria-label="Historical Documents structure">
+          <div className="archive-detail-panel">
+            <h2>Ready Categories</h2>
+            <ul>
+              <li>Birth Records</li>
+              <li>Marriage Records</li>
+              <li>Death Records</li>
+              <li>Military Records</li>
+              <li>Church Records</li>
+              <li>School Records</li>
+              <li>Newspaper Articles</li>
+              <li>Letters</li>
+              <li>Wills</li>
+              <li>Deeds</li>
+              <li>Certificates</li>
+              <li>Funeral Programs</li>
+              <li>Obituaries</li>
+              <li>Other</li>
+            </ul>
+          </div>
+          <div className="archive-detail-panel">
+            <h2>Data Rules</h2>
+            <ul>
+              <li>Use permanent stable IDs for each record.</li>
+              <li>Leave unknown information blank until verified.</li>
+              <li>Keep original archival masters separate from web copies.</li>
+              <li>Publish only approved public or family-safe material.</li>
+            </ul>
+          </div>
+          <div className="archive-detail-panel">
+            <h2>Accepted Formats</h2>
+            <ul>
+              <li>PDF</li>
+              <li>PNG</li>
+              <li>JPG</li>
+              <li>WebP</li>
+              <li>OCR text</li>
+            </ul>
+          </div>
+        </section>
+        <FvbArchiveQuote />
+      </main>
+    </div>
   );
 }
 
