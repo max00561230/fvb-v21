@@ -9,7 +9,7 @@
 
 .heritage-book-frame {
   width: min(100%, 1180px);
-  padding: clamp(5px, 0.8vw, 10px) clamp(2px, 0.22vw, 3px);
+  padding: clamp(5px, 0.8vw, 10px) 1px;
   background:
     linear-gradient(135deg, #75604a, #a88e65, #75604a);
   border: 1px solid rgba(90, 72, 48, 0.45);
@@ -17,7 +17,7 @@
 }
 
 .heritage-book-mat {
-  padding: clamp(8px, 1.5vw, 18px) clamp(3px, 0.35vw, 4px);
+  padding: clamp(8px, 1.5vw, 18px) 2px;
   background: #ebe3d2;
   border: 1px solid #c6af76;
 }
