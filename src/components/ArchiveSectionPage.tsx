@@ -576,6 +576,15 @@ export function AboutProjectPage() {
           </p>
         </section>
 
+        <section className="about-project-copy">
+          <h2>Help Preserve Our Family Story</h2>
+          <p>
+            Family members are encouraged to help grow the Family Virtual Book by sharing photos, documents,
+            biographies, accomplishments, memories, and tributes. Every contribution helps preserve our history, honor
+            our loved ones, and keep these stories available for future generations.
+          </p>
+        </section>
+
         <section className="archive-detail-grid" aria-label="Project layers">
           <div className="archive-detail-panel">
             <h2>Heritage Collection</h2>
