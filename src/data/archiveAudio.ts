@@ -1,0 +1,23 @@
+export interface ArchiveAudio {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  durationLabel: string;
+  originalFormat: string;
+  audioUrl: string;
+  sourceUrl: string;
+}
+
+export const archiveAudio: ArchiveAudio[] = [
+  {
+    id: "audio-pearl-francis-oral-history",
+    title: "Pearl Francis Oral History",
+    category: "Family Interview",
+    description: "A preserved oral-history recording from Pearl Francis, prepared as a smaller web audio copy.",
+    durationLabel: "30 min 17 sec",
+    originalFormat: "Original MP4 audio preserved separately",
+    audioUrl: "/media/audio/pearl-francis-oral-history.m4a",
+    sourceUrl: "/media/audio/sources/pearl-francis-original.mp4",
+  },
+];

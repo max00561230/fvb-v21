@@ -59,7 +59,7 @@ export const FVB_FEATURES = [
     description: "Listen to voices, memories and family stories.",
     path: "/audio",
     actionLabel: "Explore Collection",
-    countLabel: "Ready for audio",
+    countLabel: "1 recording",
   },
   {
     id: "historical-documents",

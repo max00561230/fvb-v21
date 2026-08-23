@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { archiveAudio } from "../data/archiveAudio";
 import { archiveVideos } from "../data/archiveVideos";
 import { familyTreeDocuments } from "../data/familyTreeDocuments";
 import { FvbArchiveNavigation, FvbArchiveQuote, FvbMuseumHeader, FvbPlaque } from "./FvbMuseumComponents";
@@ -303,6 +304,75 @@ export function FamilyVideosPage() {
 }
 
 export function OralHistoryPage() {
+  if (archiveAudio.length > 0) {
+    return (
+      <div className="fvb-gallery-shell">
+        <FvbMuseumHeader />
+        <FvbArchiveNavigation />
+        <main className="archive-section-page fvb-section-page">
+          <header className="archive-section-header fvb-section-header">
+            <FvbPlaque>VOICE ARCHIVE</FvbPlaque>
+            <h1>Oral History</h1>
+            <p>A place to preserve spoken family memories, interviews, and audio recordings with transcripts.</p>
+          </header>
+
+          <section className="archive-audio-grid" aria-label="Oral history recordings">
+            {archiveAudio.map((recording) => (
+              <article className="archive-audio-card" key={recording.id}>
+                <div className="archive-audio-icon" aria-hidden="true">
+                  <span>Voice</span>
+                </div>
+                <div className="archive-audio-copy">
+                  <p className="archive-video-category">{recording.category}</p>
+                  <h2>{recording.title}</h2>
+                  <p>{recording.description}</p>
+                  <audio controls preload="metadata">
+                    <source src={recording.audioUrl} type="audio/mp4" />
+                    Your browser does not support audio playback.
+                  </audio>
+                  <div className="archive-video-meta" aria-label={`${recording.title} details`}>
+                    <span>{recording.durationLabel}</span>
+                    <span>{recording.originalFormat}</span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </section>
+
+          <section className="archive-detail-grid" aria-label="Oral History structure">
+            <div className="archive-detail-panel">
+              <h2>Ready Categories</h2>
+              <ul>
+                <li>Family Interviews</li>
+                <li>Personal Memories</li>
+                <li>Church History</li>
+                <li>Community History</li>
+                <li>Farm Life</li>
+              </ul>
+            </div>
+            <div className="archive-detail-panel">
+              <h2>Data Rules</h2>
+              <ul>
+                <li>Use permanent stable IDs for each record.</li>
+                <li>Keep original archival masters separate from web copies.</li>
+                <li>Add transcripts only after the text is reviewed.</li>
+              </ul>
+            </div>
+            <div className="archive-detail-panel">
+              <h2>Accepted Formats</h2>
+              <ul>
+                <li>M4A or MP3 web copies</li>
+                <li>Transcript text</li>
+                <li>Archival MP4 or WAV kept separately</li>
+              </ul>
+            </div>
+          </section>
+          <FvbArchiveQuote />
+        </main>
+      </div>
+    );
+  }
+
   return (
     <EmptyArchiveSection
       title="Oral History"

@@ -252,6 +252,12 @@
   margin-bottom: 22px;
 }
 
+.archive-audio-grid {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
 .family-tree-document-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -275,6 +281,68 @@
   background: #17120e;
   border: 1px solid var(--color-border);
   border-radius: 6px;
+}
+
+.archive-audio-card {
+  display: grid;
+  grid-template-columns: minmax(160px, .34fr) minmax(260px, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  padding: 20px;
+  background: var(--color-bg-paper);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.archive-audio-icon {
+  display: grid;
+  min-height: 180px;
+  place-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(66, 84, 65, .88), rgba(31, 42, 35, .92)),
+    repeating-linear-gradient(90deg, rgba(255, 248, 232, .14) 0 2px, transparent 2px 9px);
+  border: 1px solid rgba(105, 84, 55, .2);
+  border-radius: 6px;
+}
+
+.archive-audio-icon span {
+  display: grid;
+  width: 92px;
+  height: 92px;
+  place-items: center;
+  color: #FFF8E8;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  background: rgba(255, 248, 232, .12);
+  border: 1px solid rgba(255, 248, 232, .32);
+  border-radius: 50%;
+  box-shadow: 0 16px 34px rgba(21, 27, 22, .28);
+}
+
+.archive-audio-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.archive-audio-copy h2 {
+  margin-bottom: 8px;
+  color: var(--color-text);
+  font-size: 1.55rem;
+}
+
+.archive-audio-copy p {
+  color: var(--color-text-light);
+}
+
+.archive-audio-copy audio {
+  width: 100%;
+  margin-top: 16px;
 }
 
 .family-tree-document-card {
@@ -1760,6 +1828,14 @@
     grid-template-columns: 1fr;
   }
 
+  .archive-audio-card {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-audio-icon {
+    min-height: 140px;
+  }
+
   .family-tree-document-image img {
     height: 260px;
   }
@@ -1912,6 +1988,10 @@
   .archive-detail-grid,
   .family-tree-document-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .archive-audio-card {
+    grid-template-columns: minmax(140px, .4fr) minmax(240px, 1fr);
   }
 
   .main-nav {
@@ -2624,6 +2704,7 @@
 .archive-empty-state,
 .archive-detail-panel,
 .archive-video-card,
+.archive-audio-card,
 .family-tree-document-card,
 .document-feature,
 .about-project-copy,

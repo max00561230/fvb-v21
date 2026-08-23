@@ -58,7 +58,7 @@ export const archiveSections: ArchiveSection[] = [
     route: "/audio",
     icon: "Mic",
     actionLabel: "Open Audio",
-    countLabel: "Ready for audio",
+    countLabel: "1 recording",
   },
   {
     id: "documents",
