@@ -32,4 +32,15 @@ export const archiveDocuments: ArchiveDocument[] = [
     sourceLabel: "Open preserved PDF",
     meta: ["February 18, 1945", "Two-page PDF"],
   },
+  {
+    id: "joe-silver-project",
+    title: "Joe Silver Project",
+    category: "Historical Research",
+    description:
+      "A clean, searchable text edition of the Joe Silver Project material documenting the Delmar farming cooperative and Joe Silver interview notes.",
+    imageUrl: "/media/documents/joe-silver-project.webp",
+    sourceUrl: "/media/documents/sources/joe-silver-project.docx",
+    sourceLabel: "Open preserved DOCX",
+    meta: ["Clean searchable text", "DOCX source"],
+  },
 ];

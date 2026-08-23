@@ -16,6 +16,14 @@
       "imageUrl": "/media/documents/dads-letter-1945.webp",
       "sourceUrl": "/media/documents/sources/dads-letter-1945.pdf",
       "description": "A preserved two-page handwritten family letter dated February 18, 1945, prepared with a web preview and the original PDF kept intact."
+    },
+    {
+      "id": "joe-silver-project",
+      "title": "Joe Silver Project",
+      "category": "Historical Research",
+      "imageUrl": "/media/documents/joe-silver-project.webp",
+      "sourceUrl": "/media/documents/sources/joe-silver-project.docx",
+      "description": "A clean, searchable text edition of the Joe Silver Project material documenting the Delmar farming cooperative and Joe Silver interview notes."
     }
   ]
 }

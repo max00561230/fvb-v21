@@ -69,7 +69,7 @@ export const FVB_FEATURES = [
     description: "Explore records, letters and treasured documents.",
     path: "/documents",
     actionLabel: "Explore Collection",
-    countLabel: "2 documents",
+    countLabel: "3 documents",
   },
   {
     id: "search",
