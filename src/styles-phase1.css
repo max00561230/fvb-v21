@@ -2120,35 +2120,57 @@
 }
 
 .fvb-hero-panel {
+  position: relative;
+  overflow: hidden;
   display: grid;
   gap: .8rem;
   justify-items: start;
-  padding: clamp(1.2rem, 3vw, 2.3rem);
-  background: var(--fvb-ivory);
+  min-height: clamp(310px, 36vw, 430px);
+  align-content: end;
+  padding: clamp(1.35rem, 3vw, 2.7rem);
+  background:
+    linear-gradient(90deg, rgba(21, 27, 22, .82), rgba(21, 27, 22, .48) 54%, rgba(21, 27, 22, .2)),
+    linear-gradient(0deg, rgba(21, 27, 22, .55), rgba(21, 27, 22, .08) 45%),
+    url("/media/photos/francis-home-heritage-bg.jpg") center / cover no-repeat;
   border: 1px solid rgba(156,132,76,.22);
+}
+
+.fvb-hero-panel .fvb-plaque,
+.fvb-hero-panel h1,
+.fvb-hero-panel p,
+.fvb-hero-rule {
+  position: relative;
+  z-index: 1;
+}
+
+.fvb-hero-panel .fvb-plaque {
+  background: rgba(245, 235, 217, .9);
+  box-shadow: 0 2px 8px rgba(21, 27, 22, .24);
 }
 
 .fvb-hero-panel h1 {
   margin: 0;
-  color: var(--fvb-ink);
+  color: #FFF8E8;
   font-family: var(--fvb-heading-font);
   font-size: clamp(2rem, 4vw, 3.05rem);
   font-weight: 600;
   line-height: 1.05;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .42);
 }
 
 .fvb-hero-panel p {
   max-width: 720px;
   margin: 0;
-  color: var(--fvb-muted);
+  color: #F8EEDB;
   font-size: 1.08rem;
   line-height: 1.7;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, .4);
 }
 
 .fvb-hero-rule {
   width: 112px;
   height: 2px;
-  background: var(--fvb-brass);
+  background: #D8B56F;
 }
 
 .fvb-exhibit-grid {
