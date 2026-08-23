@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { archiveVideos } from "../data/archiveVideos";
+import { familyTreeDocuments } from "../data/familyTreeDocuments";
 import { FvbArchiveNavigation, FvbArchiveQuote, FvbMuseumHeader, FvbPlaque } from "./FvbMuseumComponents";
 
 interface SectionAction {
@@ -115,15 +116,71 @@ export function FamilyMembersPage() {
 
 export function FamilyTreePage() {
   return (
-    <EmptyArchiveSection
-      title="Family Tree"
-      eyebrow="GENEALOGY GALLERY"
-      description="A verified family tree foundation for parent, child, spouse, and branch relationships."
-      emptyTitle="No family tree records have been added yet."
-      emptyBody="This section is ready for verified people and relationship data when Tony provides it."
-      categories={["Parents", "Children", "Spouses", "Family branches", "Unknown relationships", "Multi-generation views"]}
-      actions={[{ label: "Open Heritage Book", href: "/book" }, { label: "Search Book", href: "/search" }]}
-    />
+    <div className="fvb-gallery-shell">
+      <FvbMuseumHeader />
+      <FvbArchiveNavigation />
+      <main className="archive-section-page fvb-section-page">
+        <header className="archive-section-header fvb-section-header">
+          <FvbPlaque>GENEALOGY GALLERY</FvbPlaque>
+          <h1>Family Tree</h1>
+          <p>A verified family tree foundation for parent, child, spouse, and branch relationships.</p>
+        </header>
+
+        <section className="family-tree-document-grid" aria-label="Family tree documents">
+          {familyTreeDocuments.map((document) => (
+            <article className="family-tree-document-card" key={document.id}>
+              <figure className="family-tree-document-image">
+                <img src={document.imageUrl} alt={`${document.title} preview`} />
+              </figure>
+              <div className="family-tree-document-copy">
+                <p className="archive-video-category">{document.type}</p>
+                <h2>{document.title}</h2>
+                <p>{document.description}</p>
+                <div className="archive-video-meta" aria-label={`${document.title} details`}>
+                  {document.meta.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+                <a className="archive-card-action fvb-card-link" href={document.sourceUrl} target="_blank" rel="noreferrer">
+                  {document.sourceLabel}
+                </a>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section className="archive-detail-grid" aria-label="Family Tree structure">
+          <div className="archive-detail-panel">
+            <h2>Tree Materials</h2>
+            <ul>
+              <li>Ancestor charts</li>
+              <li>Descendant reports</li>
+              <li>Branch documents</li>
+              <li>Original source files</li>
+            </ul>
+          </div>
+          <div className="archive-detail-panel">
+            <h2>Data Rules</h2>
+            <ul>
+              <li>Use permanent stable IDs for each record.</li>
+              <li>Leave unknown information blank until verified.</li>
+              <li>Keep original archival masters separate from web copies.</li>
+              <li>Publish only approved public or family-safe material.</li>
+            </ul>
+          </div>
+          <div className="archive-detail-panel">
+            <h2>Research Paths</h2>
+            <ul>
+              <li>Francis line</li>
+              <li>Clanton line</li>
+              <li>Jones line</li>
+              <li>Dawson connections</li>
+            </ul>
+          </div>
+        </section>
+        <FvbArchiveQuote />
+      </main>
+    </div>
   );
 }
 

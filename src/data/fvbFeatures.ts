@@ -19,7 +19,7 @@ export const FVB_FEATURES = [
     description: "Follow generations and documented family relationships.",
     path: "/tree",
     actionLabel: "Explore Collection",
-    countLabel: "Ready for verified records",
+    countLabel: "4 Tree Documents",
   },
   {
     id: "family-members",

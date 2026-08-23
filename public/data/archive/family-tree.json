@@ -1,5 +1,39 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "people": [],
-  "relationships": []
+  "relationships": [],
+  "documents": [
+    {
+      "id": "ancestors-james-henry-francis",
+      "title": "Ancestors of James Henry Francis",
+      "type": "ancestor-chart",
+      "branch": "Francis line",
+      "imageUrl": "/media/tree/ancestors-of-james-henry-francis-chart.webp",
+      "sourceUrl": "/media/tree/sources/ancestors-of-james-henry-francis-2026-original.jpg"
+    },
+    {
+      "id": "ancestors-pearl-pearlie-francis-clanton",
+      "title": "Ancestors of Pearl Pearlie Francis [Clanton]",
+      "type": "ancestor-chart",
+      "branch": "Clanton line",
+      "imageUrl": "/media/tree/ancestors-of-pearl-pearlie-francis-clanton.webp",
+      "sourceUrl": "/media/tree/sources/ancestors-of-pearl-pearlie-francis-clanton-original.jpg"
+    },
+    {
+      "id": "descendants-durmon-clanton",
+      "title": "Descendants of Durmon Clanton",
+      "type": "descendant-report",
+      "branch": "Clanton line",
+      "imageUrl": "/media/tree/thumbnails/descendants-of-durmon-clanton.webp",
+      "sourceUrl": "/media/tree/sources/descendants-of-durmon-clanton.pdf"
+    },
+    {
+      "id": "descendants-wiley-jones",
+      "title": "Descendants of Wiley Jones",
+      "type": "descendant-report",
+      "branch": "Jones and Francis line",
+      "imageUrl": "/media/tree/thumbnails/descendants-of-wiley-jones.webp",
+      "sourceUrl": "/media/tree/sources/descendants-of-wiley-jones.pdf"
+    }
+  ]
 }

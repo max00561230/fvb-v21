@@ -28,7 +28,7 @@ export const archiveSections: ArchiveSection[] = [
     route: "/tree",
     icon: "Tree",
     actionLabel: "Open Tree",
-    countLabel: "Ready for data",
+    countLabel: "4 tree documents",
   },
   {
     id: "photos",
