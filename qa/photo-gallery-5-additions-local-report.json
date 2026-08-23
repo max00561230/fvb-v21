@@ -1,0 +1,12 @@
+{
+  "cardCount": 17,
+  "expected": [
+    "Family Portrait in White",
+    "Snow Day Lock Screen",
+    "Playful Girls Outdoors",
+    "Graduation Family Portrait",
+    "Mother and Daughter Studio Portrait"
+  ],
+  "broken": [],
+  "errors": []
+}

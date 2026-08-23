@@ -156,6 +156,71 @@
         "Group photo",
         "Original JPEG preserved"
       ]
+    },
+    {
+      "id": "family-portrait-in-white",
+      "title": "Family Portrait in White",
+      "category": "Family Photo",
+      "description": "A preserved family portrait in white formal attire, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/family-portrait-in-white.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/family-portrait-in-white-thumb.webp",
+      "sourceUrl": "/media/photos/sources/family-portrait-in-white-original.jpg",
+      "meta": [
+        "Family portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "snow-day-lock-screen",
+      "title": "Snow Day Lock Screen",
+      "category": "Family Photo",
+      "description": "A preserved snow day phone lock screen photo, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/snow-day-lock-screen.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/snow-day-lock-screen-thumb.webp",
+      "sourceUrl": "/media/photos/sources/snow-day-lock-screen-original.png",
+      "meta": [
+        "Snow day photo",
+        "Original PNG preserved"
+      ]
+    },
+    {
+      "id": "playful-girls-outdoors",
+      "title": "Playful Girls Outdoors",
+      "category": "Family Photo",
+      "description": "A preserved outdoor photo of two girls playing together, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/playful-girls-outdoors.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/playful-girls-outdoors-thumb.webp",
+      "sourceUrl": "/media/photos/sources/playful-girls-outdoors-original.jpg",
+      "meta": [
+        "Outdoor photo",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "graduation-family-portrait",
+      "title": "Graduation Family Portrait",
+      "category": "Family Photo",
+      "description": "A preserved graduation day family portrait, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/graduation-family-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/graduation-family-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/graduation-family-portrait-original.jpg",
+      "meta": [
+        "Graduation photo",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "mother-and-daughter-studio-portrait",
+      "title": "Mother and Daughter Studio Portrait",
+      "category": "Family Photo",
+      "description": "A preserved mother and daughter studio portrait, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/mother-and-daughter-studio-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/mother-and-daughter-studio-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/mother-and-daughter-studio-portrait-original.jpg",
+      "meta": [
+        "Studio portrait",
+        "Original JPEG preserved"
+      ]
     }
   ]
 }
