@@ -39,8 +39,8 @@ export const archiveDocuments: ArchiveDocument[] = [
     description:
       "A clean, searchable text edition of the Joe Silver Project material documenting the Delmar farming cooperative and Joe Silver interview notes.",
     imageUrl: "/media/documents/joe-silver-project.webp",
-    sourceUrl: "/media/documents/sources/joe-silver-project.docx",
-    sourceLabel: "Open preserved DOCX",
-    meta: ["Clean searchable text", "DOCX source"],
+    sourceUrl: "/media/documents/joe-silver-project.html",
+    sourceLabel: "Open browser copy",
+    meta: ["Clean searchable text", "HTML browser copy", "DOCX preserved"],
   },
 ];
