@@ -49,7 +49,7 @@ export const FVB_FEATURES = [
     description: "Watch reunions, interviews and recorded memories.",
     path: "/videos",
     actionLabel: "Explore Collection",
-    countLabel: "1 video",
+    countLabel: "2 videos",
   },
   {
     id: "oral-history",
