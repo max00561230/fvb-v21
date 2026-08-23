@@ -1,0 +1,24 @@
+export interface ArchivePhoto {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  imageUrl: string;
+  thumbnailUrl: string;
+  sourceUrl: string;
+  meta: string[];
+}
+
+export const archivePhotos: ArchivePhoto[] = [
+  {
+    id: "francis-family-siblings",
+    title: "Francis Family Siblings",
+    category: "Family Photo",
+    description:
+      "A preserved group photograph of Francis family siblings, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/francis-family-siblings.webp",
+    thumbnailUrl: "/media/photos/thumbnails/francis-family-siblings-thumb.webp",
+    sourceUrl: "/media/photos/sources/francis-family-siblings-original.jpg",
+    meta: ["Group photo", "Original JPEG preserved"],
+  },
+];

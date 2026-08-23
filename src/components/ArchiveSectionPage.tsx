@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { archiveAudio } from "../data/archiveAudio";
 import { archiveDocuments } from "../data/archiveDocuments";
+import { archivePhotos } from "../data/archivePhotos";
 import { archiveVideos } from "../data/archiveVideos";
 import { familyTreeDocuments } from "../data/familyTreeDocuments";
 import { FvbArchiveNavigation, FvbArchiveQuote, FvbMuseumHeader, FvbPlaque } from "./FvbMuseumComponents";
@@ -187,6 +188,75 @@ export function FamilyTreePage() {
 }
 
 export function PhotoGalleryPage() {
+  if (archivePhotos.length > 0) {
+    return (
+      <div className="fvb-gallery-shell">
+        <FvbMuseumHeader />
+        <FvbArchiveNavigation />
+        <main className="archive-section-page fvb-section-page">
+          <header className="archive-section-header fvb-section-header">
+            <FvbPlaque>VISUAL ARCHIVE</FvbPlaque>
+            <h1>Photo Gallery</h1>
+            <p>A separate archive gallery for family photographs outside the scanned Heritage Book pages.</p>
+          </header>
+
+          <section className="archive-photo-grid" aria-label="Photo Gallery collection">
+            {archivePhotos.map((photo) => (
+              <article className="archive-photo-card" aria-labelledby={`${photo.id}-title`} key={photo.id}>
+                <a className="archive-photo-image" href={photo.imageUrl} target="_blank" rel="noreferrer">
+                  <img src={photo.thumbnailUrl} alt={photo.title} />
+                </a>
+                <div className="archive-photo-copy">
+                  <p className="archive-video-category">{photo.category}</p>
+                  <h2 id={`${photo.id}-title`}>{photo.title}</h2>
+                  <p>{photo.description}</p>
+                  <div className="archive-video-meta" aria-label={`${photo.title} details`}>
+                    {photo.meta.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
+                  <a className="archive-card-action fvb-card-link" href={photo.sourceUrl} target="_blank" rel="noreferrer">
+                    Open preserved original
+                  </a>
+                </div>
+              </article>
+            ))}
+          </section>
+
+          <section className="archive-detail-grid" aria-label="Photo Gallery structure">
+            <div className="archive-detail-panel">
+              <h2>Ready Categories</h2>
+              <ul>
+                <li>Family Members</li>
+                <li>Family Branches</li>
+                <li>Reunions</li>
+                <li>Weddings</li>
+                <li>Farms and Homes</li>
+              </ul>
+            </div>
+            <div className="archive-detail-panel">
+              <h2>Data Rules</h2>
+              <ul>
+                <li>Use permanent stable IDs for each record.</li>
+                <li>Keep original archival masters separate from web copies.</li>
+                <li>Publish only approved public or family-safe material.</li>
+              </ul>
+            </div>
+            <div className="archive-detail-panel">
+              <h2>Accepted Formats</h2>
+              <ul>
+                <li>WebP viewing copies</li>
+                <li>JPG</li>
+                <li>PNG</li>
+              </ul>
+            </div>
+          </section>
+          <FvbArchiveQuote />
+        </main>
+      </div>
+    );
+  }
+
   return (
     <EmptyArchiveSection
       title="Photo Gallery"

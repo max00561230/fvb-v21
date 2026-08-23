@@ -258,6 +258,13 @@
   margin-bottom: 22px;
 }
 
+.archive-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
 .family-tree-document-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -292,6 +299,50 @@
   background: var(--color-bg-paper);
   border: 1px solid var(--color-border);
   border-radius: 8px;
+}
+
+.archive-photo-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  background: var(--color-bg-paper);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.archive-photo-image {
+  display: block;
+  margin: 0;
+  padding: 12px;
+  background: #F5EBD9;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.archive-photo-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: rgba(255, 255, 255, .55);
+  border: 1px solid rgba(105,84,55,.16);
+}
+
+.archive-photo-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 18px;
+}
+
+.archive-photo-copy h2 {
+  margin-bottom: 8px;
+  color: var(--color-text);
+  font-size: 1.38rem;
+  line-height: 1.18;
+}
+
+.archive-photo-copy p {
+  color: var(--color-text-light);
 }
 
 .archive-audio-icon {
@@ -1824,6 +1875,10 @@
     grid-template-columns: 1fr;
   }
 
+  .archive-photo-grid {
+    grid-template-columns: 1fr;
+  }
+
   .archive-video-card {
     grid-template-columns: 1fr;
   }
@@ -1986,6 +2041,7 @@
 @media (min-width: 769px) and (max-width: 1120px) {
   .archive-grid,
   .archive-detail-grid,
+  .archive-photo-grid,
   .family-tree-document-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2473,6 +2529,59 @@
   text-shadow: 0 1px 5px rgba(0, 0, 0, .5);
 }
 
+.fvb-exhibit-card-photo-gallery .fvb-inner-mat {
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(21, 27, 22, .12), rgba(21, 27, 22, .48) 58%, rgba(21, 27, 22, .72)),
+    url("/media/photos/francis-family-siblings.webp") center 36% / cover no-repeat;
+}
+
+.fvb-exhibit-card-photo-gallery .fvb-inner-mat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(21, 27, 22, .66), rgba(21, 27, 22, .18) 58%, rgba(21, 27, 22, .36)),
+    radial-gradient(circle at 52% 24%, rgba(255, 248, 232, .12), rgba(21, 27, 22, .34) 72%);
+}
+
+.fvb-exhibit-card-photo-gallery .fvb-roundel,
+.fvb-exhibit-card-photo-gallery h3,
+.fvb-exhibit-card-photo-gallery p,
+.fvb-exhibit-card-photo-gallery .fvb-plaque,
+.fvb-exhibit-card-photo-gallery .fvb-card-count,
+.fvb-exhibit-card-photo-gallery .fvb-card-link {
+  position: relative;
+  z-index: 1;
+}
+
+.fvb-exhibit-card-photo-gallery .fvb-roundel {
+  background: rgba(255, 253, 247, .9);
+}
+
+.fvb-exhibit-card-photo-gallery h3,
+.fvb-exhibit-card-photo-gallery p {
+  color: #FFF8E8;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .52);
+}
+
+.fvb-exhibit-card-photo-gallery .fvb-plaque {
+  background: rgba(255, 253, 247, .92);
+  box-shadow: 0 2px 7px rgba(21, 27, 22, .24);
+}
+
+.fvb-exhibit-card-photo-gallery .fvb-card-count {
+  color: #F8EEDB;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, .48);
+}
+
+.fvb-exhibit-card-photo-gallery .fvb-card-link {
+  color: #F8EEDB;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, .5);
+}
+
 .fvb-exhibit-card-family-videos .fvb-inner-mat {
   overflow: hidden;
   isolation: isolate;
@@ -2705,6 +2814,7 @@
 .archive-detail-panel,
 .archive-video-card,
 .archive-audio-card,
+.archive-photo-card,
 .family-tree-document-card,
 .document-feature,
 .about-project-copy,
@@ -2789,6 +2899,7 @@
 .archive-empty-state p,
 .archive-detail-panel ul,
 .archive-video-copy p,
+.archive-photo-copy p,
 .family-tree-document-copy p,
 .document-feature-copy p,
 .about-project-copy p,
@@ -2975,6 +3086,12 @@
     background:
       linear-gradient(180deg, rgba(21, 27, 22, .12), rgba(21, 27, 22, .48) 60%, rgba(21, 27, 22, .7)),
       url("/media/tree/ancestors-of-james-henry-francis.webp") center 20% / cover no-repeat;
+  }
+
+  .fvb-exhibit-card-photo-gallery .fvb-inner-mat {
+    background:
+      linear-gradient(180deg, rgba(21, 27, 22, .14), rgba(21, 27, 22, .52) 58%, rgba(21, 27, 22, .74)),
+      url("/media/photos/francis-family-siblings.webp") center 36% / cover no-repeat;
   }
 
   .fvb-exhibit-card-historical-documents .fvb-inner-mat {
