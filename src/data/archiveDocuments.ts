@@ -43,4 +43,26 @@ export const archiveDocuments: ArchiveDocument[] = [
     sourceLabel: "Open browser copy",
     meta: ["Clean searchable text", "HTML browser copy", "DOCX preserved"],
   },
+  {
+    id: "james-francis-interview-1937",
+    title: "James Francis Interview, 1937",
+    category: "Historical Interview",
+    description:
+      "Clean searchable text edition of the July 15, 1937 James Francis interview for the Roanoke Farms resettlement project.",
+    imageUrl: "/media/documents/james-francis-interview-1937.webp",
+    sourceUrl: "/media/documents/sources/james-francis-interview-1937.pdf",
+    sourceLabel: "Open preserved PDF",
+    meta: ["July 15, 1937", "Four-page PDF", "Clean searchable text"],
+  },
+  {
+    id: "dudley-jones-interview-1937",
+    title: "Dudley Jones Interview, 1937",
+    category: "Historical Interview",
+    description:
+      "Clean searchable text edition of the 1937 Dudley Jones interview documenting Daniel's Chapel, Pomery land, and community history.",
+    imageUrl: "/media/documents/dudley-jones-interview-1937.webp",
+    sourceUrl: "/media/documents/sources/dudley-jones-interview-1937.pdf",
+    sourceLabel: "Open preserved PDF",
+    meta: ["August 1937", "Four-page PDF", "Clean searchable text"],
+  },
 ];

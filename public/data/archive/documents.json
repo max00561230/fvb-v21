@@ -24,6 +24,22 @@
       "imageUrl": "/media/documents/joe-silver-project.webp",
       "sourceUrl": "/media/documents/joe-silver-project.html",
       "description": "A clean, searchable text edition of the Joe Silver Project material documenting the Delmar farming cooperative and Joe Silver interview notes."
+    },
+    {
+      "id": "james-francis-interview-1937",
+      "title": "James Francis Interview, 1937",
+      "category": "Historical Interview",
+      "imageUrl": "/media/documents/james-francis-interview-1937.webp",
+      "sourceUrl": "/media/documents/sources/james-francis-interview-1937.pdf",
+      "description": "Clean searchable text edition of the July 15, 1937 James Francis interview for the Roanoke Farms resettlement project."
+    },
+    {
+      "id": "dudley-jones-interview-1937",
+      "title": "Dudley Jones Interview, 1937",
+      "category": "Historical Interview",
+      "imageUrl": "/media/documents/dudley-jones-interview-1937.webp",
+      "sourceUrl": "/media/documents/sources/dudley-jones-interview-1937.pdf",
+      "description": "Clean searchable text edition of the 1937 Dudley Jones interview documenting Daniel's Chapel, Pomery land, and community history."
     }
   ]
 }
