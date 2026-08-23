@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { archiveVideos } from "../data/archiveVideos";
 import { FvbArchiveNavigation, FvbArchiveQuote, FvbMuseumHeader, FvbPlaque } from "./FvbMuseumComponents";
 
 interface SectionAction {
@@ -155,6 +156,71 @@ export function PhotoGalleryPage() {
 }
 
 export function FamilyVideosPage() {
+  if (archiveVideos.length > 0) {
+    return (
+      <div className="fvb-gallery-shell">
+        <FvbMuseumHeader />
+        <FvbArchiveNavigation />
+        <main className="archive-section-page fvb-section-page">
+          <header className="archive-section-header fvb-section-header">
+            <FvbPlaque>MEDIA COLLECTION</FvbPlaque>
+            <h1>Family Videos</h1>
+            <p>A media center for interviews, reunions, family-history recordings, and videos of important places.</p>
+          </header>
+
+          <section className="archive-video-grid" aria-label="Family video collection">
+            {archiveVideos.map((video) => (
+              <article className="archive-video-card" key={video.id}>
+                <video controls preload="metadata" poster={video.posterUrl}>
+                  <source src={video.videoUrl} type="video/mp4" />
+                </video>
+                <div className="archive-video-copy">
+                  <p className="archive-video-category">{video.category}</p>
+                  <h2>{video.title}</h2>
+                  <p>{video.description}</p>
+                  <div className="archive-video-meta" aria-label={`${video.title} details`}>
+                    <span>{video.durationLabel}</span>
+                    <span>{video.originalFormat}</span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </section>
+
+          <section className="archive-detail-grid" aria-label="Family Videos structure">
+            <div className="archive-detail-panel">
+              <h2>Ready Categories</h2>
+              <ul>
+                <li>Family Interviews</li>
+                <li>Family Reunions</li>
+                <li>Family History</li>
+                <li>Historical Places</li>
+              </ul>
+            </div>
+            <div className="archive-detail-panel">
+              <h2>Data Rules</h2>
+              <ul>
+                <li>Use permanent stable IDs for each record.</li>
+                <li>Keep original archival masters separate from web copies.</li>
+                <li>Publish only approved public or family-safe material.</li>
+              </ul>
+            </div>
+            <div className="archive-detail-panel">
+              <h2>Accepted Formats</h2>
+              <ul>
+                <li>MP4</li>
+                <li>H.264 video</li>
+                <li>AAC audio</li>
+                <li>Poster WebP</li>
+              </ul>
+            </div>
+          </section>
+          <FvbArchiveQuote />
+        </main>
+      </div>
+    );
+  }
+
   return (
     <EmptyArchiveSection
       title="Family Videos"
