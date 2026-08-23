@@ -2,6 +2,136 @@
   "version": "1.0.0",
   "photos": [
     {
+      "id": "family-matriarch-seated-portrait",
+      "title": "Family Matriarch Seated Portrait",
+      "category": "Family Photo",
+      "description": "A preserved seated portrait of a family matriarch, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/family-matriarch-seated-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/family-matriarch-seated-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/family-matriarch-seated-portrait-original.png",
+      "meta": [
+        "Portrait",
+        "Original PNG preserved"
+      ]
+    },
+    {
+      "id": "wedding-day-portrait",
+      "title": "Wedding Day Portrait",
+      "category": "Family Photo",
+      "description": "A preserved wedding day portrait, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/wedding-day-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/wedding-day-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/wedding-day-portrait-original.jpg",
+      "meta": [
+        "Wedding photo",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "formal-couple-portrait",
+      "title": "Formal Couple Portrait",
+      "category": "Family Photo",
+      "description": "A preserved formal couple portrait, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/formal-couple-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/formal-couple-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/formal-couple-portrait-original.jpg",
+      "meta": [
+        "Couple portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "young-family-portrait",
+      "title": "Young Family Portrait",
+      "category": "Family Photo",
+      "description": "A preserved young family portrait, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/young-family-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/young-family-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/young-family-portrait-original.jpg",
+      "meta": [
+        "Family portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "grandmother-and-baby",
+      "title": "Grandmother and Baby",
+      "category": "Family Photo",
+      "description": "A preserved photograph of a grandmother holding a baby, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/grandmother-and-baby.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/grandmother-and-baby-thumb.webp",
+      "sourceUrl": "/media/photos/sources/grandmother-and-baby-original.jpg",
+      "meta": [
+        "Family portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "church-speaker-at-dgbc",
+      "title": "Church Speaker at DGBC",
+      "category": "Family Photo",
+      "description": "A preserved church photograph showing a speaker at the DGBC pulpit, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/church-speaker-at-dgbc.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/church-speaker-at-dgbc-thumb.webp",
+      "sourceUrl": "/media/photos/sources/church-speaker-at-dgbc-original.jpg",
+      "meta": [
+        "Church photo",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "two-women-outdoor-gathering",
+      "title": "Two Women at Outdoor Gathering",
+      "category": "Family Photo",
+      "description": "A preserved outdoor gathering photograph of two women standing together, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/two-women-outdoor-gathering.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/two-women-outdoor-gathering-thumb.webp",
+      "sourceUrl": "/media/photos/sources/two-women-outdoor-gathering-original.jpg",
+      "meta": [
+        "Outdoor gathering",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "military-portrait-with-photo",
+      "title": "Military Portrait with Photo",
+      "category": "Family Photo",
+      "description": "A preserved military portrait showing a man holding a photograph, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/military-portrait-with-photo.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/military-portrait-with-photo-thumb.webp",
+      "sourceUrl": "/media/photos/sources/military-portrait-with-photo-original.jpg",
+      "meta": [
+        "Military photo",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "seated-portrait-at-home",
+      "title": "Seated Portrait at Home",
+      "category": "Family Photo",
+      "description": "A preserved seated portrait taken at home, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/seated-portrait-at-home.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/seated-portrait-at-home-thumb.webp",
+      "sourceUrl": "/media/photos/sources/seated-portrait-at-home-original.jpg",
+      "meta": [
+        "Home portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "living-room-portrait",
+      "title": "Living Room Portrait",
+      "category": "Family Photo",
+      "description": "A preserved living room portrait, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/living-room-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/living-room-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/living-room-portrait-original.jpg",
+      "meta": [
+        "Home portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
       "id": "mom-and-dad",
       "title": "Mom and Dad",
       "category": "Family Photo",
