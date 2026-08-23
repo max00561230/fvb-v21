@@ -2228,6 +2228,59 @@
   pointer-events: none;
 }
 
+.fvb-exhibit-card-family-tree .fvb-inner-mat {
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(21, 27, 22, .12), rgba(21, 27, 22, .46) 62%, rgba(21, 27, 22, .68)),
+    url("/media/tree/ancestors-of-james-henry-francis.webp") center 32% / cover no-repeat;
+}
+
+.fvb-exhibit-card-family-tree .fvb-inner-mat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(21, 27, 22, .62), rgba(21, 27, 22, .16) 56%, rgba(21, 27, 22, .32)),
+    radial-gradient(circle at 50% 24%, rgba(255, 248, 232, .12), rgba(21, 27, 22, .32) 72%);
+}
+
+.fvb-exhibit-card-family-tree .fvb-roundel,
+.fvb-exhibit-card-family-tree h3,
+.fvb-exhibit-card-family-tree p,
+.fvb-exhibit-card-family-tree .fvb-plaque,
+.fvb-exhibit-card-family-tree .fvb-card-count,
+.fvb-exhibit-card-family-tree .fvb-card-link {
+  position: relative;
+  z-index: 1;
+}
+
+.fvb-exhibit-card-family-tree .fvb-roundel {
+  background: rgba(255, 253, 247, .9);
+}
+
+.fvb-exhibit-card-family-tree .fvb-inner-mat h3,
+.fvb-exhibit-card-family-tree .fvb-inner-mat p {
+  color: #FFF8E8;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .52);
+}
+
+.fvb-exhibit-card-family-tree .fvb-plaque {
+  background: rgba(255, 253, 247, .92);
+  box-shadow: 0 2px 7px rgba(21, 27, 22, .24);
+}
+
+.fvb-exhibit-card-family-tree .fvb-card-count {
+  color: #F8EEDB;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, .48);
+}
+
+.fvb-exhibit-card-family-tree .fvb-card-link {
+  color: #F8EEDB;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, .5);
+}
+
 .fvb-exhibit-card-family-videos .fvb-inner-mat {
   overflow: hidden;
   isolation: isolate;
@@ -2280,7 +2333,7 @@
   overflow: hidden;
   isolation: isolate;
   background:
-    linear-gradient(180deg, rgba(255, 253, 247, .84), rgba(248, 244, 233, .74)),
+    linear-gradient(180deg, rgba(21, 27, 22, .12), rgba(21, 27, 22, .28)),
     url("/media/documents/francis-century-farm-certificate.webp") center 26% / cover no-repeat;
 }
 
@@ -2290,8 +2343,8 @@
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(255, 253, 247, .2), rgba(255, 253, 247, .78) 66%, rgba(255, 253, 247, .92)),
-    radial-gradient(circle at 50% 20%, rgba(255, 253, 247, .04), rgba(72, 56, 36, .18));
+    linear-gradient(180deg, rgba(255, 253, 247, .08), rgba(21, 27, 22, .34) 68%, rgba(21, 27, 22, .48)),
+    radial-gradient(circle at 50% 20%, rgba(255, 253, 247, .12), rgba(21, 27, 22, .22));
 }
 
 .fvb-exhibit-card-historical-documents .fvb-roundel,
@@ -2306,6 +2359,27 @@
 
 .fvb-exhibit-card-historical-documents .fvb-roundel {
   background: rgba(255, 253, 247, .88);
+}
+
+.fvb-exhibit-card-historical-documents .fvb-inner-mat h3,
+.fvb-exhibit-card-historical-documents .fvb-inner-mat p {
+  color: #FFF8E8;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .5);
+}
+
+.fvb-exhibit-card-historical-documents .fvb-plaque {
+  background: rgba(255, 253, 247, .92);
+  box-shadow: 0 2px 7px rgba(21, 27, 22, .24);
+}
+
+.fvb-exhibit-card-historical-documents .fvb-card-count {
+  color: #F8EEDB;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, .46);
+}
+
+.fvb-exhibit-card-historical-documents .fvb-card-link {
+  color: #F8EEDB;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, .48);
 }
 
 .fvb-roundel {
@@ -2687,9 +2761,15 @@
     min-height: 0;
   }
 
+  .fvb-exhibit-card-family-tree .fvb-inner-mat {
+    background:
+      linear-gradient(180deg, rgba(21, 27, 22, .12), rgba(21, 27, 22, .48) 60%, rgba(21, 27, 22, .7)),
+      url("/media/tree/ancestors-of-james-henry-francis.webp") center 20% / cover no-repeat;
+  }
+
   .fvb-exhibit-card-historical-documents .fvb-inner-mat {
     background:
-      linear-gradient(180deg, rgba(255, 253, 247, .86), rgba(248, 244, 233, .78)),
+      linear-gradient(180deg, rgba(21, 27, 22, .14), rgba(21, 27, 22, .3)),
       url("/media/documents/francis-century-farm-certificate.webp") center 22% / contain no-repeat;
   }
 
