@@ -20,4 +20,14 @@ export const archiveAudio: ArchiveAudio[] = [
     audioUrl: "/media/audio/pearl-francis-oral-history.m4a",
     sourceUrl: "/media/audio/sources/pearl-francis-original.mp4",
   },
+  {
+    id: "audio-eddie-r-francis-oral-history",
+    title: "Eddie R. Francis Oral History",
+    category: "Family Interview",
+    description: "A preserved oral-history recording from Eddie R. Francis, prepared as a smaller web audio copy.",
+    durationLabel: "43 min 33 sec",
+    originalFormat: "Original M4A audio preserved separately",
+    audioUrl: "/media/audio/eddie-r-francis-oral-history.m4a",
+    sourceUrl: "/media/audio/sources/eddie-r-francis-oral-history-original.m4a",
+  },
 ];
