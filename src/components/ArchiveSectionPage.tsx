@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { archiveAudio } from "../data/archiveAudio";
+import { archiveDocuments } from "../data/archiveDocuments";
 import { archiveVideos } from "../data/archiveVideos";
 import { familyTreeDocuments } from "../data/familyTreeDocuments";
 import { FvbArchiveNavigation, FvbArchiveQuote, FvbMuseumHeader, FvbPlaque } from "./FvbMuseumComponents";
@@ -408,25 +409,27 @@ export function HistoricalDocumentsPage() {
           <p>A document archive for approved records, programs, certificates, articles, letters, and related files.</p>
         </header>
 
-        <section className="document-feature" aria-labelledby="century-farm-certificate-title">
-          <figure className="document-feature-image">
-            <img
-              src="/media/documents/francis-century-farm-certificate.webp"
-              alt="North Carolina Century Farm certificate presented to James and Pearl Francis Farm"
-            />
-          </figure>
-          <div className="document-feature-copy">
-            <p className="archive-video-category">Certificate</p>
-            <h2 id="century-farm-certificate-title">James and Pearl Francis Farm Century Farm Certificate</h2>
-            <p>
-              North Carolina Century Farm certificate recognizing 100 years of continuous agricultural heritage for the
-              James and Pearl Francis Farm.
-            </p>
-            <div className="archive-video-meta" aria-label="Century Farm certificate details">
-              <span>North Carolina Century Farm</span>
-              <span>Web viewing copy</span>
-            </div>
-          </div>
+        <section className="document-feature-grid" aria-label="Historical document collection">
+          {archiveDocuments.map((document) => (
+            <article className="document-feature" aria-labelledby={`${document.id}-title`} key={document.id}>
+              <figure className="document-feature-image">
+                <img src={document.imageUrl} alt={`${document.title} preview`} />
+              </figure>
+              <div className="document-feature-copy">
+                <p className="archive-video-category">{document.category}</p>
+                <h2 id={`${document.id}-title`}>{document.title}</h2>
+                <p>{document.description}</p>
+                <div className="archive-video-meta" aria-label={`${document.title} details`}>
+                  {document.meta.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+                <a className="archive-card-action fvb-card-link" href={document.sourceUrl} target="_blank" rel="noreferrer">
+                  {document.sourceLabel}
+                </a>
+              </div>
+            </article>
+          ))}
         </section>
 
         <section className="archive-detail-grid" aria-label="Historical Documents structure">

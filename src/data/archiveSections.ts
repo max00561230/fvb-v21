@@ -68,7 +68,7 @@ export const archiveSections: ArchiveSection[] = [
     route: "/documents",
     icon: "Docs",
     actionLabel: "View Documents",
-    countLabel: "Ready for documents",
+    countLabel: "2 documents",
   },
   {
     id: "search",
