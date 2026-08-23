@@ -11,6 +11,17 @@ export interface ArchivePhoto {
 
 export const archivePhotos: ArchivePhoto[] = [
   {
+    id: "mom-and-dad",
+    title: "Mom and Dad",
+    category: "Family Photo",
+    description:
+      "A preserved family portrait of Mom and Dad seated together at home, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/mom-and-dad.webp",
+    thumbnailUrl: "/media/photos/thumbnails/mom-and-dad-thumb.webp",
+    sourceUrl: "/media/photos/sources/mom-and-dad-original.jpg",
+    meta: ["Family portrait", "Original JPEG preserved"],
+  },
+  {
     id: "francis-family-siblings",
     title: "Francis Family Siblings",
     category: "Family Photo",
