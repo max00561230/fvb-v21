@@ -8,7 +8,8 @@
 }
 
 .heritage-book-frame {
-  width: min(100%, 1180px);
+  width: fit-content;
+  max-width: 100%;
   padding: clamp(5px, 0.8vw, 10px) 1px;
   background:
     linear-gradient(135deg, #75604a, #a88e65, #75604a);
@@ -24,7 +25,8 @@
 
 .heritage-book-page-shell {
   position: relative;
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
   display: flex;
   justify-content: center;
   background: #fffdf5;
@@ -33,6 +35,12 @@
 }
 
 .heritage-book-page-shell .page-container {
+  width: auto;
+  max-width: 100%;
+}
+
+.heritage-book-page-shell .page-image {
+  display: block;
   max-width: 100%;
 }
 
