@@ -390,6 +390,9 @@ export function PhotoGalleryPage() {
 
 export function FamilyVideosPage() {
   if (archiveVideos.length > 0) {
+    const reunion2011Videos = archiveVideos.filter((video) => video.collection === "2011 Reunion Videos");
+    const familyVideos = archiveVideos.filter((video) => video.collection !== "2011 Reunion Videos");
+
     return (
       <div className="fvb-gallery-shell">
         <FvbMuseumHeader />
@@ -401,23 +404,62 @@ export function FamilyVideosPage() {
             <p>A media center for interviews, reunions, family-history recordings, and videos of important places.</p>
           </header>
 
-          <section className="archive-video-grid" aria-label="Family video collection">
-            {archiveVideos.map((video) => (
-              <article className="archive-video-card" key={video.id}>
-                <video controls preload="metadata" poster={video.posterUrl}>
-                  <source src={video.videoUrl} type="video/mp4" />
-                </video>
-                <div className="archive-video-copy">
-                  <p className="archive-video-category">{video.category}</p>
-                  <h2>{video.title}</h2>
-                  <p>{video.description}</p>
-                  <div className="archive-video-meta" aria-label={`${video.title} details`}>
-                    <span>{video.durationLabel}</span>
-                    <span>{video.originalFormat}</span>
-                  </div>
+          {reunion2011Videos.length > 0 && (
+            <section className="archive-video-panel" aria-labelledby="reunion-2011-videos-title">
+              <div className="archive-panel-heading">
+                <div>
+                  <FvbPlaque>REUNION COLLECTION</FvbPlaque>
+                  <h2 id="reunion-2011-videos-title">2011 Reunion Videos</h2>
                 </div>
-              </article>
-            ))}
+                <p>{reunion2011Videos.length} videos</p>
+              </div>
+              <div className="archive-video-grid" aria-label="2011 Reunion video collection">
+                {reunion2011Videos.map((video) => (
+                  <article className="archive-video-card" key={video.id}>
+                    <video controls preload="metadata" poster={video.posterUrl}>
+                      <source src={video.videoUrl} type="video/mp4" />
+                    </video>
+                    <div className="archive-video-copy">
+                      <p className="archive-video-category">{video.category}</p>
+                      <h2>{video.title}</h2>
+                      <p>{video.description}</p>
+                      <div className="archive-video-meta" aria-label={`${video.title} details`}>
+                        <span>{video.durationLabel}</span>
+                        <span>{video.originalFormat}</span>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <section className="archive-video-panel" aria-labelledby="family-videos-title">
+            <div className="archive-panel-heading">
+              <div>
+                <FvbPlaque>MEDIA COLLECTION</FvbPlaque>
+                <h2 id="family-videos-title">Family Videos</h2>
+              </div>
+              <p>{familyVideos.length} videos</p>
+            </div>
+            <div className="archive-video-grid" aria-label="Family video collection">
+              {familyVideos.map((video) => (
+                <article className="archive-video-card" key={video.id}>
+                  <video controls preload="metadata" poster={video.posterUrl}>
+                    <source src={video.videoUrl} type="video/mp4" />
+                  </video>
+                  <div className="archive-video-copy">
+                    <p className="archive-video-category">{video.category}</p>
+                    <h2>{video.title}</h2>
+                    <p>{video.description}</p>
+                    <div className="archive-video-meta" aria-label={`${video.title} details`}>
+                      <span>{video.durationLabel}</span>
+                      <span>{video.originalFormat}</span>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
           </section>
 
           <section className="archive-detail-grid" aria-label="Family Videos structure">
