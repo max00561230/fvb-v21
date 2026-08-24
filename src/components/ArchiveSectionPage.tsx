@@ -207,16 +207,9 @@ export function PhotoGalleryPage() {
                   <img src={photo.thumbnailUrl} alt={photo.title} />
                 </a>
                 <div className="archive-photo-copy">
-                  <p className="archive-video-category">{photo.category}</p>
                   <h2 id={`${photo.id}-title`}>{photo.title}</h2>
-                  <p>{photo.description}</p>
-                  <div className="archive-video-meta" aria-label={`${photo.title} details`}>
-                    {photo.meta.map((item) => (
-                      <span key={item}>{item}</span>
-                    ))}
-                  </div>
-                  <a className="archive-card-action fvb-card-link" href={photo.sourceUrl} target="_blank" rel="noreferrer">
-                    Open preserved original
+                  <a className="archive-card-action fvb-card-link" href={photo.imageUrl} target="_blank" rel="noreferrer">
+                    Open Full View
                   </a>
                 </div>
               </article>
