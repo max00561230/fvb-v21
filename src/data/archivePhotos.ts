@@ -285,4 +285,70 @@ export const archivePhotos: ArchivePhoto[] = [
     sourceUrl: "/media/photos/sources/grandmother-and-girl-outdoors-original.jpg",
     meta: ["Outdoor family photo", "Original JPEG preserved"],
   },
+  {
+    id: "elder-with-young-women-reunion",
+    title: "Elder with Young Women at Reunion",
+    category: "Family Photo",
+    description:
+      "A preserved family reunion photo of an elder seated with two young women, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/elder-with-young-women-reunion.webp",
+    thumbnailUrl: "/media/photos/thumbnails/elder-with-young-women-reunion-thumb.webp",
+    sourceUrl: "/media/photos/sources/elder-with-young-women-reunion-original.jpg",
+    meta: ["Family reunion", "Original JPEG preserved"],
+  },
+  {
+    id: "woman-at-family-reunion-tent",
+    title: "Woman at Family Reunion Tent",
+    category: "Family Photo",
+    description:
+      "A preserved portrait from a family reunion tent gathering, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/woman-at-family-reunion-tent.webp",
+    thumbnailUrl: "/media/photos/thumbnails/woman-at-family-reunion-tent-thumb.webp",
+    sourceUrl: "/media/photos/sources/woman-at-family-reunion-tent-original.jpg",
+    meta: ["Family reunion", "Original JPEG preserved"],
+  },
+  {
+    id: "eddie-rufus-francis-sunglasses",
+    title: "Eddie Rufus Francis Portrait",
+    category: "Family Photo",
+    description:
+      "A preserved portrait of Eddie Rufus Francis, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/eddie-rufus-francis-sunglasses.webp",
+    thumbnailUrl: "/media/photos/thumbnails/eddie-rufus-francis-sunglasses-thumb.webp",
+    sourceUrl: "/media/photos/sources/eddie-rufus-francis-sunglasses-original.jpg",
+    meta: ["Family portrait", "Original JPEG preserved"],
+  },
+  {
+    id: "eddie-rufus-francis-sr-hat",
+    title: "Eddie Rufus Francis Sr. in Hat",
+    category: "Family Photo",
+    description:
+      "A preserved portrait of Eddie Rufus Francis Sr. wearing a hat, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/eddie-rufus-francis-sr-hat.webp",
+    thumbnailUrl: "/media/photos/thumbnails/eddie-rufus-francis-sr-hat-thumb.webp",
+    sourceUrl: "/media/photos/sources/eddie-rufus-francis-sr-hat-original.jpg",
+    meta: ["Family portrait", "Original JPEG preserved"],
+  },
+  {
+    id: "formal-family-group-portrait",
+    title: "Formal Family Group Portrait",
+    category: "Family Photo",
+    description:
+      "A preserved formal family group portrait, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/formal-family-group-portrait.webp",
+    thumbnailUrl: "/media/photos/thumbnails/formal-family-group-portrait-thumb.webp",
+    sourceUrl: "/media/photos/sources/formal-family-group-portrait-original.jpg",
+    meta: ["Group portrait", "Original JPEG preserved"],
+  },
+  {
+    id: "lillie-bell-francis-portrait",
+    title: "Lillie Bell Francis Portrait",
+    category: "Family Photo",
+    description:
+      "A preserved portrait of Lillie Bell Francis, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/lillie-bell-francis-portrait.webp",
+    thumbnailUrl: "/media/photos/thumbnails/lillie-bell-francis-portrait-thumb.webp",
+    sourceUrl: "/media/photos/sources/lillie-bell-francis-portrait-original.jpg",
+    meta: ["Family portrait", "Original JPEG preserved"],
+  },
 ];
