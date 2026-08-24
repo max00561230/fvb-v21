@@ -351,4 +351,103 @@ export const archivePhotos: ArchivePhoto[] = [
     sourceUrl: "/media/photos/sources/lillie-bell-francis-portrait-original.jpg",
     meta: ["Family portrait", "Original JPEG preserved"],
   },
+  {
+    id: "smiling-woman-in-blue",
+    title: "Smiling Woman in Blue",
+    category: "Family Photo",
+    description:
+      "A preserved portrait of a smiling family member in blue, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/smiling-woman-in-blue.webp",
+    thumbnailUrl: "/media/photos/thumbnails/smiling-woman-in-blue-thumb.webp",
+    sourceUrl: "/media/photos/sources/smiling-woman-in-blue-original.jpg",
+    meta: ["Family portrait", "Original JPEG preserved"],
+  },
+  {
+    id: "christine-portrait",
+    title: "Christine Portrait",
+    category: "Family Photo",
+    description:
+      "A preserved portrait of Christine, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/christine-portrait.webp",
+    thumbnailUrl: "/media/photos/thumbnails/christine-portrait-thumb.webp",
+    sourceUrl: "/media/photos/sources/christine-portrait-original.jpg",
+    meta: ["Family portrait", "Original JPEG preserved"],
+  },
+  {
+    id: "david-earl-portrait",
+    title: "David Earl Portrait",
+    category: "Family Photo",
+    description:
+      "A preserved portrait of David Earl, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/david-earl-portrait.webp",
+    thumbnailUrl: "/media/photos/thumbnails/david-earl-portrait-thumb.webp",
+    sourceUrl: "/media/photos/sources/david-earl-portrait-original.jpg",
+    meta: ["Family portrait", "Original JPEG preserved"],
+  },
+  {
+    id: "doris-louise-farrow-with-baby",
+    title: "Doris Louise Farrow with Baby",
+    category: "Family Photo",
+    description:
+      "A preserved photograph of Doris Louise Farrow holding a baby, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/doris-louise-farrow-with-baby.webp",
+    thumbnailUrl: "/media/photos/thumbnails/doris-louise-farrow-with-baby-thumb.webp",
+    sourceUrl: "/media/photos/sources/doris-louise-farrow-with-baby-original.jpg",
+    meta: ["Family portrait", "Original JPEG preserved"],
+  },
+  {
+    id: "uncle-roy-portrait",
+    title: "Uncle Roy Portrait",
+    category: "Family Photo",
+    description:
+      "A preserved portrait of Uncle Roy, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/uncle-roy-portrait.webp",
+    thumbnailUrl: "/media/photos/thumbnails/uncle-roy-portrait-thumb.webp",
+    sourceUrl: "/media/photos/sources/uncle-roy-portrait-original.jpg",
+    meta: ["Family portrait", "Original JPEG preserved"],
+  },
+  {
+    id: "vernal-davis-portrait",
+    title: "Vernal Davis Portrait",
+    category: "Family Photo",
+    description:
+      "A preserved portrait of Vernal Davis, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/vernal-davis-portrait.webp",
+    thumbnailUrl: "/media/photos/thumbnails/vernal-davis-portrait-thumb.webp",
+    sourceUrl: "/media/photos/sources/vernal-davis-portrait-original.jpg",
+    meta: ["Family portrait", "Original JPEG preserved"],
+  },
+  {
+    id: "keith-and-selena-carlyle",
+    title: "Keith and Selena Carlyle",
+    category: "Family Photo",
+    description:
+      "A preserved photograph of Keith and Selena Carlyle at a family gathering, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/keith-and-selena-carlyle.webp",
+    thumbnailUrl: "/media/photos/thumbnails/keith-and-selena-carlyle-thumb.webp",
+    sourceUrl: "/media/photos/sources/keith-and-selena-carlyle-original.jpg",
+    meta: ["Family gathering", "Original JPEG preserved"],
+  },
+  {
+    id: "kenneth-portrait",
+    title: "Kenneth Portrait",
+    category: "Family Photo",
+    description:
+      "A preserved portrait of Kenneth, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/kenneth-portrait.webp",
+    thumbnailUrl: "/media/photos/thumbnails/kenneth-portrait-thumb.webp",
+    sourceUrl: "/media/photos/sources/kenneth-portrait-original.jpg",
+    meta: ["Family portrait", "Original JPEG preserved"],
+  },
+  {
+    id: "sweets-doris-and-eleanor",
+    title: "Sweets, Doris, and Eleanor",
+    category: "Family Photo",
+    description:
+      "A preserved family gathering photo of Sweets, Doris, and Eleanor, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/sweets-doris-and-eleanor.webp",
+    thumbnailUrl: "/media/photos/thumbnails/sweets-doris-and-eleanor-thumb.webp",
+    sourceUrl: "/media/photos/sources/sweets-doris-and-eleanor-original.jpg",
+    meta: ["Family gathering", "Original JPEG preserved"],
+  },
 ];
