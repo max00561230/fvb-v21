@@ -20,7 +20,7 @@ export const archiveBiographies: ArchiveBiography[] = [
     imageUrl: "/media/biographies/jesse-abel-francis-biographical-sketch.webp",
     thumbnailUrl: "/media/biographies/thumbnails/jesse-abel-francis-biographical-sketch-thumb.webp",
     sourceUrl: "/media/biographies/sources/jesse-abel-francis-biographical-sketch.pdf",
-    sourceLabel: "Open preserved PDF",
-    meta: ["Three-page PDF", "Biographical sketch", "Original PDF preserved"],
+    sourceLabel: "Open searchable PDF",
+    meta: ["Three-page PDF", "Clean searchable text", "Replacement PDF preserved"],
   },
 ];
