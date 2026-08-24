@@ -1,0 +1,24 @@
+[
+  {
+    "viewport": "desktop",
+    "reunionTitle": "Reunion Photos",
+    "panelCount": 2,
+    "reunionCards": 21,
+    "allCards": 61,
+    "fullViewLinks": 61,
+    "firstSrc": "/media/photos/thumbnails/reunion-photo-2011-08-05-4434-thumb.webp",
+    "firstStatus": 200,
+    "errors": []
+  },
+  {
+    "viewport": "mobile",
+    "reunionTitle": "Reunion Photos",
+    "panelCount": 2,
+    "reunionCards": 21,
+    "allCards": 61,
+    "fullViewLinks": 61,
+    "firstSrc": "/media/photos/thumbnails/reunion-photo-2011-08-05-4434-thumb.webp",
+    "firstStatus": 200,
+    "errors": []
+  }
+]

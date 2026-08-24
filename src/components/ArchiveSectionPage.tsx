@@ -189,6 +189,9 @@ export function FamilyTreePage() {
 
 export function PhotoGalleryPage() {
   if (archivePhotos.length > 0) {
+    const reunionPhotos = archivePhotos.filter((photo) => photo.category === "Reunion Photos");
+    const otherPhotos = archivePhotos.filter((photo) => photo.category !== "Reunion Photos");
+
     return (
       <div className="fvb-gallery-shell">
         <FvbMuseumHeader />
@@ -200,20 +203,56 @@ export function PhotoGalleryPage() {
             <p>A separate archive gallery for family photographs outside the scanned Heritage Book pages.</p>
           </header>
 
-          <section className="archive-photo-grid" aria-label="Photo Gallery collection">
-            {archivePhotos.map((photo) => (
-              <article className="archive-photo-card" aria-labelledby={`${photo.id}-title`} key={photo.id}>
-                <a className="archive-photo-image" href={photo.imageUrl} target="_blank" rel="noreferrer">
-                  <img src={photo.thumbnailUrl} alt={photo.title} />
-                </a>
-                <div className="archive-photo-copy">
-                  <h2 id={`${photo.id}-title`}>{photo.title}</h2>
-                  <a className="archive-card-action fvb-card-link" href={photo.imageUrl} target="_blank" rel="noreferrer">
-                    Open Full View
-                  </a>
+          {reunionPhotos.length > 0 && (
+            <section className="archive-photo-panel" aria-labelledby="reunion-photos-title">
+              <div className="archive-photo-panel-header">
+                <div>
+                  <FvbPlaque>REUNION COLLECTION</FvbPlaque>
+                  <h2 id="reunion-photos-title">Reunion Photos</h2>
                 </div>
-              </article>
-            ))}
+                <p>{reunionPhotos.length} photos</p>
+              </div>
+              <div className="archive-photo-grid" aria-label="Reunion Photos collection">
+                {reunionPhotos.map((photo) => (
+                  <article className="archive-photo-card" aria-labelledby={`${photo.id}-title`} key={photo.id}>
+                    <a className="archive-photo-image" href={photo.imageUrl} target="_blank" rel="noreferrer">
+                      <img src={photo.thumbnailUrl} alt={photo.title} />
+                    </a>
+                    <div className="archive-photo-copy">
+                      <h2 id={`${photo.id}-title`}>{photo.title}</h2>
+                      <a className="archive-card-action fvb-card-link" href={photo.imageUrl} target="_blank" rel="noreferrer">
+                        Open Full View
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <section className="archive-photo-panel" aria-labelledby="photo-gallery-title">
+            <div className="archive-photo-panel-header">
+              <div>
+                <FvbPlaque>PHOTO GALLERY</FvbPlaque>
+                <h2 id="photo-gallery-title">Family Photo Gallery</h2>
+              </div>
+              <p>{otherPhotos.length} photos</p>
+            </div>
+            <div className="archive-photo-grid" aria-label="Photo Gallery collection">
+              {otherPhotos.map((photo) => (
+                <article className="archive-photo-card" aria-labelledby={`${photo.id}-title`} key={photo.id}>
+                  <a className="archive-photo-image" href={photo.imageUrl} target="_blank" rel="noreferrer">
+                    <img src={photo.thumbnailUrl} alt={photo.title} />
+                  </a>
+                  <div className="archive-photo-copy">
+                    <h2 id={`${photo.id}-title`}>{photo.title}</h2>
+                    <a className="archive-card-action fvb-card-link" href={photo.imageUrl} target="_blank" rel="noreferrer">
+                      Open Full View
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
           </section>
 
           <section className="archive-detail-grid" aria-label="Photo Gallery structure">
