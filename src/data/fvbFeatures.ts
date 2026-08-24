@@ -39,7 +39,7 @@ export const FVB_FEATURES = [
     description: "Browse photographs preserved across generations.",
     path: "/photos",
     actionLabel: "Explore Collection",
-    countLabel: "61 photos",
+    countLabel: "71 photos",
   },
   {
     id: "family-videos",

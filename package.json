@@ -1,7 +1,7 @@
 {
   "name": "fvb-v21",
   "private": true,
-  "version": "21.2.31",
+  "version": "21.2.32",
   "type": "module",
   "scripts": {
     "dev": "vite",
