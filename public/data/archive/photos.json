@@ -1092,6 +1092,244 @@
         "Farm photo",
         "Original JPEG preserved"
       ]
+    },
+    {
+      "id": "photos2-reunion-buffet-conversation",
+      "title": "Reunion Buffet Conversation",
+      "category": "Family Photo",
+      "description": "A preserved reunion hall conversation near the buffet tables, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-reunion-buffet-conversation.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-reunion-buffet-conversation-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-reunion-buffet-conversation-original.jpg",
+      "meta": [
+        "Reunion photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-reunion-pair-portrait",
+      "title": "Reunion Pair Portrait",
+      "category": "Family Photo",
+      "description": "A preserved reunion portrait of two family members standing together, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-reunion-pair-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-reunion-pair-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-reunion-pair-portrait-original.jpg",
+      "meta": [
+        "Reunion portrait",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-reunion-family-group-portrait",
+      "title": "Reunion Family Group Portrait",
+      "category": "Family Photo",
+      "description": "A preserved family group portrait from a reunion gathering, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-reunion-family-group-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-reunion-family-group-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-reunion-family-group-portrait-original.jpg",
+      "meta": [
+        "Reunion group photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-reunion-stage-group-portrait",
+      "title": "Reunion Stage Group Portrait",
+      "category": "Family Photo",
+      "description": "A preserved stage-side group portrait from a reunion gathering, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-reunion-stage-group-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-reunion-stage-group-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-reunion-stage-group-portrait-original.jpg",
+      "meta": [
+        "Reunion group photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-large-reunion-family-group",
+      "title": "Large Reunion Family Group",
+      "category": "Family Photo",
+      "description": "A preserved large family group portrait from a reunion gathering, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-large-reunion-family-group.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-large-reunion-family-group-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-large-reunion-family-group-original.jpg",
+      "meta": [
+        "Reunion group photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-four-relatives-reunion-portrait",
+      "title": "Four Relatives Reunion Portrait",
+      "category": "Family Photo",
+      "description": "A preserved reunion portrait of four family members standing together, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-four-relatives-reunion-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-four-relatives-reunion-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-four-relatives-reunion-portrait-original.jpg",
+      "meta": [
+        "Reunion portrait",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-reunion-hall-portrait",
+      "title": "Reunion Hall Portrait",
+      "category": "Family Photo",
+      "description": "A preserved portrait from inside the reunion hall, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-reunion-hall-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-reunion-hall-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-reunion-hall-portrait-original.jpg",
+      "meta": [
+        "Reunion photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-young-child-at-reunion",
+      "title": "Young Child at Reunion",
+      "category": "Family Photo",
+      "description": "A preserved photograph of a young child at a reunion gathering, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-young-child-at-reunion.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-young-child-at-reunion-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-young-child-at-reunion-original.jpg",
+      "meta": [
+        "Reunion photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-children-outdoors-family-photo",
+      "title": "Children Outdoors Family Photo",
+      "category": "Family Photo",
+      "description": "A preserved outdoor family photograph of children standing together, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-children-outdoors-family-photo.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-children-outdoors-family-photo-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-children-outdoors-family-photo-original.jpg",
+      "meta": [
+        "Outdoor family photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-reunion-table-snapshot",
+      "title": "Reunion Table Snapshot",
+      "category": "Family Photo",
+      "description": "A preserved reunion table snapshot, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-reunion-table-snapshot.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-reunion-table-snapshot-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-reunion-table-snapshot-original.jpg",
+      "meta": [
+        "Reunion photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-smiling-reunion-pair-portrait",
+      "title": "Smiling Reunion Pair Portrait",
+      "category": "Family Photo",
+      "description": "A preserved smiling pair portrait from a reunion gathering, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-smiling-reunion-pair-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-smiling-reunion-pair-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-smiling-reunion-pair-portrait-original.jpg",
+      "meta": [
+        "Reunion portrait",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-reunion-hall-conversation",
+      "title": "Reunion Hall Conversation",
+      "category": "Family Photo",
+      "description": "A preserved reunion hall conversation photograph, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-reunion-hall-conversation.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-reunion-hall-conversation-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-reunion-hall-conversation-original.jpg",
+      "meta": [
+        "Reunion photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-farm-field-work",
+      "title": "Farm Field Work",
+      "category": "Family Photo",
+      "description": "A preserved farm field work photograph, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-farm-field-work.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-farm-field-work-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-farm-field-work-original.jpg",
+      "meta": [
+        "Farm photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-kitchen-cooking-snapshot",
+      "title": "Kitchen Cooking Snapshot",
+      "category": "Family Photo",
+      "description": "A preserved kitchen cooking snapshot, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-kitchen-cooking-snapshot.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-kitchen-cooking-snapshot-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-kitchen-cooking-snapshot-original.jpg",
+      "meta": [
+        "Family home photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-cattle-feeding-field",
+      "title": "Cattle Feeding Field",
+      "category": "Family Photo",
+      "description": "A preserved field photograph with cattle feeding, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-cattle-feeding-field.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-cattle-feeding-field-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-cattle-feeding-field-original.jpg",
+      "meta": [
+        "Farm photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-horse-stable-visit",
+      "title": "Horse Stable Visit",
+      "category": "Family Photo",
+      "description": "A preserved photograph from a horse stable visit, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-horse-stable-visit.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-horse-stable-visit-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-horse-stable-visit-original.jpg",
+      "meta": [
+        "Farm and animal photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "photos2-seedling-greenhouse-portrait",
+      "title": "Seedling Greenhouse Portrait",
+      "category": "Family Photo",
+      "description": "A preserved greenhouse portrait near seedling trays, added from the photos2 collection.",
+      "imageUrl": "/media/photos/photos2-seedling-greenhouse-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/photos2-seedling-greenhouse-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/photos2-seedling-greenhouse-portrait-original.jpg",
+      "meta": [
+        "Farm photo",
+        "photos2 collection",
+        "Original JPEG preserved"
+      ]
     }
   ]
 }
