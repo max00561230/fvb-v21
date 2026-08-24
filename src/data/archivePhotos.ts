@@ -197,4 +197,92 @@ export const archivePhotos: ArchivePhoto[] = [
     sourceUrl: "/media/photos/sources/mother-and-daughter-studio-portrait-original.jpg",
     meta: ["Studio portrait", "Original JPEG preserved"],
   },
+  {
+    id: "smiling-elder-family-portrait",
+    title: "Smiling Elder Family Portrait",
+    category: "Family Photo",
+    description:
+      "A preserved smiling elder portrait, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/smiling-elder-family-portrait.webp",
+    thumbnailUrl: "/media/photos/thumbnails/smiling-elder-family-portrait-thumb.webp",
+    sourceUrl: "/media/photos/sources/smiling-elder-family-portrait-original.jpg",
+    meta: ["Family portrait", "Original JPEG preserved"],
+  },
+  {
+    id: "grandfather-and-cousin-at-home",
+    title: "Grandfather and Cousin at Home",
+    category: "Family Photo",
+    description:
+      "A preserved photo of grandfather and cousin standing outside a family home, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/grandfather-and-cousin-at-home.webp",
+    thumbnailUrl: "/media/photos/thumbnails/grandfather-and-cousin-at-home-thumb.webp",
+    sourceUrl: "/media/photos/sources/grandfather-and-cousin-at-home-original.jpg",
+    meta: ["Family home photo", "Original JPEG preserved"],
+  },
+  {
+    id: "grandfather-in-washington-dc",
+    title: "Grandfather in Washington, D.C.",
+    category: "Family Photo",
+    description:
+      "A preserved Washington, D.C. travel photo of grandfather, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/grandfather-in-washington-dc.webp",
+    thumbnailUrl: "/media/photos/thumbnails/grandfather-in-washington-dc-thumb.webp",
+    sourceUrl: "/media/photos/sources/grandfather-in-washington-dc-original.jpg",
+    meta: ["Travel photo", "Original JPEG preserved"],
+  },
+  {
+    id: "family-reunion-trio",
+    title: "Family Reunion Trio",
+    category: "Family Photo",
+    description:
+      "A preserved family reunion photo of three relatives together, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/family-reunion-trio.webp",
+    thumbnailUrl: "/media/photos/thumbnails/family-reunion-trio-thumb.webp",
+    sourceUrl: "/media/photos/sources/family-reunion-trio-original.jpg",
+    meta: ["Family reunion", "Original JPEG preserved"],
+  },
+  {
+    id: "mother-and-children-outdoors",
+    title: "Mother and Children Outdoors",
+    category: "Family Photo",
+    description:
+      "A preserved outdoor photo of a mother with children, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/mother-and-children-outdoors.webp",
+    thumbnailUrl: "/media/photos/thumbnails/mother-and-children-outdoors-thumb.webp",
+    sourceUrl: "/media/photos/sources/mother-and-children-outdoors-original.jpg",
+    meta: ["Outdoor family photo", "Original JPEG preserved"],
+  },
+  {
+    id: "train-cab-portrait",
+    title: "Train Cab Portrait",
+    category: "Family Photo",
+    description:
+      "A preserved train cab portrait, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/train-cab-portrait.webp",
+    thumbnailUrl: "/media/photos/thumbnails/train-cab-portrait-thumb.webp",
+    sourceUrl: "/media/photos/sources/train-cab-portrait-original.jpg",
+    meta: ["Travel photo", "Original JPEG preserved"],
+  },
+  {
+    id: "amtrak-station-visit",
+    title: "Amtrak Station Visit",
+    category: "Family Photo",
+    description:
+      "A preserved Amtrak station visit photo, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/amtrak-station-visit.webp",
+    thumbnailUrl: "/media/photos/thumbnails/amtrak-station-visit-thumb.webp",
+    sourceUrl: "/media/photos/sources/amtrak-station-visit-original.jpg",
+    meta: ["Travel photo", "Original JPEG preserved"],
+  },
+  {
+    id: "grandmother-and-girl-outdoors",
+    title: "Grandmother and Girl Outdoors",
+    category: "Family Photo",
+    description:
+      "A preserved outdoor photo of grandmother and a young girl, added to the living Photo Gallery collection.",
+    imageUrl: "/media/photos/grandmother-and-girl-outdoors.webp",
+    thumbnailUrl: "/media/photos/thumbnails/grandmother-and-girl-outdoors-thumb.webp",
+    sourceUrl: "/media/photos/sources/grandmother-and-girl-outdoors-original.jpg",
+    meta: ["Outdoor family photo", "Original JPEG preserved"],
+  },
 ];
