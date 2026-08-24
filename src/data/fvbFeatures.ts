@@ -29,7 +29,7 @@ export const FVB_FEATURES = [
     description: "Discover biographies and individual family profiles.",
     path: "/family",
     actionLabel: "Explore Collection",
-    countLabel: "Ready for profiles",
+    countLabel: "1 biography",
   },
   {
     id: "photo-gallery",

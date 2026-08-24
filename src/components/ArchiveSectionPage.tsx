@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { archiveAudio } from "../data/archiveAudio";
+import { archiveBiographies } from "../data/archiveBiographies";
 import { archiveDocuments } from "../data/archiveDocuments";
 import { archivePhotos } from "../data/archivePhotos";
 import { archiveVideos } from "../data/archiveVideos";
@@ -95,6 +96,77 @@ function EmptyArchiveSection({
 }
 
 export function FamilyMembersPage() {
+  if (archiveBiographies.length > 0) {
+    return (
+      <div className="fvb-gallery-shell">
+        <FvbMuseumHeader />
+        <FvbArchiveNavigation />
+        <main className="archive-section-page fvb-section-page">
+          <header className="archive-section-header fvb-section-header">
+            <FvbPlaque>PEOPLE & LEGACY</FvbPlaque>
+            <h1>Family Members</h1>
+            <p>Biographies, profile materials, accomplishments, and individual family legacy records.</p>
+          </header>
+
+          <section className="document-feature-grid" aria-label="Family member biographies">
+            {archiveBiographies.map((biography) => (
+              <article className="document-feature" aria-labelledby={`${biography.id}-title`} key={biography.id}>
+                <figure className="document-feature-image">
+                  <img src={biography.imageUrl} alt={`${biography.title} preview`} />
+                </figure>
+                <div className="document-feature-copy">
+                  <p className="archive-video-category">{biography.category}</p>
+                  <h2 id={`${biography.id}-title`}>{biography.title}</h2>
+                  <p>{biography.description}</p>
+                  <div className="archive-video-meta" aria-label={`${biography.title} details`}>
+                    {biography.meta.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
+                  <a className="archive-card-action fvb-card-link" href={biography.sourceUrl} target="_blank" rel="noreferrer">
+                    {biography.sourceLabel}
+                  </a>
+                </div>
+              </article>
+            ))}
+          </section>
+
+          <section className="archive-detail-grid" aria-label="Family Members structure">
+            <div className="archive-detail-panel">
+              <h2>Ready Categories</h2>
+              <ul>
+                <li>Biographies</li>
+                <li>Profile photographs</li>
+                <li>Accomplishments</li>
+                <li>Tributes</li>
+                <li>Related archive links</li>
+              </ul>
+            </div>
+            <div className="archive-detail-panel">
+              <h2>Data Rules</h2>
+              <ul>
+                <li>Use permanent stable IDs for each record.</li>
+                <li>Leave unknown information blank until verified.</li>
+                <li>Keep original archival masters separate from web copies.</li>
+                <li>Publish only approved public or family-safe material.</li>
+              </ul>
+            </div>
+            <div className="archive-detail-panel">
+              <h2>Accepted Formats</h2>
+              <ul>
+                <li>PDF biographies</li>
+                <li>WebP previews</li>
+                <li>Profile photographs</li>
+                <li>Reviewed text</li>
+              </ul>
+            </div>
+          </section>
+          <FvbArchiveQuote />
+        </main>
+      </div>
+    );
+  }
+
   return (
     <EmptyArchiveSection
       title="Family Members"
