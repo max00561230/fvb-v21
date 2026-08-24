@@ -2793,6 +2793,65 @@
     0 0 12px rgba(0, 0, 0, .58);
 }
 
+.fvb-exhibit-card-oral-history .fvb-inner-mat {
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(21, 27, 22, .2), rgba(21, 27, 22, .62) 58%, rgba(21, 27, 22, .84)),
+    url("/media/photos/oral-history-panel-bg.webp") center 38% / cover no-repeat;
+}
+
+.fvb-exhibit-card-oral-history .fvb-inner-mat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(21, 27, 22, .8), rgba(21, 27, 22, .28) 58%, rgba(21, 27, 22, .44)),
+    radial-gradient(circle at 50% 22%, rgba(255, 248, 232, .1), rgba(21, 27, 22, .44) 72%);
+}
+
+.fvb-exhibit-card-oral-history .fvb-roundel,
+.fvb-exhibit-card-oral-history h3,
+.fvb-exhibit-card-oral-history p,
+.fvb-exhibit-card-oral-history .fvb-plaque,
+.fvb-exhibit-card-oral-history .fvb-card-count,
+.fvb-exhibit-card-oral-history .fvb-card-link {
+  position: relative;
+  z-index: 1;
+}
+
+.fvb-exhibit-card-oral-history .fvb-roundel {
+  background: rgba(255, 253, 247, .9);
+}
+
+.fvb-exhibit-card-oral-history .fvb-inner-mat h3,
+.fvb-exhibit-card-oral-history .fvb-inner-mat p {
+  color: #FFFFFF;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, .74),
+    0 0 14px rgba(0, 0, 0, .64);
+}
+
+.fvb-exhibit-card-oral-history .fvb-plaque {
+  background: rgba(255, 253, 247, .92);
+  box-shadow: 0 2px 7px rgba(21, 27, 22, .24);
+}
+
+.fvb-exhibit-card-oral-history .fvb-card-count {
+  color: #FFFFFF;
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, .72),
+    0 0 12px rgba(0, 0, 0, .58);
+}
+
+.fvb-exhibit-card-oral-history .fvb-card-link {
+  color: #FFFFFF;
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, .72),
+    0 0 12px rgba(0, 0, 0, .58);
+}
+
 .fvb-exhibit-card-historical-documents .fvb-inner-mat {
   overflow: hidden;
   isolation: isolate;
@@ -3261,6 +3320,12 @@
     background:
       linear-gradient(180deg, rgba(21, 27, 22, .2), rgba(21, 27, 22, .62) 58%, rgba(21, 27, 22, .84)),
       url("/media/photos/francis-family-siblings.webp") center 36% / cover no-repeat;
+  }
+
+  .fvb-exhibit-card-oral-history .fvb-inner-mat {
+    background:
+      linear-gradient(180deg, rgba(21, 27, 22, .22), rgba(21, 27, 22, .64) 58%, rgba(21, 27, 22, .86)),
+      url("/media/photos/oral-history-panel-bg.webp") center 35% / cover no-repeat;
   }
 
   .fvb-exhibit-card-historical-documents .fvb-inner-mat {
