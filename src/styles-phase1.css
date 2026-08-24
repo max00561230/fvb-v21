@@ -2583,7 +2583,7 @@
   overflow: hidden;
   isolation: isolate;
   background:
-    linear-gradient(180deg, rgba(21, 27, 22, .12), rgba(21, 27, 22, .48) 58%, rgba(21, 27, 22, .72)),
+    linear-gradient(180deg, rgba(21, 27, 22, .18), rgba(21, 27, 22, .6) 58%, rgba(21, 27, 22, .82)),
     url("/media/photos/francis-family-siblings.webp") center 36% / cover no-repeat;
 }
 
@@ -2593,8 +2593,8 @@
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(21, 27, 22, .66), rgba(21, 27, 22, .18) 58%, rgba(21, 27, 22, .36)),
-    radial-gradient(circle at 52% 24%, rgba(255, 248, 232, .12), rgba(21, 27, 22, .34) 72%);
+    linear-gradient(90deg, rgba(21, 27, 22, .76), rgba(21, 27, 22, .26) 58%, rgba(21, 27, 22, .44)),
+    radial-gradient(circle at 52% 24%, rgba(255, 248, 232, .08), rgba(21, 27, 22, .42) 72%);
 }
 
 .fvb-exhibit-card-photo-gallery .fvb-roundel,
@@ -2611,10 +2611,12 @@
   background: rgba(255, 253, 247, .9);
 }
 
-.fvb-exhibit-card-photo-gallery h3,
-.fvb-exhibit-card-photo-gallery p {
-  color: #FFF8E8;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, .52);
+.fvb-exhibit-card-photo-gallery .fvb-inner-mat h3,
+.fvb-exhibit-card-photo-gallery .fvb-inner-mat p {
+  color: #FFFFFF;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, .72),
+    0 0 14px rgba(0, 0, 0, .62);
 }
 
 .fvb-exhibit-card-photo-gallery .fvb-plaque {
@@ -2623,20 +2625,24 @@
 }
 
 .fvb-exhibit-card-photo-gallery .fvb-card-count {
-  color: #F8EEDB;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, .48);
+  color: #FFFFFF;
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, .72),
+    0 0 12px rgba(0, 0, 0, .58);
 }
 
 .fvb-exhibit-card-photo-gallery .fvb-card-link {
-  color: #F8EEDB;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, .5);
+  color: #FFFFFF;
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, .72),
+    0 0 12px rgba(0, 0, 0, .58);
 }
 
 .fvb-exhibit-card-family-videos .fvb-inner-mat {
   overflow: hidden;
   isolation: isolate;
   background:
-    linear-gradient(180deg, rgba(21, 27, 22, .18), rgba(21, 27, 22, .56) 58%, rgba(21, 27, 22, .74)),
+    linear-gradient(180deg, rgba(21, 27, 22, .22), rgba(21, 27, 22, .64) 58%, rgba(21, 27, 22, .84)),
     url("/media/videos/posters/francis-family-memories.webp") center 28% / cover no-repeat;
 }
 
@@ -2646,8 +2652,8 @@
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(21, 27, 22, .7), rgba(21, 27, 22, .18) 62%, rgba(21, 27, 22, .34)),
-    radial-gradient(circle at 50% 24%, rgba(255, 248, 232, .14), rgba(21, 27, 22, .34) 72%);
+    linear-gradient(90deg, rgba(21, 27, 22, .8), rgba(21, 27, 22, .26) 62%, rgba(21, 27, 22, .42)),
+    radial-gradient(circle at 50% 24%, rgba(255, 248, 232, .08), rgba(21, 27, 22, .44) 72%);
 }
 
 .fvb-exhibit-card-family-videos .fvb-roundel,
@@ -2664,10 +2670,12 @@
   background: rgba(255, 253, 247, .9);
 }
 
-.fvb-exhibit-card-family-videos h3,
-.fvb-exhibit-card-family-videos p {
-  color: #FFF8E8;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, .52);
+.fvb-exhibit-card-family-videos .fvb-inner-mat h3,
+.fvb-exhibit-card-family-videos .fvb-inner-mat p {
+  color: #FFFFFF;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, .74),
+    0 0 14px rgba(0, 0, 0, .64);
 }
 
 .fvb-exhibit-card-family-videos .fvb-plaque {
@@ -2676,8 +2684,17 @@
 }
 
 .fvb-exhibit-card-family-videos .fvb-card-count {
-  color: #F8EEDB;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, .48);
+  color: #FFFFFF;
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, .72),
+    0 0 12px rgba(0, 0, 0, .58);
+}
+
+.fvb-exhibit-card-family-videos .fvb-card-link {
+  color: #FFFFFF;
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, .72),
+    0 0 12px rgba(0, 0, 0, .58);
 }
 
 .fvb-exhibit-card-historical-documents .fvb-inner-mat {
@@ -3140,7 +3157,7 @@
 
   .fvb-exhibit-card-photo-gallery .fvb-inner-mat {
     background:
-      linear-gradient(180deg, rgba(21, 27, 22, .14), rgba(21, 27, 22, .52) 58%, rgba(21, 27, 22, .74)),
+      linear-gradient(180deg, rgba(21, 27, 22, .2), rgba(21, 27, 22, .62) 58%, rgba(21, 27, 22, .84)),
       url("/media/photos/francis-family-siblings.webp") center 36% / cover no-repeat;
   }
 
