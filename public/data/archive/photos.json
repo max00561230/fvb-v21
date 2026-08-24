@@ -1014,6 +1014,84 @@
         "Formal portrait",
         "Original JPEG preserved"
       ]
+    },
+    {
+      "id": "two-women-indoor-family-snapshot",
+      "title": "Two Women Indoor Family Snapshot",
+      "category": "Family Photo",
+      "description": "A preserved indoor family snapshot of two women standing together, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/two-women-indoor-family-snapshot.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/two-women-indoor-family-snapshot-thumb.webp",
+      "sourceUrl": "/media/photos/sources/two-women-indoor-family-snapshot-original.jpg",
+      "meta": [
+        "Family snapshot",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "indoor-family-group-snapshot",
+      "title": "Indoor Family Group Snapshot",
+      "category": "Family Photo",
+      "description": "A preserved indoor family group snapshot, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/indoor-family-group-snapshot.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/indoor-family-group-snapshot-thumb.webp",
+      "sourceUrl": "/media/photos/sources/indoor-family-group-snapshot-original.jpg",
+      "meta": [
+        "Family group photo",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "military-service-portrait",
+      "title": "Military Service Portrait",
+      "category": "Family Photo",
+      "description": "A preserved military service portrait, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/military-service-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/military-service-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/military-service-portrait-original.jpg",
+      "meta": [
+        "Military portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "four-women-studio-family-portrait",
+      "title": "Four Women Studio Family Portrait",
+      "category": "Family Photo",
+      "description": "A preserved studio-style family portrait of four women, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/four-women-studio-family-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/four-women-studio-family-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/four-women-studio-family-portrait-original.jpg",
+      "meta": [
+        "Family portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "young-man-in-suit-outdoors",
+      "title": "Young Man in Suit Outdoors",
+      "category": "Family Photo",
+      "description": "A preserved outdoor portrait of a young man in a suit, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/young-man-in-suit-outdoors.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/young-man-in-suit-outdoors-thumb.webp",
+      "sourceUrl": "/media/photos/sources/young-man-in-suit-outdoors-original.jpg",
+      "meta": [
+        "Outdoor portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "dad-working-in-field",
+      "title": "Dad Working in Field",
+      "category": "Family Photo",
+      "description": "A preserved farm photograph of Dad working in the field by a tractor, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/dad-working-in-field.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/dad-working-in-field-thumb.webp",
+      "sourceUrl": "/media/photos/sources/dad-working-in-field-original.jpg",
+      "meta": [
+        "Farm photo",
+        "Original JPEG preserved"
+      ]
     }
   ]
 }
