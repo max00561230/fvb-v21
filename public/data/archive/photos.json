@@ -923,6 +923,97 @@
         "Portrait",
         "Original JPEG preserved"
       ]
+    },
+    {
+      "id": "outdoor-family-reunion-wide-group",
+      "title": "Outdoor Family Reunion Wide Group",
+      "category": "Family Photo",
+      "description": "A preserved wide outdoor family reunion group photograph, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/outdoor-family-reunion-wide-group.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/outdoor-family-reunion-wide-group-thumb.webp",
+      "sourceUrl": "/media/photos/sources/outdoor-family-reunion-wide-group-original.jpg",
+      "meta": [
+        "Family reunion",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "church-steps-family-reunion-group",
+      "title": "Church Steps Family Reunion Group",
+      "category": "Family Photo",
+      "description": "A preserved church steps family reunion group photograph, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/church-steps-family-reunion-group.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/church-steps-family-reunion-group-thumb.webp",
+      "sourceUrl": "/media/photos/sources/church-steps-family-reunion-group-original.jpg",
+      "meta": [
+        "Family reunion",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "outdoor-family-reunion-gathering",
+      "title": "Outdoor Family Reunion Gathering",
+      "category": "Family Photo",
+      "description": "A preserved outdoor family reunion gathering photograph, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/outdoor-family-reunion-gathering.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/outdoor-family-reunion-gathering-thumb.webp",
+      "sourceUrl": "/media/photos/sources/outdoor-family-reunion-gathering-original.jpg",
+      "meta": [
+        "Family reunion",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "porch-family-reunion-group",
+      "title": "Porch Family Reunion Group",
+      "category": "Family Photo",
+      "description": "A preserved porch family reunion group photograph, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/porch-family-reunion-group.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/porch-family-reunion-group-thumb.webp",
+      "sourceUrl": "/media/photos/sources/porch-family-reunion-group-original.jpg",
+      "meta": [
+        "Family reunion",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "senior-family-reunion-portrait",
+      "title": "Senior Family Reunion Portrait",
+      "category": "Family Photo",
+      "description": "A preserved senior family reunion portrait, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/senior-family-reunion-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/senior-family-reunion-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/senior-family-reunion-portrait-original.jpg",
+      "meta": [
+        "Family reunion",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "indoor-family-gathering",
+      "title": "Indoor Family Gathering",
+      "category": "Family Photo",
+      "description": "A preserved indoor family gathering photograph, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/indoor-family-gathering.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/indoor-family-gathering-thumb.webp",
+      "sourceUrl": "/media/photos/sources/indoor-family-gathering-original.jpg",
+      "meta": [
+        "Family gathering",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "formal-francis-men-portrait",
+      "title": "Formal Francis Men Portrait",
+      "category": "Family Photo",
+      "description": "A preserved formal portrait of Francis family men, added to the living Photo Gallery collection.",
+      "imageUrl": "/media/photos/formal-francis-men-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/formal-francis-men-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/formal-francis-men-portrait-original.jpg",
+      "meta": [
+        "Formal portrait",
+        "Original JPEG preserved"
+      ]
     }
   ]
 }
