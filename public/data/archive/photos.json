@@ -1330,6 +1330,150 @@
         "photos2 collection",
         "Original JPEG preserved"
       ]
+    },
+    {
+      "id": "francis-gallery-young-child-at-reunion",
+      "title": "Young Child at Francis Reunion",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion photograph of a young child wearing a family reunion shirt, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-young-child-at-reunion.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-young-child-at-reunion-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-young-child-at-reunion-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion photo",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-seated-couple-at-reunion",
+      "title": "Seated Couple at Francis Reunion",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion photograph of a seated couple outdoors, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-seated-couple-at-reunion.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-seated-couple-at-reunion-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-seated-couple-at-reunion-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-reunion-trio-portrait",
+      "title": "Francis Reunion Trio Portrait",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion trio portrait, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-reunion-trio-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-reunion-trio-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-reunion-trio-portrait-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion portrait",
+        "Original JPEG preserved",
+        "Gallery copy rotated upright"
+      ]
+    },
+    {
+      "id": "francis-gallery-outdoor-reunion-group",
+      "title": "Outdoor Francis Reunion Group",
+      "category": "Family Photo",
+      "description": "A preserved outdoor Francis family reunion group photograph, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-outdoor-reunion-group.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-outdoor-reunion-group-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-outdoor-reunion-group-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion group photo",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-birthday-balloon-snapshot",
+      "title": "Birthday Balloon Snapshot",
+      "category": "Family Photo",
+      "description": "A preserved Francis family snapshot with a birthday balloon, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-birthday-balloon-snapshot.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-birthday-balloon-snapshot-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-birthday-balloon-snapshot-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Family snapshot",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-boy-at-picnic-table",
+      "title": "Boy at Picnic Table",
+      "category": "Family Photo",
+      "description": "A preserved Francis family outdoor photograph of a boy sitting on a picnic table, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-boy-at-picnic-table.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-boy-at-picnic-table-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-boy-at-picnic-table-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Outdoor family photo",
+        "Original JPEG preserved",
+        "Gallery copy rotated upright"
+      ]
+    },
+    {
+      "id": "francis-gallery-smiling-reunion-pair",
+      "title": "Smiling Francis Reunion Pair",
+      "category": "Family Photo",
+      "description": "A preserved smiling pair portrait from a Francis family reunion, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-smiling-reunion-pair.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-smiling-reunion-pair-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-smiling-reunion-pair-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-reunion-podium-moment",
+      "title": "Francis Reunion Podium Moment",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion photograph near a podium and microphone, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-reunion-podium-moment.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-reunion-podium-moment-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-reunion-podium-moment-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion photo",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-indoor-family-group",
+      "title": "Indoor Francis Family Group",
+      "category": "Family Photo",
+      "description": "A preserved indoor Francis family group photograph, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-indoor-family-group.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-indoor-family-group-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-indoor-family-group-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Family group photo",
+        "Original JPEG preserved",
+        "Gallery copy rotated upright"
+      ]
+    },
+    {
+      "id": "francis-gallery-four-women-formal-portrait",
+      "title": "Four Women Formal Portrait",
+      "category": "Family Photo",
+      "description": "A preserved formal portrait of four women from the Francis family collection, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-four-women-formal-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-four-women-formal-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-four-women-formal-portrait-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Formal portrait",
+        "Original JPEG preserved",
+        "Gallery copy rotated upright"
+      ]
     }
   ]
 }
