@@ -1618,6 +1618,148 @@
       "imageUrl": "/media/photos/francis-gallery-reunion-registration-speaker.webp",
       "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-reunion-registration-speaker-thumb.webp",
       "sourceUrl": "/media/photos/sources/francis-gallery-reunion-registration-speaker-original.jpg"
+    },
+    {
+      "id": "francis-gallery-picnic-meal-conversation",
+      "title": "Picnic Meal Conversation",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion photograph of relatives sharing a picnic meal outdoors, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-picnic-meal-conversation.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-picnic-meal-conversation-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-picnic-meal-conversation-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion photo",
+        "Outdoor family gathering",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-two-elders-reunion-table",
+      "title": "Two Elders at Reunion Table",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion photograph of two elder women seated together at an outdoor table, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-two-elders-reunion-table.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-two-elders-reunion-table-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-two-elders-reunion-table-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-three-women-reunion-table",
+      "title": "Three Women at Reunion Table",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion photograph of three women seated around an outdoor table, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-three-women-reunion-table.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-three-women-reunion-table-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-three-women-reunion-table-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion group photo",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-colandus-and-roy-portrait",
+      "title": "Colandus and Roy Portrait",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion portrait of Colandus Francis and Roy Francis seated together outdoors, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-colandus-and-roy-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-colandus-and-roy-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-colandus-and-roy-portrait-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-three-women-outdoor-portrait",
+      "title": "Three Women Outdoor Portrait",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion photograph of three women gathered outdoors, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-three-women-outdoor-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-three-women-outdoor-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-three-women-outdoor-portrait-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Outdoor portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-christopher-and-family-portrait",
+      "title": "Christopher and Family Portrait",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion photograph of Christopher Francis with family members, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-christopher-and-family-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-christopher-and-family-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-christopher-and-family-portrait-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-unity-family-table-game",
+      "title": "Unity Family Table Game",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion photograph of relatives gathered around a table game outdoors, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-unity-family-table-game.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-unity-family-table-game-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-unity-family-table-game-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion activity",
+        "Outdoor family gathering",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-two-young-women-reunion",
+      "title": "Two Young Women at Reunion",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion portrait of two young women seated together outdoors, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-two-young-women-reunion.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-two-young-women-reunion-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-two-young-women-reunion-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-regina-and-little-one",
+      "title": "Regina and Little One",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion photograph of Regina holding a young child with a balloon, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-regina-and-little-one.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-regina-and-little-one-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-regina-and-little-one-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Reunion portrait",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "francis-gallery-two-men-seated-outdoors",
+      "title": "Two Men Seated Outdoors",
+      "category": "Family Photo",
+      "description": "A preserved Francis family reunion photograph of two men seated outdoors by the family gathering, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-two-men-seated-outdoors.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-two-men-seated-outdoors-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-two-men-seated-outdoors-original.jpg",
+      "meta": [
+        "Francis family photo",
+        "Outdoor portrait",
+        "Original JPEG preserved"
+      ]
     }
   ]
 }
