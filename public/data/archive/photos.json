@@ -1474,6 +1474,150 @@
         "Original JPEG preserved",
         "Gallery copy rotated upright"
       ]
+    },
+    {
+      "id": "francis-gallery-child-with-teddy-bear",
+      "title": "Child with Teddy Bear",
+      "description": "A preserved Francis family photograph of a young child holding a teddy bear, added to the Family Photo Gallery.",
+      "meta": [
+        "Francis family photo",
+        "Childhood photo",
+        "Original JPEG preserved"
+      ],
+      "category": "Family Photo",
+      "imageUrl": "/media/photos/francis-gallery-child-with-teddy-bear.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-child-with-teddy-bear-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-child-with-teddy-bear-original.jpg"
+    },
+    {
+      "id": "francis-gallery-woman-on-sofa-portrait",
+      "title": "Woman on Sofa Portrait",
+      "description": "A preserved Francis family home portrait of a woman seated on a sofa, added to the Family Photo Gallery.",
+      "meta": [
+        "Francis family photo",
+        "Home portrait",
+        "Original JPEG preserved"
+      ],
+      "category": "Family Photo",
+      "imageUrl": "/media/photos/francis-gallery-woman-on-sofa-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-woman-on-sofa-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-woman-on-sofa-portrait-original.jpg"
+    },
+    {
+      "id": "francis-gallery-formal-couple-portrait",
+      "title": "Formal Couple Portrait",
+      "description": "A preserved formal Francis family couple portrait, added to the Family Photo Gallery.",
+      "meta": [
+        "Francis family photo",
+        "Formal portrait",
+        "Original JPEG preserved",
+        "Gallery copy rotated upright"
+      ],
+      "category": "Family Photo",
+      "imageUrl": "/media/photos/francis-gallery-formal-couple-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-formal-couple-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-formal-couple-portrait-original.jpg"
+    },
+    {
+      "id": "francis-gallery-restaurant-family-table",
+      "title": "Restaurant Family Table",
+      "description": "A preserved Francis family restaurant table photograph, added to the Family Photo Gallery.",
+      "meta": [
+        "Francis family photo",
+        "Family gathering",
+        "Original JPEG preserved",
+        "Gallery copy rotated upright"
+      ],
+      "category": "Family Photo",
+      "imageUrl": "/media/photos/francis-gallery-restaurant-family-table.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-restaurant-family-table-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-restaurant-family-table-original.jpg"
+    },
+    {
+      "id": "francis-gallery-reunion-banquet-table",
+      "title": "Francis Reunion Banquet Table",
+      "description": "A preserved Francis family reunion banquet table photograph, added to the Family Photo Gallery.",
+      "meta": [
+        "Francis family photo",
+        "Reunion group photo",
+        "Original JPEG preserved",
+        "Gallery copy rotated upright"
+      ],
+      "category": "Family Photo",
+      "imageUrl": "/media/photos/francis-gallery-reunion-banquet-table.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-reunion-banquet-table-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-reunion-banquet-table-original.jpg"
+    },
+    {
+      "id": "francis-gallery-elder-couple-at-home",
+      "title": "Elder Couple at Home",
+      "description": "A preserved Francis family home photograph of an elder couple standing together, added to the Family Photo Gallery.",
+      "meta": [
+        "Francis family photo",
+        "Family home photo",
+        "Original JPEG preserved"
+      ],
+      "category": "Family Photo",
+      "imageUrl": "/media/photos/francis-gallery-elder-couple-at-home.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-elder-couple-at-home-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-elder-couple-at-home-original.jpg"
+    },
+    {
+      "id": "francis-gallery-outdoor-family-with-elder",
+      "title": "Outdoor Family with Elder",
+      "description": "A preserved outdoor Francis family photograph with an elder seated among relatives, added to the Family Photo Gallery.",
+      "meta": [
+        "Francis family photo",
+        "Outdoor family photo",
+        "Original JPEG preserved"
+      ],
+      "category": "Family Photo",
+      "imageUrl": "/media/photos/francis-gallery-outdoor-family-with-elder.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-outdoor-family-with-elder-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-outdoor-family-with-elder-original.jpg"
+    },
+    {
+      "id": "francis-gallery-two-women-formal-outdoors",
+      "title": "Two Women Formal Outdoors",
+      "description": "A preserved Francis family outdoor formal photograph of two women standing together, added to the Family Photo Gallery.",
+      "meta": [
+        "Francis family photo",
+        "Outdoor portrait",
+        "Original JPEG preserved"
+      ],
+      "category": "Family Photo",
+      "imageUrl": "/media/photos/francis-gallery-two-women-formal-outdoors.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-two-women-formal-outdoors-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-two-women-formal-outdoors-original.jpg"
+    },
+    {
+      "id": "francis-gallery-reunion-welcome-sign",
+      "title": "Francis Family Reunion Welcome Sign",
+      "description": "A preserved Francis family reunion welcome sign photograph from Enfield, North Carolina, added to the Family Photo Gallery.",
+      "meta": [
+        "Francis family photo",
+        "Family reunion",
+        "Enfield, NC",
+        "Original JPEG preserved"
+      ],
+      "category": "Family Photo",
+      "imageUrl": "/media/photos/francis-gallery-reunion-welcome-sign.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-reunion-welcome-sign-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-reunion-welcome-sign-original.jpg"
+    },
+    {
+      "id": "francis-gallery-reunion-registration-speaker",
+      "title": "Francis Reunion Registration Speaker",
+      "description": "A preserved Francis family reunion photograph of a speaker near the registration area, added to the Family Photo Gallery.",
+      "meta": [
+        "Francis family photo",
+        "Reunion photo",
+        "Original JPEG preserved"
+      ],
+      "category": "Family Photo",
+      "imageUrl": "/media/photos/francis-gallery-reunion-registration-speaker.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-reunion-registration-speaker-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-reunion-registration-speaker-original.jpg"
     }
   ]
 }
