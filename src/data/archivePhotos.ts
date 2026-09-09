@@ -11,6 +11,17 @@ export interface ArchivePhoto {
 
 export const archivePhotos: ArchivePhoto[] = [
   {
+    id: "james-pearl-family-1926",
+    title: "James and Pearl Family 1926",
+    category: "Family Group Photos",
+    description:
+      "A preserved James and Pearl family group photograph from 1926, added as the first Family Group Photos record.",
+    imageUrl: "/media/photos/james-pearl-family-1926.webp",
+    thumbnailUrl: "/media/photos/thumbnails/james-pearl-family-1926-thumb.webp",
+    sourceUrl: "/media/photos/sources/james-pearl-family-1926-original.png",
+    meta: ["Family group photo", "James and Pearl", "1926", "Original PNG preserved"],
+  },
+  {
     id: "family-matriarch-seated-portrait",
     title: "Family Matriarch Seated Portrait",
     category: "Family Photo",
