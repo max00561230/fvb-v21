@@ -261,8 +261,11 @@ export function FamilyTreePage() {
 
 export function PhotoGalleryPage() {
   if (archivePhotos.length > 0) {
+    const familyGroupPhotos = archivePhotos.filter((photo) => photo.category === "Family Group Photos");
     const reunionPhotos = archivePhotos.filter((photo) => photo.category === "Reunion Photos");
-    const otherPhotos = archivePhotos.filter((photo) => photo.category !== "Reunion Photos");
+    const otherPhotos = archivePhotos.filter(
+      (photo) => photo.category !== "Family Group Photos" && photo.category !== "Reunion Photos"
+    );
 
     return (
       <div className="fvb-gallery-shell">
@@ -274,6 +277,33 @@ export function PhotoGalleryPage() {
             <h1>Photo Gallery</h1>
             <p>A separate archive gallery for family photographs outside the scanned Heritage Book pages.</p>
           </header>
+
+          {familyGroupPhotos.length > 0 && (
+            <section className="archive-photo-panel" aria-labelledby="family-group-photos-title">
+              <div className="archive-photo-panel-header">
+                <div>
+                  <FvbPlaque>FAMILY GROUP PHOTOS</FvbPlaque>
+                  <h2 id="family-group-photos-title">Family Group Photos</h2>
+                </div>
+                <p>{familyGroupPhotos.length} photo{familyGroupPhotos.length === 1 ? "" : "s"}</p>
+              </div>
+              <div className="archive-photo-grid" aria-label="Family Group Photos collection">
+                {familyGroupPhotos.map((photo) => (
+                  <article className="archive-photo-card" aria-labelledby={`${photo.id}-title`} key={photo.id}>
+                    <a className="archive-photo-image" href={photo.imageUrl} target="_blank" rel="noreferrer">
+                      <img src={photo.thumbnailUrl} alt={photo.title} />
+                    </a>
+                    <div className="archive-photo-copy">
+                      <h2 id={`${photo.id}-title`}>{photo.title}</h2>
+                      <a className="archive-card-action fvb-card-link" href={photo.imageUrl} target="_blank" rel="noreferrer">
+                        Open Full View
+                      </a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
 
           {reunionPhotos.length > 0 && (
             <section className="archive-photo-panel" aria-labelledby="reunion-photos-title">
