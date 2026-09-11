@@ -167,6 +167,126 @@
       ]
     },
     {
+      "id": "family-group-fam071",
+      "title": "Family Group Photo Fam071",
+      "category": "Family Group Photos",
+      "description": "A preserved family group photograph from Tony's Fam071 upload, added to the Family Group Photos collection.",
+      "imageUrl": "/media/photos/family-group-fam071.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/family-group-fam071-thumb.webp",
+      "sourceUrl": "/media/photos/sources/family-group-fam071-original.jpg",
+      "meta": [
+        "Family group photo",
+        "Fam071",
+        "Tony upload",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "family-group-fam072",
+      "title": "Family Group Photo Fam072",
+      "category": "Family Group Photos",
+      "description": "A preserved family group photograph from Tony's Fam072 upload, added to the Family Group Photos collection.",
+      "imageUrl": "/media/photos/family-group-fam072.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/family-group-fam072-thumb.webp",
+      "sourceUrl": "/media/photos/sources/family-group-fam072-original.jpg",
+      "meta": [
+        "Family group photo",
+        "Fam072",
+        "Tony upload",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "family-group-fam073",
+      "title": "Family Group Photo Fam073",
+      "category": "Family Group Photos",
+      "description": "A preserved family group photograph from Tony's Fam073 upload, added to the Family Group Photos collection.",
+      "imageUrl": "/media/photos/family-group-fam073.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/family-group-fam073-thumb.webp",
+      "sourceUrl": "/media/photos/sources/family-group-fam073-original.jpg",
+      "meta": [
+        "Family group photo",
+        "Fam073",
+        "Tony upload",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "family-group-fam074",
+      "title": "Family Group Photo Fam074",
+      "category": "Family Group Photos",
+      "description": "A preserved family group photograph from Tony's Fam074 upload, added to the Family Group Photos collection.",
+      "imageUrl": "/media/photos/family-group-fam074.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/family-group-fam074-thumb.webp",
+      "sourceUrl": "/media/photos/sources/family-group-fam074-original.jpg",
+      "meta": [
+        "Family group photo",
+        "Fam074",
+        "Tony upload",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "family-group-fam077",
+      "title": "Family Group Photo Fam077",
+      "category": "Family Group Photos",
+      "description": "A preserved family group photograph from Tony's Fam077 upload, added to the Family Group Photos collection.",
+      "imageUrl": "/media/photos/family-group-fam077.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/family-group-fam077-thumb.webp",
+      "sourceUrl": "/media/photos/sources/family-group-fam077-original.jpg",
+      "meta": [
+        "Family group photo",
+        "Fam077",
+        "Tony upload",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "family-group-fam093",
+      "title": "Family Group Photo Fam093",
+      "category": "Family Group Photos",
+      "description": "A preserved family group photograph from Tony's Fam093 upload, added to the Family Group Photos collection.",
+      "imageUrl": "/media/photos/family-group-fam093.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/family-group-fam093-thumb.webp",
+      "sourceUrl": "/media/photos/sources/family-group-fam093-original.jpg",
+      "meta": [
+        "Family group photo",
+        "Fam093",
+        "Tony upload",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "family-group-fam097",
+      "title": "Family Group Photo Fam097",
+      "category": "Family Group Photos",
+      "description": "A preserved family group photograph from Tony's Fam097 upload, added to the Family Group Photos collection.",
+      "imageUrl": "/media/photos/family-group-fam097.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/family-group-fam097-thumb.webp",
+      "sourceUrl": "/media/photos/sources/family-group-fam097-original.jpg",
+      "meta": [
+        "Family group photo",
+        "Fam097",
+        "Tony upload",
+        "Original JPEG preserved"
+      ]
+    },
+    {
+      "id": "family-group-fam098",
+      "title": "Family Group Photo Fam098",
+      "category": "Family Group Photos",
+      "description": "A preserved family group photograph from Tony's Fam098 upload, added to the Family Group Photos collection.",
+      "imageUrl": "/media/photos/family-group-fam098.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/family-group-fam098-thumb.webp",
+      "sourceUrl": "/media/photos/sources/family-group-fam098-original.jpg",
+      "meta": [
+        "Family group photo",
+        "Fam098",
+        "Tony upload",
+        "Original JPEG preserved"
+      ]
+    },
+    {
       "id": "family-matriarch-seated-portrait",
       "title": "Family Matriarch Seated Portrait",
       "category": "Family Photo",
@@ -1039,14 +1159,16 @@
     },
     {
       "id": "family-group-outdoors-fam076",
-      "title": "Family Group Outdoors",
-      "category": "Family Photo",
-      "description": "A preserved outdoor family group photograph, added to the living Photo Gallery collection.",
+      "title": "Family Group Photo Fam076",
+      "category": "Family Group Photos",
+      "description": "A preserved family group photograph from Tony's Fam076 upload, added to the Family Group Photos collection.",
       "imageUrl": "/media/photos/family-group-outdoors-fam076.webp",
       "thumbnailUrl": "/media/photos/thumbnails/family-group-outdoors-fam076-thumb.webp",
       "sourceUrl": "/media/photos/sources/family-group-outdoors-fam076-original.jpg",
       "meta": [
         "Family group photo",
+        "Fam076",
+        "Tony upload",
         "Original JPEG preserved"
       ]
     },
@@ -1643,146 +1765,146 @@
     {
       "id": "francis-gallery-child-with-teddy-bear",
       "title": "Child with Teddy Bear",
+      "category": "Family Photo",
       "description": "A preserved Francis family photograph of a young child holding a teddy bear, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-child-with-teddy-bear.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-child-with-teddy-bear-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-child-with-teddy-bear-original.jpg",
       "meta": [
         "Francis family photo",
         "Childhood photo",
         "Original JPEG preserved"
-      ],
-      "category": "Family Photo",
-      "imageUrl": "/media/photos/francis-gallery-child-with-teddy-bear.webp",
-      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-child-with-teddy-bear-thumb.webp",
-      "sourceUrl": "/media/photos/sources/francis-gallery-child-with-teddy-bear-original.jpg"
+      ]
     },
     {
       "id": "francis-gallery-woman-on-sofa-portrait",
       "title": "Woman on Sofa Portrait",
+      "category": "Family Photo",
       "description": "A preserved Francis family home portrait of a woman seated on a sofa, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-woman-on-sofa-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-woman-on-sofa-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-woman-on-sofa-portrait-original.jpg",
       "meta": [
         "Francis family photo",
         "Home portrait",
         "Original JPEG preserved"
-      ],
-      "category": "Family Photo",
-      "imageUrl": "/media/photos/francis-gallery-woman-on-sofa-portrait.webp",
-      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-woman-on-sofa-portrait-thumb.webp",
-      "sourceUrl": "/media/photos/sources/francis-gallery-woman-on-sofa-portrait-original.jpg"
+      ]
     },
     {
       "id": "francis-gallery-formal-couple-portrait",
       "title": "Formal Couple Portrait",
+      "category": "Family Photo",
       "description": "A preserved formal Francis family couple portrait, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-formal-couple-portrait.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-formal-couple-portrait-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-formal-couple-portrait-original.jpg",
       "meta": [
         "Francis family photo",
         "Formal portrait",
         "Original JPEG preserved",
         "Gallery copy rotated upright"
-      ],
-      "category": "Family Photo",
-      "imageUrl": "/media/photos/francis-gallery-formal-couple-portrait.webp",
-      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-formal-couple-portrait-thumb.webp",
-      "sourceUrl": "/media/photos/sources/francis-gallery-formal-couple-portrait-original.jpg"
+      ]
     },
     {
       "id": "francis-gallery-restaurant-family-table",
       "title": "Restaurant Family Table",
+      "category": "Family Photo",
       "description": "A preserved Francis family restaurant table photograph, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-restaurant-family-table.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-restaurant-family-table-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-restaurant-family-table-original.jpg",
       "meta": [
         "Francis family photo",
         "Family gathering",
         "Original JPEG preserved",
         "Gallery copy rotated upright"
-      ],
-      "category": "Family Photo",
-      "imageUrl": "/media/photos/francis-gallery-restaurant-family-table.webp",
-      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-restaurant-family-table-thumb.webp",
-      "sourceUrl": "/media/photos/sources/francis-gallery-restaurant-family-table-original.jpg"
+      ]
     },
     {
       "id": "francis-gallery-reunion-banquet-table",
       "title": "Francis Reunion Banquet Table",
+      "category": "Family Photo",
       "description": "A preserved Francis family reunion banquet table photograph, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-reunion-banquet-table.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-reunion-banquet-table-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-reunion-banquet-table-original.jpg",
       "meta": [
         "Francis family photo",
         "Reunion group photo",
         "Original JPEG preserved",
         "Gallery copy rotated upright"
-      ],
-      "category": "Family Photo",
-      "imageUrl": "/media/photos/francis-gallery-reunion-banquet-table.webp",
-      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-reunion-banquet-table-thumb.webp",
-      "sourceUrl": "/media/photos/sources/francis-gallery-reunion-banquet-table-original.jpg"
+      ]
     },
     {
       "id": "francis-gallery-elder-couple-at-home",
       "title": "Elder Couple at Home",
+      "category": "Family Photo",
       "description": "A preserved Francis family home photograph of an elder couple standing together, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-elder-couple-at-home.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-elder-couple-at-home-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-elder-couple-at-home-original.jpg",
       "meta": [
         "Francis family photo",
         "Family home photo",
         "Original JPEG preserved"
-      ],
-      "category": "Family Photo",
-      "imageUrl": "/media/photos/francis-gallery-elder-couple-at-home.webp",
-      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-elder-couple-at-home-thumb.webp",
-      "sourceUrl": "/media/photos/sources/francis-gallery-elder-couple-at-home-original.jpg"
+      ]
     },
     {
       "id": "francis-gallery-outdoor-family-with-elder",
       "title": "Outdoor Family with Elder",
+      "category": "Family Photo",
       "description": "A preserved outdoor Francis family photograph with an elder seated among relatives, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-outdoor-family-with-elder.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-outdoor-family-with-elder-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-outdoor-family-with-elder-original.jpg",
       "meta": [
         "Francis family photo",
         "Outdoor family photo",
         "Original JPEG preserved"
-      ],
-      "category": "Family Photo",
-      "imageUrl": "/media/photos/francis-gallery-outdoor-family-with-elder.webp",
-      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-outdoor-family-with-elder-thumb.webp",
-      "sourceUrl": "/media/photos/sources/francis-gallery-outdoor-family-with-elder-original.jpg"
+      ]
     },
     {
       "id": "francis-gallery-two-women-formal-outdoors",
       "title": "Two Women Formal Outdoors",
+      "category": "Family Photo",
       "description": "A preserved Francis family outdoor formal photograph of two women standing together, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-two-women-formal-outdoors.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-two-women-formal-outdoors-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-two-women-formal-outdoors-original.jpg",
       "meta": [
         "Francis family photo",
         "Outdoor portrait",
         "Original JPEG preserved"
-      ],
-      "category": "Family Photo",
-      "imageUrl": "/media/photos/francis-gallery-two-women-formal-outdoors.webp",
-      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-two-women-formal-outdoors-thumb.webp",
-      "sourceUrl": "/media/photos/sources/francis-gallery-two-women-formal-outdoors-original.jpg"
+      ]
     },
     {
       "id": "francis-gallery-reunion-welcome-sign",
       "title": "Francis Family Reunion Welcome Sign",
+      "category": "Family Photo",
       "description": "A preserved Francis family reunion welcome sign photograph from Enfield, North Carolina, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-reunion-welcome-sign.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-reunion-welcome-sign-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-reunion-welcome-sign-original.jpg",
       "meta": [
         "Francis family photo",
         "Family reunion",
         "Enfield, NC",
         "Original JPEG preserved"
-      ],
-      "category": "Family Photo",
-      "imageUrl": "/media/photos/francis-gallery-reunion-welcome-sign.webp",
-      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-reunion-welcome-sign-thumb.webp",
-      "sourceUrl": "/media/photos/sources/francis-gallery-reunion-welcome-sign-original.jpg"
+      ]
     },
     {
       "id": "francis-gallery-reunion-registration-speaker",
       "title": "Francis Reunion Registration Speaker",
+      "category": "Family Photo",
       "description": "A preserved Francis family reunion photograph of a speaker near the registration area, added to the Family Photo Gallery.",
+      "imageUrl": "/media/photos/francis-gallery-reunion-registration-speaker.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-reunion-registration-speaker-thumb.webp",
+      "sourceUrl": "/media/photos/sources/francis-gallery-reunion-registration-speaker-original.jpg",
       "meta": [
         "Francis family photo",
         "Reunion photo",
         "Original JPEG preserved"
-      ],
-      "category": "Family Photo",
-      "imageUrl": "/media/photos/francis-gallery-reunion-registration-speaker.webp",
-      "thumbnailUrl": "/media/photos/thumbnails/francis-gallery-reunion-registration-speaker-thumb.webp",
-      "sourceUrl": "/media/photos/sources/francis-gallery-reunion-registration-speaker-original.jpg"
+      ]
     },
     {
       "id": "francis-gallery-picnic-meal-conversation",

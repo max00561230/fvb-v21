@@ -132,6 +132,94 @@ export const archivePhotos: ArchivePhoto[] = [
     meta: ["Family group photo", "Fam069", "Tony upload", "Original JPEG preserved"],
   },
   {
+    id: "family-group-fam071",
+    title: "Family Group Photo Fam071",
+    category: "Family Group Photos",
+    description:
+      "A preserved family group photograph from Tony's Fam071 upload, added to the Family Group Photos collection.",
+    imageUrl: "/media/photos/family-group-fam071.webp",
+    thumbnailUrl: "/media/photos/thumbnails/family-group-fam071-thumb.webp",
+    sourceUrl: "/media/photos/sources/family-group-fam071-original.jpg",
+    meta: ["Family group photo", "Fam071", "Tony upload", "Original JPEG preserved"],
+  },
+  {
+    id: "family-group-fam072",
+    title: "Family Group Photo Fam072",
+    category: "Family Group Photos",
+    description:
+      "A preserved family group photograph from Tony's Fam072 upload, added to the Family Group Photos collection.",
+    imageUrl: "/media/photos/family-group-fam072.webp",
+    thumbnailUrl: "/media/photos/thumbnails/family-group-fam072-thumb.webp",
+    sourceUrl: "/media/photos/sources/family-group-fam072-original.jpg",
+    meta: ["Family group photo", "Fam072", "Tony upload", "Original JPEG preserved"],
+  },
+  {
+    id: "family-group-fam073",
+    title: "Family Group Photo Fam073",
+    category: "Family Group Photos",
+    description:
+      "A preserved family group photograph from Tony's Fam073 upload, added to the Family Group Photos collection.",
+    imageUrl: "/media/photos/family-group-fam073.webp",
+    thumbnailUrl: "/media/photos/thumbnails/family-group-fam073-thumb.webp",
+    sourceUrl: "/media/photos/sources/family-group-fam073-original.jpg",
+    meta: ["Family group photo", "Fam073", "Tony upload", "Original JPEG preserved"],
+  },
+  {
+    id: "family-group-fam074",
+    title: "Family Group Photo Fam074",
+    category: "Family Group Photos",
+    description:
+      "A preserved family group photograph from Tony's Fam074 upload, added to the Family Group Photos collection.",
+    imageUrl: "/media/photos/family-group-fam074.webp",
+    thumbnailUrl: "/media/photos/thumbnails/family-group-fam074-thumb.webp",
+    sourceUrl: "/media/photos/sources/family-group-fam074-original.jpg",
+    meta: ["Family group photo", "Fam074", "Tony upload", "Original JPEG preserved"],
+  },
+  {
+    id: "family-group-fam077",
+    title: "Family Group Photo Fam077",
+    category: "Family Group Photos",
+    description:
+      "A preserved family group photograph from Tony's Fam077 upload, added to the Family Group Photos collection.",
+    imageUrl: "/media/photos/family-group-fam077.webp",
+    thumbnailUrl: "/media/photos/thumbnails/family-group-fam077-thumb.webp",
+    sourceUrl: "/media/photos/sources/family-group-fam077-original.jpg",
+    meta: ["Family group photo", "Fam077", "Tony upload", "Original JPEG preserved"],
+  },
+  {
+    id: "family-group-fam093",
+    title: "Family Group Photo Fam093",
+    category: "Family Group Photos",
+    description:
+      "A preserved family group photograph from Tony's Fam093 upload, added to the Family Group Photos collection.",
+    imageUrl: "/media/photos/family-group-fam093.webp",
+    thumbnailUrl: "/media/photos/thumbnails/family-group-fam093-thumb.webp",
+    sourceUrl: "/media/photos/sources/family-group-fam093-original.jpg",
+    meta: ["Family group photo", "Fam093", "Tony upload", "Original JPEG preserved"],
+  },
+  {
+    id: "family-group-fam097",
+    title: "Family Group Photo Fam097",
+    category: "Family Group Photos",
+    description:
+      "A preserved family group photograph from Tony's Fam097 upload, added to the Family Group Photos collection.",
+    imageUrl: "/media/photos/family-group-fam097.webp",
+    thumbnailUrl: "/media/photos/thumbnails/family-group-fam097-thumb.webp",
+    sourceUrl: "/media/photos/sources/family-group-fam097-original.jpg",
+    meta: ["Family group photo", "Fam097", "Tony upload", "Original JPEG preserved"],
+  },
+  {
+    id: "family-group-fam098",
+    title: "Family Group Photo Fam098",
+    category: "Family Group Photos",
+    description:
+      "A preserved family group photograph from Tony's Fam098 upload, added to the Family Group Photos collection.",
+    imageUrl: "/media/photos/family-group-fam098.webp",
+    thumbnailUrl: "/media/photos/thumbnails/family-group-fam098-thumb.webp",
+    sourceUrl: "/media/photos/sources/family-group-fam098-original.jpg",
+    meta: ["Family group photo", "Fam098", "Tony upload", "Original JPEG preserved"],
+  },
+  {
     id: "family-matriarch-seated-portrait",
     title: "Family Matriarch Seated Portrait",
     category: "Family Photo",
@@ -870,14 +958,14 @@ export const archivePhotos: ArchivePhoto[] = [
   },
   {
     id: "family-group-outdoors-fam076",
-    title: "Family Group Outdoors",
-    category: "Family Photo",
+    title: "Family Group Photo Fam076",
+    category: "Family Group Photos",
     description:
-      "A preserved outdoor family group photograph, added to the living Photo Gallery collection.",
+      "A preserved family group photograph from Tony's Fam076 upload, added to the Family Group Photos collection.",
     imageUrl: "/media/photos/family-group-outdoors-fam076.webp",
     thumbnailUrl: "/media/photos/thumbnails/family-group-outdoors-fam076-thumb.webp",
     sourceUrl: "/media/photos/sources/family-group-outdoors-fam076-original.jpg",
-    meta: ["Family group photo", "Original JPEG preserved"],
+    meta: ["Family group photo", "Fam076", "Tony upload", "Original JPEG preserved"],
   },
   {
     id: "edward-francis-jr-portrait",
