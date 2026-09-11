@@ -38,7 +38,7 @@ export const archiveSections: ArchiveSection[] = [
     route: "/photos",
     icon: "Photo",
     actionLabel: "View Photos",
-    countLabel: "72 photos",
+    countLabel: "142 photos",
   },
   {
     id: "videos",
