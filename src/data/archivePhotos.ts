@@ -518,7 +518,7 @@ export const archivePhotos: ArchivePhoto[] = [
   },
   {
     id: "eddie-rufus-francis-sunglasses",
-    title: "Eddie Rufus Francis Portrait",
+    title: "Louis Claude Francis Portrait",
     category: "Family Photo",
     description:
       "A preserved portrait of Eddie Rufus Francis, added to the living Photo Gallery collection.",
