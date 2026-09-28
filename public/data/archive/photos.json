@@ -2047,6 +2047,108 @@
         "Outdoor portrait",
         "Original JPEG preserved"
       ]
+    },
+    {
+      "id": "dakota-and-papa",
+      "title": "Dakota and Papa",
+      "category": "Family Photo",
+      "description": "A family photograph titled Dakota and Papa, preserved from Tony's September 2026 gallery upload.",
+      "imageUrl": "/media/photos/dakota-and-papa.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/dakota-and-papa-thumb.webp",
+      "sourceUrl": "/media/photos/dakota-and-papa.webp",
+      "meta": [
+        "Family photo",
+        "Tony upload",
+        "Original HEIC archived externally"
+      ]
+    },
+    {
+      "id": "dex-dakota-and-little-dex",
+      "title": "Dex, Dakota, and Little Dex",
+      "category": "Family Photo",
+      "description": "A family photograph titled Dex, Dakota, and Little Dex, preserved from Tony's September 2026 gallery upload.",
+      "imageUrl": "/media/photos/dex-dakota-and-little-dex.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/dex-dakota-and-little-dex-thumb.webp",
+      "sourceUrl": "/media/photos/dex-dakota-and-little-dex.webp",
+      "meta": [
+        "Family photo",
+        "Tony upload",
+        "Original HEIC archived externally"
+      ]
+    },
+    {
+      "id": "ecsu-gala",
+      "title": "ECSU Gala",
+      "category": "Family Photo",
+      "description": "A family photograph from the ECSU Gala, preserved from Tony's September 2026 gallery upload.",
+      "imageUrl": "/media/photos/ecsu-gala.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/ecsu-gala-thumb.webp",
+      "sourceUrl": "/media/photos/ecsu-gala.webp",
+      "meta": [
+        "Family event",
+        "ECSU Gala",
+        "Tony upload",
+        "Original HEIC archived externally"
+      ]
+    },
+    {
+      "id": "genesis-and-kevin",
+      "title": "Genesis and Kevin",
+      "category": "Family Photo",
+      "description": "A family photograph titled Genesis and Kevin, preserved from Tony's September 2026 gallery upload.",
+      "imageUrl": "/media/photos/genesis-and-kevin.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/genesis-and-kevin-thumb.webp",
+      "sourceUrl": "/media/photos/genesis-and-kevin.webp",
+      "meta": [
+        "Family photo",
+        "Tony upload",
+        "Original JPEG archived externally"
+      ]
+    },
+    {
+      "id": "grandparents-day",
+      "title": "Grandparents Day",
+      "category": "Family Photo",
+      "description": "A family group photograph from Grandparents Day, preserved from Tony's September 2026 gallery upload.",
+      "imageUrl": "/media/photos/grandparents-day.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/grandparents-day-thumb.webp",
+      "sourceUrl": "/media/photos/grandparents-day.webp",
+      "meta": [
+        "Family group photo",
+        "Grandparents Day",
+        "Tony upload",
+        "Original HEIC archived externally"
+      ]
+    },
+    {
+      "id": "grandkids",
+      "title": "Grandkids",
+      "category": "Family Photo",
+      "description": "A family photograph titled Grandkids, preserved from Tony's September 2026 gallery upload.",
+      "imageUrl": "/media/photos/grandkids.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/grandkids-thumb.webp",
+      "sourceUrl": "/media/photos/grandkids.webp",
+      "meta": [
+        "Family photo",
+        "Grandkids",
+        "Tony upload",
+        "Original HEIC archived externally"
+      ]
+    },
+    {
+      "id": "hawaii-trip",
+      "title": "Hawaii Trip",
+      "category": "Family Photo",
+      "description": "A family group photograph from a Hawaii trip, preserved from Tony's September 2026 gallery upload.",
+      "imageUrl": "/media/photos/hawaii-trip.webp",
+      "thumbnailUrl": "/media/photos/thumbnails/hawaii-trip-thumb.webp",
+      "sourceUrl": "/media/photos/hawaii-trip.webp",
+      "meta": [
+        "Family group photo",
+        "Hawaii trip",
+        "Tony upload",
+        "Original HEIC archived externally"
+      ]
     }
   ]
 }
